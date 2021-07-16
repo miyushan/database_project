@@ -16,8 +16,8 @@ function App(){
           <Route path="/login" exact component={Loginpage} />
           <Route path="/register" exact component={CreateAccountpage} />
           <Route path="/cart" exact component={Cartpage} />
+          <Route path='*' exact={true} component={Loginpage} />
         </Switch>
-        <Route path="/" component={Loginpage} />
       </BrowserRouter>
     </>
   );
