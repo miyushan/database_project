@@ -1,0 +1,33 @@
+.outer-products{
+    height: auto;
+    width: 90%;
+    /* margin-bottom */
+    margin-bottom: 150px;
+    padding-top: 20px;
+    padding-bottom: 30px;    
+    /* background-color: #554C4C;   */
+}
+
+
+.product-row-1{
+    text-align: center;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 42px;
+
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+.product-row-2{
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.product-column{
+    justify-content: space-around;
+    padding: 0;
+}

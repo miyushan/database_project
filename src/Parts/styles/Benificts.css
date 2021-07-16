@@ -1,0 +1,33 @@
+.outer-benificts{
+    height: 100px;
+    min-width: 100%;
+    background-color: #554C4C;
+    /* margin-bottom */
+    margin-bottom: 170px;       
+}
+
+
+.main-nav-2{
+    width: 1000px;
+}
+
+.nav-title-2{
+    width: 150px;
+    align-items: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    margin-right: 0;
+    text-align: center;
+    padding: 0;
+    color: #fff !important;
+}
+
+
+.benifict-icon{
+    color: #0f0;
+    height: 25px;
+    margin-bottom: 10px;
+}
+

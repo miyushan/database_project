@@ -1,0 +1,22 @@
+.outer-nav{
+    position: relative;
+    background-color: #554C4C !important;
+    height: 40px !important;
+}
+
+.main-nav{
+    width: 550px;
+}
+
+.nav-title-2{
+    width: 80px;
+    align-items: center;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    margin-right: 0;
+    text-align: center;
+    padding: 0;
+    color: #fff !important;
+}

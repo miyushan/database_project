@@ -1,0 +1,33 @@
+.outer-popular{
+    height: auto;
+    width: 80%;
+    /* margin-bottom */
+    margin-bottom: 150px;
+    padding-top: 20px;
+    padding-bottom: 30px;    
+    background-color: #554C4C;  
+}
+
+
+.row-1{
+    text-align: center;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 42px;
+
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.row-2{
+    display: flex;
+
+}
+
+.column{
+    justify-content: space-around;
+    padding: 0;
+}

@@ -1,0 +1,41 @@
+.aboutUs-container{
+    background-color: #554C4C;
+    margin-bottom: 150px;
+    padding-top: 20px;
+    padding-bottom: 30px;  
+}
+
+.shopImage{
+    max-width: 285px;
+    height: auto;
+}
+
+.aboutUs-row-2, .aboutUs-row-1{
+    display: flex;
+}
+
+.aboutUs-col-1, .aboutUs-col-2, aboutUs-col-3{
+    justify-content: center;
+}
+
+.aboutUs-col-3{
+    align-items: center;
+}
+
+.aboutUs-description{
+    max-width: 80%;
+    color: #fff;
+}
+
+.aboutUs-col-1{
+    text-align: center;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 42px;
+
+    color: #fff;
+    margin-bottom: 20px;
+}

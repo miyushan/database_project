@@ -1,0 +1,39 @@
+.card-item{
+    margin: auto;
+}
+
+.btn-cart{
+    width: 100%;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px!important;
+}
+
+.card-title{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.item-con{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+}
+
+.weight{
+    text-align: left;
+}
+
+.price{
+    text-align: right;
+}
+
+.item-con{
+    padding: 0;
+    margin-bottom: 10px;
+}
