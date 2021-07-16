@@ -13,13 +13,13 @@ function Benificts(){
     return(
         <>
 
-            <Navbar className="outer-benificts" expand="lg">
+            <Navbar className="outer-benificts">
                 <Container className="main-nav-2">
-                    <Navbar.Brand className="nav-title-2"><Fast className="benifict-icon"/><div>Fast Delivery</div></Navbar.Brand>
-                    <Navbar.Brand className="nav-title-2"><Online className="benifict-icon"/><div>24 * 7 Service</div></Navbar.Brand>
-                    <Navbar.Brand className="nav-title-2"><Caring className="benifict-icon"/><div>Friendly Customer Care</div></Navbar.Brand> 
-                    <Navbar.Brand className="nav-title-2"><Fresh className="benifict-icon"/><div>Fresh Vegetables</div></Navbar.Brand>
-                    <Navbar.Brand className="nav-title-2"><Quick className="benifict-icon"/><div>Quick Response</div></Navbar.Brand>
+                    <Navbar.Brand className="nav-title-2"><Fast className="benifict-icon"/><div className="add-curser">Fast Delivery</div></Navbar.Brand>
+                    <Navbar.Brand className="nav-title-2"><Online className="benifict-icon"/><div className="add-curser">24 * 7 Service</div></Navbar.Brand>
+                    <Navbar.Brand className="nav-title-2"><Caring className="benifict-icon"/><div className="add-curser">Friendly Customer Care</div></Navbar.Brand> 
+                    <Navbar.Brand className="nav-title-2"><Fresh className="benifict-icon"/><div className="add-curser">Fresh Vegetables</div></Navbar.Brand>
+                    <Navbar.Brand className="nav-title-2"><Quick className="benifict-icon"/><div className="add-curser">Quick Response</div></Navbar.Brand>
                 </Container>
             </Navbar>  
 

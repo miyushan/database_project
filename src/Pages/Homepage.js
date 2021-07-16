@@ -6,18 +6,24 @@ import Benificts from '../Parts/Benificts';
 import PopularItems from '../Parts/PopularItems';
 import OurProducts from '../Parts/OurProducts';
 import AboutUs from '../Parts/AboutUs';
+import GoUp from '../Parts/GoUp';
 
 function Homepage(){
     return(
         <>
-            <UpperNavBar />
-            <MainNavBar />
-            <SearchBar />
-            <MainCover />
-            <Benificts />
-            <PopularItems />
-            <OurProducts />
-            <AboutUs />
+            <div id="home">
+                <UpperNavBar />
+                <MainNavBar />
+                <SearchBar />
+                <MainCover />
+                <Benificts />
+                <PopularItems />
+                <OurProducts />
+                <AboutUs />
+                <GoUp />
+                
+                
+            </div>
         </>
     );
 }

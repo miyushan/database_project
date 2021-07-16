@@ -7,7 +7,7 @@ function CardItem(){
     return(
         <>
 
-            <Card className="card-item" style={{ width: '210px' }}>
+            <Card className="card-item add-curser" style={{ width: '210px' }}>
                 <Card.Img variant="top" src={item1} />
                 <Card.Body>
                     <Card.Title className="card-title">Carrot</Card.Title>
@@ -17,7 +17,7 @@ function CardItem(){
                             <Col className="price">RS 225.00</Col>
                         </Row>
                     </Container>
-                    <Button className="btn-cart" variant="primary">Add to cart</Button>
+                    <Button className="btn-cart">Add to cart</Button>
                 </Card.Body>
             </Card>  
 

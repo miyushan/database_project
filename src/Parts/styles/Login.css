@@ -33,7 +33,7 @@
     font-style: normal;
     font-weight: 900;
     font-size: 48px;
-    color: #0f0;
+    color: rgb(5, 199, 5);
 }
 
 .align {
@@ -92,7 +92,15 @@
     font-style: normal;
     font-weight: normal;
     font-size: 14px !important;
-    color: #948989;
+    color: #948989 !important;
     padding: 6px 12px !important;
     height: 35px;
+    background-color: rgb(5, 199, 5);
+    border-color: rgb(5, 199, 5);
+}
+
+
+.create-account-btn:hover{
+    background-color: rgb(8, 155, 8);
+    border-color: rgb(8, 155, 8);
 }

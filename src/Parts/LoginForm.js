@@ -17,7 +17,7 @@ function LoginForm(){
                     <Form.Control className="login-input" type="password" placeholder="Password" />
                 </Form.Group>
 
-                <Button variant="primary login-submit-btn login-input" type="submit">LOG IN</Button>
+                <Button href="home" className="login-submit-btn login-input" type="submit" >LOG IN</Button>
 
             </Form>
         </>

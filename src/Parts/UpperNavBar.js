@@ -11,7 +11,7 @@ function UpperNavBar(){
                 <Navbar.Brand className="nav-title-1" style={{textAlign:"left"}}>Kochchikade</Navbar.Brand>
                 <Navbar.Brand className="nav-title-1" style={{textAlign:"center"}}>Welcome Mr. Shakeer Miyushan</Navbar.Brand>
                 <Navbar.Brand className="nav-title-1" style={{textAlign:"right"}}>
-                    <Button>
+                    <Button href="login" className="log-out-btn" variant="success">
                         <SignOut className="sign-out-btn" height="12px"/>Log Out
                     </Button>
                 </Navbar.Brand>

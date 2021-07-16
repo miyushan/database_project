@@ -1,17 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Homepage from './Pages/Homepage';
-import Loginpage from './Pages/Loginpage';
-import CreateAccountpage from './Pages/CreateAccountpage';
+import App from './App';
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <CreateAccountpage />
-    <div className="space" style={{height: '100px'}}></div>
-    <Loginpage />
-    <div className="space" style={{height: '100px'}}></div>
-    <Homepage />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );

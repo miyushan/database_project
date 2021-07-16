@@ -9,7 +9,7 @@ function OurProducts(){
         <>
 
             <Container className="outer-products">
-                <Row className="product-row-1">
+                <Row className="product-row-1 add-curser">
                     <Col>Our Products</Col>
                 </Row>
                 <Row className="product-row-2">

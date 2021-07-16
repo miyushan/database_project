@@ -1,15 +1,25 @@
-const express = require('express');
-const app = express();
-const port = 3000;
+import React from 'react';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-})
+import Homepage from './Pages/Homepage';
+import Loginpage from './Pages/Loginpage';
+import CreateAccountpage from './Pages/CreateAccountpage';
+import Cartpage from './Pages/Cartpage';
 
-app.get('/hello', (req, res) => {
-  res.sendFile('./Pages/Homepage.js');
-})
+function App(){
+  return(
+    <>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/" exact component={Loginpage} />
+          <Route path="/home" exact component={Homepage} />
+          <Route path="/login" exact component={Loginpage} />
+          <Route path="/register" exact component={CreateAccountpage} />
+          <Route path="/cart" exact component={Cartpage} />
+        </Switch>
+      </BrowserRouter>
+    </>
+  );
+}
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
-})
+export default App;

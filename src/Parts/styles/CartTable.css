@@ -1,0 +1,28 @@
+.table-column{
+    width: 200px;
+}
+
+.table-column-2{
+    width: 300px;
+}
+
+.table-container{
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0;
+}
+
+.table-body{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+}
+
+.table-head{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+}

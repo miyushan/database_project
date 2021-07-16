@@ -1,7 +1,7 @@
 .outer-benificts{
-    height: 100px;
+    height: 100px !important;
     min-width: 100%;
-    background-color: #554C4C;
+    background-color: #554C4C !important;
     /* margin-bottom */
     margin-bottom: 170px;       
 }
@@ -31,3 +31,10 @@
     margin-bottom: 10px;
 }
 
+.benifict-icon:hover{
+    color: rgba(0, 255, 0, 0.733);
+}
+
+.add-curser{
+    cursor: default;
+}

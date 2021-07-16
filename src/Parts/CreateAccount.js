@@ -7,32 +7,35 @@ import CreateAccountForm from '../Parts/CreateAccountForm';
 function CreateAccount(){
     return(
         <>
-            <Container className="outer-login">
-                <Row>
-                
-                    <Col className="login-left">
-                        <img className="login-Image" src={cover} alt="cover" />
-                        <div className="align">
-                            <h1 className="login-header text-left">Online Vegetable Ordering System</h1>
-                        </div>
-                    </Col>
-                    <Col className="login-right d-flex justify-content-center">
-                        <div className="create-account">
-                            <Button className="create-account-btn" variant="primary " type="submit">Log In</Button>
-                        </div>
-                        <Row className="login-row-0 text-left">
-                            <Col className="d-block justify-content-center login-row-4">
-                                <div className="login-title login-title-1">Welcome to Avendra</div>
-                                <div className="login-title login-title-2">We make you smart</div>
-                            </Col>
-                        </Row>
-                        <Row className="login-row-0">
-                            <Col className="d-flex justify-content-center login-row-5"><CreateAccountForm /></Col>
-                        </Row>
-                    </Col>
+            <div id="register">
+                <Container className="outer-login">
+                    <Row>
                     
-                </Row>
-            </Container>
+                        <Col className="login-left">
+                            <img className="login-Image" src={cover} alt="cover" />
+                            <div className="align">
+                                <h1 className="login-header text-left add-curser">Online Vegetable Ordering System</h1>
+                            </div>
+                        </Col>
+                        <Col className="login-right d-flex justify-content-center">
+                            <div className="create-account">
+                                <Button href="login" className="create-account-btn" type="submit" variant="success">Log In</Button>
+                            </div>
+                            <Row className="login-row-0 text-left">
+                                <Col className="d-block justify-content-center login-row-4">
+                                    <div className="login-title login-title-1 add-curser">Welcome to Avendra</div>
+                                    <div className="login-title login-title-2 add-curser">We make you smart</div>
+                                </Col>
+                            </Row>
+                            <Row className="login-row-0">
+                                <Col className="d-flex justify-content-center login-row-5"><CreateAccountForm /></Col>
+                            </Row>
+                        </Col>
+                        
+                    </Row>
+                </Container>
+            </div>
+     
         </>
     );
 }

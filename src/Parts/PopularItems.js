@@ -10,7 +10,7 @@ function PopularItems(){
 
             <Container className="outer-popular">
                 <Row className="row-1">
-                    <Col>Popular Items</Col>
+                    <Col className="add-curser">Popular Items</Col>
                 </Row>
                 <Row className="row-2">
                     <Col className="column"><CardItem /></Col>
