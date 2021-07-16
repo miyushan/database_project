@@ -17,6 +17,7 @@ function App(){
           <Route path="/register" exact component={CreateAccountpage} />
           <Route path="/cart" exact component={Cartpage} />
         </Switch>
+        <Route path="/" component={Loginpage} />
       </BrowserRouter>
     </>
   );
