@@ -2,7 +2,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/PaymentCard.css';
 import {Form, Container, Button, Row, Col} from "react-bootstrap";
 
-
 function PaymentCard(){
     return(
         <>

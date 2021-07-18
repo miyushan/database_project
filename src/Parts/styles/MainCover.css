@@ -14,7 +14,8 @@
 
 .cover-left{
     padding: 0;
-    background-color: #635E5E;
+    /* background-color: #635E5E; */
+    background-color: rgb(1, 139, 1);
     width: 50%;
     height: 720px;
 }

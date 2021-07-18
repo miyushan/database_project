@@ -1,5 +1,6 @@
 import UpperNavBar from '../Parts/UpperNavBar';
 import MainNavBar from '../Parts/MainNavBar';
+import Footer from '../Parts/Footer';
 
 function Errorpage(){
     return(
@@ -7,6 +8,7 @@ function Errorpage(){
             <div id="cart">
                 <UpperNavBar />
                 <MainNavBar />
+                <Footer />
             </div>
         </>
     );

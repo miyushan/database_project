@@ -1,19 +1,18 @@
 import UpperNavBar from '../Parts/UpperNavBar';
 import MainNavBar from '../Parts/MainNavBar';
-import CartItems from '../Parts/CartItems';
 import Footer from '../Parts/Footer';
 
-function Cartpage(){
+function AboutUspage(){
     return(
         <>
-            <div id="cart">
+            <div id="about-us">
                 <UpperNavBar />
                 <MainNavBar />
-                <CartItems />
+                <h2>About Us</h2>
                 <Footer />
             </div>
         </>
     );
 }
 
-export default Cartpage;
+export default AboutUspage;

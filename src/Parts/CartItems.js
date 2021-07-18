@@ -17,7 +17,7 @@ function CartItems(){
             <Container className="cartDetail-container">
                 <Row className="">
                     <Col className="cartDetail-column d-flex flex-column mt-auto">
-                        <Button href="home" className="d-block login-submit-btn login-input btn-continue" type="submit" >
+                        <Button href="products" className="d-block login-submit-btn login-input btn-continue" type="submit" >
                             <BackToCart className="sign-out-btn align-content-center" height="15px"/>Continue Shopping
                         </Button>
                     </Col>

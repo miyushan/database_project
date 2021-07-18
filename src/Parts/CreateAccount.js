@@ -14,7 +14,7 @@ function CreateAccount(){
                         <Col className="login-left">
                             <img className="login-Image" src={cover} alt="cover" />
                             <div className="align">
-                                <h1 className="login-header text-left add-curser">Online Vegetable Ordering System</h1>
+                                <h1 className="login-header text-left add-curser">Online Vegetable<br />Ordering System</h1>
                             </div>
                         </Col>
                         <Col className="login-right d-flex justify-content-center">
@@ -23,7 +23,7 @@ function CreateAccount(){
                             </div>
                             <Row className="login-row-0 text-left">
                                 <Col className="d-block justify-content-center login-row-4">
-                                    <div className="login-title login-title-1 add-curser">Welcome to Avendra</div>
+                                    <div className="login-title login-title-1 add-curser">Welcome to VegiDeals</div>
                                     <div className="login-title login-title-2 add-curser">We make you smart</div>
                                 </Col>
                             </Row>

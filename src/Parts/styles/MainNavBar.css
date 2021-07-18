@@ -20,6 +20,9 @@
     padding: 0;
     color: #fff !important;
 }
+.nav-title-2:hover{
+    color: rgba(0, 255, 0, 0.733) !important;
+}
 
 .outer-nav{  
     position: -webkit-sticky;

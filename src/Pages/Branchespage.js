@@ -1,19 +1,18 @@
 import UpperNavBar from '../Parts/UpperNavBar';
 import MainNavBar from '../Parts/MainNavBar';
-import CartItems from '../Parts/CartItems';
 import Footer from '../Parts/Footer';
 
-function Cartpage(){
+function Branchespage(){
     return(
         <>
-            <div id="cart">
+            <div id="branches">
                 <UpperNavBar />
                 <MainNavBar />
-                <CartItems />
+                <h2>Branches</h2>
                 <Footer />
             </div>
         </>
     );
 }
 
-export default Cartpage;
+export default Branchespage;

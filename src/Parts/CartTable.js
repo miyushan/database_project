@@ -1,38 +1,40 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/CartTable.css';
 import {Table, Container} from "react-bootstrap";
+import item1 from '../files/product-images/580b57fcd9996e24bc43c21d.png';
+
 
 function CartTable(){
     return(
         <>
             <Container className="table-container add-curser">
                 <Table striped bordered hover>
-                    <thead className="table-head">
-                        <tr className="text-center table-header">
+                    <thead className="table-head text-center">
+                        <tr className="table-header">
                             <th className="table-column table-column-1">Product ID</th>
                             <th className="table-column table-column-2">Product</th>
                             <th className="table-column table-column-3">Quantity</th>
-                            <th className="table-column table-column-4">Cost</th>
+                            <th className="table-column table-column-4">Price</th>
                         </tr>
                     </thead>
-                    <tbody className="table-body">
+                    <tbody className="table-body text-center">
                         <tr>
-                            <td className="text-center">1</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
+                            <td>1</td>
+                            <td className="left-image"><img src={item1} alt="product" className="img-product"/>Carrot</td>
+                            <td>1Kg</td>
+                            <td>Rs 250.00</td>
                         </tr>
                         <tr>
-                            <td className="text-center">2</td>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
+                            <td>2</td>
+                            <td className="left-image"><img src={item1} alt="product" className="img-product"/>Onion</td>
+                            <td>2Kg</td>
+                            <td>Rs 230.50</td>
                         </tr>
                         <tr>
-                            <td className="text-center">3</td>
-                            <td>Larry the Bird</td>
-                            <td>@fat</td>
-                            <td>@twitter</td>
+                            <td>3</td>
+                            <td className="left-image"><img src={item1} alt="product" className="img-product"/>Tomato</td>
+                            <td>500g</td>
+                            <td>Rs 75.00</td>
                         </tr>
                     </tbody>
                 </Table>

@@ -3,6 +3,7 @@
 }
 
 .login-input{
+    border: none;
     border-radius: 40px;
     font-family: Roboto;
     font-style: normal;

@@ -7,6 +7,7 @@ import PopularItems from '../Parts/PopularItems';
 import OurProducts from '../Parts/OurProducts';
 import AboutUs from '../Parts/AboutUs';
 import GoUp from '../Parts/GoUp';
+import Footer from '../Parts/Footer';
 
 function Homepage(){
     return(
@@ -20,7 +21,8 @@ function Homepage(){
                 <PopularItems />
                 <OurProducts />
                 <AboutUs />
-                <GoUp />
+                {/* <GoUp /> */}
+                <Footer />
                 
                 
             </div>

@@ -8,6 +8,7 @@
 .shopImage{
     max-width: 285px;
     height: auto;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
 .aboutUs-row-2, .aboutUs-row-1{
@@ -24,6 +25,7 @@
 
 .aboutUs-description{
     max-width: 80%;
+    font-size: 14px;
     color: #fff;
 }
 
