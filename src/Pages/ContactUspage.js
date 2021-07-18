@@ -8,7 +8,7 @@ function ContactUspage(){
             <div id="contact-us">
                 <UpperNavBar />
                 <MainNavBar />
-                <h2>Contact Us</h2>
+                <h2 style={{height: '600px'}}>Contact Us</h2>
                 <Footer />
             </div>
         </>

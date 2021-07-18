@@ -8,7 +8,7 @@ function Branchespage(){
             <div id="branches">
                 <UpperNavBar />
                 <MainNavBar />
-                <h2>Branches</h2>
+                <h2 style={{height: '600px'}}>Branches</h2>
                 <Footer />
             </div>
         </>

@@ -1,14 +1,17 @@
 .aboutUs-container{
-    background-color: #554C4C;
+    background-color: rgb(8, 155, 8);
     margin-bottom: 150px;
     padding-top: 20px;
     padding-bottom: 30px;  
 }
 
 .shopImage{
-    max-width: 285px;
+    margin-top: -200px;
+    position: relative;
+    top: 30px;
+    max-width: 500px;
     height: auto;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    /* box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px; */
 }
 
 .aboutUs-row-2, .aboutUs-row-1{
@@ -26,7 +29,7 @@
 .aboutUs-description{
     max-width: 80%;
     font-size: 14px;
-    color: #fff;
+    color: rgba(255, 255, 255, 0.822);
 }
 
 .aboutUs-col-1{
@@ -39,5 +42,6 @@
     line-height: 42px;
 
     color: #fff;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
+    margin-top: 10px;
 }

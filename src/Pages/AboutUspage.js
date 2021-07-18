@@ -8,7 +8,7 @@ function AboutUspage(){
             <div id="about-us">
                 <UpperNavBar />
                 <MainNavBar />
-                <h2>About Us</h2>
+                <h2 style={{height: '600px'}}>About Us</h2>
                 <Footer />
             </div>
         </>

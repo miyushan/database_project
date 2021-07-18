@@ -39,4 +39,5 @@
 .btn-continue{
     position: relative;
     top: -5px;
+    box-shadow: rgba(149, 157, 165, 0.363) 0px 8px 24px;
 }
