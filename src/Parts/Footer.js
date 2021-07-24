@@ -17,6 +17,7 @@ function Footer(){
                     <Col className="down-col d-flex align-items-center justify-content-end">
                         <div>
                             <div className="quick-links mb-2">QUICK LINKS</div>
+                            <div><a className="quick-link-item" href="home">HOME</a></div>
                             <div><a className="quick-link-item" href="products">PRODUCTS</a></div>
                             <div><a className="quick-link-item" href="about-us">ABOUT US</a></div>
                             <div><a className="quick-link-item" href="contact-us">CONTACT US</a></div>
@@ -26,7 +27,7 @@ function Footer(){
                 </Row>
                 <hr />
                 <Row className="down-row row-2">
-                    <Col className="down-col down-col-1 copyright">Copyright @ 2021 All Rights Reserved by<br />Miyushan</Col>
+                    <Col className="down-col down-col-1 copyright">Copyright © 2021 All Rights Reserved by<br />Miyushan</Col>
                     <Col className="down-col down-col-2 copyright d-flex justify-content-end">
                         <button><Whtsp href="cart" className="sign-out-btn" height="18px"/></button>
                         <button className="fb-main-btn-last"><Fb href="cart" className="sign-out-btn fb-btn-last" height="18px"/></button>
