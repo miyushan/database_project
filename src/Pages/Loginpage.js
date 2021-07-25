@@ -1,9 +1,12 @@
 import Login from '../Parts/Login';
 
+import PostData from '../PostData';
+
 function Loginpage(){
     return(
-        <>
-           <Login />
+        <>  
+            <PostData />
+            <Login />
         </>
     );
 }
