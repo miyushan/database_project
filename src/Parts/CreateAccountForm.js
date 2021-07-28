@@ -91,8 +91,7 @@ export default class CreateAccountForm extends Component {
             password: ''
         })
 
-        
-
+        window.location.replace('http://localhost:5117/login');
     }
 
         

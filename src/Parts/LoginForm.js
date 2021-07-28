@@ -16,7 +16,8 @@ export default class LoginForm extends Component {
 
         this.state = {
             contactNumber: '',
-            password: ''
+            password: '',
+            datas: []
         }
     }
 
@@ -35,21 +36,21 @@ export default class LoginForm extends Component {
     onSubmit(e){
         e.preventDefault();
 
-        const obj = {
-            contactNumber : this.state.contactNumber,
-            password : this.state.password
-        }
-        const obj_json1 = JSON.stringify(obj);
+        axios.get('http://localhost/database_project/viewData.php')
+        .then(res => res.data)
+        .then((res) => {
+            console.log(this.state.contactNumber);
 
-        axios.post('http://localhost/database_project/checkUser.php', obj_json1)
-        .then(res => {
-            console.log(res.data);
+            res.forEach(elements => {
+                console.log(elements.Contact_Number);
+                console.log(elements.Password);
+                if((elements.Contact_Number === this.state.contactNumber) && (elements.Password===this.state.password)){
+                    window.location.replace('http://localhost:5117/home');
+                }
+            });
+            
         });
 
-        this.setState({
-            contactNumber: '',
-            password: '',
-        })
 
     }
 
