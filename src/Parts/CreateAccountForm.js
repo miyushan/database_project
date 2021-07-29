@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/CreateAccountForm.css';
 import {Form, Button} from "react-bootstrap";
 import axios from 'axios';
+// import CustomerDetails from '../DB_data/CustomerDetails';
 
 
 export default class CreateAccountForm extends Component {
@@ -24,7 +25,8 @@ export default class CreateAccountForm extends Component {
             gender: '',
             contactNumber: '',
             branchName: '',
-            password: ''
+            password: '',
+            url:'http://localhost/database_project/viewData.php'
         }
     }
 
@@ -91,7 +93,7 @@ export default class CreateAccountForm extends Component {
             password: ''
         })
 
-        window.location.replace('http://localhost:5117/login');
+        window.location.replace('http://localhost:4008/login');
     }
 
         

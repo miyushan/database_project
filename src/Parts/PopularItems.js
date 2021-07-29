@@ -20,6 +20,13 @@ function PopularItems(){
                 </Row>
             </Container>
 
+
+
+
+            {/* <Container className="outer-popular">
+                <CardItem />
+            </Container> */}
+
         </>
     );
 }

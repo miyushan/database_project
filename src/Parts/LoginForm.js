@@ -16,8 +16,7 @@ export default class LoginForm extends Component {
 
         this.state = {
             contactNumber: '',
-            password: '',
-            datas: []
+            password: ''
         }
     }
 
@@ -45,7 +44,7 @@ export default class LoginForm extends Component {
                 console.log(elements.Contact_Number);
                 console.log(elements.Password);
                 if((elements.Contact_Number === this.state.contactNumber) && (elements.Password===this.state.password)){
-                    window.location.replace('http://localhost:5117/home');
+                    window.location.replace('http://localhost:4008/home');
                 }
             });
             
