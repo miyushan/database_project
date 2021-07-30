@@ -2,6 +2,7 @@ import React, { Component} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/LoginForm.css';
 import axios from 'axios';
+import { Route, Redirect } from "react-router-dom";
 
 import {Form, Button} from "react-bootstrap";
 
@@ -15,8 +16,14 @@ export default class LoginForm extends Component {
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
+            firstName: '',
+            lastName: '',
+            gender: '',
             contactNumber: '',
-            password: ''
+            branchName: '',
+            password: '',
+            address: '',
+            isValidUser: false
         }
     }
 
@@ -38,18 +45,41 @@ export default class LoginForm extends Component {
         axios.get('http://localhost/database_project/viewData.php')
         .then(res => res.data)
         .then((res) => {
-            console.log(this.state.contactNumber);
 
             res.forEach(elements => {
-                console.log(elements.Contact_Number);
-                console.log(elements.Password);
                 if((elements.Contact_Number === this.state.contactNumber) && (elements.Password===this.state.password)){
-                    window.location.replace('http://localhost:4008/home');
+                    
+                    this.setState({
+                        firstName: elements.First_Name,
+                        lastName: elements.Last_Name,
+                        gender: elements.Gender,
+                        contactNumber: elements.Contact_Number,
+                        branchName: elements.Branch_Name,
+                        password: elements.Password,
+                        address: elements.Address,
+                        isValidUser: true
+                    })
+                    // console.log(this.state);
+
+                    const obj = {
+                        firstName: elements.Last_Name,
+                        lastName: elements.First_Name,
+                        gender: elements.Gender,
+                        contactNumber: elements.Contact_Number,
+                        branchName: elements.Branch_Name,
+                        password: elements.Password,
+                        address: elements.Address,
+                    }
+                    const obj_json = JSON.stringify(obj);
+                    console.log(obj);
+                    
+                    axios.post('http://localhost/database_project/user_details.php', obj_json)
+                    .then(res => {
+                        console.log(res.data);
+                    });
                 }
             });
-            
         });
-
 
     }
 
@@ -70,7 +100,11 @@ export default class LoginForm extends Component {
                     </Form.Group>
     
                     <Button href="" className="login-submit-btn login-input" type="submit"  variant="success">LOG IN</Button>
-    
+
+                    <Route>
+                        {this.state.isValidUser ? <Redirect to="/home" /> : null} 
+                    </Route>
+
                 </Form>
             </>
         );

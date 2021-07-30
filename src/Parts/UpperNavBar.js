@@ -8,28 +8,47 @@ import axios from 'axios';
 
 export default class UpperNavBar extends Component{
 
-    componentDidMount() {
-        axios.get('http://localhost/database_project/viewData.php')
-        .then(res => res.data)
-        .then((res) => {
-            // console.log(this.state.contactNumber);
+    constructor(props){
+        super(props);
 
-            res.forEach(elements => {
-                console.log(elements.Contact_Number);
-                console.log(elements.Password);
-                // if((elements.Contact_Number === this.state.contactNumber) && (elements.Password===this.state.password)){
-                //     window.location.replace('http://localhost:4008/home');
-                // }
-            });
-            
-        });
+        this.state = {
+            firstName: '',
+            lastName: '',
+            gender: '',
+            contactNumber: '',
+            branchName: '',
+            password: '',
+            address: '',
+            persons: {
+                firstName: 'shakeer',
+                LastName: 'miyushan'
+            }
+        }
     }
+
+    componentDidMount(){
+        axios.get('http://localhost/database_project/user_details.php')
+        .then( res => {
+
+            // const obj = JSON.parse(res);
+                
+            // // console.log("okay\t" +  + "\n");
+            // // console.log("okay\t" + res['firstName'] + "\n");
+
+            // for (var key in obj) {
+            //     alert(obj[key]);
+            // }
+            
+        })
+
+    }
+
 
     render() {
         return(
             <Navbar className="navbar" expand="lg">
                 <Container>
-                    <Navbar.Brand className="nav-title-1" style={{textAlign:"left"}}>Kochchikade</Navbar.Brand>
+                    <Navbar.Brand className="nav-title-1" style={{textAlign:"left"}}>Negombo</Navbar.Brand>
                     <Navbar.Brand className="nav-title-1" style={{textAlign:"center"}}>Welcome Mr. Shakeer Miyushan</Navbar.Brand>
                     <Navbar.Brand className="nav-title-1" style={{textAlign:"right"}}>
                         <Button href="login" className="log-out-btn" variant="success">

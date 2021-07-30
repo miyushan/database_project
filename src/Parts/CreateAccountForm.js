@@ -3,7 +3,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/CreateAccountForm.css';
 import {Form, Button} from "react-bootstrap";
 import axios from 'axios';
+// import { faObjectGroup } from '@fortawesome/free-solid-svg-icons';
 // import CustomerDetails from '../DB_data/CustomerDetails';
+
+import { Route, Redirect } from "react-router-dom";
 
 
 export default class CreateAccountForm extends Component {
@@ -25,8 +28,7 @@ export default class CreateAccountForm extends Component {
             gender: '',
             contactNumber: '',
             branchName: '',
-            password: '',
-            url:'http://localhost/database_project/viewData.php'
+            password: ''
         }
     }
 
@@ -66,34 +68,46 @@ export default class CreateAccountForm extends Component {
         })
     }
 
+
     onSubmit(e){
         e.preventDefault();
 
+        // create an object to pass data as JSON
         const obj = {
             firstName : this.state.firstName,
             lastName : this.state.lastName,
             gender : this.state.gender,
             contactNumber: this.state.contactNumber,
             branchName : this.state.branchName,
-            password : this.state.password
+            password : this.state.password,
+            isRegistered : false
         }
         const obj_json = JSON.stringify(obj);
 
-        axios.post('http://localhost/database_project/create_New_Account.php', obj_json)
-        .then(res => {
-            console.log(res.data);
-        });
 
-        this.setState({
-            firstName: '',
-            lastName: '',
-            gender: '',
-            contactNumber: '',
-            branchName: '',
-            password: ''
-        })
+        if(obj.firstName.length!==0 && obj.lastName.length!==0 && obj.gender.length!==0 && obj.contactNumber.length!==0 && obj.branchName.length!==0 && obj.password.length!==0){
+            // pass new account details to db
+            axios.post('http://localhost/database_project/create_New_Account.php', obj_json)
+            .then(res => {
+                console.log(res.data);
+            });
 
-        window.location.replace('http://localhost:4008/login');
+            // reset the state
+            this.setState({
+                firstName: '',
+                lastName: '',
+                gender: '',
+                contactNumber: '',
+                branchName: '',
+                password: '',
+                isRegistered: true,
+            })
+
+            // redirrect to login page
+            // window.location.replace('http://localhost:4008/login');
+        }
+
+        
     }
 
         
@@ -138,6 +152,10 @@ export default class CreateAccountForm extends Component {
                 </Form.Group>
 
                 <Button href="" className="login-submit-btn login-input" type="submit" name="createNewAccount">CREATE ACCOUNT</Button>
+
+                <Route>
+                    {this.state.isRegistered? <Redirect to="/login" /> : null} 
+                </Route>
 
             </Form>
             </>
