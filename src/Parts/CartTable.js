@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/CartTable.css';
 import {Table, Container} from "react-bootstrap";
-import item1 from '../files/product-images/580b57fcd9996e24bc43c21d.png';
+import item1 from '../files/product-images/1_Beet.png';
 
 
 function CartTable(){

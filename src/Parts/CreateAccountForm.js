@@ -21,6 +21,7 @@ export default class CreateAccountForm extends Component {
         this.onChangeBranchName = this.onChangeBranchName.bind(this);
         this.onChangePassword = this.onChangePassword.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
+        this.checkNewUser = this.checkNewUser.bind(this);
 
         this.state = {
             firstName: '',
@@ -28,7 +29,8 @@ export default class CreateAccountForm extends Component {
             gender: '',
             contactNumber: '',
             branchName: '',
-            password: ''
+            password: '',
+            isNewNumber: true
         }
     }
 
@@ -68,46 +70,65 @@ export default class CreateAccountForm extends Component {
         })
     }
 
+    checkNewUser(){
+        axios.get('http://localhost/database_project/viewData.php')
+        .then(res => res.data)
+        .then((res) => {
+
+            console.log(this.state.contactNumber)
+
+            res.forEach(phone => {
+
+                if(this.state.contactNumber === phone.Contact_Number){
+                    this.setState({
+                        isNewNumber: false
+                    })
+                    console.log("old user");
+                }
+
+            })
+
+
+            const obj = {
+                firstName : this.state.firstName,
+                lastName : this.state.lastName,
+                gender : this.state.gender,
+                contactNumber: this.state.contactNumber,
+                branchName : this.state.branchName,
+                password : this.state.password,
+                isRegistered : false
+            }
+            const obj_json = JSON.stringify(obj);
+
+            if((this.state.isNewNumber===true) && obj.firstName.length!==0 && obj.lastName.length!==0 && obj.gender.length!==0 && obj.contactNumber.length!==0 && obj.branchName.length!==0 && obj.password.length!==0){
+                // pass new account details to db
+                axios.post('http://localhost/database_project/create_New_Account.php', obj_json)
+                .then(res => {
+                    console.log("New Account created");
+                    this.setState({
+                        firstName: '',
+                        lastName: '',
+                        gender: '',
+                        contactNumber: '',
+                        branchName: '',
+                        password: '',
+                        isRegistered: true,
+                    })
+                });  
+            }
+            this.setState({
+                isNewNumber: true
+            })
+
+        });
+    }
+
 
     onSubmit(e){
         e.preventDefault();
 
-        // create an object to pass data as JSON
-        const obj = {
-            firstName : this.state.firstName,
-            lastName : this.state.lastName,
-            gender : this.state.gender,
-            contactNumber: this.state.contactNumber,
-            branchName : this.state.branchName,
-            password : this.state.password,
-            isRegistered : false
-        }
-        const obj_json = JSON.stringify(obj);
-
-
-        if(obj.firstName.length!==0 && obj.lastName.length!==0 && obj.gender.length!==0 && obj.contactNumber.length!==0 && obj.branchName.length!==0 && obj.password.length!==0){
-            // pass new account details to db
-            axios.post('http://localhost/database_project/create_New_Account.php', obj_json)
-            .then(res => {
-                console.log(res.data);
-            });
-
-            // reset the state
-            this.setState({
-                firstName: '',
-                lastName: '',
-                gender: '',
-                contactNumber: '',
-                branchName: '',
-                password: '',
-                isRegistered: true,
-            })
-
-            // redirrect to login page
-            // window.location.replace('http://localhost:4008/login');
-        }
-
-        
+        this.checkNewUser();
+   
     }
 
         

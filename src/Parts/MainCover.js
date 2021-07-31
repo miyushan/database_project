@@ -9,7 +9,7 @@ function MainCover(){
             <Container className="outer-cover">
                 <Row>
                     <Col className="cover-left d-flex justify-content-center">
-                        <h1 className="main-header text-left">We are here to ease your work</h1>
+                        <h1 className="main-header text-left">We are here to ease your works</h1>
                     </Col>
                     <Col className="cover-right">
                         <img className="coverImage" src={cover} alt="cover"/>
