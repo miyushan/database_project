@@ -1,0 +1,25 @@
+#mytable{
+    margin-bottom: 0;
+}
+
+.outer-table{
+    margin-bottom: 50px;
+    padding: 50px;
+}
+
+thead{
+    background-color: #000;
+    color: #fff;
+}
+
+.rawData{
+    background-color: #fff;
+}
+h4{
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+h3{
+    margin-top: 5%;
+    margin-bottom: 3%;
+}

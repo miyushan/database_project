@@ -9,6 +9,7 @@ import AboutUspage from './Pages/AboutUspage';
 import ContactUspage from './Pages/ContactUspage';
 import Branchespage from './Pages/Branchespage';
 import Productspage from './Pages/Productspage';
+import CustomerDetails from './DB_data/CustomerDetails';
 
 function App(){
   return(
@@ -24,6 +25,7 @@ function App(){
           <Route path="/contact-us" exact component={ContactUspage} />
           <Route path="/products" exact component={Productspage} />
           <Route path="/branches" exact component={Branchespage} />
+          <Route path="/db/customer" exact component={CustomerDetails} />
           <Route path='*' component={Loginpage} />
         </Switch>
       </BrowserRouter>
