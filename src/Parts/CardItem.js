@@ -18,7 +18,7 @@ export default class CardItem extends Component {
                         <Card.Title className="card-title">{this.props.name}</Card.Title>
                         <Container className="item-con">
                             <Row>
-                                <Col className="weight">{this.props.weight}Kg</Col>
+                                <Col className="weight">1 Kg</Col>
                                 <Col className="price">Rs. {this.props.price}</Col>
                             </Row>
                         </Container>

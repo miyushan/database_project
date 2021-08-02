@@ -1,0 +1,61 @@
+thead{
+    font-family: Roboto;
+    font-style: normal;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    background-color:rgb(5, 199, 5) !important;
+    text-align: center;
+}
+
+tbody{
+    background-color: #fff!important;
+}
+
+.title{
+    font-size: 24px;
+    font-style: bold;
+    font-family: Roboto;
+    padding-top: 10px;
+}
+
+.sub-title{
+    padding-top: 10px;
+    font-size: 16px;
+    font-style: bold;
+    font-family: Roboto;
+    color:rgb(5, 199, 5);
+}
+
+.t-data-1, .t-data-2, .t-data-3, .t-data-4{
+    text-align: left;
+}
+
+
+
+
+
+
+
+
+
+/* .outer-table{
+    margin-bottom: 50px;
+    padding: 50px;
+}
+
+thead{
+    background-color: #000;
+    color: #fff;
+}
+
+.rawData{
+    background-color: #fff;
+}
+h4{
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+h3{
+    margin-top: 5%;
+    margin-bottom: 3%;
+} */
