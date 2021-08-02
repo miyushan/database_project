@@ -42,11 +42,15 @@ export default class LoginForm extends Component {
     onSubmit(e){
         e.preventDefault();
 
-        axios.get('http://localhost/database_project/viewData.php')
+        axios.get('http://localhost/database_project/get_Customer_Details.php')
         .then(res => res.data)
         .then((res) => {
 
             res.forEach(elements => {
+                console.log(elements.Contact_Number + "\t" + this.state.contactNumber);
+                console.log(elements.Password + "\t" + this.state.password);
+                console.log();
+
                 if((elements.Contact_Number === this.state.contactNumber) && (elements.Password===this.state.password)){
                     
                     this.setState({
@@ -59,7 +63,7 @@ export default class LoginForm extends Component {
                         address: elements.Address,
                         isValidUser: true
                     })
-                    // console.log(this.state);
+                    console.log("found");
 
                     const obj = {
                         firstName: elements.Last_Name,

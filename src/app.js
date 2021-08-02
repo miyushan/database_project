@@ -9,14 +9,17 @@ import AboutUspage from './Pages/AboutUspage';
 import ContactUspage from './Pages/ContactUspage';
 import Branchespage from './Pages/Branchespage';
 import Productspage from './Pages/Productspage';
-import ProductDetails from './DB_data/ProductDetails';
+import ProductDetails from './DB_data/Product/ProductDetails';
+import EditProduct from './DB_data/Product/EditProduct';
+import CustomerDetails from './DB_data/Customer/CustomerDetails';
+import EditCustomer from './DB_data/Customer/EditCustomer';
 
 function App(){
   return(
     <>
       <BrowserRouter>
         <Switch>
-          <Route path="/" exact component={Loginpage} />
+          <Route path="/" exact component={Homepage} />
           <Route path="/home" exact component={Homepage} />
           <Route path="/login" exact component={Loginpage} />
           <Route path="/register" exact component={CreateAccountpage} />
@@ -26,6 +29,9 @@ function App(){
           <Route path="/products" exact component={Productspage} />
           <Route path="/branches" exact component={Branchespage} />
           <Route path="/db/products" exact component={ProductDetails} />
+          <Route path="/db/products/edit" exact component={EditProduct} />
+          <Route path="/db/customer" exact component={CustomerDetails} />
+          <Route path="/db/customer/edit" exact component={EditCustomer} />
           <Route path='*' component={Loginpage} />
         </Switch>
       </BrowserRouter>

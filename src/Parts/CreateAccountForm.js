@@ -71,7 +71,7 @@ export default class CreateAccountForm extends Component {
     }
 
     checkNewUser(){
-        axios.get('http://localhost/database_project/viewData.php')
+        axios.get('http://localhost/database_project/get_Customer_Details.php')
         .then(res => res.data)
         .then((res) => {
 
@@ -102,7 +102,7 @@ export default class CreateAccountForm extends Component {
 
             if((this.state.isNewNumber===true) && obj.firstName.length!==0 && obj.lastName.length!==0 && obj.gender.length!==0 && obj.contactNumber.length!==0 && obj.branchName.length!==0 && obj.password.length!==0){
                 // pass new account details to db
-                axios.post('http://localhost/database_project/create_New_Account.php', obj_json)
+                axios.post('http://localhost/database_project/create_New_Customer.php', obj_json)
                 .then(res => {
                     console.log("New Account created");
                     this.setState({

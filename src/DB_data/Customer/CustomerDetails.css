@@ -1,10 +1,14 @@
-.db-bg{
+.db-c-bg{
+    width: 100% !important;
+    margin: auto ;
     background-color: #554C4C;
     padding-bottom: 80px;
     padding-top: 40px;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
-.table{
+.table-c{
     margin-top: 30px;
     box-shadow: rgba(0, 0, 0, 0.151) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
@@ -55,8 +59,8 @@ td{
     z-index: 1;
 }
 
-.bred{
-    margin-left: -5%;
+.bred-c{
+    /* margin-left: -5%; */
     text-decoration: none !important;
     /* background-color:rgb(5, 199, 5); */
 
@@ -70,17 +74,12 @@ td{
     text-decoration: none !important;
 }
 
-.t-data-1, .t-data-5, .t-data-6{
-    text-align: center;
+
+.t-data-c{
+    padding-left: 20px !important;
+    padding-right: 20px !important;
 }
 
-.t-data-3, .t-data-4{
-    text-align: right;
-}
-
-.t-data-2{
-    text-align: left;
-}
 
 .btn-edit, .btn-delete{
     display: flex;
@@ -90,4 +89,16 @@ td{
 
 a:-webkit-any-link {
     text-decoration: none;
+}
+
+.t-data-c1{
+    text-align: center;
+}
+
+.t-data-c5{
+    text-align: right;
+}
+
+.t-data-c2, .t-data-c3, .t-data-c4, .t-data-c5, .t-data-c6, .t-data-c7, .t-data-c8, .t-data-c9{
+    text-align: left;
 }

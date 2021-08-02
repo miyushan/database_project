@@ -8,7 +8,7 @@ function CartTable(){
     return(
         <>
             <Container className="table-container add-curser">
-                <Table className="cart-table" striped bordered hover>
+                <Table className="cart-table cart-shadow" striped bordered hover>
                     <thead className="table-head text-center">
                         <tr className="table-header">
                             <th className="table-column table-column-1">Product ID</th>
