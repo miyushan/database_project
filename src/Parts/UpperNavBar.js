@@ -9,7 +9,6 @@ function UpperNavBar(){
 
     const [userName, setUserName] = useState('');
     const [gender, setGender] = useState('');
-    // const [contactNumber, setContactNumber] = useState('');
     const [branchName, setBranchName] = useState('');
 
     useEffect(() =>{
@@ -21,7 +20,6 @@ function UpperNavBar(){
 
         setUserName(data.firstName);
         setGender(data.gender);
-        // setContactNumber(data.contactNumber);
         setBranchName(data.branchName);
 
     }, [])
@@ -34,6 +32,12 @@ function UpperNavBar(){
         }
     }
 
+    const clearUser = () => {
+        localStorage.removeItem('userDetails');
+        setUserName('');
+        setGender('');
+        setBranchName('');
+    }
 
     return(
         <Navbar className="navbar" expand="lg">
@@ -41,7 +45,7 @@ function UpperNavBar(){
                 <Navbar.Brand className="nav-title-1" style={{textAlign:"left"}}>{branchName}</Navbar.Brand>
                 <Navbar.Brand className="nav-title-1" style={{textAlign:"center"}}>Welcome {statement()} {userName}</Navbar.Brand>
                 <Navbar.Brand className="nav-title-1" style={{textAlign:"right"}}>
-                    <Button href="login" className="log-out-btn" variant="success">
+                    <Button onClick={clearUser} href="login" className="log-out-btn" variant="success">
                         <SignOut className="sign-out-btn" height="12px"/>Log Out
                     </Button>
                 </Navbar.Brand>
