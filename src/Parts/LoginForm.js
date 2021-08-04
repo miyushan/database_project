@@ -38,7 +38,24 @@ export default function LoginForm (){
             if(contactNumber === customer.Contact_Number && password === customer.Password){
                 setIsValidUser(true);
                 console.log("Login success!");
+
+                //Session object
+                let userDetails = {
+                    firstName: customer.First_Name,
+                    contactNumber: customer.Contact_Number, 
+                    gender: customer.Gender,
+                    branchName: customer.Branch_Name
+                }
+                //Add the session
+                localStorage.setItem('userDetails', JSON.stringify(userDetails));
+                //get data in the session
+                let data = localStorage.getItem('userDetails');
+                data = JSON.parse(data);
+                console.log(data);
+
             }
+
+            
 
         })
     }

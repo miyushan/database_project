@@ -39,3 +39,10 @@
 .ignore-btn{
     padding: 4px 6px 5px 6px !important;
 }
+
+.cart-icon{
+    color: #f00;
+}
+.cart-icon:hover{
+    color: rgb(216, 1, 1);
+}

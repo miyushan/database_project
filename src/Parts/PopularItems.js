@@ -58,7 +58,7 @@ class PopularItems extends Component {
             });
             // console.log(this.state.productArr);
 
-            console.log(this.state.weight);
+            // console.log(this.state.weight);
 
             this.setState({
                 isOkayToRender: true
