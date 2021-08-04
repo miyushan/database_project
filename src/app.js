@@ -11,6 +11,7 @@ import Branchespage from './Pages/Branchespage';
 import Productspage from './Pages/Productspage';
 import ProductDetails from './DB_data/Product/ProductDetails';
 import EditProduct from './DB_data/Product/EditProduct';
+import NewProduct from './DB_data/Product/NewProduct';
 import CustomerDetails from './DB_data/Customer/CustomerDetails';
 import EditCustomer from './DB_data/Customer/EditCustomer';
 
@@ -30,6 +31,7 @@ function App(){
           <Route path="/branches" exact component={Branchespage} />
           <Route path="/db/products" exact component={ProductDetails} />
           <Route path="/db/products/edit" exact component={EditProduct} />
+          <Route path="/db/products/add" exact component={NewProduct} />
           <Route path="/db/customer" exact component={CustomerDetails} />
           <Route path="/db/customer/edit" exact component={EditCustomer} />
           <Route path='*' component={Loginpage} />

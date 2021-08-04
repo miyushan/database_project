@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import {Form, Row, Col, Button, Container} from "react-bootstrap";
 import { ReactComponent as Back } from '../../files/icons/caret-left-solid.svg';
 import axios from 'axios';
-// import './EditProduct.css';
+import './NewProduct.css';
 
 
-function EditProduct(){
+function NewProduct(){
 
     const [products, setProducts] = useState([]);
     const [productName, setProductName] = useState('');
@@ -123,4 +123,4 @@ function EditProduct(){
     );
 }
  
-export default EditProduct;
+export default NewProduct;

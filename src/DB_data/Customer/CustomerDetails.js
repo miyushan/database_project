@@ -10,18 +10,33 @@ import { ReactComponent as Delete } from '../../files/icons/trash-alt-regular.sv
 
 function CustomerDetails(){
 
-    const [customers, setCustomers] = useState([]);
+    let [customers, setCustomers] = useState([]);
 
     useEffect(() => {
         axios.get('http://localhost/database_project/get_Customer_details.php')
         .then (res =>{
-            console.log(res.data);
+            // console.log(res.data);
             setCustomers(res.data)
         })
     }, []);
 
-    console.log("All customers:");
-    console.log(customers);
+
+    const deleteCustomer=(customer_id)=>{
+
+        console.log("Customer Record is Deleted");
+        // alert("Customer Record is Deleted");
+        let temp = customers;
+        let temp1 = temp.filter(person=> person.id !== customer_id);
+        setCustomers([...temp1]);
+
+        axios.delete('http://localhost/database_project/delete_Customer.php', {
+            id: customer_id
+        })
+        .then(res =>{
+            console.log(res);
+        })
+
+    }
 
     
    
@@ -71,7 +86,7 @@ function CustomerDetails(){
                                             <td className="t-data-c">
                                                 <ButtonGroup aria-label="Basic example">
                                                     <Button href="/db/customer/edit" className="btn-edit"variant="success"><Edit className="" height="15px"/></Button>
-                                                    <Button className="btn-delete" variant="success"><Delete className="" height="15px"/></Button>
+                                                    <Button className="btn-delete" onClick={() => deleteCustomer(customer.id)} variant="success"><Delete className="" height="15px"/></Button>
                                                 </ButtonGroup>
                                             </td>
                                         </tr>

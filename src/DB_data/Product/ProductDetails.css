@@ -2,6 +2,15 @@
     background-color: #554C4C;
     padding-bottom: 80px;
     padding-top: 40px;
+    min-height: 1100px;
+    /* position: relative; */
+}
+
+.add-new{
+    position: fixed;
+    bottom: 3%;
+    right: 3%;
+    font-size: 14px;
 }
 
 .db-p-container{
@@ -92,6 +101,22 @@ td{
     align-items: center;
 }
 
+.btn-add-new{
+    color: #fff;
+    /* box-shadow: rgba(0, 0, 0, 0.226) 0px 5px 15px; */
+}
+
+.new-p{
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    background-color: #0f0;
+    box-shadow: rgba(0, 0, 0, 0.158) 0px 5px 15px;
+    border-radius: 9px;
+}
+.new-p:hover{
+    background-color: rgb(6, 201, 6);
+}
 
 a:-webkit-any-link {
     text-decoration: none;

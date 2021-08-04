@@ -1,9 +1,10 @@
 import React, { useState, useEffect} from 'react';
 import './ProductDetails.css';
-import {Table, Container, ButtonGroup, Button, Breadcrumb} from "react-bootstrap";
+import {Table, Container, ButtonGroup, Button, Breadcrumb, Col, Row } from "react-bootstrap";
 import axios from 'axios';
 import { ReactComponent as Edit } from '../../files/icons/edit-regular.svg';
 import { ReactComponent as Delete } from '../../files/icons/trash-alt-regular.svg';
+import { ReactComponent as New } from '../../files/icons/plus-solid.svg';
 
 
 
@@ -75,6 +76,13 @@ function ProductDetails(){
 
                 </Container>
             
+                <div className="add-new ">
+                    <Col className="text-center">
+                        <Row><p className="mb-1" style={{color: 'white'}}>New Product</p></Row>
+                        <Row className="justify-content-center align-items-center"><a className="d-flex justify-content-center align-items-center new-p"variant="success" href="products/add"><New className="btn-add-new" height="20px"/></a></Row>
+                    </Col>
+                    
+                </div>
             </div>
                 
         </>
