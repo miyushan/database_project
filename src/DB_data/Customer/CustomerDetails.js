@@ -85,8 +85,8 @@ function CustomerDetails(){
                                             <td className="t-data-c t-data-c9 t-data-c-time"><div>{customer.Posting_Date}</div></td>
                                             <td className="t-data-c">
                                                 <ButtonGroup aria-label="Basic example">
-                                                    <Button href="/db/customer/edit" className="btn-edit"variant="success"><Edit className="" height="15px"/></Button>
-                                                    <Button className="btn-delete" onClick={() => deleteCustomer(customer.id)} variant="success"><Delete className="" height="15px"/></Button>
+                                                    <Button href="/db/customer/edit" className="btn-edit"variant="success"><Edit className="edit-p" height="15px"/></Button>
+                                                    <Button className="btn-delete" onClick={() => deleteCustomer(customer.id)} variant="success"><Delete className="delete-p" height="15px"/></Button>
                                                 </ButtonGroup>
                                             </td>
                                         </tr>

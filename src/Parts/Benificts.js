@@ -15,11 +15,11 @@ function Benificts(){
 
             <Navbar className="outer-benificts">
                 <Container className="main-nav-2">
-                    <Navbar.Brand className="nav-title-2"><Fast className="benifict-icon"/><div className="add-curser benifict-text">Fast Delivery</div></Navbar.Brand>
-                    <Navbar.Brand className="nav-title-2"><Online className="benifict-icon"/><div className="add-curser benifict-text">24 * 7 Service</div></Navbar.Brand>
-                    <Navbar.Brand className="nav-title-2"><Caring className="benifict-icon"/><div className="add-curser benifict-text">Friendly Customer Care</div></Navbar.Brand> 
-                    <Navbar.Brand className="nav-title-2"><Fresh className="benifict-icon"/><div className="add-curser benifict-text">Fresh Vegetables</div></Navbar.Brand>
-                    <Navbar.Brand className="nav-title-2"><Quick className="benifict-icon"/><div className="add-curser benifict-text">Quick Response</div></Navbar.Brand>
+                    <Navbar.Brand className="nav-title-2 benificts"><Fast className="benifict-icon"/><div className="add-curser benifict-text">Fast Delivery</div></Navbar.Brand>
+                    <Navbar.Brand className="nav-title-2 benificts"><Online className="benifict-icon"/><div className="add-curser benifict-text">24 * 7 Service</div></Navbar.Brand>
+                    <Navbar.Brand className="nav-title-2 benificts"><Caring className="benifict-icon"/><div className="add-curser benifict-text">Friendly Customer Care</div></Navbar.Brand> 
+                    <Navbar.Brand className="nav-title-2 benificts"><Fresh className="benifict-icon"/><div className="add-curser benifict-text">Fresh Vegetables</div></Navbar.Brand>
+                    <Navbar.Brand className="nav-title-2 benificts"><Quick className="benifict-icon"/><div className="add-curser benifict-text">Quick Response</div></Navbar.Brand>
                 </Container>
             </Navbar>  
 

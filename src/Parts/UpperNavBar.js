@@ -40,7 +40,7 @@ function UpperNavBar(){
     }
 
     return(
-        <Navbar className="navbar" expand="lg">
+        <Navbar className="navbar-u" expand="lg">
             <Container>
                 <Navbar.Brand className="nav-title-1" style={{textAlign:"left"}}>{branchName}</Navbar.Brand>
                 <Navbar.Brand className="nav-title-1" style={{textAlign:"center"}}>Welcome {statement()} {userName}</Navbar.Brand>

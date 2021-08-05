@@ -1,6 +1,6 @@
 .outer-nav{
     position: relative;
-    background-color: #554C4C !important;
+    background-color: #464141;
     height: 40px !important;
 }
 
@@ -18,17 +18,18 @@
     margin-right: 0;
     text-align: center;
     padding: 0;
-    color: #fff !important;
+    color: #e9e9e9 !important;
 }
 .nav-title-2:hover{
     color: rgba(0, 255, 0, 0.733) !important;
 }
 
 .outer-nav{  
-    position: -webkit-sticky;
+    /* position: -webkit-sticky; */
     position: sticky;
     top: -1px;
     z-index: 1;
+    /* transition-timing-function: ease-in-out; */
     /* box-shadow: 0 3px 10px rgb(0 0 0 / 0.2); */
 }
 

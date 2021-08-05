@@ -118,6 +118,14 @@ td{
     background-color: rgb(6, 201, 6);
 }
 
+.delete-p{
+    color: rgb(185, 3, 3);
+}
+
+.edit-p{
+    color: #292626;
+}
+
 a:-webkit-any-link {
     text-decoration: none;
 }
