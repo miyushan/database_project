@@ -20,6 +20,9 @@ import NewDeliveryPerson from './DB_data/DeliveryPerson/NewDeliveryPerson';
 import ManagerDetails from './DB_data/Manager/ManagerDetails';
 import EditManager from './DB_data/Manager/EditManager';
 import NewManager from './DB_data/Manager/NewManager';
+import BranchDetails from './DB_data/Branch/BranchDetails';
+import EditBranch from './DB_data/Branch/EditBranch';
+import NewBranch from './DB_data/Branch/NewBranch';
 
 function App(){
   return(
@@ -46,6 +49,9 @@ function App(){
           <Route path="/db/manager" exact component={ManagerDetails} />
           <Route path="/db/manager/edit" exact component={EditManager} />
           <Route path="/db/manager/add" exact component={NewManager} />
+          <Route path="/db/branch" exact component={BranchDetails} />
+          <Route path="/db/branch/edit" exact component={EditBranch} />
+          <Route path="/db/branch/add" exact component={NewBranch} />
           <Route path='*' component={Loginpage} />
         </Switch>
       </BrowserRouter>

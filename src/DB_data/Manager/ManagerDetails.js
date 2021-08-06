@@ -12,6 +12,7 @@ import { ReactComponent as New } from '../../files/icons/plus-solid.svg';
 function ManagerDetails(){
 
     let [customers, setCustomers] = useState([]);
+    const [reload, setReload] = useState(false);
 
     useEffect(() => {
         axios.get('http://localhost/database_project/get_Manager_details.php')
@@ -19,24 +20,19 @@ function ManagerDetails(){
             // console.log(res.data);
             setCustomers(res.data)
         })
-    }, []);
+    }, [reload]);
 
 
     const deleteCustomer=(customer_id)=>{
 
         console.log("Customer Record is Deleted");
-        // alert("Customer Record is Deleted");
-        let temp = customers;
-        let temp1 = temp.filter(person=> person.id !== customer_id);
-        setCustomers([...temp1]);
 
-        axios.post('http://localhost/database_project/delete_Customer.php', {
-            id: customer_id
-        })
+        axios.get('http://localhost/database_project/delete_Manager.php?id=' + customer_id)
         .then(res =>{
             console.log(res);
+            setReload(true);
         })
-
+        
     }
 
     

@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import './ProductDetails.css';
+import './BranchDetails.css';
 import {Table, Container, ButtonGroup, Button, Breadcrumb, Col, Row } from "react-bootstrap";
 import axios from 'axios';
 import { ReactComponent as Edit } from '../../files/icons/edit-regular.svg';
@@ -9,46 +9,45 @@ import { ReactComponent as New } from '../../files/icons/plus-solid.svg';
 
 
 
-function ProductDetails(){
+function BranchDetails(){
 
     const [products, setProducts] = useState([]);
     const [reload, setReload] = useState(false);
 
     useEffect(() => {
-        axios.get('http://localhost/database_project/get_Product_details.php')
+        axios.get('http://localhost/database_project/get_Branch_details.php')
         .then (res =>{
             console.log(res.data);
-            setProducts(res.data)
+            setProducts(res.data);
         })
     }, [reload]);
 
     console.log("All products:");
     console.log(products);
 
-
     const deleteCustomer=(customer_id)=>{
 
         console.log("Customer Record is Deleted");
+        let temp = reload(customer_id);
+        temp = !temp;
+        setReload(temp);
 
-        axios.get('http://localhost/database_project/delete_Product.php?id=' + customer_id)
+        axios.get('http://localhost/database_project/delete_Branch.php?id=' + customer_id)
         .then(res =>{
             console.log(res);
-            setReload(true);
         })
         
     }
-
-    
    
     return (
         <>
             <div className="db-bg">
 
-                <div className="text-center"><h1 className="title">Product Records</h1></div>
+                <div className="text-center"><h1 className="title">Branch Records</h1></div>
                 <div>
                     <Breadcrumb className="bred">
-                        <Breadcrumb.Item href="/db/branch"><span className="bred-items">Branch Records</span></Breadcrumb.Item>
-                        <Breadcrumb.Item active><span className="bred-items">Product Records</span></Breadcrumb.Item>
+                        <Breadcrumb.Item active><span className="bred-items">Branch Records</span></Breadcrumb.Item>
+                        <Breadcrumb.Item href="/db/products"><span className="bred-items">Product Records</span></Breadcrumb.Item>
                         <Breadcrumb.Item href="/db/manager"><span className="bred-items">Manager Records</span></Breadcrumb.Item>
                         <Breadcrumb.Item href="/db/customer"><span className="bred-items">Customer Records</span></Breadcrumb.Item>
                         <Breadcrumb.Item href="/db/delivery-person"><span className="bred-items">Delivery Person Records</span></Breadcrumb.Item>
@@ -62,10 +61,9 @@ function ProductDetails(){
                     <Table className="table-p" striped bordered>
                         <thead>
                             <tr>
-                                <th>Product ID</th>
-                                <th>Product Name</th>
-                                <th>Stock Weight</th>
-                                <th>Price Per Kilogram</th>
+                                <th>Branch ID</th>
+                                <th>Branch Name</th>
+                                <th>Address</th>
                                 <th>Posting Date</th>
                                 <th>Edit / Delete</th>
                             </tr>
@@ -76,8 +74,7 @@ function ProductDetails(){
                                         <tr  key={product.id}>
                                             <td className="t-data-1"><div>{product.id}</div></td>
                                             <td className="t-data-2">{product.Name}</td>
-                                            <td className="t-data-3">{product.Weight}</td>
-                                            <td className="t-data-4">{product.Price}</td>
+                                            <td className="t-data-3">{product.Address}</td>
                                             <td className="t-data-5">{product.Posting_Date}</td>
                                             <td className="t-data-6">
                                                 <ButtonGroup aria-label="Basic example">
@@ -95,8 +92,8 @@ function ProductDetails(){
             
                 <div className="add-new ">
                     <Col className="text-center">
-                        <Row><p className="mb-1" style={{color: 'white'}}>New Product</p></Row>
-                        <Row className="justify-content-center align-items-center"><a className="d-flex justify-content-center align-items-center new-p"variant="success" href="products/add"><New className="btn-add-new" height="20px"/></a></Row>
+                        <Row><p className="mb-1" style={{color: 'white'}}>New Branch</p></Row>
+                        <Row className="justify-content-center align-items-center"><a className="d-flex justify-content-center align-items-center new-p"variant="success" href="branch/add"><New className="btn-add-new" height="20px"/></a></Row>
                     </Col>     
                 </div>
             </div>
@@ -107,4 +104,4 @@ function ProductDetails(){
     
 }
 
-export default ProductDetails;
+export default BranchDetails;

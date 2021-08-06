@@ -12,6 +12,7 @@ import { ReactComponent as New } from '../../files/icons/plus-solid.svg';
 function DeliveryPersonDetails(){
 
     let [customers, setCustomers] = useState([]);
+    const [reload, setReload] = useState(false);
 
     useEffect(() => {
         axios.get('http://localhost/database_project/get_DeliveryPerson_details.php')
@@ -19,26 +20,20 @@ function DeliveryPersonDetails(){
             // console.log(res.data);
             setCustomers(res.data)
         })
-    }, []);
+    }, [reload]);
 
 
     const deleteCustomer=(customer_id)=>{
 
         console.log("Customer Record is Deleted");
-        // alert("Customer Record is Deleted");
-        let temp = customers;
-        let temp1 = temp.filter(person=> person.id !== customer_id);
-        setCustomers([...temp1]);
 
-        axios.post('http://localhost/database_project/delete_Customer.php', {
-            id: customer_id
-        })
+        axios.get('http://localhost/database_project/delete_DeliveryPerson.php?id=' + customer_id)
         .then(res =>{
             console.log(res);
+            setReload(true);
         })
-
+        
     }
-
     
    
     return (
@@ -49,7 +44,7 @@ function DeliveryPersonDetails(){
                 <div className="text-center"><h1 className="title">Delivery Person Records</h1></div>
                 <div>
                     <Breadcrumb className="bred-c">
-                        <Breadcrumb.Item href=""><span className="bred-items">Branch Records</span></Breadcrumb.Item>
+                        <Breadcrumb.Item href="/db/branch"><span className="bred-items">Branch Records</span></Breadcrumb.Item>
                         <Breadcrumb.Item href="/db/products"><span className="bred-items">Product Records</span></Breadcrumb.Item>
                         <Breadcrumb.Item href="/db/manager"><span className="bred-items">Manager Records</span></Breadcrumb.Item>
                         <Breadcrumb.Item href="/db/customer"><span className="bred-items">Customer Records</span></Breadcrumb.Item>

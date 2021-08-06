@@ -1,5 +1,5 @@
 // import React, { Component} from 'react';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/CardItem.css';
 import {Card, Container, Row, Col, Button} from "react-bootstrap";

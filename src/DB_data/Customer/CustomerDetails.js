@@ -11,44 +11,42 @@ import { ReactComponent as Delete } from '../../files/icons/trash-alt-regular.sv
 function CustomerDetails(){
 
     let [customers, setCustomers] = useState([]);
+    const [reload, setReload] = useState(false);
 
     useEffect(() => {
         axios.get('http://localhost/database_project/get_Customer_details.php')
         .then (res =>{
-            // console.log(res.data);
-            setCustomers(res.data)
+            setCustomers(res.data);
         })
-    }, []);
+        .then(err =>{
+            console.log("No customers to display");
+        })
+    }, [reload]);
 
 
     const deleteCustomer=(customer_id)=>{
 
         console.log("Customer Record is Deleted");
-        // alert("Customer Record is Deleted");
-        let temp = customers;
-        let temp1 = temp.filter(person=> person.id !== customer_id);
-        setCustomers([...temp1]);
 
-        axios.post('http://localhost/database_project/delete_Customer.php', {
-            id: customer_id
-        })
+        axios.get('http://localhost/database_project/delete_Customer.php?id=' + customer_id)
         .then(res =>{
             console.log(res);
+            setReload(true);
         })
-
+        
     }
 
-    
    
     return (
         <>
+            
             <div className="db-c-bg">
 
                 {/* <Container className="db-c-container"> */}
                     <div className="text-center"><h1 className="title">Customer Records</h1></div>
                     <div>
                         <Breadcrumb className="bred-c">
-                            <Breadcrumb.Item href=""><span className="bred-items">Branch Records</span></Breadcrumb.Item>
+                            <Breadcrumb.Item href="/db/branch"><span className="bred-items">Branch Records</span></Breadcrumb.Item>
                             <Breadcrumb.Item href="/db/products"><span className="bred-items">Product Records</span></Breadcrumb.Item>
                             <Breadcrumb.Item href="/db/manager"><span className="bred-items">Manager Records</span></Breadcrumb.Item>
                             <Breadcrumb.Item active><span className="bred-items">Customer Records</span></Breadcrumb.Item>
@@ -102,6 +100,8 @@ function CustomerDetails(){
             
             </div>
                 
+            
+            
         </>
     );
    
