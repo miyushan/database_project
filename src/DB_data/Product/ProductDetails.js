@@ -33,10 +33,13 @@ function ProductDetails(){
                 <div className="text-center"><h1 className="title">Product Records</h1></div>
                 <div>
                     <Breadcrumb className="bred">
+                        <Breadcrumb.Item href=""><span className="bred-items">Branch Records</span></Breadcrumb.Item>
                         <Breadcrumb.Item active><span className="bred-items">Product Records</span></Breadcrumb.Item>
-                        <Breadcrumb.Item href=""><span className="bred-items">Manager Records</span></Breadcrumb.Item>
-                        <Breadcrumb.Item  href="/db/customer"><span className="bred-items">Customer Records</span></Breadcrumb.Item>
-                        <Breadcrumb.Item href=""><span className="bred-items">Delivery Person Records</span></Breadcrumb.Item>
+                        <Breadcrumb.Item href="/db/manager"><span className="bred-items">Manager Records</span></Breadcrumb.Item>
+                        <Breadcrumb.Item href="/db/customer"><span className="bred-items">Customer Records</span></Breadcrumb.Item>
+                        <Breadcrumb.Item href="/db/delivery-person"><span className="bred-items">Delivery Person Records</span></Breadcrumb.Item>
+                        <Breadcrumb.Item href=""><span className="bred-items">Order Records</span></Breadcrumb.Item>
+                        <Breadcrumb.Item href=""><span className="bred-items">Order Item Records</span></Breadcrumb.Item>
                     </Breadcrumb>
                 </div>
                     
@@ -80,8 +83,7 @@ function ProductDetails(){
                     <Col className="text-center">
                         <Row><p className="mb-1" style={{color: 'white'}}>New Product</p></Row>
                         <Row className="justify-content-center align-items-center"><a className="d-flex justify-content-center align-items-center new-p"variant="success" href="products/add"><New className="btn-add-new" height="20px"/></a></Row>
-                    </Col>
-                    
+                    </Col>     
                 </div>
             </div>
                 

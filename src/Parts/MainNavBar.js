@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/MainNavBar.css';
 import {Navbar, Container, Button} from "react-bootstrap";

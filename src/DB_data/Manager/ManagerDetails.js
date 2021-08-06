@@ -1,19 +1,20 @@
 import React, { useState, useEffect} from 'react';
-import './CustomerDetails.css';
-import {Table, ButtonGroup, Button, Breadcrumb} from "react-bootstrap";
+import './ManagerDetails.css';
+import {Table, ButtonGroup, Button, Breadcrumb, Row, Col} from "react-bootstrap";
 import axios from 'axios';
 import { ReactComponent as Edit } from '../../files/icons/edit-regular.svg';
 import { ReactComponent as Delete } from '../../files/icons/trash-alt-regular.svg';
+import { ReactComponent as New } from '../../files/icons/plus-solid.svg';
 
 
 
 
-function CustomerDetails(){
+function ManagerDetails(){
 
     let [customers, setCustomers] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost/database_project/get_Customer_details.php')
+        axios.get('http://localhost/database_project/get_Manager_details.php')
         .then (res =>{
             // console.log(res.data);
             setCustomers(res.data)
@@ -45,13 +46,13 @@ function CustomerDetails(){
             <div className="db-c-bg">
 
                 {/* <Container className="db-c-container"> */}
-                    <div className="text-center"><h1 className="title">Customer Records</h1></div>
+                    <div className="text-center"><h1 className="title">Manager Records</h1></div>
                     <div>
                         <Breadcrumb className="bred-c">
                             <Breadcrumb.Item href=""><span className="bred-items">Branch Records</span></Breadcrumb.Item>
                             <Breadcrumb.Item href="/db/products"><span className="bred-items">Product Records</span></Breadcrumb.Item>
-                            <Breadcrumb.Item href="/db/manager"><span className="bred-items">Manager Records</span></Breadcrumb.Item>
-                            <Breadcrumb.Item active><span className="bred-items">Customer Records</span></Breadcrumb.Item>
+                            <Breadcrumb.Item active><span className="bred-items">Manager Records</span></Breadcrumb.Item>
+                            <Breadcrumb.Item href="/db/customer"><span className="bred-items">Customer Records</span></Breadcrumb.Item>
                             <Breadcrumb.Item href="/db/delivery-person"><span className="bred-items">Delivery Person Records</span></Breadcrumb.Item>
                             <Breadcrumb.Item href=""><span className="bred-items">Order Records</span></Breadcrumb.Item>
                             <Breadcrumb.Item href=""><span className="bred-items">Order Item Records</span></Breadcrumb.Item>
@@ -99,6 +100,13 @@ function CustomerDetails(){
                     </Table>
 
                 {/* </Container> */}
+
+                <div className="add-new ">
+                    <Col className="text-center">
+                        <Row><p className="mb-1" style={{color: 'white'}}>New Manager</p></Row>
+                        <Row className="justify-content-center align-items-center"><a className="d-flex justify-content-center align-items-center new-p" variant="success" href="manager/add"><New className="btn-add-new" height="20px"/></a></Row>
+                    </Col>     
+                </div>
             
             </div>
                 
@@ -108,4 +116,4 @@ function CustomerDetails(){
     
 }
 
-export default CustomerDetails;
+export default ManagerDetails;

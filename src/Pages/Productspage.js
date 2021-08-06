@@ -33,7 +33,7 @@ class Productspage extends Component {
     }
 
     render() {
-        console.log(this.state.show)
+        // console.log(this.state.show)
         return(
             <>  
                 {this.state.spinner ? 

@@ -21,6 +21,7 @@ import item0 from '../files/product-images/1_carrot.png';
 function OurProducts (){
     const [isOkayToRender, setIsOkayToRender] = useState(false);
     const [products, setProducts] = useState([]);
+    // const [data, setData] = useState([]);
     
     useEffect(() => {
         axios.get('http://localhost/database_project/get_Product_details.php')
@@ -45,20 +46,15 @@ function OurProducts (){
                     <Row className="product-row-2">
                         {products.map((product) =>{
                             return (
-                                
-                                <Col key={product.id} className="product-column"><CardItem id={product.id} name={product.Name} price={product.Price} weight={product.Weight} image={item0} /></Col>
-                                
+                                <Col key={product.id} className="product-column"><CardItem id={product.id} Name={product.Name} Weight={product.Weight} Price={product.Price} image={item0} /></Col>
                             );
                         })}
                     </Row>
-
                 </Container>
             </div>
         )
     }
 
-    
-    
     return(
         <>
 
@@ -68,10 +64,6 @@ function OurProducts (){
     );
     
 
-    
-
-
-    
 }
 
 export default OurProducts;

@@ -14,6 +14,12 @@ import EditProduct from './DB_data/Product/EditProduct';
 import NewProduct from './DB_data/Product/NewProduct';
 import CustomerDetails from './DB_data/Customer/CustomerDetails';
 import EditCustomer from './DB_data/Customer/EditCustomer';
+import DeliveryPersonDetails from './DB_data/DeliveryPerson/DeliveryPersonDetails';
+import EditDeliveryPerson from './DB_data/DeliveryPerson/EditDeliveryPerson';
+import NewDeliveryPerson from './DB_data/DeliveryPerson/NewDeliveryPerson';
+import ManagerDetails from './DB_data/Manager/ManagerDetails';
+import EditManager from './DB_data/Manager/EditManager';
+import NewManager from './DB_data/Manager/NewManager';
 
 function App(){
   return(
@@ -34,6 +40,12 @@ function App(){
           <Route path="/db/products/add" exact component={NewProduct} />
           <Route path="/db/customer" exact component={CustomerDetails} />
           <Route path="/db/customer/edit" exact component={EditCustomer} />
+          <Route path="/db/delivery-person" exact component={DeliveryPersonDetails} />
+          <Route path="/db/delivery-person/edit" exact component={EditDeliveryPerson} />
+          <Route path="/db/delivery-person/add" exact component={NewDeliveryPerson} />
+          <Route path="/db/manager" exact component={ManagerDetails} />
+          <Route path="/db/manager/edit" exact component={EditManager} />
+          <Route path="/db/manager/add" exact component={NewManager} />
           <Route path='*' component={Loginpage} />
         </Switch>
       </BrowserRouter>
