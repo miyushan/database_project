@@ -12,7 +12,7 @@ import { ReactComponent as New } from '../../files/icons/plus-solid.svg';
 function DeliveryPersonDetails(){
 
     let [customers, setCustomers] = useState([]);
-    const [reload, setReload] = useState(false);
+    // const [reload, setReload] = useState(false);
 
     useEffect(() => {
         axios.get('http://localhost/database_project/get_DeliveryPerson_details.php')
@@ -20,7 +20,7 @@ function DeliveryPersonDetails(){
             // console.log(res.data);
             setCustomers(res.data)
         })
-    }, [reload]);
+    }, []);
 
 
     const deleteCustomer=(customer_id)=>{
@@ -30,7 +30,7 @@ function DeliveryPersonDetails(){
         axios.get('http://localhost/database_project/delete_DeliveryPerson.php?id=' + customer_id)
         .then(res =>{
             console.log(res);
-            setReload(true);
+            // setReload(true);
         })
         
     }
@@ -86,8 +86,8 @@ function DeliveryPersonDetails(){
                                         <td className="t-data-c t-data-c9 t-data-c-time"><div>{customer.Posting_Date}</div></td>
                                         <td className="t-data-c">
                                             <ButtonGroup aria-label="Basic example">
-                                                <Button href="/db/customer/edit" className="btn-edit"variant="success"><Edit className="edit-p" height="15px"/></Button>
-                                                <Button className="btn-delete" onClick={() => deleteCustomer(customer.id)} variant="success"><Delete className="delete-p" height="15px"/></Button>
+                                                <Button href="/db/delivery-person/edit" className="btn-edit"variant="success"><Edit className="edit-p" height="15px"/></Button>
+                                                <Button href="/db/delivery-person" className="btn-delete" onClick={() => deleteCustomer(customer.id)} variant="success"><Delete className="delete-p" height="15px"/></Button>
                                             </ButtonGroup>
                                         </td>
                                     </tr>

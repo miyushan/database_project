@@ -12,7 +12,7 @@ import { ReactComponent as New } from '../../files/icons/plus-solid.svg';
 function ProductDetails(){
 
     const [products, setProducts] = useState([]);
-    const [reload, setReload] = useState(false);
+    // const [reload, setReload] = useState(false);
 
     useEffect(() => {
         axios.get('http://localhost/database_project/get_Product_details.php')
@@ -20,7 +20,7 @@ function ProductDetails(){
             console.log(res.data);
             setProducts(res.data)
         })
-    }, [reload]);
+    }, []);
 
     console.log("All products:");
     console.log(products);
@@ -33,7 +33,7 @@ function ProductDetails(){
         axios.get('http://localhost/database_project/delete_Product.php?id=' + customer_id)
         .then(res =>{
             console.log(res);
-            setReload(true);
+            // setReload(true);
         })
         
     }
@@ -82,7 +82,7 @@ function ProductDetails(){
                                             <td className="t-data-6">
                                                 <ButtonGroup aria-label="Basic example">
                                                     <Button href="/db/products/edit" className="btn-edit"variant="success"><Edit className="edit-p" height="15px"/></Button>
-                                                    <Button className="btn-delete" onClick={() => deleteCustomer(product.id)} variant="success"><Delete className="delete-p" height="15px"/></Button>
+                                                    <Button href="/db/products" className="btn-delete" onClick={() => deleteCustomer(product.id)} variant="success"><Delete className="delete-p" height="15px"/></Button>
                                                 </ButtonGroup>
                                             </td>
                                         </tr>

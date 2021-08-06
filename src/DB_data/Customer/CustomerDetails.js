@@ -11,7 +11,7 @@ import { ReactComponent as Delete } from '../../files/icons/trash-alt-regular.sv
 function CustomerDetails(){
 
     let [customers, setCustomers] = useState([]);
-    const [reload, setReload] = useState(false);
+    // const [reload, setReload] = useState(false);
 
     useEffect(() => {
         axios.get('http://localhost/database_project/get_Customer_details.php')
@@ -21,7 +21,7 @@ function CustomerDetails(){
         .then(err =>{
             console.log("No customers to display");
         })
-    }, [reload]);
+    }, []);
 
 
     const deleteCustomer=(customer_id)=>{
@@ -31,7 +31,7 @@ function CustomerDetails(){
         axios.get('http://localhost/database_project/delete_Customer.php?id=' + customer_id)
         .then(res =>{
             console.log(res);
-            setReload(true);
+            // setReload(true);
         })
         
     }
@@ -87,7 +87,7 @@ function CustomerDetails(){
                                             <td className="t-data-c">
                                                 <ButtonGroup aria-label="Basic example">
                                                     <Button href="/db/customer/edit" className="btn-edit"variant="success"><Edit className="edit-p" height="15px"/></Button>
-                                                    <Button className="btn-delete" onClick={() => deleteCustomer(customer.id)} variant="success"><Delete className="delete-p" height="15px"/></Button>
+                                                    <Button href="/db/customer" className="btn-delete" onClick={() => deleteCustomer(customer.id)} variant="success"><Delete className="delete-p" height="15px"/></Button>
                                                 </ButtonGroup>
                                             </td>
                                         </tr>
