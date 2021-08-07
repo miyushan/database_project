@@ -21,7 +21,7 @@ export default function CardItem(props){
                             <Col className="price">Rs. {props.Price}</Col>
                         </Row>
                     </Container>
-                    <Button onClick={()=>{props.getSelected(props.id, props.Name, props.Price)}} className="btn-cart">Add To Cart</Button>
+                    <Button className="btn-cart">Add To Cart</Button>
                 </Card.Body>
             </Card>
         </>   

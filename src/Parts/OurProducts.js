@@ -19,19 +19,7 @@ import item0 from '../files/product-images/1_carrot.png';
 
 
 function OurProducts (){
-    // const [isOkayToRender, setIsOkayToRender] = useState(false);
     const [products, setProducts] = useState([]);
-    const [selected, setSelected] = useState({
-        id: [],
-        name: [],
-        price: []
-    });
-    const [selected2, setSelected2] = useState({
-        id: [],
-        name: [],
-        price: []
-    });
-    
     
     useEffect(() => {
         axios.get('http://localhost/database_project/get_Product_details.php')
@@ -42,15 +30,12 @@ function OurProducts (){
         .catch((err) =>{
             console.log("No products to display")
         })
-
     }, [])
 
-    setSelected2(searches => searches.concat(selected))
 
-    const showData = () => {
-        console.log(selected2)
-        return(
-            
+    return(
+        <>
+
             <div className="our-product-bg">
                 <Container className="outer-products">
                     <Row className="product-row-1 add-curser">
@@ -60,21 +45,20 @@ function OurProducts (){
                     <Row className="product-row-2">
                         {products.map((product) =>{
                             return (
-                                <Col key={product.id} className="product-column"><CardItem getSelected={(id, name, price) => setSelected({id: id, name: name, price: price})} id={product.id} Name={product.Name} Price={product.Price} image={item0} /></Col>
+                                <Col key={product.id} className="product-column">
+                                    <CardItem
+                                        id={product.id}
+                                        Name={product.Name}
+                                        Price={product.Price}
+                                        image={item0}
+                                    />
+                                </Col>
                             );
                         })}
                     </Row>
                 </Container>
             </div>
-        )
-    }
-
-    return(
-        <>
-
-            {/* {isOkayToRender ? showData() : null} */}
-            {showData()}
-            
+                 
         </>
     );
     
