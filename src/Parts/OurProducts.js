@@ -19,15 +19,25 @@ import item0 from '../files/product-images/1_carrot.png';
 
 
 function OurProducts (){
-    const [isOkayToRender, setIsOkayToRender] = useState(false);
+    // const [isOkayToRender, setIsOkayToRender] = useState(false);
     const [products, setProducts] = useState([]);
-    // const [data, setData] = useState([]);
+    const [selected, setSelected] = useState({
+        id: [],
+        name: [],
+        price: []
+    });
+    const [selected2, setSelected2] = useState({
+        id: [],
+        name: [],
+        price: []
+    });
+    
     
     useEffect(() => {
         axios.get('http://localhost/database_project/get_Product_details.php')
         .then((res) => {    
             setProducts(res.data);
-            setIsOkayToRender(true);
+            // setIsOkayToRender(true);
         })
         .catch((err) =>{
             console.log("No products to display")
@@ -35,8 +45,12 @@ function OurProducts (){
 
     }, [])
 
+    setSelected2(searches => searches.concat(selected))
+
     const showData = () => {
+        console.log(selected2)
         return(
+            
             <div className="our-product-bg">
                 <Container className="outer-products">
                     <Row className="product-row-1 add-curser">
@@ -46,7 +60,7 @@ function OurProducts (){
                     <Row className="product-row-2">
                         {products.map((product) =>{
                             return (
-                                <Col key={product.id} className="product-column"><CardItem id={product.id} Name={product.Name} Weight={product.Weight} Price={product.Price} image={item0} /></Col>
+                                <Col key={product.id} className="product-column"><CardItem getSelected={(id, name, price) => setSelected({id: id, name: name, price: price})} id={product.id} Name={product.Name} Price={product.Price} image={item0} /></Col>
                             );
                         })}
                     </Row>
@@ -58,7 +72,8 @@ function OurProducts (){
     return(
         <>
 
-            {isOkayToRender ? showData() : null}
+            {/* {isOkayToRender ? showData() : null} */}
+            {showData()}
             
         </>
     );

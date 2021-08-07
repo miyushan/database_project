@@ -1,23 +1,13 @@
 // import React, { Component} from 'react';
-import React, { useState } from 'react';
+// import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/CardItem.css';
 import {Card, Container, Row, Col, Button} from "react-bootstrap";
 
 export default function CardItem(props){
 
-    const [clickedItems, setClickedItems] = useState(['hello', 'guys' ]);
-
     
-    const onClick = (key) => {
-        console.log(key);
-        let temp = clickedItems;
-        temp.push(key);
-        setClickedItems(temp);
-        console.log(...clickedItems);
-    }
-
-
+    
     
     return(
         <>
@@ -27,11 +17,11 @@ export default function CardItem(props){
                     <Card.Title className="card-title">{props.Name}</Card.Title>
                     <Container className="item-con">
                         <Row>
-                            <Col className="weight">{props.Weight} Kg</Col>
+                            <Col className="weight">1 Kg</Col>
                             <Col className="price">Rs. {props.Price}</Col>
                         </Row>
                     </Container>
-                    <Button onClick={()=>{onClick(props.Name)}} className="btn-cart">Add To Cart</Button>
+                    <Button onClick={()=>{props.getSelected(props.id, props.Name, props.Price)}} className="btn-cart">Add To Cart</Button>
                 </Card.Body>
             </Card>
         </>   
