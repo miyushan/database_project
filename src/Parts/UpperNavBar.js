@@ -16,7 +16,7 @@ function UpperNavBar(){
         //get data in the session
         let data = localStorage.getItem('userDetails');
         data = JSON.parse(data);
-        console.log(data);
+        // console.log(data);
 
         setUserName(data.firstName);
         setGender(data.gender);

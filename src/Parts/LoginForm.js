@@ -44,7 +44,8 @@ export default function LoginForm (){
                     firstName: customer.First_Name,
                     contactNumber: customer.Contact_Number, 
                     gender: customer.Gender,
-                    branchName: customer.Branch_Name
+                    branchName: customer.Branch_Name,
+                    logedInUser: true,
                 }
                 //Add the session
                 localStorage.setItem('userDetails', JSON.stringify(userDetails));

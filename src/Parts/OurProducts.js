@@ -1,10 +1,10 @@
 // import React, { Component } from 'react';
-import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/OurProducts.css';
 import {Row, Col, Container} from "react-bootstrap";
 import CardItem from './CardItem';
-import axios from 'axios';
+// import axios from 'axios';
 
 import item0 from '../files/product-images/1_carrot.png';
 // import item1 from '../files/product-images/1_Big_Onions.png';
@@ -18,20 +18,18 @@ import item0 from '../files/product-images/1_carrot.png';
 // import item9 from '../files/product-images/1_Green Chilies.png';
 
 
-function OurProducts (){
-    const [products, setProducts] = useState([]);
+function OurProducts (props){
+    // const [products, setProducts] = useState([]);
     
-    useEffect(() => {
-        axios.get('http://localhost/database_project/get_Product_details.php')
-        .then((res) => {    
-            setProducts(res.data);
-            // setIsOkayToRender(true);
-        })
-        .catch((err) =>{
-            console.log("No products to display")
-        })
-    }, [])
-
+    // useEffect(() => {
+    //     axios.get('http://localhost/database_project/get_Product_details.php')
+    //     .then((res) => {    
+    //         setProducts(res.data);
+    //     })
+    //     .catch((err) =>{
+    //         console.log("No products to display")
+    //     })
+    // }, [])
 
     return(
         <>
@@ -43,7 +41,7 @@ function OurProducts (){
                     </Row>
 
                     <Row className="product-row-2">
-                        {products.map((product) =>{
+                        {props.products.map((product) =>{
                             return (
                                 <Col key={product.id} className="product-column">
                                     <CardItem
@@ -51,6 +49,7 @@ function OurProducts (){
                                         Name={product.Name}
                                         Price={product.Price}
                                         image={item0}
+                                        handleAddProduct={props.handleAddProduct}
                                     />
                                 </Col>
                             );

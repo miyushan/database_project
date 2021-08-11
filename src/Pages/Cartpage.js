@@ -3,13 +3,13 @@ import MainNavBar from '../Parts/MainNavBar';
 import CartItems from '../Parts/CartItems';
 import Footer from '../Parts/Footer';
 
-function Cartpage(){
+function Cartpage(props){
     return(
         <>
             <div id="cart">
                 <UpperNavBar />
                 <MainNavBar />
-                <CartItems />
+                <CartItems cartItems={props.cartItems} handleAddProduct={props.handleAddProduct}/>
                 <Footer />
             </div>
         </>

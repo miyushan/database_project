@@ -37,7 +37,7 @@ class Homepage extends Component {
         }, 2700)
     }
 
-    render() {
+    render(props) {
         return(
             <>
                 {this.state.spinner ? 
@@ -53,8 +53,8 @@ class Homepage extends Component {
                             <SearchBar />
                             <MainCover />
                             <Benificts />
-                            <PopularItems />
-                            <OurProducts />
+                            <PopularItems products={this.props.products}/>
+                            <OurProducts products={this.props.products} />
                             <AboutUs />
                             <Container className="d-flex justify-content-center">
                                 <img className="organic" src={Organic} alt="shop"/>

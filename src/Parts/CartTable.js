@@ -4,9 +4,10 @@ import {Table, Container} from "react-bootstrap";
 import item1 from '../files/product-images/1_Beet.png';
 
 
-function CartTable(){
+function CartTable(props){
     return(
         <>
+    {console.log(props.cartItems)}
             <Container className="table-container add-curser">
                 <Table className="cart-table cart-shadow" striped bordered hover>
                     <thead className="table-head text-center">
@@ -18,7 +19,20 @@ function CartTable(){
                         </tr>
                     </thead>
                     <tbody className="table-body text-center">
-                        <tr>
+                        {console.log(props.cartItems)}
+                        {props.cartItems.map((product) =>{
+
+                            return (
+                                <tr key={product.id}>
+                                    <td>{product.id}</td>
+                                    <td className="left-image"><img src={item1} alt="product" className="img-product"/>{product.Name}</td>
+                                    <td>1Kg</td>
+                                    <td>Rs 250.00</td>
+                            {console.log(product.Name)}
+                                </tr>
+                            )  
+                        })}
+                        {/* <tr>
                             <td>1</td>
                             <td className="left-image"><img src={item1} alt="product" className="img-product"/>Carrot</td>
                             <td>1Kg</td>
@@ -35,7 +49,7 @@ function CartTable(){
                             <td className="left-image"><img src={item1} alt="product" className="img-product"/>Tomato</td>
                             <td>500g</td>
                             <td>Rs 75.00</td>
-                        </tr>
+                        </tr> */}
                     </tbody>
                 </Table>
             </Container>

@@ -1,4 +1,5 @@
-import React, { Component} from 'react';
+import React, { useState, useEffect } from 'react';
+// import React, { Component} from 'react';
 import UpperNavBar from '../Parts/UpperNavBar';
 import MainNavBar from '../Parts/MainNavBar';
 import OurProducts from '../Parts/OurProducts';
@@ -7,51 +8,36 @@ import Footer from '../Parts/Footer';
 
 import '../Pages/Productspage.css';
 
-class Productspage extends Component {
+function Productspage(props){
 
-    constructor(props){
-        super(props);
-        this.state={
-            spinner: true,
-            show: false
-        }
-        this.componentDidMount = this.componentDidMount.bind(this);
-        this.onClick = this.onClick.bind(this);
-    }
+    const [spinner, setSpinner] = useState(true);
+    const [show, setShow] = useState(false);
 
-    componentDidMount(){
+    useEffect(() => {
         setTimeout(() => {
-            this.setState({
-                spinner: false,
-                show: true
-            })
+            setSpinner(false);
+            setShow(true);
         }, 2700)
-    }
+    },[])
 
-    onClick(){
-
-    }
-
-    render() {
-        // console.log(this.state.show)
-        return(
-            <>  
-                {this.state.spinner ? 
-                    <div className="cliploader-div d-flex justify-content-center align-items-center">
-                        <HashLoader className="cliploader" size={80} color={"0f0"} />   
-                    </div>
-                : null}
-                <div style={{ display: this.state.show ? "block" : "none" }}>
-                    <div id="products">
-                        <UpperNavBar />
-                        <MainNavBar />
-                        <OurProducts />
-                        <Footer />
-                    </div>
+    return(
+        <>  
+            {spinner ? 
+                <div className="cliploader-div d-flex justify-content-center align-items-center">
+                    <HashLoader className="cliploader" size={80} color={"0f0"} />   
                 </div>
-            </>
-        );
-    }
+            : null}
+            <div style={{ display: show ? "block" : "none" }}>
+                <div id="products">
+                    <UpperNavBar />
+                    <MainNavBar />
+                    <OurProducts products={props.products} handleAddProduct={props.handleAddProduct} />
+                    <Footer />
+                </div>
+            </div>
+        </>
+    );
+ 
 
 }
 

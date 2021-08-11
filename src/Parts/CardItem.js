@@ -6,9 +6,6 @@ import {Card, Container, Row, Col, Button} from "react-bootstrap";
 
 export default function CardItem(props){
 
-    
-    
-    
     return(
         <>
             <Card className="card-item add-curser" style={{ width: '210px' }}>
@@ -21,14 +18,11 @@ export default function CardItem(props){
                             <Col className="price">Rs. {props.Price}</Col>
                         </Row>
                     </Container>
-                    <Button className="btn-cart">Add To Cart</Button>
+                    <Button onClick={() => props.handleAddProduct(props)} className="btn-cart">Add To Cart</Button>
                 </Card.Body>
             </Card>
         </>   
     )
-
-    
-    
 
 }
 

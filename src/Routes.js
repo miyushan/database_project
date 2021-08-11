@@ -25,19 +25,23 @@ import EditBranch from './DB_data/Branch/EditBranch';
 import NewBranch from './DB_data/Branch/NewBranch';
 
 function Routes(props){
+
+  // let data = localStorage.getItem('userDetails');
+  // data = JSON.parse(data.logedInUser);
+
   return(
     <>
       <BrowserRouter>
         <Switch>
 
           <Route path="/" exact><Homepage /></Route>
-          <Route path="/home" exact><Homepage /></Route>
-          <Route path="/login" exact><Loginpage products={props.products}/></Route>
-          <Route path="/register" exact><CreateAccountpage /></Route>
-          <Route path="/cart" exact><Cartpage /></Route>
-          <Route path="/about-us" exact><AboutUspage /></Route>
+          <Route path="/login" exact><Loginpage /></Route>
           <Route path="/contact-us" exact><ContactUspage /></Route>
-          <Route path="/products" exact><Productspage /></Route>
+          <Route path="/home" exact><Homepage products={props.products} /></Route>
+          <Route path="/register" exact><CreateAccountpage /></Route>
+          <Route path="/cart" exact><Cartpage cartItems={props.cartItems} handleAddProduct={props.handleAddProduct}/></Route>
+          <Route path="/about-us" exact><AboutUspage /></Route>
+          <Route path="/products" exact><Productspage products={props.products} handleAddProduct={props.handleAddProduct}/></Route>
           <Route path="/branches" exact><Branchespage /></Route>
           <Route path="/db/products" exact><ProductDetails/></Route>
           <Route path="/db/products/edit" exact><EditProduct /></Route>
