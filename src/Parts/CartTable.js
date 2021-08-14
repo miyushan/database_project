@@ -3,16 +3,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/CartTable.css';
 import {Table, Container} from "react-bootstrap";
 import item1 from '../files/product-images/1_Beet.png';
-import { ProductContext } from '../Context/ProductContext';
+import { CartContext } from '../Context/CartContext';
 
 
 class CartTable extends Component {
 
-    static contextType = ProductContext;
+    static contextType = CartContext;
 
     render(){
 
-        const { products } = this.context;
+        const { cartProducts } = this.context;
 
         return(
             <>
@@ -29,16 +29,17 @@ class CartTable extends Component {
                         
                         <tbody className="table-body text-center">
                             {/* {console.log(products)} */}
-                            {products.map((product) =>{
+                            {cartProducts.map((product) =>{
     
                                 return (
                                     <tr key={product.id}>
                                         <td>{product.id}</td>
                                         <td className="left-image"><img src={item1} alt="product" className="img-product"/>{product.Name}</td>
-                                        <td>1Kg</td>
-                                        <td>Rs 250.00</td>
+                                        <td>{product.Weight} Kg</td>
+                                        <td className="price-col">Rs {product.Price}</td>
                                     </tr>
                                 )  
+
                             })}
 
                         </tbody>

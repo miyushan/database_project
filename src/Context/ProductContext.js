@@ -5,11 +5,10 @@ export const ProductContext = createContext();
 
 class ProductContextProvider extends Component {
     
-    state = { 
-        isLightTheme: true,
-        light: { syntex: '#555', ui: '#ddd', bg: '#eee'},
-        dark: { syntex: '#ddd', ui: '#333', bg: '#555'},
-        products: []
+    state = {
+        products: [],
+        productSelected: false,
+        selectedItems: []
     }
 
     componentDidMount(){
@@ -19,9 +18,16 @@ class ProductContextProvider extends Component {
         })
     }
 
+    handleAddProduct = (id) => {
+        this.setState({
+            productSelected: !this.state.productSelected,
+            selectedItems: id
+        });
+    }
+
     render() { 
         return (
-            <ProductContext.Provider value={{...this.state}}>
+            <ProductContext.Provider value={{...this.state, handleAddProduct: this.handleAddProduct}}>
                 {this.props.children}
             </ProductContext.Provider>
         );

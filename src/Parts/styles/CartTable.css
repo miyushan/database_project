@@ -46,3 +46,8 @@
 .left-image{
     text-align: left;
 }
+
+.price-col{
+    padding-left: 60px !important;
+    text-align: left;
+}

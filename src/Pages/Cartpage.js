@@ -2,7 +2,7 @@ import UpperNavBar from '../Parts/UpperNavBar';
 import MainNavBar from '../Parts/MainNavBar';
 import CartItems from '../Parts/CartItems';
 import Footer from '../Parts/Footer';
-import ProductContextProvider from '../Context/ProductContext';
+import CartContextProvider from '../Context/CartContext';
 
 function Cartpage(props){
     return(
@@ -10,9 +10,9 @@ function Cartpage(props){
             <div id="cart">
                 <UpperNavBar />
                 <MainNavBar />
-                <ProductContextProvider>
+                <CartContextProvider>
                     <CartItems handleAddProduct={props.handleAddProduct}/>
-                </ProductContextProvider>
+                </CartContextProvider>
                 <Footer />
             </div>
         </>
