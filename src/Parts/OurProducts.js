@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/OurProducts.css';
 import {Row, Col, Container} from "react-bootstrap";
@@ -17,44 +17,38 @@ import item0 from '../files/product-images/1_carrot.png';
 // import item9 from '../files/product-images/1_Green Chilies.png';
 
 
-class OurProducts extends Component {
+function OurProducts () {
 
-    static contextType = ProductContext;
+    const { products } = useContext(ProductContext);
 
-    render(){
-        // console.log(this.context);
-        const { products } = this.context;
+    return(
+        <>
+            <div className="our-product-bg">
+                <Container className="outer-products">
+                    <Row className="product-row-1 add-curser">
+                        <Col>Our Products</Col>
+                    </Row>
 
-        return(
-            <>
-                <div className="our-product-bg">
-                    <Container className="outer-products">
-                        <Row className="product-row-1 add-curser">
-                            <Col>Our Products</Col>
-                        </Row>
-    
-                        <Row className="product-row-2">
-                            {products.map((product) =>{
-                                return (
-                                    <Col key={product.id} className="product-column">
-                                        <CardItem
-                                            id={product.id}
-                                            Name={product.Name}
-                                            Price={product.Price}
-                                            image={item0}
-                                        />
-                                    </Col>
-                                );
-                            })}
-                        </Row>
-                    </Container>
-                </div>
-                     
-            </>
-        );
-    }
-    
-    
+                    <Row className="product-row-2">
+                        {products.map((product) =>{
+                            return (
+                                <Col key={product.id} className="product-column">
+                                    <CardItem
+                                        id={product.id}
+                                        Name={product.Name}
+                                        Price={product.Price}
+                                        image={item0}
+                                    />
+                                </Col>
+                            );
+                        })}
+                    </Row>
+                </Container>
+            </div>
+                    
+        </>
+    );
+      
 
 }
 
