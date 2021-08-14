@@ -1,10 +1,9 @@
-// import React, { Component } from 'react';
-// import React, { useState, useEffect } from 'react';
+import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/OurProducts.css';
 import {Row, Col, Container} from "react-bootstrap";
 import CardItem from './CardItem';
-// import axios from 'axios';
+import { ProductContext } from '../Context/ProductContext';
 
 import item0 from '../files/product-images/1_carrot.png';
 // import item1 from '../files/product-images/1_Big_Onions.png';
@@ -18,48 +17,43 @@ import item0 from '../files/product-images/1_carrot.png';
 // import item9 from '../files/product-images/1_Green Chilies.png';
 
 
-function OurProducts (props){
-    // const [products, setProducts] = useState([]);
+class OurProducts extends Component {
+
+    static contextType = ProductContext;
+
+    render(){
+        // console.log(this.context);
+        const { products } = this.context;
+
+        return(
+            <>
+                <div className="our-product-bg">
+                    <Container className="outer-products">
+                        <Row className="product-row-1 add-curser">
+                            <Col>Our Products</Col>
+                        </Row>
     
-    // useEffect(() => {
-    //     axios.get('http://localhost/database_project/get_Product_details.php')
-    //     .then((res) => {    
-    //         setProducts(res.data);
-    //     })
-    //     .catch((err) =>{
-    //         console.log("No products to display")
-    //     })
-    // }, [])
-
-    return(
-        <>
-
-            <div className="our-product-bg">
-                <Container className="outer-products">
-                    <Row className="product-row-1 add-curser">
-                        <Col>Our Products</Col>
-                    </Row>
-
-                    <Row className="product-row-2">
-                        {props.products.map((product) =>{
-                            return (
-                                <Col key={product.id} className="product-column">
-                                    <CardItem
-                                        id={product.id}
-                                        Name={product.Name}
-                                        Price={product.Price}
-                                        image={item0}
-                                        handleAddProduct={props.handleAddProduct}
-                                    />
-                                </Col>
-                            );
-                        })}
-                    </Row>
-                </Container>
-            </div>
-                 
-        </>
-    );
+                        <Row className="product-row-2">
+                            {products.map((product) =>{
+                                return (
+                                    <Col key={product.id} className="product-column">
+                                        <CardItem
+                                            id={product.id}
+                                            Name={product.Name}
+                                            Price={product.Price}
+                                            image={item0}
+                                        />
+                                    </Col>
+                                );
+                            })}
+                        </Row>
+                    </Container>
+                </div>
+                     
+            </>
+        );
+    }
+    
     
 
 }

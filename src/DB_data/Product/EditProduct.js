@@ -5,10 +5,10 @@ import axios from 'axios';
 // import './EditProduct.css';
 
 
-function EditProduct(){
+function EditProduct(props){
 
     const [products, setProducts] = useState([]);
-    const [productName, setProductName] = useState('');
+    const [productName, setProductName] = useState(props.prname);
     const [totalStockWeight, setTotalStockWeight] = useState('');
     const [pricePerKilogram, setPricePerKilogram] = useState('');
     let [isOldProduct, setIsOldProduct] = useState(false);
@@ -16,7 +16,7 @@ function EditProduct(){
 
 
     useEffect(() => {
-        console.log('useEffect')
+        // console.log(props.prname)
         axios.get('http://localhost/database_project/get_Product_Details.php')
         .then(res => res.data)
         .then((res) => {
@@ -43,7 +43,7 @@ function EditProduct(){
                 pricePerKilogram: pricePerKilogram,
             })
             .then(() => {
-                console.log("New Product created");
+                console.log("Product Edited");
                 setProductName('');
                 setPricePerKilogram('');
                 setTotalStockWeight('');
@@ -80,7 +80,7 @@ function EditProduct(){
                             <Col>
                                 <Form.Group className="mb-4" controlId="formGroupProductName">
                                     <Form.Label className="db-form-label">Product Name</Form.Label>
-                                    <Form.Control className="db-input" variant="success" type="text" placeholder="New Product" value={productName} onChange={onChangeProductName}/>
+                                    <Form.Control className="db-input" variant="success" type="text" value={productName} onChange={onChangeProductName}/>
                                 </Form.Group>
                             </Col>
                             
@@ -90,7 +90,7 @@ function EditProduct(){
                             <Col>
                                 <Form.Group className="mb-4" controlId="formGroupStockWeight">
                                     <Form.Label className="db-form-label">Total Stock Weight</Form.Label>
-                                    <Form.Control className="db-input" variant="success" type="text" placeholder="Weight" value={totalStockWeight} onChange={onChangeTotalStockWeight}/>
+                                    <Form.Control className="db-input" variant="success" type="text" value={totalStockWeight} onChange={onChangeTotalStockWeight}/>
                                 </Form.Group>
                             </Col>
                             <Col>

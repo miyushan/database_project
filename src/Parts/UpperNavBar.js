@@ -13,15 +13,20 @@ function UpperNavBar(){
 
     useEffect(() =>{
 
-        //get data in the session
-        let data = localStorage.getItem('userDetails');
-        data = JSON.parse(data);
-        // console.log(data);
+        try{
+            //get data in the session
+            let data = localStorage.getItem('userDetails');
+            data = JSON.parse(data);
+            // console.log("Successful Login!");
 
-        setUserName(data.firstName);
-        setGender(data.gender);
-        setBranchName(data.branchName);
-
+            setUserName(data.firstName);
+            setGender(data.gender);
+            setBranchName(data.branchName);
+        }
+        catch(err){
+            console.log('Need to loged in');
+        }
+        
     }, [])
 
     const statement = () => {

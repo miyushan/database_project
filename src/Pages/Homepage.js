@@ -11,6 +11,7 @@ import OurProducts from '../Parts/OurProducts';
 import AboutUs from '../Parts/AboutUs';
 import Footer from '../Parts/Footer';
 import '../Pages/Homepage.css';
+import ProductContextProvider from '../Context/ProductContext';
 
 import Organic from '../files/organicFoods.png';
 
@@ -53,8 +54,10 @@ class Homepage extends Component {
                             <SearchBar />
                             <MainCover />
                             <Benificts />
-                            <PopularItems products={this.props.products}/>
-                            <OurProducts products={this.props.products} />
+                            <ProductContextProvider>
+                                <PopularItems />
+                                <OurProducts />
+                            </ProductContextProvider>
                             <AboutUs />
                             <Container className="d-flex justify-content-center">
                                 <img className="organic" src={Organic} alt="shop"/>

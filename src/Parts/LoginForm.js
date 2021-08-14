@@ -50,9 +50,9 @@ export default function LoginForm (){
                 //Add the session
                 localStorage.setItem('userDetails', JSON.stringify(userDetails));
                 //get data in the session
-                let data = localStorage.getItem('userDetails');
-                data = JSON.parse(data);
-                console.log(data);
+                // let data = localStorage.getItem('userDetails');
+                // data = JSON.parse(data);
+                // console.log(data);
 
             }
 

@@ -9,7 +9,7 @@ export default function CardItem(props){
     return(
         <>
             <Card className="card-item add-curser" style={{ width: '210px' }}>
-                <Card.Img className="card-image" variant="top" src={props.image}/>
+                <Card.Img className="card-image" variant="top" src={props.image} alt="Product Image"/>
                 <Card.Body className="body-cart">
                     <Card.Title className="card-title">{props.Name}</Card.Title>
                     <Container className="item-con">

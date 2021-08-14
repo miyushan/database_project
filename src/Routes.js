@@ -34,14 +34,15 @@ function Routes(props){
       <BrowserRouter>
         <Switch>
 
-          <Route path="/" exact><Homepage /></Route>
+          {/* <Route path="" exact><Loginpage /></Route> */}
+          <Route path="/" exact><Loginpage /></Route>
           <Route path="/login" exact><Loginpage /></Route>
           <Route path="/contact-us" exact><ContactUspage /></Route>
-          <Route path="/home" exact><Homepage products={props.products} /></Route>
+          <Route path="/home" exact><Homepage /></Route>
           <Route path="/register" exact><CreateAccountpage /></Route>
           <Route path="/cart" exact><Cartpage cartItems={props.cartItems} handleAddProduct={props.handleAddProduct}/></Route>
           <Route path="/about-us" exact><AboutUspage /></Route>
-          <Route path="/products" exact><Productspage products={props.products} handleAddProduct={props.handleAddProduct}/></Route>
+          <Route path="/products" exact><Productspage handleAddProduct={props.handleAddProduct}/></Route>
           <Route path="/branches" exact><Branchespage /></Route>
           <Route path="/db/products" exact><ProductDetails/></Route>
           <Route path="/db/products/edit" exact><EditProduct /></Route>
@@ -57,7 +58,7 @@ function Routes(props){
           <Route path="/db/branch" exact><BranchDetails /></Route>
           <Route path="/db/branch/edit" exact><EditBranch /></Route>
           <Route path="/db/branch/add" exact><NewBranch /></Route>
-          <Route path='*'><Loginpage /></Route>
+          {/* <Route path='*'><Loginpage /></Route> */}
         </Switch>
       </BrowserRouter>
     </>

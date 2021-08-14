@@ -36,16 +36,13 @@
 .cart{
     cursor: pointer;
     position: absolute;
-    top: 11px;
+    top: -6px;
     right: 8%;
     font-family: Roboto;
     font-style: normal;
     font-size: 14px;
     line-height: 56px;
     
-}
-.cart:hover{
-    color: rgb(255, 255, 255);
 }
 
 .ignore-btn{
@@ -58,6 +55,9 @@
 }
 .ignore-btn::after{
     border-color: transparent;
+}
+.ignore-btn:hover{
+    color: rgb(3, 212, 3);
 }
 
 .to-cart-btn{
