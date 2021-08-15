@@ -38,6 +38,7 @@ function OurProducts () {
                                         <CardItem
                                             id={product.id}
                                             Name={product.Name}
+                                            Weight={product.Weight}
                                             Price={product.Price}
                                             image={item0}
                                         />

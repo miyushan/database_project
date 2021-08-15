@@ -11,12 +11,12 @@ function CartContextProvider (props) {
     useEffect(() => {
         axios.get('http://localhost/database_project/get_Product_details.php')
         .then (res =>{
-            setCartProducts(res.data)
+            // setCartProducts(res.data)
         })
     },[])
 
     return (
-        <CartContext.Provider value={[index, setIndex, cartProducts]}>
+        <CartContext.Provider value={[index, setIndex, cartProducts, setCartProducts]}>
             {props.children}
         </CartContext.Provider>
     );

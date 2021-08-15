@@ -1,19 +1,14 @@
 import React, { useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/CartTable.css';
-import {Table, Container, Button} from "react-bootstrap";
+import {Table, Container} from "react-bootstrap";
 import item1 from '../files/product-images/1_Beet.png';
 import { CartContext } from '../Context/CartContext';
 
 
 function CartTable () {
 
-    const [ index, setIndex, cartProducts ] = useContext(CartContext);
-    // const value = useContext(CartContext);
-
-    const addToCart = () => {
-        setIndex(index+1);
-    }
+    const [ cartProducts ] = useContext(CartContext);
 
     return(
         <>
@@ -45,8 +40,6 @@ function CartTable () {
                     </tbody>
                 </Table>
 
-                <div>Temp: {index}</div>
-                <div><Button onClick={addToCart}>Increment</Button></div>
             </Container>
             
         </>
