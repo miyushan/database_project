@@ -8,7 +8,7 @@ import { CartContext } from '../Context/CartContext';
 
 function CartTable () {
 
-    const [ cartProducts ] = useContext(CartContext);
+    const { cartProducts } = useContext(CartContext);
 
     return(
         <>

@@ -5,13 +5,14 @@ import {Card, Container, Row, Col, Button} from "react-bootstrap";
 import { CartContext } from '../Context/CartContext';
 
 export default function CardItem (props){
-    const [ cartProducts, setCartProducts ] = useContext(CartContext);
+    // const { products } = useContext(ProductContext);
+    const { addToCart } = useContext(CartContext);
 
-    const addToCart = (props) => {
-        console.log(props);
-        setCartProducts([...cartProducts, {id:props.id, Name:props.Name, Weight:props.Weight, Price:props.Price, image:props.image}]);
-        console.log(cartProducts);
-    }
+    // const addToCart = (props) => {
+    //     console.log(props);
+    //     setCartProducts([...cartProducts, {id:props.id, Name:props.Name, Weight:props.Weight, Price:props.Price, image:props.image}]);
+    //     console.log(cartProducts);
+    // }
    
     return(
         <>
@@ -25,7 +26,7 @@ export default function CardItem (props){
                             <Col className="price">Rs. {props.Price}</Col>
                         </Row>
                     </Container>
-                    <Button onClick={()=>addToCart(props)} className="btn-cart">Add To Cart</Button>
+                    <Button onClick={()=>addToCart(props.id)} className="btn-cart">Add To Cart</Button>
                 </Card.Body>
             </Card>
         </>   

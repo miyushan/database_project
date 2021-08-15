@@ -5,18 +5,37 @@ export const CartContext = createContext();
 
 function CartContextProvider (props) {
     
+    const [products, setProducts] = useState([]);
     const [cartProducts, setCartProducts] = useState([]);
-    const [index, setIndex] = useState([]);
 
     useEffect(() => {
         axios.get('http://localhost/database_project/get_Product_details.php')
         .then (res =>{
-            // setCartProducts(res.data)
+            setProducts(res.data)
         })
     },[])
 
+    const addToCart = (id) =>{
+        const data = products.filter(product =>{
+            return product.id === id
+        })
+        data.forEach(product =>{
+            const obj = {
+                id: product.id,
+                Name: product.Name,
+                Weight: product.Weight,
+                Price: product.Price,
+                Image: product.Image
+            }
+            console.log(obj);
+            setCartProducts([...cartProducts, obj])
+        })
+        
+        console.log(cartProducts);
+    }
+
     return (
-        <CartContext.Provider value={[index, setIndex, cartProducts, setCartProducts]}>
+        <CartContext.Provider value={{addToCart, cartProducts}}>
             {props.children}
         </CartContext.Provider>
     );
