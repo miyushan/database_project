@@ -1,28 +1,26 @@
 import axios from 'axios';
-import React, { createContext, Component } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
 export const CartContext = createContext();
 
-class CartContextProvider extends Component {
+function CartContextProvider (props) {
     
-    state = {
-        cartProducts: []
-    }
+    const [cartProducts, setCartProducts] = useState([]);
+    const [index, setIndex] = useState([]);
 
-    componentDidMount(){
+    useEffect(() => {
         axios.get('http://localhost/database_project/get_Product_details.php')
         .then (res =>{
-            this.setState({ cartProducts: res.data})
+            setCartProducts(res.data)
         })
-    }
+    },[])
 
-    render() {
-        return (
-            <CartContext.Provider value={{...this.state}}>
-                {this.props.children}
-            </CartContext.Provider>
-        );
-    }
+    return (
+        <CartContext.Provider value={[index, setIndex, cartProducts]}>
+            {props.children}
+        </CartContext.Provider>
+    );
+    
 }
  
 export default CartContextProvider;

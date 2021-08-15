@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/CartItems.css';
 import {Row, Col, Container, Button} from "react-bootstrap";
 import { ReactComponent as BackToCart } from '../files/arrow-alt-circle-left-solid.svg';
+import CartContextProvider from '../Context/CartContext';
 
 import CartTable from './CartTable';
 import PaymentCard from './PaymentCard';
@@ -17,7 +18,10 @@ function CartItems(props){
             </div> : <div> */}
 
                 <div className="text-center cart-title add-curser">Shopping Cart</div>
-                <CartTable cartItems={props.cartItems} handleAddProduct={props.handleAddProduct}/>
+                <CartContextProvider>
+                    <CartTable cartItems={props.cartItems} handleAddProduct={props.handleAddProduct}/>
+                </CartContextProvider>
+
                 <Container className="cartDetail-container">
                     <Row className="">
                         <Col className="cartDetail-column d-flex flex-column mt-auto">
