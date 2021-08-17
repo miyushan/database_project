@@ -6,7 +6,7 @@
 .login-right{
     position: relative;
     padding: 0;
-    background-color: #635E5E;
+    background-color: #464141e7!important;
     width: 50%;
     height: 100vh;
     flex-direction: column;
