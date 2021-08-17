@@ -53,5 +53,12 @@
 }
 
 .remove-from-cart{
-    color: #f00 !important;
+    fill: rgb(255, 0, 0) !important;
+}
+.remove-from-cart:hover{
+    fill: rgb(209, 6, 6) !important;
+}
+
+.remove-from-cart-btn{
+    cursor: pointer;
 }
