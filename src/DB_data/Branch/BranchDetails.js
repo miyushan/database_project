@@ -75,8 +75,8 @@ function BranchDetails(){
                                             <td className="t-data-5">{product.Posting_Date}</td>
                                             <td className="t-data-6">
                                                 <ButtonGroup aria-label="Basic example">
-                                                    <Button href="/db/branch/edit" className="btn-edit"variant="success"><Edit className="edit-p" height="15px"/></Button>
-                                                    <Button href="/db/branch" className="btn-delete" onClick={() => deleteCustomer(product.id)} variant="success"><Delete className="delete-p" height="15px"/></Button>
+                                                    <Button href="/db/branch/edit" className="btn-edit"variant="warning"><Edit className="edit-p" height="15px"/></Button>
+                                                    <Button href="/db/branch" className="btn-delete" onClick={() => deleteCustomer(product.id)} variant="danger"><Delete className="delete-p" height="15px"/></Button>
                                                 </ButtonGroup>
                                             </td>
                                         </tr>

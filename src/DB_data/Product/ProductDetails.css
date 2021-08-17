@@ -119,11 +119,11 @@ td{
 }
 
 .delete-p{
-    color: rgb(185, 3, 3);
+    /* color: rgb(185, 3, 3); */
 }
 
 .edit-p{
-    color: #292626;
+    color: #2e2c2c;
 }
 
 a:-webkit-any-link {
