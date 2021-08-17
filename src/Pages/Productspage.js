@@ -5,8 +5,8 @@ import MainNavBar from '../Parts/MainNavBar';
 import OurProducts from '../Parts/OurProducts';
 import HashLoader from 'react-spinners/HashLoader';
 import Footer from '../Parts/Footer';
-import ProductContextProvider from '../Context/ProductContext';
-import CartContextProvider from '../Context/CartContext';
+// import ProductContextProvider from '../Context/ProductContext';
+// import CartContextProvider from '../Context/CartContext';
 
 import '../Pages/Productspage.css';
 
@@ -33,11 +33,11 @@ function Productspage(props){
                 <div id="products">
                     <UpperNavBar />
                     <MainNavBar />
-                    <CartContextProvider>
-                        <ProductContextProvider>
+                    {/* <CartContextProvider>
+                        <ProductContextProvider> */}
                             <OurProducts/>
-                        </ProductContextProvider>
-                    </CartContextProvider>
+                        {/* </ProductContextProvider>
+                    </CartContextProvider> */}
                     <Footer />
                 </div>
             </div>

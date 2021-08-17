@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/OurProducts.css';
 import {Row, Col, Container} from "react-bootstrap";
 import CardItem from './CardItem';
-import CartContextProvider from '../Context/CartContext';
 import { ProductContext } from '../Context/ProductContext';
 
 import item0 from '../files/product-images/1_carrot.png';
@@ -34,15 +33,13 @@ function OurProducts () {
                         {products.map((product) =>{
                             return (
                                 <Col key={product.id} className="product-column">
-                                    <CartContextProvider>
-                                        <CardItem
-                                            id={product.id}
-                                            Name={product.Name}
-                                            Weight={product.Weight}
-                                            Price={product.Price}
-                                            image={item0}
-                                        />
-                                    </CartContextProvider>
+                                    <CardItem
+                                        id={product.id}
+                                        Name={product.Name}
+                                        Weight={product.Weight}
+                                        Price={product.Price}
+                                        image={item0}
+                                    />
                                 </Col>
                             );
                         })}

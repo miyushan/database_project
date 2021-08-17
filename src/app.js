@@ -1,6 +1,9 @@
 import React, { useState} from 'react';
 // import axios from 'axios';
 import { BrowserRouter as Router } from 'react-router-dom';
+import ProductContextProvider from '../src/Context/ProductContext';
+import CartContextProvider from '../src/Context/CartContext';
+
 import Routes from './Routes';
 
 export default function App(){
@@ -25,7 +28,11 @@ export default function App(){
   return(
     <div>
       <Router>
-        <Routes cartItems={cartItems} handleAddProduct={handleAddProduct}/>
+        <CartContextProvider>
+          <ProductContextProvider>
+            <Routes cartItems={cartItems} handleAddProduct={handleAddProduct}/>
+          </ProductContextProvider>
+        </CartContextProvider>
       </Router>
     </div>
   )

@@ -11,8 +11,8 @@ import OurProducts from '../Parts/OurProducts';
 import AboutUs from '../Parts/AboutUs';
 import Footer from '../Parts/Footer';
 import '../Pages/Homepage.css';
-import ProductContextProvider from '../Context/ProductContext';
-import CartContextProvider from '../Context/CartContext';
+// import ProductContextProvider from '../Context/ProductContext';
+// import CartContextProvider from '../Context/CartContext';
 
 import Organic from '../files/organicFoods.png';
 
@@ -55,12 +55,12 @@ class Homepage extends Component {
                             <SearchBar />
                             <MainCover />
                             <Benificts />
-                            <CartContextProvider>
-                                <ProductContextProvider>
+                            {/* <CartContextProvider>
+                                <ProductContextProvider> */}
                                     <PopularItems />
                                     <OurProducts />
-                                </ProductContextProvider>
-                            </CartContextProvider>
+                                {/* </ProductContextProvider>
+                            </CartContextProvider> */}
                             <AboutUs />
                             <Container className="d-flex justify-content-center">
                                 <img className="organic" src={Organic} alt="shop"/>

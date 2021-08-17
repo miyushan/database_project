@@ -5,8 +5,10 @@ export const CartContext = createContext();
 
 function CartContextProvider (props) {
     
-    const [products, setProducts] = useState([]);
-    const [cartProducts, setCartProducts] = useState([]);
+    const [products, setProducts] = useState([]);           //whole products
+    const [cartitems, setCartItems] = useState([]);         //whole cart items
+    const [cartProducts, setCartProducts] = useState([]);   //cart object
+    let isExist = false ;
 
     useEffect(() => {
         axios.get('http://localhost/database_project/get_Product_details.php')
@@ -15,23 +17,39 @@ function CartContextProvider (props) {
         })
     },[])
 
-    const addToCart = (id) =>{
+
+    const addItem = (Id) => {
         const data = products.filter(product =>{
-            return product.id === id
+            return product.id === Id
         })
-        data.forEach(product =>{
-            const obj = {
-                id: product.id,
-                Name: product.Name,
-                Weight: product.Weight,
-                Price: product.Price,
-                Image: product.Image
+        const newItems = [...cartProducts,  data[0]]
+        console.log("added\t"+Id)
+        setCartProducts(newItems)
+
+        //Add the session
+        localStorage.setItem('cartDetails', JSON.stringify(newItems));
+    }
+
+    const addToCart = (Id) =>{
+
+        if (cartProducts.length===0){           
+            addItem(Id);
+        }
+        else{
+            let data = localStorage.getItem('cartDetails');
+            data = JSON.parse(data);
+            console.log(data);
+            setCartItems(data);
+            cartitems.forEach(product=>{
+                if(product.id===Id){
+                    isExist = true;
+                }
+            })
+            if(isExist===false){
+                addItem(Id);
             }
-            console.log(obj);
-            setCartProducts([...cartProducts, obj])
-        })
+        }
         
-        console.log(cartProducts);
     }
 
     return (
