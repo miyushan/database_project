@@ -1,37 +1,43 @@
 import axios from 'axios';
-import React, { createContext, Component } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
+
+// import item0 from '../files/product-images/1_carrot.png';
+// import item1 from '../files/product-images/1_Big_Onions.png';
+// import item2 from '../files/product-images/1_tomatoes.png';
+// import item3 from '../files/product-images/1_pumpkin.png';
+// import item4 from '../files/product-images/1_potatoes.png';
+// import item5 from '../files/product-images/1_Leeks.png';
+// import item6 from '../files/product-images/1_Red Onions.png';
+// import item7 from '../files/product-images/1_Cabbage.png';
+// import item8 from '../files/product-images/1_Brinjals.png';
+// import item9 from '../files/product-images/1_Green Chilies.png';
 
 export const ProductContext = createContext();
 
-class ProductContextProvider extends Component {
+function ProductContextProvider (props){
     
-    state = {
-        products: [],
-        productSelected: false,
-        selectedItems: []
-    }
+    const [products, setProducts] = useState([]);
+    const [productSelected, setProductSelected] = useState([]);
+    const [selectedItems, setSelectedItems] = useState([]);
 
-    componentDidMount(){
+    useEffect(() =>{
         axios.get('http://localhost/database_project/get_Product_details.php')
         .then (res =>{
-            this.setState({ products: res.data})
+            setProducts(res.data)
         })
+    },[])
+
+    const handleAddProduct = (id) => {
+        setProductSelected(!productSelected);
+        setSelectedItems(id);
     }
 
-    handleAddProduct = (id) => {
-        this.setState({
-            productSelected: !this.state.productSelected,
-            selectedItems: id
-        });
-    }
-
-    render() { 
-        return (
-            <ProductContext.Provider value={{...this.state, handleAddProduct: this.handleAddProduct}}>
-                {this.props.children}
-            </ProductContext.Provider>
-        );
-    }
+    return (
+        <ProductContext.Provider value={{products, productSelected, selectedItems, handleAddProduct}}>
+            {props.children}
+        </ProductContext.Provider>
+    );
+    
 }
  
 export default ProductContextProvider;
