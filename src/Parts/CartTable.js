@@ -8,7 +8,7 @@ import { ReactComponent as Remove } from '../files/icons/remove-from-cart.svg';
 
 function CartTable () {
 
-    const { cartProducts } = useContext(CartContext);
+    const { cartProducts, removeFromCart } = useContext(CartContext);
     const [ cartItems, setCartItems ] = useState([])
 
     useEffect(() => {
@@ -47,7 +47,7 @@ function CartTable () {
                                         <td>{product.Weight} Kg</td>
                                         <td className="price-col">Rs {product.Price}</td>
                                         <td className="">
-                                            <a href=""><Remove className="remove-from-cart" height="22px"/></a>
+                                            <a onClick={()=>removeFromCart(product.id)} href=""><Remove className="remove-from-cart" height="22px"/></a>
                                         </td>
                                     </tr>
                                 )  
