@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/CartTable.css';
 import {Table, Container} from "react-bootstrap";
@@ -9,21 +9,30 @@ import { ReactComponent as Remove } from '../files/icons/remove-from-cart.svg';
 function CartTable () {
 
     const { cartProducts, removeFromCart } = useContext(CartContext);
-    const [ cartItems, setCartItems ] = useState([])
+
+    // const [id, setCustomers] = useState([]);
+    // const [name, setContactNumber] = useState('');
+    // const [weight, setPassword] = useState('');
+    // const [price, setIsValidUser] = useState(false);
+    
+
+    // const onChangeContactNumber = (e) => {
+    //     setContactNumber(e.target.value);
+    // }
+
+    // const onChangePassword = (e) => {
+    //     setPassword(e.target.value);
+    // }
 
     useEffect(() => {
-        //get data in the session
-        let data = localStorage.getItem('cartDetails');
-        data = JSON.parse(data);
-        console.log(data);
-        setCartItems(data);
-    },[cartProducts])
+
+    },[])
 
     return(
         <>
             <Container className="table-container add-curser">
 
-                {cartItems === [] ?
+                {cartProducts.length === 0 ?
                     <div className="no-item text-center">No Items To Display</div>
                 :
                     <Table className="cart-table cart-shadow" striped bordered hover>
@@ -38,7 +47,7 @@ function CartTable () {
                         </thead>
                         
                         <tbody className="table-body text-center">
-                            {cartItems.map((product) =>{
+                            {cartProducts.map((product) =>{
 
                                 return (
                                     <tr key={product.id}>
@@ -47,7 +56,7 @@ function CartTable () {
                                         <td>{product.Weight} Kg</td>
                                         <td className="price-col">Rs {product.Price}</td>
                                         <td className="">
-                                            <a onClick={()=>removeFromCart(product.id)} href=""><Remove className="remove-from-cart" height="22px"/></a>
+                                            <a onClick={(e)=>{ removeFromCart(product.id); e.preventDefault();}}><Remove className="remove-from-cart" height="22px"/></a>
                                         </td>
                                     </tr>
                                 )  
