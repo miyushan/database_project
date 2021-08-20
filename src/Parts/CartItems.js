@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import './styles/CartItems.css';
 import {Row, Col, Container, Button} from "react-bootstrap";
 import { ReactComponent as BackToCart } from '../files/arrow-alt-circle-left-solid.svg';
@@ -9,11 +9,12 @@ import PaymentCard from './PaymentCard';
 import { CartContext } from '../Context/CartContext';
 
 function CartItems(){
-    const { cartProducts } = useContext(CartContext);
+    const { cartProducts, totPrice } = useContext(CartContext);
+    const discount = 5;
 
-    useEffect(() => {
-
-    },[])
+    const calculatePrice = (totPrice, discount) =>{
+        return ((totPrice * (100-discount))/100).toFixed( 2 );
+    }
 
     return(
         <>
@@ -36,9 +37,9 @@ function CartItems(){
                         </Col>
                         <Col className="cartDetail-column"></Col>
                         <Col className="cartDetail-column cartDetail-column-3 d-flex flex-column align-items-end align-self-end">
-                            <div className="cartDetail-column-2 mt-2 add-curser">Sub Total</div>
-                            <div className="cartDetail-column-2 add-curser">Discount</div>
-                            <div className="cartDetail-column-2 mb-0 add-curser">Total</div>
+                            <div className="cartDetail-column-2 mt-2 add-curser">Sub Total: {totPrice.toFixed( 2 )}</div>
+                            <div className="cartDetail-column-2 add-curser">Discount: {discount.toFixed( 2 )}%</div>
+                            <div className="cartDetail-column-2 mb-0 add-curser">Total: {calculatePrice(totPrice, discount)}</div>
                         </Col>
                         <Col className="cartDetail-column"></Col>
                     </Row>

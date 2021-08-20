@@ -56,7 +56,7 @@ function CartTable () {
                                         <td>{product.Weight} Kg</td>
                                         <td className="price-col">Rs {product.Price}</td>
                                         <td className="">
-                                            <a className="remove-from-cart-btn" onClick={(e)=>{ removeFromCart(product.id); e.preventDefault();}}><Remove className="success remove-from-cart" height="22px"/></a>
+                                            <a className="remove-from-cart-btn" onClick={(e)=>{ removeFromCart(product.id, product.Price); e.preventDefault();}}><Remove className="success remove-from-cart" height="22px"/></a>
                                         </td>
                                     </tr>
                                 )  

@@ -39,6 +39,8 @@ function UpperNavBar(){
 
     const clearUser = () => {
         localStorage.removeItem('userDetails');
+        localStorage.removeItem('cartDetails');
+        localStorage.removeItem('priceDetails'); 
         setUserName('');
         setGender('');
         setBranchName('');
