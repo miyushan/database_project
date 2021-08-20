@@ -26,7 +26,7 @@ function CartContextProvider (props) {
         }
     },[])
 
-
+    //add a product to the cart
     const addItem = (Id) => {
         const data = products.filter(product =>{
             return product.id === Id
@@ -37,16 +37,8 @@ function CartContextProvider (props) {
         //Add the session
         localStorage.setItem('cartDetails', JSON.stringify(newItems));
     }
-    const removeItem = (Id) => {
-        const newItems = cartProducts;
-        console.log(newItems)
-        const data = newItems.filter(product =>{
-            return product.id !== Id
-        })
-        setCartProducts(data)
-        //Add the session
-        localStorage.setItem('cartDetails', JSON.stringify(data));
-    }
+    
+    // check what kind of function call for the click
     const addToCart = (Id) =>{
 
         isExist = false ;
@@ -65,13 +57,13 @@ function CartContextProvider (props) {
             if(isExist===false){
                 addItem(Id);
             }else{
-                removeItem(Id);
+                removeFromCart(Id);
             }
         }
         
     }
 
-
+    //remove a product from the cart
     const removeFromCart = (Id) => {
         const data = cartProducts.filter(product =>{
             return product.id !== Id
