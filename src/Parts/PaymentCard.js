@@ -1,12 +1,10 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/PaymentCard.css';
 import {Form, Container, Button, Row, Col} from "react-bootstrap";
-import { LoginDetailsContext } from '../Context/LoginDetailsContext';
 
 function PaymentCard(){
 
-    const { setIsLogedIn } = useContext(LoginDetailsContext);
 
   
     const [name, setName] = useState('');
@@ -45,8 +43,6 @@ function PaymentCard(){
             localStorage.removeItem('cartDetails');
             localStorage.removeItem('priceDetails'); 
             console.log('hello')
-            // e.preventDefault(); 
-            setIsLogedIn(false); 
             setName('');
             setAddress('');
             setCardNumber('');
@@ -93,7 +89,7 @@ function PaymentCard(){
                     </Row>
 
                     <div className=" mb-1 ">
-                        <Button href="" className="login-submit-btn login-input pay-now-btn" type="submit">PAY NOW</Button>
+                        <Button className="login-submit-btn login-input pay-now-btn" type="submit">PAY NOW</Button>
                     </div>
 
                 </Form>

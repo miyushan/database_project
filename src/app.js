@@ -3,7 +3,6 @@ import React, { useState} from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import ProductContextProvider from '../src/Context/ProductContext';
 import CartContextProvider from '../src/Context/CartContext';
-import LoginDetailsContextProvider from '../src/Context/LoginDetailsContext';
 
 import Routes from './Routes';
 
@@ -29,13 +28,11 @@ export default function App(){
   return(
     <div>
       <Router>
-        <LoginDetailsContextProvider>
-          <CartContextProvider>
-            <ProductContextProvider>
-              <Routes cartItems={cartItems} handleAddProduct={handleAddProduct}/>
-            </ProductContextProvider>
-          </CartContextProvider>
-        </LoginDetailsContextProvider>
+        <CartContextProvider>
+          <ProductContextProvider>
+            <Routes cartItems={cartItems} handleAddProduct={handleAddProduct}/>
+          </ProductContextProvider>
+        </CartContextProvider>
       </Router>
     </div>
   )
