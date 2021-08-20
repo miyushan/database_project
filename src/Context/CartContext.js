@@ -37,12 +37,22 @@ function CartContextProvider (props) {
         //Add the session
         localStorage.setItem('cartDetails', JSON.stringify(newItems));
     }
+    const removeItem = (Id) => {
+        const newItems = cartProducts;
+        console.log(newItems)
+        const data = newItems.filter(product =>{
+            return product.id !== Id
+        })
+        setCartProducts(data)
+        //Add the session
+        localStorage.setItem('cartDetails', JSON.stringify(data));
+    }
     const addToCart = (Id) =>{
 
         isExist = false ;
 
         if (cartProducts.length===0){  
-            console.log('initial')         
+            // console.log('initial')         
             addItem(Id);
         }
         else{
@@ -54,6 +64,8 @@ function CartContextProvider (props) {
             console.log(isExist)
             if(isExist===false){
                 addItem(Id);
+            }else{
+                removeItem(Id);
             }
         }
         
