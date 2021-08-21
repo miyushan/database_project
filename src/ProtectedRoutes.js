@@ -1,4 +1,4 @@
-// import React, { useContext } from 'react';
+import React from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Homepage from './Pages/Homepage';
@@ -24,15 +24,8 @@ import BranchDetails from './DB_data/Branch/BranchDetails';
 import EditBranch from './DB_data/Branch/EditBranch';
 import NewBranch from './DB_data/Branch/NewBranch';
 
-// import { UserContext } from '../Context/UserContext';
+function ProtectedRoutes(){
 
-function Routes(){
-  // const { isLogedIn } = useContext(UserContext);
-
-  // const checkUserLogin = (isLogedIn) => {
-
-  // }
-  
   return(
     <>
       <BrowserRouter>
@@ -68,4 +61,4 @@ function Routes(){
   );
 }
 
-export default Routes;
+export default ProtectedRoutes;
