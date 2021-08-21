@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
-// import React, { Component} from 'react';
 import UpperNavBar from '../Parts/UpperNavBar';
 import MainNavBar from '../Parts/MainNavBar';
 import OurProducts from '../Parts/OurProducts';
 import HashLoader from 'react-spinners/HashLoader';
 import Footer from '../Parts/Footer';
-// import ProductContextProvider from '../Context/ProductContext';
-// import CartContextProvider from '../Context/CartContext';
 
 import '../Pages/Productspage.css';
 
-function Productspage(props){
+function Productspage(){
 
     const [spinner, setSpinner] = useState(true);
     const [show, setShow] = useState(false);
@@ -33,11 +30,7 @@ function Productspage(props){
                 <div id="products">
                     <UpperNavBar />
                     <MainNavBar />
-                    {/* <CartContextProvider>
-                        <ProductContextProvider> */}
-                            <OurProducts/>
-                        {/* </ProductContextProvider>
-                    </CartContextProvider> */}
+                        <OurProducts/>
                     <Footer />
                 </div>
             </div>

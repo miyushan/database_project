@@ -1,11 +1,13 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, useContext} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/UpperNavBar.css';
 import {Navbar, Container, Button} from "react-bootstrap";
 import { ReactComponent as SignOut } from '../files/sign-out-alt-solid.svg';
-
+import { UserContext } from '../Context/UserContext';
 
 function UpperNavBar(){
+
+    const { setIsLogedIn } = useContext(UserContext);
 
     const [userName, setUserName] = useState('');
     const [gender, setGender] = useState('');
@@ -38,6 +40,8 @@ function UpperNavBar(){
     }
 
     const clearUser = () => {
+        setIsLogedIn(false);
+
         localStorage.removeItem('userDetails');
         localStorage.removeItem('cartDetails');
         localStorage.removeItem('priceDetails'); 

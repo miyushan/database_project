@@ -1,12 +1,14 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, useContext} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/LoginForm.css';
 import axios from 'axios';
 import { Route, Redirect } from "react-router-dom";
+import { UserContext } from '../Context/UserContext';
 
 import {Form, Button} from "react-bootstrap";
 
 export default function LoginForm (){
+    const { setIsLogedIn } = useContext(UserContext);
 
     const [customers, setCustomers] = useState([]);
     const [contactNumber, setContactNumber] = useState('');
@@ -47,6 +49,9 @@ export default function LoginForm (){
                     branchName: customer.Branch_Name,
                     logedInUser: true,
                 }
+
+                setIsLogedIn(true);
+
                 //Add the session
                 localStorage.setItem('userDetails', JSON.stringify(userDetails));
                 //get data in the session

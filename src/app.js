@@ -1,38 +1,23 @@
-import React, { useState} from 'react';
-// import axios from 'axios';
+import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import ProductContextProvider from '../src/Context/ProductContext';
 import CartContextProvider from '../src/Context/CartContext';
+import UserContextProvider from '../src/Context/UserContext';
 
 import Routes from './Routes';
 
 export default function App(){
 
-  const [cartItems, setCartItems] = useState([]);
-
-  const handleAddProduct = (product) => {
-    console.log(product);
-
-    const obj = {
-      id: product.id,
-      name: product.Name
-    }
-
-    const newArr = cartItems.concat(obj)
-    setCartItems([cartItems, newArr]);
-    console.log(newArr);
-    console.log(cartItems);
-
-  }
-
   return(
     <div>
       <Router>
-        <CartContextProvider>
-          <ProductContextProvider>
-            <Routes cartItems={cartItems} handleAddProduct={handleAddProduct}/>
-          </ProductContextProvider>
-        </CartContextProvider>
+        <UserContextProvider>
+          <CartContextProvider>
+            <ProductContextProvider>
+              <Routes />
+            </ProductContextProvider>
+          </CartContextProvider>
+        </UserContextProvider>
       </Router>
     </div>
   )

@@ -3,7 +3,7 @@ import MainNavBar from '../Parts/MainNavBar';
 import CartItems from '../Parts/CartItems';
 import Footer from '../Parts/Footer';
 
-function Cartpage(props){
+function Cartpage(){
     return(
         <>
             <div id="cart">
