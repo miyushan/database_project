@@ -41,7 +41,7 @@ function CartTable () {
                                 <th className="table-column table-column-1">Product ID</th>
                                 <th className="table-column table-column-2">Product</th>
                                 <th className="table-column table-column-3">Quantity</th>
-                                <th className="table-column table-column-4">Price</th>
+                                <th className="table-column table-column-4">Remove</th>
                                 <th className="table-column table-column-4">Price</th>
                             </tr>
                         </thead>
@@ -54,10 +54,10 @@ function CartTable () {
                                         <td>{product.id}</td>
                                         <td className="left-image"><img src={item1} alt="product" className="img-product"/>{product.Name}</td>
                                         <td>{product.Weight} Kg</td>
-                                        <td className="price-col">Rs {product.Price}</td>
                                         <td className="">
                                             <a className="remove-from-cart-btn" onClick={(e)=>{ removeFromCart(product.id, product.Price); e.preventDefault();}}><Remove className="success remove-from-cart" height="22px"/></a>
                                         </td>
+                                        <td className="price-col">Rs {product.Price}</td>
                                     </tr>
                                 )  
 

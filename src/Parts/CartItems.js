@@ -36,12 +36,21 @@ function CartItems(){
                             </Button>
                         </Col>
                         <Col className="cartDetail-column"></Col>
-                        <Col className="cartDetail-column cartDetail-column-3 d-flex flex-column align-items-end align-self-end">
-                            <div className="cartDetail-column-2 mt-2 add-curser">Sub Total: {totPrice.toFixed( 2 )}</div>
-                            <div className="cartDetail-column-2 add-curser">Discount: {discount.toFixed( 2 )}%</div>
-                            <div className="cartDetail-column-2 mb-0 add-curser">Total: {calculatePrice(totPrice, discount)}</div>
+                        <Col className="cartDetail-column cartDetail-column-3 d-flex flex-column">
+                            <Row className="cartDetail-column-2 mt-2 add-curser">
+                                <Col className="d-flex justify-content-end">Sub Total: </Col>
+                                <Col className="d-flex justify-content-center">{totPrice.toFixed( 2 )}</Col>
+                            </Row>
+                            <Row className="cartDetail-column-2 add-curser">
+                                <Col className="d-flex justify-content-end">Discount: </Col>
+                                <Col className="d-flex justify-content-center">{discount.toFixed( 2 )}%</Col>
+                            </Row>
+                            <Row className="cartDetail-column-2 mb-0 add-curser">
+                                <Col className="d-flex justify-content-end">Total: </Col>
+                                <Col className="d-flex justify-content-center">{calculatePrice(totPrice, discount)}</Col>
+                            </Row>
                         </Col>
-                        <Col className="cartDetail-column"></Col>
+                        {/* <Col className="cartDetail-column"></Col> */}
                     </Row>
                 </Container>
 
