@@ -54,6 +54,7 @@
 
 .remove-from-cart{
     fill: rgb(255, 0, 0) !important;
+    cursor: pointer;
 }
 .remove-from-cart:hover{
     fill: rgb(209, 6, 6) !important;
@@ -61,4 +62,8 @@
 
 .remove-from-cart-btn{
     cursor: pointer;
+}
+
+.add-reduce{
+    padding: 0 10px !important;
 }
