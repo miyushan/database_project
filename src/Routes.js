@@ -28,7 +28,7 @@ import NewBranch from './DB_data/Branch/NewBranch';
 
 function Routes(){
   // const { isLogedIn } = useContext(UserContext);
-  const [isLogedIn, setIsLogedIn] = useState(true);
+  const [isLogedIn] = useState(true);
 
   const logedin = () => {
     return(
@@ -42,7 +42,9 @@ function Routes(){
           <Route path="/register" exact><CreateAccountpage /></Route>
           <Route path="/cart" exact><Cartpage /></Route>
           <Route path="/about-us" exact><AboutUspage /></Route>
+
           <Route path="/products" exact><Productspage /></Route>
+
           <Route path="/branches" exact><Branchespage /></Route>
           <Route path="/db/products" exact><ProductDetails/></Route>
           <Route path="/db/products/edit" exact><EditProduct /></Route>

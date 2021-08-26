@@ -64,6 +64,7 @@
     cursor: pointer;
 }
 
-.add-reduce{
-    padding: 0 10px !important;
+.table-column-1, .table-column-3, .table-column-5{
+    /* padding: 0 !important; */
+    max-width: 130px;
 }
