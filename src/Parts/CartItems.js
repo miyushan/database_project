@@ -9,7 +9,7 @@ import PaymentCard from './PaymentCard';
 import { CartContext } from '../Context/CartContext';
 
 function CartItems(){
-    const { cartProducts, totPrice } = useContext(CartContext);
+    const { cartProducts, totalPrice } = useContext(CartContext);
     const discount = 5;
 
     const calculatePrice = (totPrice, discount) =>{
@@ -39,7 +39,7 @@ function CartItems(){
                         <Col className="cartDetail-column cartDetail-column-3 d-flex flex-column">
                             <Row className="cartDetail-column-2 mt-2 add-curser">
                                 <Col className="d-flex justify-content-end">Sub Total: </Col>
-                                <Col className="d-flex justify-content-center">{totPrice.toFixed( 2 )}</Col>
+                                <Col className="d-flex justify-content-center">{totalPrice.toFixed( 2 )}</Col>
                             </Row>
                             <Row className="cartDetail-column-2 add-curser">
                                 <Col className="d-flex justify-content-end">Discount: </Col>
@@ -47,7 +47,7 @@ function CartItems(){
                             </Row>
                             <Row className="cartDetail-column-2 mb-0 add-curser">
                                 <Col className="d-flex justify-content-end">Total: </Col>
-                                <Col className="d-flex justify-content-center">{calculatePrice(totPrice, discount)}</Col>
+                                <Col className="d-flex justify-content-center">{calculatePrice(totalPrice, discount)}</Col>
                             </Row>
                         </Col>
                         {/* <Col className="cartDetail-column"></Col> */}

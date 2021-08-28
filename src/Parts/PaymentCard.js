@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/PaymentCard.css';
+import axios from 'axios';
 import {Form, Container, Button, Row, Col} from "react-bootstrap";
 
 function PaymentCard(){
 
-
-  
     const [name, setName] = useState('');
     const [address, setAddress] = useState('');
     const [cardNumber, setCardNumber] = useState('');
@@ -40,21 +39,30 @@ function PaymentCard(){
 
     const onPayNow =(e)=>{
         if(name && address && cardNumber && date && cvv){
+            axios.post('http://localhost/database_project/create_New_Order.php',{
+                name: name,
+                address: address,
+                cardNumber: cardNumber,
+                expDate: date,
+                cvv: cvv,
+            })
+
             localStorage.removeItem('cartDetails');
-            localStorage.removeItem('priceDetails'); 
             console.log('hello')
             setName('');
             setAddress('');
             setCardNumber('');
             setDate('');
             setcvc('');
+
+
         }
     }
 
     return(
         <>
             <Container className="form-container">
-                <Form className="payment-form" onSubmit={onPayNow}>
+                <Form className="payment-form" onSubmit={onPayNow} method="post">
                     <Row className="mt-1 mb-4">
                         <Form.Group as={Col} controlId="formGridName">
                         <Form.Label className="payment-field-title">Name On The Card</Form.Label>

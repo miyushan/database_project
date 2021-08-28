@@ -10,7 +10,7 @@ import { ReactComponent as Increase } from '../files/icons/increase.svg';
 
 function CartTableRow (props) {
 
-    const { removeFromCart } = useContext(CartContext);
+    const { removeFromCart, increaseCartProducts, decreaseCartProducts } = useContext(CartContext);
 
     const [quantity, setQuantity] = useState(parseFloat(0.5));
     const [price, setPrice] = useState(Math.round((0.5*props.price) * 1e2) / 1e2);
@@ -18,17 +18,22 @@ function CartTableRow (props) {
 
     const increase = () => {
         if(maxWeight>quantity && quantity>0){
-            setQuantity((value) => Math.round((quantity + 0.1) * 1e2) / 1e2);
-            setPrice((value) => Math.round((value + (0.1*props.price)) * 1e2) / 1e2);
-            // console.log(price);
+            const tempP = Math.round((price + (0.1*props.price)) * 1e2) / 1e2 ;
+            const tempQ = Math.round((quantity + 0.1) * 1e2) / 1e2
+            setPrice(tempP);
+            setQuantity(tempQ);
+            increaseCartProducts(props.id, tempP, tempQ);
         }
     }
     
     const reduce = () => {
         if(maxWeight>=quantity && quantity>0.1){
-            setQuantity((value) => Math.round((quantity - 0.1) * 1e2) / 1e2);
-            setPrice((value) => Math.round((value - (0.1*props.price)) * 1e2) / 1e2);
-            // console.log(price);
+            const tempP = Math.round((price - (0.1*props.price)) * 1e2) / 1e2 ;
+            const tempQ = Math.round((quantity - 0.1) * 1e2) / 1e2
+            setPrice(tempP);
+            setQuantity(tempQ);
+            increaseCartProducts(props.id, tempP, tempQ);
+            decreaseCartProducts(props.id, tempP, tempQ)
         }
     }
 

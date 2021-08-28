@@ -75,7 +75,7 @@ function NewProduct(){
             <div>
                 <Container className="db-container d-flex justify-content-center align-items-center">
                     
-                    <Form className="db-form" onSubmit={onSubmit} method="post">
+                    <Form className="db-form" onSubmit={onSubmit} method="post" encType="multipart/form-data">
                         <Row>
                             <Col>
                                 <Form.Group className="mb-4" controlId="formGroupProductName">
@@ -83,7 +83,12 @@ function NewProduct(){
                                     <Form.Control className="db-input" variant="success" type="text" placeholder="New Product" value={productName} onChange={onChangeProductName}/>
                                 </Form.Group>
                             </Col>
-                            
+                            <Col>
+                                <Form.Group className="mb-4"  controlId="formFile">
+                                    <Form.Label className="db-form-label">Product Image</Form.Label>
+                                    <Form.Control className="insert-image" type="file" />
+                                </Form.Group>
+                            </Col>
                         </Row>
                         <Row>
                             
@@ -101,7 +106,7 @@ function NewProduct(){
                             </Col>
 
                         </Row>
-                        <Button className="login-submit-btn login-input mt-2 btn-db" variant="success" type="submit">
+                        <Button className="login-submit-btn mt-2 login-input btn-db" variant="success" type="submit">
                             Submit
                         </Button>
 

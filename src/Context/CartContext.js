@@ -3,100 +3,174 @@ import React, { createContext, useState, useEffect } from 'react';
 
 export const CartContext = createContext();
 
-function CartContextProvider (props) {
-    
+function CartContextProvider(props) {
+
     const [products, setProducts] = useState([]);           //whole products
     const [cartProducts, setCartProducts] = useState([]);   //cart object
-    const [totPrice, setTotPrice] = useState(0);            //cart object
-    // const [isSelected, setIsSelected] = useState();   //is seleced product
-    let isExist = false ;
+    let isExist = false;
 
-    
+    //use to get the total price and weight of cart items
+    const [totalPrice, setTotalPrice] = useState(0);
 
     useEffect(() => {
         axios.get('http://localhost/database_project/get_Product_details.php')
-        .then (res =>{
-            setProducts(res.data)
-        })
+            .then(res => {
+                setProducts(res.data)
+            })
+    }, [])
 
-        let price = localStorage.getItem('priceDetails');
-        price = JSON.parse(price);
-        setTotPrice(price);
 
-        let data = localStorage.getItem('cartDetails');
-        data = JSON.parse(data);
-        // console.log(data);
-        if(data===null){
-            setCartProducts([]);
-        }
-        else{
-            setCartProducts(data);
+    useEffect(() => {
+        let tempP = 0;
+        try{
+            let price = localStorage.getItem('cartDetails');
+            price = JSON.parse(price);
+
+            //check are there any items in the cart
+            if (price === null) {
+                setCartProducts([]);
+            }
+            else {
+                setCartProducts(price);
+            }
+
+            price.forEach(item => {
+                tempP = tempP + parseFloat(item.CartPrice);
+                setTotalPrice(tempP)
+            })
+        }catch{
+            console.log('No products in the cart')
         }
     },[])
+
+
+    //increase price when increase the quantity of a cart item
+    const increaseCartProducts = (Id, price, weight) => {
+        let tempP = 0;
+        let newArray = cartProducts.map(item => {
+            if (item.id === Id) { 
+                item.CartPrice = price;
+                item.CartWeight = weight;
+                return item;
+            }else{
+                return item;
+            }
+        })
+        
+        cartProducts.forEach(item => {
+            tempP = tempP + (item.CartPrice);
+            setTotalPrice(tempP)
+        })
+
+        //Add the session
+        localStorage.setItem('cartDetails', JSON.stringify(newArray));
+    }
+
+    
+    //decrease price when decrease the quantity of a cart item
+    const decreaseCartProducts = (Id, price, weight) => {
+        let tempP = 0;
+        let newArray = cartProducts.map(item => {
+            if (item.id === Id) { 
+                item.CartPrice = price;
+                item.CartWeight = weight;
+                return item;
+            }else{
+                return item;
+            }
+        })
+        
+        cartProducts.forEach(item => {
+            tempP = tempP + (item.CartPrice);
+            setTotalPrice(tempP)
+        })
+
+        //Add the session
+        localStorage.setItem('cartDetails', JSON.stringify(newArray));
+    }
+
 
     //add a product to the cart
     const addItem = (Id, cost) => {
 
-        const data = products.filter(product =>{
+        let tempP = 0;
+
+        const data = products.filter(product => {
             return product.id === Id
         })
-        const newItems = [...cartProducts,  data[0]]
+        let newItems = [...cartProducts, data[0]]
+
+        newItems = newItems.map(item => {
+            if (item.id === Id) { 
+                item.CartPrice = (item.Price)/2;
+                item.CartWeight = 0.5;
+                return item;
+            }else{
+                return item;
+            }
+        })
+
+        newItems.forEach(item => {
+            tempP = tempP + parseFloat(item.CartPrice);
+            setTotalPrice(tempP)
+        })
 
         setCartProducts(newItems);
-
-        let tempTotalPrice =  totPrice + cost;
-        setTotPrice(tempTotalPrice);
-
-        //Add the session
+        console.log("Added product\t" + Id);
         localStorage.setItem('cartDetails', JSON.stringify(newItems));
-        localStorage.setItem('priceDetails', JSON.stringify(tempTotalPrice));
     }
-    
-    // check what kind of function call for the click
-    const addToCart = (Id, cost) =>{
-        isExist = false ;
 
-        if (cartProducts.length===0){  
-            console.log(cost)         
+
+    // check what kind of function call for the click
+    const addToCart = (Id, cost) => {
+        isExist = false;
+
+        if (cartProducts.length === 0) {
             addItem(Id, cost);
         }
-        else{
-            cartProducts.forEach(product=>{
-                if(product.id===Id){
+        else {
+            cartProducts.forEach(product => {
+                if (product.id === Id) {
                     isExist = true;
                 }
             })
-            if(isExist===false){
+            if (isExist === false) {
                 addItem(Id, cost);
-            }else{
+            } else {
                 removeFromCart(Id, cost);
             }
         }
     }
 
+
     //remove a product from the cart
     const removeFromCart = (Id, cost) => {
-        const data = cartProducts.filter(product =>{
-            return product.id !== Id
+
+        cartProducts.forEach(item => {
+            if(item.id===Id) {
+                const temp = item.CartPrice;
+                setTotalPrice(val=>val-temp);    
+            }
         })
-        // const newItems = [...cartProducts,  data[0]]
-        console.log("removed\t"+Id)
+        
+        const data = cartProducts.filter(product => {
+            return product.id !== Id;
+        })
+
+        console.log("Removed product\t" + Id);
         setCartProducts(data)
+
         //Add the session
         localStorage.setItem('cartDetails', JSON.stringify(data));
 
-        let tempTotalPrice =  totPrice - cost;
-        setTotPrice(tempTotalPrice);
-        //Add the session
-        localStorage.setItem('priceDetails', JSON.stringify(tempTotalPrice));
     }
 
     return (
-        <CartContext.Provider value={{addToCart, cartProducts, removeFromCart, totPrice}}>
+        <CartContext.Provider value={{ addToCart, cartProducts, removeFromCart, increaseCartProducts, decreaseCartProducts, totalPrice }}>
             {props.children}
         </CartContext.Provider>
     );
-    
+
 }
- 
+
 export default CartContextProvider;

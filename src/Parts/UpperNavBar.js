@@ -44,7 +44,6 @@ function UpperNavBar(){
 
         localStorage.removeItem('userDetails');
         localStorage.removeItem('cartDetails');
-        localStorage.removeItem('priceDetails'); 
         setUserName('');
         setGender('');
         setBranchName('');
