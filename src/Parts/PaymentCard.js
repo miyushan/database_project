@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/PaymentCard.css';
-import axios from 'axios';
+// import axios from 'axios';
 import {Form, Container, Button, Row, Col} from "react-bootstrap";
 
 function PaymentCard(){
@@ -39,13 +39,13 @@ function PaymentCard(){
 
     const onPayNow =(e)=>{
         if(name && address && cardNumber && date && cvv){
-            axios.post('http://localhost/database_project/create_New_Order.php',{
-                name: name,
-                address: address,
-                cardNumber: cardNumber,
-                expDate: date,
-                cvv: cvv,
-            })
+            // axios.post('http://localhost/database_project/create_New_Order.php',{
+            //     name: name,
+            //     address: address,
+            //     cardNumber: cardNumber,
+            //     expDate: date,
+            //     cvv: cvv,
+            // })
 
             localStorage.removeItem('cartDetails');
             console.log('hello')
