@@ -10,30 +10,29 @@ import { ReactComponent as Increase } from '../files/icons/increase.svg';
 
 function CartTableRow (props) {
 
-    const { removeFromCart, increaseCartProducts, decreaseCartProducts } = useContext(CartContext);
+    const { removeFromCart, changeCartQuantity } = useContext(CartContext);
 
-    const [quantity, setQuantity] = useState(parseFloat(0.5));
-    const [price, setPrice] = useState(Math.round((0.5*props.price) * 1e2) / 1e2);
-    const [maxWeight] = useState(parseFloat(props.weight));
+    const [quantity, setQuantity] = useState(Math.round(props.weight * 1e2) / 1e2);
+    const [price, setPrice] = useState(Math.round(props.price * 1e2) / 1e2);
+    const [maxWeight] = useState(parseFloat(props.maxWeight));
 
     const increase = () => {
         if(maxWeight>quantity && quantity>0){
-            const tempP = Math.round((price + (0.1*props.price)) * 1e2) / 1e2 ;
+            const tempP = Math.round((price + (0.1*props.pricePKg)) * 1e2) / 1e2 ;
             const tempQ = Math.round((quantity + 0.1) * 1e2) / 1e2
             setPrice(tempP);
             setQuantity(tempQ);
-            increaseCartProducts(props.id, tempP, tempQ);
+            changeCartQuantity(props.id, tempP, tempQ);
         }
     }
     
     const reduce = () => {
-        if(maxWeight>=quantity && quantity>0.1){
-            const tempP = Math.round((price - (0.1*props.price)) * 1e2) / 1e2 ;
+        if(maxWeight>quantity && quantity>0.1){
+            const tempP = Math.round((price - (0.1*props.pricePKg)) * 1e2) / 1e2 ;
             const tempQ = Math.round((quantity - 0.1) * 1e2) / 1e2
             setPrice(tempP);
             setQuantity(tempQ);
-            increaseCartProducts(props.id, tempP, tempQ);
-            decreaseCartProducts(props.id, tempP, tempQ)
+            changeCartQuantity(props.id, tempP, tempQ);
         }
     }
 
@@ -47,11 +46,11 @@ function CartTableRow (props) {
                     <Col className="cart-icons "><Reduce onClick={()=>{reduce()}} className="success change-weight" height="22px"/></Col>
                 </Row>
             </td>
-            <td>{quantity} Kg</td>
+            <td>{props.weight} Kg</td>
             <td className="red-cart">
-                <Remove className="success remove-from-cart" onClick={(e)=>{ removeFromCart(props.id, props.price); e.preventDefault();}} height="22px"/>
+                <Remove className="success remove-from-cart" onClick={(e)=>{ removeFromCart(props.id); e.preventDefault();}} height="22px"/>
             </td>
-            <td className="price-col">Rs {price}</td>
+            <td className="price-col">Rs {props.price.toFixed(2)}</td>
             
         </>
     );

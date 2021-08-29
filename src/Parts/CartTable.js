@@ -33,7 +33,7 @@ function CartTable () {
                             {cartProducts.map((product) =>{
                                 return (
                                     <tr key={product.id}>
-                                        <CartTableRow image={item1} name={product.Name} price={product.Price} weight={product.Weight} id={product.id}/>
+                                        <CartTableRow image={item1} name={product.Name} price={product.CartPrice} pricePKg={product.Price} maxWeight={product.Weight} weight={product.CartWeight} id={product.id}/>
                                     </tr>
                                 )  
 

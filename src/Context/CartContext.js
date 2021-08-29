@@ -11,6 +11,7 @@ function CartContextProvider(props) {
 
     //use to get the total price and weight of cart items
     const [totalPrice, setTotalPrice] = useState(0);
+    const [totalWeight, setTotalWeight] = useState(0);
 
     useEffect(() => {
         axios.get('http://localhost/database_project/get_Product_details.php')
@@ -22,6 +23,7 @@ function CartContextProvider(props) {
 
     useEffect(() => {
         let tempP = 0;
+        let tempW = 0;
         try{
             let price = localStorage.getItem('cartDetails');
             price = JSON.parse(price);
@@ -36,7 +38,9 @@ function CartContextProvider(props) {
 
             price.forEach(item => {
                 tempP = tempP + parseFloat(item.CartPrice);
+                tempW = tempW + parseFloat(item.CartWeight);
                 setTotalPrice(tempP)
+                setTotalWeight(tempW)
             })
         }catch{
             console.log('No products in the cart')
@@ -44,10 +48,12 @@ function CartContextProvider(props) {
     },[])
 
 
-    //increase price when increase the quantity of a cart item
-    const increaseCartProducts = (Id, price, weight) => {
+    //change selected item price and weight when change the quantity of a cart item
+    const changeCartQuantity = (Id, price, weight) => {
+        console.log(price);
         let tempP = 0;
-        let newArray = cartProducts.map(item => {
+        let tempW = 0;
+        cartProducts.map(item => {
             if (item.id === Id) { 
                 item.CartPrice = price;
                 item.CartWeight = weight;
@@ -58,35 +64,16 @@ function CartContextProvider(props) {
         })
         
         cartProducts.forEach(item => {
-            tempP = tempP + (item.CartPrice);
+            tempP = tempP + Math.round(item.CartPrice * 1e2) / 1e2;
+            tempW = tempW + item.CartWeight;
             setTotalPrice(tempP)
+            setTotalWeight(tempW)
         })
 
+        console.log(tempP);
+        console.log(tempW);
         //Add the session
-        localStorage.setItem('cartDetails', JSON.stringify(newArray));
-    }
-
-    
-    //decrease price when decrease the quantity of a cart item
-    const decreaseCartProducts = (Id, price, weight) => {
-        let tempP = 0;
-        let newArray = cartProducts.map(item => {
-            if (item.id === Id) { 
-                item.CartPrice = price;
-                item.CartWeight = weight;
-                return item;
-            }else{
-                return item;
-            }
-        })
-        
-        cartProducts.forEach(item => {
-            tempP = tempP + (item.CartPrice);
-            setTotalPrice(tempP)
-        })
-
-        //Add the session
-        localStorage.setItem('cartDetails', JSON.stringify(newArray));
+        localStorage.setItem('cartDetails', JSON.stringify(cartProducts));
     }
 
 
@@ -94,6 +81,7 @@ function CartContextProvider(props) {
     const addItem = (Id, cost) => {
 
         let tempP = 0;
+        let tempW = 0;
 
         const data = products.filter(product => {
             return product.id === Id
@@ -111,8 +99,10 @@ function CartContextProvider(props) {
         })
 
         newItems.forEach(item => {
-            tempP = tempP + parseFloat(item.CartPrice);
-            setTotalPrice(tempP)
+            tempP = tempP + parseFloat(item.CartPrice).toFixed(2);
+            tempW = tempW + parseFloat(item.CartWeight);
+            setTotalPrice(tempP);
+            setTotalWeight(tempW);
         })
 
         setCartProducts(newItems);
@@ -144,12 +134,14 @@ function CartContextProvider(props) {
 
 
     //remove a product from the cart
-    const removeFromCart = (Id, cost) => {
+    const removeFromCart = (Id) => {
 
         cartProducts.forEach(item => {
             if(item.id===Id) {
-                const temp = item.CartPrice;
-                setTotalPrice(val=>val-temp);    
+                const tempP = item.CartPrice.toFixed(2);
+                const tempW = item.CartWeight;
+                setTotalPrice(val=>val-tempP);    
+                setTotalWeight(val=>val-tempW);    
             }
         })
         
@@ -166,7 +158,7 @@ function CartContextProvider(props) {
     }
 
     return (
-        <CartContext.Provider value={{ addToCart, cartProducts, removeFromCart, increaseCartProducts, decreaseCartProducts, totalPrice }}>
+        <CartContext.Provider value={{ addToCart, cartProducts, removeFromCart, changeCartQuantity, totalPrice }}>
             {props.children}
         </CartContext.Provider>
     );
