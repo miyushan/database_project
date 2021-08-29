@@ -20,7 +20,6 @@ function CartContextProvider(props) {
             })
     }, [])
 
-
     useEffect(() => {
         let tempP = 0;
         let tempW = 0;
@@ -77,6 +76,26 @@ function CartContextProvider(props) {
     }
 
 
+    // check what kind of function call for the click
+    const addToCart = (Id, cost) => {
+        isExist = false;
+
+        if (cartProducts.length === 0) {
+            addItem(Id, cost);
+        }
+        else {
+            cartProducts.forEach(product => {
+                if (product.id === Id) {
+                    isExist = true;
+                }
+            })
+            if (isExist === false) {
+                addItem(Id, cost);
+            } else {
+                removeFromCart(Id, cost);
+            }
+        }
+    }
     //add a product to the cart
     const addItem = (Id, cost) => {
 
@@ -109,30 +128,6 @@ function CartContextProvider(props) {
         console.log("Added product\t" + Id);
         localStorage.setItem('cartDetails', JSON.stringify(newItems));
     }
-
-
-    // check what kind of function call for the click
-    const addToCart = (Id, cost) => {
-        isExist = false;
-
-        if (cartProducts.length === 0) {
-            addItem(Id, cost);
-        }
-        else {
-            cartProducts.forEach(product => {
-                if (product.id === Id) {
-                    isExist = true;
-                }
-            })
-            if (isExist === false) {
-                addItem(Id, cost);
-            } else {
-                removeFromCart(Id, cost);
-            }
-        }
-    }
-
-
     //remove a product from the cart
     const removeFromCart = (Id) => {
 
