@@ -26,6 +26,7 @@ export default function LoginForm (){
 
     useEffect(() => {
         localStorage.removeItem('userDetails');
+        localStorage.removeItem('cartDetails');
         axios.get('http://localhost/database_project/get_Customer_details.php')
         .then (res =>{
             setCustomers(res.data)

@@ -3,11 +3,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/PaymentCard.css';
 import axios from 'axios';
 import { CartContext } from '../Context/CartContext';
+import { EmployeeContext } from '../Context/EmployeeContext';
 import {Form, Container, Button, Row, Col} from "react-bootstrap";
 import { Route, Redirect } from "react-router-dom";
 
 function PaymentCard(){
     const { totalWeight, totalPrice } = useContext(CartContext);
+    const { deliveryPersons, managers } = useContext(EmployeeContext);
 
     const [name, setName] = useState('');
     const [address, setAddress] = useState('');
@@ -16,6 +18,10 @@ function PaymentCard(){
     const [cvv, setcvc] = useState('');
     const [btnDisable, setBtnDisable] = useState(true);
     const [isPaymentSuccess, setIsPaymentSuccess] = useState(false);
+    const [branch, setBranch] = useState('');
+
+    let dPersonId;
+    let managerId;
 
     let cartData = localStorage.getItem('cartDetails');
     cartData = JSON.parse(cartData);
@@ -26,6 +32,12 @@ function PaymentCard(){
         }else{
             setBtnDisable(false);
         }
+
+        //get user details
+        let userData = localStorage.getItem('userDetails');
+        userData = JSON.parse(userData);
+        setBranch(userData.branchName);
+
     },[cartData])
     
 
@@ -49,24 +61,42 @@ function PaymentCard(){
         setcvc(e.target.value);
     }
 
-    // const changeProductDetails = (id) => {
+    //find related Manager and Delivery Person relater to buyers Branch 
+    const findRelatedEmployees = () => {
+        let tempDPsersons = [];
+        let tempManagers = [];
 
-    // }
+        //to get D Persons in same branch
+        deliveryPersons.forEach(person => {
+            if(person.Branch_Name === branch){
+                tempDPsersons.push(parseFloat(person.id));
+            }
+        })
+        console.log(tempDPsersons);
+        dPersonId = tempDPsersons[ Math.floor(Math.random()*tempDPsersons.length) ];
+        console.log(dPersonId);
+
+        //to get Managers in same branch
+        managers.forEach(person => {
+            if(person.Branch_Name === branch){
+                tempManagers.push(parseFloat(person.id));
+            }
+        })
+        console.log(tempManagers);
+        managerId = tempDPsersons[ Math.floor(Math.random()*tempDPsersons.length) ];
+        console.log(managerId);
+    }
 
     const addtoOrderList = () => {
-        // console.log(totalPrice+"\t"+totalWeight)
+        findRelatedEmployees();
+        console.log(deliveryPersons)
         axios.post('http://localhost/database_project/create_New_Order.php',{
             quantity: totalWeight,
             cost: totalPrice,
             customerId: 1,
-            managerId: 2,
-            deliveryPersonId: 3,
+            managerId: managerId,
+            deliveryPersonId: dPersonId,
         })
-        // axios.post('http://localhost/database_project/create_New_OrderItems.php',{
-        //     itemName: totalWeight,
-        //     itemPrice: totalPrice,
-        //     orderId: 1,
-        // })
         .then(()=>{
             localStorage.removeItem('cartDetails');
             alert('Order is successfully done!')
@@ -80,12 +110,12 @@ function PaymentCard(){
     }
 
     const onPayNow =(e)=>{
+        e.preventDefault();
         if(name && address && cardNumber && date && cvv){
-            e.preventDefault();
             addtoOrderList();
+            findRelatedEmployees();
         }else{
             alert('Fill required fields')
-            e.preventDefault();
         }
     }
 
@@ -123,7 +153,6 @@ function PaymentCard(){
                             <Form.Control className="login-input btn-square" placeholder="123" value={cvv} onChange={onChangecvv}/>
                             </Form.Group>
                         </Col>
-                        
                     </Row>
 
                     <div className=" mb-1 ">

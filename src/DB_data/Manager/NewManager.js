@@ -54,7 +54,7 @@ function NewManager(){
             })
 
             .then(() => {
-                console.log("New Product created");
+                console.log("New Manager created");
                 setFirstName('');
                 setLastName('');
                 setGender('');
@@ -132,7 +132,7 @@ function NewManager(){
                             <Col>
                                 <Form.Group className="mb-4" controlId="formGroupSalary">
                                     <Form.Label className="db-form-label">Salary</Form.Label>
-                                    <Form.Control className="db-input" variant="success" type="text" placeholder="Last Name" value={salary} onChange={onChangeSalary}/>
+                                    <Form.Control className="db-input" variant="success" type="text" placeholder="Salary" value={salary} onChange={onChangeSalary}/>
                                 </Form.Group>
                             </Col>
                             
@@ -141,7 +141,7 @@ function NewManager(){
                             <Col>
                                 <Form.Group className="mb-4" controlId="formGroupContactNumber">
                                     <Form.Label className="db-form-label">Contact Number</Form.Label>
-                                    <Form.Control className="db-input" variant="success" type="text" placeholder="First Name" value={contactNumber} onChange={onChangeContactNumber}/>
+                                    <Form.Control className="db-input" variant="success" type="text" placeholder="Contact Number" value={contactNumber} onChange={onChangeContactNumber}/>
                                 </Form.Group>
                             </Col>
                             <Col>
