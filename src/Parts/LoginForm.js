@@ -13,7 +13,7 @@ export default function LoginForm (){
     const [customers, setCustomers] = useState([]);
     const [contactNumber, setContactNumber] = useState('');
     const [password, setPassword] = useState('');
-    const [isValidUser, setIsValidUser] = useState(false);
+    const [isValidUser, setIsValidUser] = useState();
     
 
     const onChangeContactNumber = (e) => {
@@ -25,9 +25,9 @@ export default function LoginForm (){
     }
 
     useEffect(() => {
+        localStorage.removeItem('userDetails');
         axios.get('http://localhost/database_project/get_Customer_details.php')
         .then (res =>{
-            // console.log(res.data);
             setCustomers(res.data)
         })
     }, []);
@@ -54,14 +54,8 @@ export default function LoginForm (){
 
                 //Add the session
                 localStorage.setItem('userDetails', JSON.stringify(userDetails));
-                //get data in the session
-                // let data = localStorage.getItem('userDetails');
-                // data = JSON.parse(data);
-                // console.log(data);
 
             }
-
-            
 
         })
     }

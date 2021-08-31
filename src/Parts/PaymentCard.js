@@ -4,6 +4,7 @@ import './styles/PaymentCard.css';
 import axios from 'axios';
 import { CartContext } from '../Context/CartContext';
 import {Form, Container, Button, Row, Col} from "react-bootstrap";
+import { Route, Redirect } from "react-router-dom";
 
 function PaymentCard(){
     const { totalWeight, totalPrice } = useContext(CartContext);
@@ -14,6 +15,7 @@ function PaymentCard(){
     const [date, setDate] = useState('');
     const [cvv, setcvc] = useState('');
     const [btnDisable, setBtnDisable] = useState(true);
+    const [isPaymentSuccess, setIsPaymentSuccess] = useState(false);
 
     let cartData = localStorage.getItem('cartDetails');
     cartData = JSON.parse(cartData);
@@ -73,6 +75,7 @@ function PaymentCard(){
             setCardNumber('');
             setDate('');
             setcvc('');
+            setIsPaymentSuccess(true);
         });
     }
 
@@ -129,6 +132,9 @@ function PaymentCard(){
 
                 </Form>
 
+                <Route>
+                    {isPaymentSuccess ? <Redirect to="/home" /> : null} 
+                </Route>
                 
 
             </Container>
