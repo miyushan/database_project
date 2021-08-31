@@ -32,14 +32,6 @@ function ProductContextProvider (props){
         setSelectedItems(id);
     }
 
-    const changeProductDetails = (id) => {
-
-    }
-
-    const addtoOrderList = (id) => {
-        
-    }
-
     return (
         <ProductContext.Provider value={{products, productSelected, selectedItems, handleAddProduct}}>
             {props.children}

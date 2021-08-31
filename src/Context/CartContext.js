@@ -12,6 +12,7 @@ function CartContextProvider(props) {
     //use to get the total price and weight of cart items
     const [totalPrice, setTotalPrice] = useState(0);
     const [totalWeight, setTotalWeight] = useState(0);
+    const [priceWithDiscount, setPriceWithDiscount] = useState(0);
 
     useEffect(() => {
         axios.get('http://localhost/database_project/get_Product_details.php')
@@ -38,8 +39,8 @@ function CartContextProvider(props) {
             price.forEach(item => {
                 tempP = tempP + parseFloat(item.CartPrice);
                 tempW = tempW + parseFloat(item.CartWeight);
-                setTotalPrice(tempP)
-                setTotalWeight(tempW)
+                setTotalPrice(tempP);
+                setTotalWeight(tempW);
             })
         }catch{
             console.log('No products in the cart')
@@ -153,7 +154,7 @@ function CartContextProvider(props) {
     }
 
     return (
-        <CartContext.Provider value={{ addToCart, cartProducts, removeFromCart, changeCartQuantity, totalPrice }}>
+        <CartContext.Provider value={{ addToCart, cartProducts, removeFromCart, changeCartQuantity, totalPrice, totalWeight }}>
             {props.children}
         </CartContext.Provider>
     );

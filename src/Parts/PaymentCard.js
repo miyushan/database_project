@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/PaymentCard.css';
-// import axios from 'axios';
+import axios from 'axios';
+import { CartContext } from '../Context/CartContext';
 import {Form, Container, Button, Row, Col} from "react-bootstrap";
 
 function PaymentCard(){
+    const { totalWeight, totalPrice } = useContext(CartContext);
 
     const [name, setName] = useState('');
     const [address, setAddress] = useState('');
     const [cardNumber, setCardNumber] = useState('');
-    // const [month, setMonth] = useState('');
     const [date, setDate] = useState('');
     const [cvv, setcvc] = useState('');
 
@@ -25,10 +26,6 @@ function PaymentCard(){
         setCardNumber(e.target.value);
     }
 
-    // const onChangeMonth = (e) => {
-    //     setMonth(e.target.value);
-    // }
-
     const onChangeDate = (e) => {
         setDate(e.target.value);
     }
@@ -37,26 +34,40 @@ function PaymentCard(){
         setcvc(e.target.value);
     }
 
-    const onPayNow =(e)=>{
-        if(name && address && cardNumber && date && cvv){
-            // axios.post('http://localhost/database_project/create_New_Order.php',{
-            //     name: name,
-            //     address: address,
-            //     cardNumber: cardNumber,
-            //     expDate: date,
-            //     cvv: cvv,
-            // })
+    const changeProductDetails = (id) => {
 
+    }
+
+    const addtoOrderList = () => {
+        console.log(totalPrice+"\t"+totalWeight)
+        axios.post('http://localhost/database_project/create_New_Order.php',{
+            quantity: totalWeight,
+            cost: totalPrice,
+            customerId: 1,
+            managerId: 2,
+            deliveryPersonId: 3,
+        })
+        .then(()=>{
             localStorage.removeItem('cartDetails');
-            console.log('hello')
+            console.log('hello');
             setName('');
             setAddress('');
             setCardNumber('');
             setDate('');
             setcvc('');
+        });
+    }
 
-
-        }
+    const onPayNow =(e)=>{
+        e.preventDefault();
+        addtoOrderList();
+        // if(name && address && cardNumber && date && cvv){
+        //     e.preventDefault();
+        //     addtoOrderList();
+        // }else{
+        //     console.log('error');
+        //     e.preventDefault();
+        // }
     }
 
     return(

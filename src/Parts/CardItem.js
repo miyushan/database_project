@@ -6,7 +6,7 @@ import { CartContext } from '../Context/CartContext';
 
 export default function CardItem (props){
     const { addToCart } = useContext(CartContext);
-   
+    
     return(
         <>
             <Card className="card-item add-curser" style={{ width: '210px' }}>

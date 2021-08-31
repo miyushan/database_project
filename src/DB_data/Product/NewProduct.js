@@ -47,7 +47,7 @@ function NewProduct(){
                 setProductName('');
                 setPricePerKilogram('');
                 setTotalStockWeight('');
-                setIsProductAdded(true)
+                setIsProductAdded(true);
             });
         }
     }
