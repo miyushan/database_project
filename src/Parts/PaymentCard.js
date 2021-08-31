@@ -60,6 +60,11 @@ function PaymentCard(){
             managerId: 2,
             deliveryPersonId: 3,
         })
+        // axios.post('http://localhost/database_project/create_New_OrderItems.php',{
+        //     itemName: totalWeight,
+        //     itemPrice: totalPrice,
+        //     orderId: 1,
+        // })
         .then(()=>{
             localStorage.removeItem('cartDetails');
             alert('Order is successfully done!')
