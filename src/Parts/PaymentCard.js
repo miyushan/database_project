@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/PaymentCard.css';
 import axios from 'axios';
@@ -13,6 +13,19 @@ function PaymentCard(){
     const [cardNumber, setCardNumber] = useState('');
     const [date, setDate] = useState('');
     const [cvv, setcvc] = useState('');
+    const [btnDisable, setBtnDisable] = useState(true);
+
+    let cartData = localStorage.getItem('cartDetails');
+    cartData = JSON.parse(cartData);
+
+    useEffect(() =>{
+        if (!cartData || cartData.length === 0) {
+            setBtnDisable(true);
+        }else{
+            setBtnDisable(false);
+        }
+    },[cartData])
+    
 
     const onChangeName = (e) => {
         setName(e.target.value);
@@ -34,12 +47,12 @@ function PaymentCard(){
         setcvc(e.target.value);
     }
 
-    const changeProductDetails = (id) => {
+    // const changeProductDetails = (id) => {
 
-    }
+    // }
 
     const addtoOrderList = () => {
-        console.log(totalPrice+"\t"+totalWeight)
+        // console.log(totalPrice+"\t"+totalWeight)
         axios.post('http://localhost/database_project/create_New_Order.php',{
             quantity: totalWeight,
             cost: totalPrice,
@@ -49,7 +62,7 @@ function PaymentCard(){
         })
         .then(()=>{
             localStorage.removeItem('cartDetails');
-            console.log('hello');
+            alert('Order is successfully done!')
             setName('');
             setAddress('');
             setCardNumber('');
@@ -59,15 +72,13 @@ function PaymentCard(){
     }
 
     const onPayNow =(e)=>{
-        e.preventDefault();
-        addtoOrderList();
-        // if(name && address && cardNumber && date && cvv){
-        //     e.preventDefault();
-        //     addtoOrderList();
-        // }else{
-        //     console.log('error');
-        //     e.preventDefault();
-        // }
+        if(name && address && cardNumber && date && cvv){
+            e.preventDefault();
+            addtoOrderList();
+        }else{
+            alert('Fill required fields')
+            e.preventDefault();
+        }
     }
 
     return(
@@ -108,7 +119,7 @@ function PaymentCard(){
                     </Row>
 
                     <div className=" mb-1 ">
-                        <Button className="login-submit-btn login-input pay-now-btn" type="submit">PAY NOW</Button>
+                        <Button disabled={btnDisable} className="login-submit-btn login-input pay-now-btn" type="submit">PAY NOW</Button>
                     </div>
 
                 </Form>
