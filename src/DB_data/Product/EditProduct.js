@@ -1,54 +1,62 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { useParams } from 'react-router-dom';
 import {Form, Row, Col, Button, Container} from "react-bootstrap";
 import { ReactComponent as Back } from '../../files/icons/caret-left-solid.svg';
 import axios from 'axios';
-// import './EditProduct.css';
+import { ProductContext } from '../../Context/ProductContext';
 
 
 function EditProduct(props){
+    const { products } = useContext(ProductContext);
+    const { id } = useParams();
 
-    const [products, setProducts] = useState([]);
-    const [productName, setProductName] = useState(props.prname);
+    const [productName, setProductName] = useState('');
     const [totalStockWeight, setTotalStockWeight] = useState('');
     const [pricePerKilogram, setPricePerKilogram] = useState('');
-    let [isOldProduct, setIsOldProduct] = useState(false);
-    let [isProductAdded, setIsProductAdded] = useState(false);
+    const [initialProductName, setInitialProductName] = useState('');
+    const [initialTotalStockWeight, setInitialTotalStockWeight] = useState('');
+    const [initialPricePerKilogram, setInitialPricePerKilogram] = useState('');
 
+    const productId = id;
 
     useEffect(() => {
-        // console.log(props.prname)
-        axios.get('http://localhost/database_project/get_Product_Details.php')
-        .then(res => res.data)
-        .then((res) => {
-            setProducts(res);
-            setIsOldProduct(false);
+        products.forEach((product)=>{
+            if(product.id === productId){
+                setInitialProductName(product.Name);
+                setInitialTotalStockWeight(product.Weight);
+                setInitialPricePerKilogram(product.Price);
+                setProductName(product.Name);
+                setTotalStockWeight(product.Weight);
+                setPricePerKilogram(product.Price);
+            }  
         })
-    },[isProductAdded]);
+    }, [products, productId]);
 
-    const checkNewProduct = () => {
-        products.forEach(product => {
+    const checkAnyChanges = () => {
+        if((productName!==initialProductName || totalStockWeight!==initialTotalStockWeight || pricePerKilogram!==initialPricePerKilogram) && (productName.length!==0 && totalStockWeight.length!==0 && pricePerKilogram.length!==0)){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
-            if(productName === product.Name){
-                isOldProduct = true;
-                console.log("isOldProduct\t" + isOldProduct); 
-                console.log("old product");  
-            }
-
-        })
-
-        if(isOldProduct===false){
-            axios.post('http://localhost/database_project/update_Product.php?id='+{
+    const changeProductDetails = () => {
+        if (checkAnyChanges()){
+            console.log('hello');
+            axios.post('http://localhost/database_project/update_Product.php',{
+                id: productId,
                 productName: productName,
                 totalStockWeight: totalStockWeight,
                 pricePerKilogram: pricePerKilogram,
             })
             .then(() => {
-                console.log("Product Edited");
-                setProductName('');
-                setPricePerKilogram('');
-                setTotalStockWeight('');
-                setIsProductAdded(true)
+                alert('Product Edited Successfully!');
             });
+        }else{
+            alert('Please Do Valid Changes!');
+            setProductName(initialProductName);
+            setTotalStockWeight(initialTotalStockWeight);
+            setPricePerKilogram(initialPricePerKilogram);
         }
     }
 
@@ -65,9 +73,8 @@ function EditProduct(props){
     }
 
     const onSubmit = (e) => {
-        console.log(products)
         e.preventDefault();
-        checkNewProduct();
+        changeProductDetails();
     }
 
     return ( 
@@ -96,7 +103,7 @@ function EditProduct(props){
                             <Col>
                                 <Form.Group className="mb-4" controlId="formGroupPricePerKilogram">
                                     <Form.Label className="db-form-label">Price Per Kilogram</Form.Label>
-                                    <Form.Control className="db-input" variant="success" type="text" placeholder="Price Per Kg" value={pricePerKilogram} onChange={onChangePricePerKilogram} />
+                                    <Form.Control className="db-input" variant="success" type="text" value={pricePerKilogram} onChange={onChangePricePerKilogram} />
                                 </Form.Group>
                             </Col>
 

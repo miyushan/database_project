@@ -47,7 +47,7 @@ function Routes(){
 
           <Route path="/branches" exact><Branchespage /></Route>
           <Route path="/db/products" exact><ProductDetails/></Route>
-          <Route path="/db/products/edit" exact><EditProduct /></Route>
+          <Route path="/db/products/edit/:id" exact><EditProduct /></Route>
           <Route path="/db/products/add" exact><NewProduct /></Route>
           <Route path="/db/customer" exact><CustomerDetails /></Route>
           <Route path="/db/customer/edit" exact><EditCustomer /></Route>
