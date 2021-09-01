@@ -57,13 +57,18 @@
 }
 
 .priceDetails{
-    margin-right: 30px;
-    /* padding-left: -100px; */
     font-weight: bold;
+}
+
+.pricePadding{
+    margin-right: 20px;
 }
 
 .priceColor{
     color: #0f0;
     background-color: rgba(0, 0, 0, 0.842);
-    /* text-decoration: underline; */
+}
+
+.cartDetail-column-3{
+    padding-right: 25px;
 }
