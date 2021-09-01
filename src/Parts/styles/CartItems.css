@@ -55,3 +55,15 @@
     top: -5px;
     box-shadow: rgba(149, 157, 165, 0.363) 0px 8px 24px;
 }
+
+.priceDetails{
+    margin-right: 30px;
+    /* padding-left: -100px; */
+    font-weight: bold;
+}
+
+.priceColor{
+    color: #0f0;
+    background-color: rgba(0, 0, 0, 0.842);
+    /* text-decoration: underline; */
+}

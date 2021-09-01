@@ -1,9 +1,14 @@
 .table-column{
-    width: 200px;
+    /* width: 200px; */
 }
-
 .table-column-2{
-    width: 300px;
+    min-width: 250px;
+}
+.table-column-6{
+    min-width: 132.93px;
+}
+.table-column-1, .table-column-3, .table-column-5{
+    /* max-width: 130px; */
 }
 
 .table-container{
@@ -45,11 +50,13 @@
 
 .left-image{
     text-align: left;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
 
 .price-col{
-    padding-left: 60px !important;
-    text-align: left;
+    /* padding-left: 60px !important; */
+    text-align: right;
 }
 
 .remove-from-cart{
@@ -64,7 +71,3 @@
     cursor: pointer;
 }
 
-.table-column-1, .table-column-3, .table-column-5{
-    /* padding: 0 !important; */
-    max-width: 130px;
-}

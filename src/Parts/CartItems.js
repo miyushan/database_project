@@ -35,15 +35,15 @@ function CartItems(){
                         <Col className="cartDetail-column cartDetail-column-3 d-flex flex-column">
                             <Row className="cartDetail-column-2 mt-2 add-curser">
                                 <Col className="d-flex justify-content-end">Sub Total: </Col>
-                                <Col className="d-flex justify-content-center">{totalPrice.toFixed( 2 )}</Col>
+                                <Col className="d-flex justify-content-end priceDetails">Rs {totalPrice.toFixed( 2 )}</Col>
                             </Row>
                             <Row className="cartDetail-column-2 add-curser">
                                 <Col className="d-flex justify-content-end">Discount: </Col>
-                                <Col className="d-flex justify-content-center">{discount.toFixed( 2 )}%</Col>
+                                <Col className="d-flex justify-content-end priceDetails">{discount.toFixed( 2 )}%</Col>
                             </Row>
                             <Row className="cartDetail-column-2 mb-0 add-curser">
                                 <Col className="d-flex justify-content-end">Total: </Col>
-                                <Col className="d-flex justify-content-center">{priceWithDiscount}</Col>
+                                <Col className="d-flex justify-content-end priceDetails priceColor">Rs {priceWithDiscount}</Col>
                             </Row>
                         </Col>
                         {/* <Col className="cartDetail-column"></Col> */}
