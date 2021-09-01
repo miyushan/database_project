@@ -1,15 +1,9 @@
-.outer-nav{
-    position: relative;
-    background-color: #464141;
-    height: 40px !important;
-}
-
 .main-nav{
-    width: 550px;
+    width: 100%;
 }
 
 .nav-title-2{
-    width: 80px;
+    min-width: 100px;
     align-items: center;
     font-family: Roboto;
     font-style: normal;
@@ -24,9 +18,10 @@
     color: rgba(0, 255, 0, 0.733) !important;
 }
 
-.outer-nav{  
-    /* position: -webkit-sticky; */
+.outer-nav{
     position: sticky;
+    background-color: #464141;
+    height: 40px !important;
     top: -1px;
     z-index: 1;
     /* transition-timing-function: ease-in-out; */
@@ -35,9 +30,9 @@
 
 .cart{
     cursor: pointer;
-    position: absolute;
-    top: -7px;
-    right: 7.5%;
+    margin-left: auto;
+    margin-right: 0;
+    position: relative;
     font-family: Roboto;
     font-style: normal;
     font-size: 14px;
@@ -46,6 +41,7 @@
 }
 
 .ignore-btn{
+    position: relative;
     background-color: transparent !important;
     border: none;
     text-align:  center;
@@ -60,6 +56,27 @@
     color: rgb(3, 212, 3);
 }
 
+.cartProductExist{
+    position: absolute;
+    right: -5px;
+    top: 10px;
+    background-color: #f00;
+    border-radius:10px;
+    height: 17px;
+    width: 17px;
+}
+
+.cartProductCountRel{
+    position: relative;
+}
+.cartProductCount{
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.767);
+    position: absolute;
+    top: -9px;
+    right: -2px;
+    text-align: center !important;
+}
 .to-cart-btn{
     margin-right: 15px;
 }
@@ -67,10 +84,3 @@
 .ignore-btn{
     padding: 4px 6px 5px 6px !important;
 }
-
-/* .cart-icon{
-    color: #f00;
-}
-.cart-icon:hover{
-    color: rgb(216, 1, 1);
-} */
