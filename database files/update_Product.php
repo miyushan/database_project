@@ -2,10 +2,12 @@
     include('db_config.php');
 
     $postdata = file_get_contents('php://input');
-
+	
+	echo $postdata;
     if(isset($postdata) && !empty($postdata)){
 
         $request = json_decode($postdata);
+		
         echo $id = $request->id;
         echo $productName = $request->productName;
         echo $totalStockWeight = $request->totalStockWeight;

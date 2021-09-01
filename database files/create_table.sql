@@ -57,7 +57,6 @@ CREATE TABLE `product` (
     `Name` varchar(120) NOT NULL,
     `Weight` double NOT NULL,
     `Price` double NOT NULL,
-    `Image` blob NOT NULL,
     `Posting_Date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -65,11 +64,11 @@ CREATE TABLE `product` (
 DROP TABLE IF EXISTS `order`;
 CREATE TABLE `order` (
     `id` int(6) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `Qantity` int(6) NOT NULL,
-    `Total_Cost` double NOT NULL,
-    `Customer_id` int(6) NOT NULL,
-    `Manager_id` int(6) NOT NULL,
-    `Delivery_Person_id` int(6) NOT NULL,
+	`Quantity` double NOT NULL,
+    `Total_Cost` varchar(120) NOT NULL,
+    `Customer_Id` int(6) NOT NULL,
+	`Manager_Id` int(6) NOT NULL,
+	`Delivery_Person_Id` int(6) NOT NULL,
     `Posting_Date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

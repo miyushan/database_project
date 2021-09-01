@@ -54,11 +54,7 @@ INSERT INTO `product` (`id`, `Name`, `Weight`, `Price`, `Posting_Date`) VALUES
 (29, 'Ginger', '12', '425.50' , '2020-12-14 08:58:31'),
 (30, 'Dambala', '15', '350.00' , '2020-12-14 08:59:06');
 
-
-INSERT INTO `product` (`id`, `Name`, `Weight`, `Price`, `Posting_Date`) VALUES
+INSERT INTO `order` (`id`, `Name`, `Weight`, `Price`, `Posting_Date`) VALUES
 (1, 'Carrot', '3', '220.00', '2020-12-14 08:25:29'),
 (2, 'Carro', '3', '220.00', '2020-12-14 08:25:29');
 
-INSERT INTO `product`
-SELECT 'Image' 
-BulkColumn FROM OPENROWSET(BULK N'E:\CAMPUS\E18_5th_Semester\EC5070- Database Systems\Project\food_ordering_system\src\files\product-images\1_Brinjals.png', SINGLE_BLOB) image;
