@@ -17,6 +17,7 @@ export const ProductContext = createContext();
 function ProductContextProvider (props){
     
     const [products, setProducts] = useState([]);
+    const [popularProducts, setPopularProducts] = useState([]);
     const [productSelected, setProductSelected] = useState([]);
     const [selectedItems, setSelectedItems] = useState([]);
 
@@ -25,7 +26,15 @@ function ProductContextProvider (props){
         .then (res =>{
             setProducts(res.data)
         })
-    },[])
+
+        const tempPopularPro = [];
+        tempPopularPro[0] = products[3];
+        tempPopularPro[1] = products[5];
+        tempPopularPro[2] = products[8];
+        tempPopularPro[3] = products[7];
+
+        setPopularProducts(tempPopularPro)
+    },[products])
 
     const handleAddProduct = (id) => {
         setProductSelected(!productSelected);
@@ -33,7 +42,7 @@ function ProductContextProvider (props){
     }
 
     return (
-        <ProductContext.Provider value={{products, productSelected, selectedItems, handleAddProduct}}>
+        <ProductContext.Provider value={{products, productSelected, selectedItems, handleAddProduct, popularProducts}}>
             {props.children}
         </ProductContext.Provider>
     );
