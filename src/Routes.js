@@ -52,13 +52,13 @@ function Routes(){
           <Route path="/db/customer" exact><CustomerDetails /></Route>
           <Route path="/db/customer/edit" exact><EditCustomer /></Route>
           <Route path="/db/delivery-person" exact><DeliveryPersonDetails /></Route>
-          <Route path="/db/delivery-person/edit" exact><EditDeliveryPerson /></Route>
+          <Route path="/db/delivery-person/edit/:id" exact><EditDeliveryPerson /></Route>
           <Route path="/db/delivery-person/add" exact><NewDeliveryPerson /></Route>
           <Route path="/db/manager" exact><ManagerDetails /></Route>
-          <Route path="/db/manager/edit" exact><EditManager /></Route>
+          <Route path="/db/manager/edit/:id" exact><EditManager /></Route>
           <Route path="/db/manager/add" exact><NewManager /></Route>
           <Route path="/db/branch" exact><BranchDetails /></Route>
-          <Route path="/db/branch/edit" exact><EditBranch /></Route>
+          <Route path="/db/branch/edit/:id" exact><EditBranch /></Route>
           <Route path="/db/branch/add" exact><NewBranch /></Route>
 
         </Switch>

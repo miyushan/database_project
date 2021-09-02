@@ -6,7 +6,7 @@ import axios from 'axios';
 import { ProductContext } from '../../Context/ProductContext';
 
 
-function EditProduct(props){
+function EditProduct(){
     const { products } = useContext(ProductContext);
     const { id } = useParams();
 
@@ -34,7 +34,6 @@ function EditProduct(props){
         })
     }, [products, productId]);
 
-    //check properties of the considering product are changed or not
     const checkAnyChanges = () => {
         if((productName!==initialProductName || totalStockWeight!==initialTotalStockWeight || pricePerKilogram!==initialPricePerKilogram) && (productName.length!==0 && totalStockWeight.length!==0 && pricePerKilogram.length!==0)){
             return true;
@@ -46,7 +45,6 @@ function EditProduct(props){
     const changeProductDetails = () => {
         //change product data
         if (checkAnyChanges()){
-            console.log('hello');
             axios.post('http://localhost/database_project/update_Product.php',{
                 id: productId,
                 productName: productName,
@@ -54,13 +52,16 @@ function EditProduct(props){
                 pricePerKilogram: pricePerKilogram,
             })
             .then(() => {
-                alert('Product Edited Successfully!');
+                alert('Product Updated Successfully!');
+                setInitialProductName(productName);
+                setInitialTotalStockWeight(totalStockWeight);
+                setInitialPricePerKilogram(pricePerKilogram);
             });
         }else{
             alert('Please Do Valid Changes!');
-            setProductName(initialProductName);
-            setTotalStockWeight(initialTotalStockWeight);
-            setPricePerKilogram(initialPricePerKilogram);
+            // setProductName(initialProductName);
+            // setTotalStockWeight(initialTotalStockWeight);
+            // setPricePerKilogram(initialPricePerKilogram);
         }
     }
 

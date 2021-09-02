@@ -86,7 +86,7 @@ function DeliveryPersonDetails(){
                                         <td className="t-data-c t-data-c9 t-data-c-time"><div>{customer.Posting_Date}</div></td>
                                         <td className="t-data-c">
                                             <ButtonGroup aria-label="Basic example">
-                                                <Button href="/db/delivery-person/edit" className="btn-edit"variant="warning"><Edit className="edit-p" height="15px"/></Button>
+                                                <Button href={"delivery-person/edit/"+customer.id} className="btn-edit"variant="warning"><Edit className="edit-p" height="15px"/></Button>
                                                 <Button href="/db/delivery-person" className="btn-delete" onClick={() => deleteCustomer(customer.id)} variant="danger"><Delete className="delete-p" height="15px"/></Button>
                                             </ButtonGroup>
                                         </td>
