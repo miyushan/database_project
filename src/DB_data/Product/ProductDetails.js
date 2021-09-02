@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, useContext} from 'react';
 import './ProductDetails.css';
 import {Table, Container, ButtonGroup, Button, Breadcrumb, Col, Row } from "react-bootstrap";
 import axios from 'axios';
@@ -6,42 +6,25 @@ import { ReactComponent as Edit } from '../../files/icons/edit-regular.svg';
 import { ReactComponent as Delete } from '../../files/icons/trash-alt-regular.svg';
 import { ReactComponent as New } from '../../files/icons/plus-solid.svg';
 
-
-
+import { ProductContext } from '../../Context/ProductContext';
 
 function ProductDetails(){
+    const { products } = useContext(ProductContext);
 
-    const [products, setProducts] = useState([]);
-    // const [reload, setReload] = useState(false);
+    const [productArr, setProductArr] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost/database_project/get_Product_details.php')
-        .then (res =>{
-            console.log(res.data);
-            setProducts(res.data)
-        })
-    }, []);
-
-    console.log("All products:");
-    console.log(products);
-
+        setProductArr(products)
+    }, [products]);
 
     const deleteCustomer=(customer_id)=>{
 
-        console.log("Customer Record is Deleted");
-
         axios.get('http://localhost/database_project/delete_Product.php?id=' + customer_id)
         .then(res =>{
-            console.log(res);
-            // setReload(true);
+            alert('Product is Deleted!!');
         })
         
     }
-
-    // const productDetails =() => {
-
-    // }
-
     
    
     return (
@@ -56,7 +39,7 @@ function ProductDetails(){
                         <Breadcrumb.Item href="/db/manager"><span className="bred-items">Manager Records</span></Breadcrumb.Item>
                         <Breadcrumb.Item href="/db/customer"><span className="bred-items">Customer Records</span></Breadcrumb.Item>
                         <Breadcrumb.Item href="/db/delivery-person"><span className="bred-items">Delivery Person Records</span></Breadcrumb.Item>
-                        <Breadcrumb.Item href=""><span className="bred-items">Order Records</span></Breadcrumb.Item>
+                        <Breadcrumb.Item href="/db/order"><span className="bred-items">Order Records</span></Breadcrumb.Item>
                         <Breadcrumb.Item href=""><span className="bred-items">Order Item Records</span></Breadcrumb.Item>
                     </Breadcrumb>
                 </div>
@@ -75,7 +58,7 @@ function ProductDetails(){
                             </tr>
                         </thead>
                         <tbody>
-                                {products.map((product) =>{
+                                {productArr.map((product) =>{
                                     return (
                                         <tr  key={product.id}>
                                             <td className="t-data-1"><div>{product.id}</div></td>
@@ -100,7 +83,7 @@ function ProductDetails(){
                 <div className="add-new ">
                     <Col className="text-center">
                         <Row><p className="mb-1" style={{color: 'white'}}>New Product</p></Row>
-                        <Row className="justify-content-center align-items-center"><a className="d-flex justify-content-center align-items-center new-p"variant="success" href="products/add"><New className="btn-add-new" height="20px"/></a></Row>
+                        <Row className="justify-content-center align-items-center"><a className="d-flex justify-content-center align-items-center new-p" variant="success" href="products/add"><New className="btn-add-new" height="20px"/></a></Row>
                     </Col>     
                 </div>
             </div>

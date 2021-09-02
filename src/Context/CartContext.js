@@ -47,7 +47,7 @@ function CartContextProvider(props) {
                 setPriceWithDiscount(tempPWD);
             })
         }catch{
-            console.log('No products in the cart')
+            // console.log('No products in the cart');
         }
     },[])
 

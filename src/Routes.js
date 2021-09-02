@@ -23,6 +23,7 @@ import NewManager from './DB_data/Manager/NewManager';
 import BranchDetails from './DB_data/Branch/BranchDetails';
 import EditBranch from './DB_data/Branch/EditBranch';
 import NewBranch from './DB_data/Branch/NewBranch';
+import OrdersDetails from './DB_data/Orders/OrdersDetails';
 
 // import { UserContext } from './Context/UserContext';
 
@@ -60,6 +61,7 @@ function Routes(){
           <Route path="/db/branch" exact><BranchDetails /></Route>
           <Route path="/db/branch/edit/:id" exact><EditBranch /></Route>
           <Route path="/db/branch/add" exact><NewBranch /></Route>
+          <Route path="/db/order" exact><OrdersDetails /></Route>
 
         </Switch>
       </BrowserRouter>

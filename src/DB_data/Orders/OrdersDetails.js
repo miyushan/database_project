@@ -1,75 +1,81 @@
 import React, { useState, useEffect, useContext } from 'react';
-import './BranchDetails.css';
-import {Table, Container, ButtonGroup, Button, Breadcrumb, Col, Row } from "react-bootstrap";
+import './OrdersDetails.css';
+import {Table, Container, ButtonGroup, Button, Breadcrumb } from "react-bootstrap";
 import axios from 'axios';
-import { ReactComponent as Edit } from '../../files/icons/edit-regular.svg';
+// import { ReactComponent as Edit } from '../../files/icons/edit-regular.svg';
 import { ReactComponent as Delete } from '../../files/icons/trash-alt-regular.svg';
-import { ReactComponent as New } from '../../files/icons/plus-solid.svg';
+// import { ReactComponent as New } from '../../files/icons/plus-solid.svg';
 
 import { EmployeeContext } from '../../Context/EmployeeContext';
 
-function BranchDetails(){
-    const { branches } = useContext(EmployeeContext);
+function OrdersDetails(){
+    const { orders } = useContext(EmployeeContext);
 
-    const [products, setProducts] = useState([]);
+    const [orderArr, setOrderArr] = useState([]);
     // const [reload, setReload] = useState(false);
 
     useEffect(() => {
         try{
-            setProducts(branches);
+            setOrderArr(orders);
         }catch{
 
         }
-    }, [branches]);
+    }, [orders]);
 
     const deleteCustomer=(customer_id)=>{
-        axios.get('http://localhost/database_project/delete_Branch.php?id=' + customer_id)
+        axios.get('http://localhost/database_project/delete_Orders.php?id=' + customer_id)
         .then(res =>{
-            alert('Branch is Deleted!!');
+            alert('Orders Record is Deleted!!');
         })
     }
    
     return (
         <>
-            <div className="db-bg">
+            <div className="db-c-bg">
 
-                <div className="text-center"><h1 className="title">Branch Records</h1></div>
+                <div className="text-center"><h1 className="title">Order Records</h1></div>
                 <div>
-                    <Breadcrumb className="bred">
-                        <Breadcrumb.Item active><span className="bred-items">Branch Records</span></Breadcrumb.Item>
+                    <Breadcrumb className="bred-c">
+                        <Breadcrumb.Item href="/db/branch"><span className="bred-items">Branch Records</span></Breadcrumb.Item>
                         <Breadcrumb.Item href="/db/products"><span className="bred-items">Product Records</span></Breadcrumb.Item>
                         <Breadcrumb.Item href="/db/manager"><span className="bred-items">Manager Records</span></Breadcrumb.Item>
                         <Breadcrumb.Item href="/db/customer"><span className="bred-items">Customer Records</span></Breadcrumb.Item>
                         <Breadcrumb.Item href="/db/delivery-person"><span className="bred-items">Delivery Person Records</span></Breadcrumb.Item>
-                        <Breadcrumb.Item href="/db/order"><span className="bred-items">Order Records</span></Breadcrumb.Item>
+                        <Breadcrumb.Item active><span className="bred-items">Order Records</span></Breadcrumb.Item>
                         <Breadcrumb.Item href=""><span className="bred-items">Order Item Records</span></Breadcrumb.Item>
                     </Breadcrumb>
                 </div>
                     
-                <Container className="db-p-container">
+                {/* <Container className="db-p-container"> */}
 
-                    <Table className="table-p" striped bordered>
+                    <Table className="table-c order-table" striped bordered>
                         <thead>
                             <tr>
-                                <th>Branch ID</th>
-                                <th>Branch Name</th>
-                                <th>Address</th>
+                                <th>Order ID</th>
+                                <th>Quantity</th>
+                                <th>Total Cost</th>
+                                <th>Customer ID</th>
+                                <th>Manager ID</th>
+                                <th>Delivery Person ID</th>
                                 <th>Posting Date</th>
                                 <th>Edit / Delete</th>
                             </tr>
                         </thead>
                         <tbody>
-                                {products.map((product) =>{
+                                {orderArr.map((product) =>{
                                     return (
                                         <tr  key={product.id}>
                                             <td className="t-data-1"><div>{product.id}</div></td>
-                                            <td className="t-data-2">{product.Name}</td>
-                                            <td className="address-col">{product.Address}</td>
+                                            <td className="t-data-2">{product.Quantity} Kg</td>
+                                            <td className="t-data-3">Rs {product.Total_Cost}</td>
+                                            <td className="t-data-5">{product.Customer_Id}</td>
+                                            <td className="t-data-5">{product.Manager_Id}</td>
+                                            <td className="t-data-5">{product.Delivery_Person_Id}</td>
                                             <td className="t-data-5">{product.Posting_Date}</td>
                                             <td className="t-data-6">
                                                 <ButtonGroup aria-label="Basic example">
-                                                    <Button href={"/db/branch/edit/"+product.id} className="btn-edit"variant="warning"><Edit className="edit-p" height="15px"/></Button>
-                                                    <Button href="/db/branch" className="btn-delete" onClick={() => deleteCustomer(product.id)} variant="danger"><Delete className="delete-p" height="15px"/></Button>
+                                                    {/* <Button href={"/db/order/edit/"+product.id} className="btn-edit"variant="warning"><Edit className="edit-p" height="15px"/></Button> */}
+                                                    <Button href="/db/order" className="btn-delete" onClick={() => deleteCustomer(product.id)} variant="danger"><Delete className="delete-p" height="15px"/></Button>
                                                 </ButtonGroup>
                                             </td>
                                         </tr>
@@ -78,14 +84,14 @@ function BranchDetails(){
                         </tbody>
                     </Table>
 
-                </Container>
+                {/* </Container> */}
             
-                <div className="add-new ">
+                {/* <div className="add-new ">
                     <Col className="text-center">
-                        <Row><p className="mb-1" style={{color: 'white'}}>New Branch</p></Row>
+                        <Row><p className="mb-1" style={{color: 'white'}}>New Order</p></Row>
                         <Row className="justify-content-center align-items-center"><a className="d-flex justify-content-center align-items-center new-p"variant="success" href="branch/add"><New className="btn-add-new" height="20px"/></a></Row>
                     </Col>     
-                </div>
+                </div> */}
             </div>
                 
         </>
@@ -94,4 +100,4 @@ function BranchDetails(){
     
 }
 
-export default BranchDetails;
+export default OrdersDetails;
