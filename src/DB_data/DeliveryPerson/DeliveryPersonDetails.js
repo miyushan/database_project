@@ -61,7 +61,7 @@ function DeliveryPersonDetails(){
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Gender</th>
-                            <th>Salary</th>
+                            <th>Salary (Rs)</th>
                             <th>C. Number</th>
                             <th>Branch Name</th>
                             <th>Password</th>

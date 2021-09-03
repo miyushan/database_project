@@ -51,8 +51,8 @@ function ProductDetails(){
                             <tr>
                                 <th>ID</th>
                                 <th>Product Name</th>
-                                <th>Stock Weight</th>
-                                <th>Price Per Kilogram</th>
+                                <th>Stock Weight (Kg)</th>
+                                <th>Price Per Kg (Rs/Kg)</th>
                                 <th>Posting Date</th>
                                 <th>Edit / Delete</th>
                             </tr>

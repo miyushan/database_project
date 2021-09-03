@@ -19,6 +19,7 @@ function PaymentCard(){
     const [btnDisable, setBtnDisable] = useState(true);
     const [isPaymentSuccess, setIsPaymentSuccess] = useState(false);
     const [branch, setBranch] = useState('');
+    const [customerId, setCustomerId] = useState('');
 
     let dPersonId;
     let managerId;
@@ -39,7 +40,7 @@ function PaymentCard(){
         let userData = localStorage.getItem('userDetails');
         userData = JSON.parse(userData);
         setBranch(userData.branchName);
-
+        setCustomerId(userData.id);
     },[])
     
 
@@ -85,7 +86,7 @@ function PaymentCard(){
             }
         })
         console.log(tempManagers);
-        managerId = tempDPsersons[ Math.floor(Math.random()*tempDPsersons.length) ];
+        managerId = tempManagers[ Math.floor(Math.random()*tempManagers.length) ];
         console.log(managerId);
     }
 
@@ -96,7 +97,7 @@ function PaymentCard(){
         axios.post('http://localhost/database_project/create_New_Order.php',{
             quantity: totalWeight,
             cost: priceWithDiscount,
-            customerId: 1,
+            customerId: customerId,
             managerId: managerId,
             deliveryPersonId: dPersonId,
         })

@@ -42,6 +42,7 @@ export default function DataBaseLoginForm (){
 
                 //Session object
                 let userDetails = {
+                    id: customer.id,
                     firstName: customer.First_Name,
                     contactNumber: customer.Contact_Number, 
                     gender: customer.Gender,
