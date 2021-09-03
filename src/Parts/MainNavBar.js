@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/MainNavBar.css';
 import {Navbar, Container, Button, Col} from "react-bootstrap";
@@ -9,14 +9,10 @@ import { ReactComponent as Cart } from '../files/shopping-cart-solid.svg';
 function MainNavBar(){
     const { cartProducts } = useContext(CartContext);
     const[scroll, setScroll] = useState(true);
-    useEffect (() => {
-
-    },[cartProducts])
 
     const style = {
         backgroundColor : "#3b3737f8",
         // animation: "ease-out"
-
     }
 
     const onScroll = () => {

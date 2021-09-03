@@ -59,11 +59,11 @@ function CustomerDetails(){
                     <Table className="table-c" striped bordered>
                         <thead>
                             <tr>
-                                <th>Customer ID</th>
+                                <th>ID</th>
                                 <th>First Name</th>
                                 <th>Last Name</th>
                                 <th>Gender</th>
-                                <th>Contact Number</th>
+                                <th>C. Number</th>
                                 <th>Branch Name</th>
                                 <th>Password</th>
                                 <th>Address</th>
@@ -75,16 +75,16 @@ function CustomerDetails(){
                                 {customers.map((customer) =>{
                                     return (
                                         <tr key={customer.id}>
-                                            <td className="t-data-c t-data-c1">{customer.id}</td>
-                                            <td className="t-data-c t-data-c2">{customer.First_Name}</td>
-                                            <td className="t-data-c t-data-c3">{customer.Last_Name}</td>
-                                            <td className="t-data-c t-data-c4">{customer.Gender}</td>
-                                            <td className="t-data-c t-data-c5">{customer.Contact_Number}</td>
-                                            <td className="t-data-c t-data-c6">{customer.Branch_Name}</td>
-                                            <td className="t-data-c t-data-c7">{customer.Password}</td>
-                                            <td className="t-data-c t-data-c8 t-data-c-address"><div>{customer.Address}</div></td>
-                                            <td className="t-data-c t-data-c9 t-data-c-time"><div>{customer.Posting_Date}</div></td>
-                                            <td className="t-data-c">
+                                            <td className="r-margin">{customer.id}</td>
+                                            <td className="r-margin">{customer.First_Name}</td>
+                                            <td className="r-margin">{customer.Last_Name}</td>
+                                            <td className="r-margin">{customer.Gender}</td>
+                                            <td className="r-margin text-center">{customer.Contact_Number}</td>
+                                            <td className="r-margin">{customer.Branch_Name}</td>
+                                            <td className="r-margin">{customer.Password}</td>
+                                            <td className="r-margin"><div>{customer.Address}</div></td>
+                                            <td className="r-margin text-center"><div>{customer.Posting_Date}</div></td>
+                                            <td className="r-margin text-center">
                                                 <ButtonGroup aria-label="Basic example">
                                                     <Button href="/db/customer/edit" className="btn-edit"variant="warning"><Edit className="edit-p" height="15px"/></Button>
                                                     <Button href="/db/customer" className="btn-delete" onClick={() => deleteCustomer(customer.id)} variant="danger"><Delete className="delete-p" height="15px"/></Button>

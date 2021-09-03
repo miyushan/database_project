@@ -14,7 +14,7 @@
 }
 
 .db-p-container{
-    width: 60%;
+    width: 70%;
 }
 
 .table-p{
@@ -84,18 +84,6 @@ td{
     text-decoration: none !important;
 }
 
-.t-data-1, .t-data-5, .t-data-6{
-    text-align: center;
-}
-
-.t-data-3, .t-data-4{
-    text-align: right;
-}
-
-.t-data-2{
-    text-align: left;
-}
-
 .btn-edit, .btn-delete{
     display: flex;
     align-items: center;
@@ -116,10 +104,6 @@ td{
 }
 .new-p:hover{
     background-color: rgb(6, 201, 6);
-}
-
-.delete-p{
-    /* color: rgb(185, 3, 3); */
 }
 
 .edit-p{

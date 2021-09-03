@@ -92,14 +92,7 @@ a:-webkit-any-link {
     text-decoration: none;
 }
 
-.t-data-c1{
-    text-align: center;
-}
-
-.t-data-c5{
-    text-align: right;
-}
-
-.t-data-c2, .t-data-c3, .t-data-c4, .t-data-c5, .t-data-c6, .t-data-c7, .t-data-c8, .t-data-c9{
-    text-align: left;
+.r-margin{
+    padding-right: 15px !important;
+    padding-left: 15px !important;
 }

@@ -49,7 +49,7 @@ function ProductDetails(){
                     <Table className="table-p" striped bordered>
                         <thead>
                             <tr>
-                                <th>Product ID</th>
+                                <th>ID</th>
                                 <th>Product Name</th>
                                 <th>Stock Weight</th>
                                 <th>Price Per Kilogram</th>
@@ -61,12 +61,12 @@ function ProductDetails(){
                                 {productArr.map((product) =>{
                                     return (
                                         <tr  key={product.id}>
-                                            <td className="t-data-1"><div>{product.id}</div></td>
-                                            <td className="t-data-2">{product.Name}</td>
-                                            <td className="t-data-3">{product.Weight}</td>
-                                            <td className="t-data-4">{product.Price}</td>
-                                            <td className="t-data-5">{product.Posting_Date}</td>
-                                            <td className="t-data-6">
+                                            <td className="p-data-1 text-r"><div>{product.id}</div></td>
+                                            <td className="p-data-2">{product.Name}</td>
+                                            <td className="p-data-3 text-r">{product.Weight}</td>
+                                            <td className="p-data-4 text-r">{product.Price}</td>
+                                            <td className="p-data-5 text-center">{product.Posting_Date}</td>
+                                            <td className="p-data-6 text-center">
                                                 <ButtonGroup aria-label="Basic example">
                                                     <Button href={"products/edit/"+product.id} prname="hello" className="btn-edit" variant="warning"><Edit className="edit-p" height="15px"/></Button>
                                                     <Button href="/db/products" className="btn-delete" onClick={() => deleteCustomer(product.id)} variant="danger"><Delete className="delete-p" height="15px"/></Button>

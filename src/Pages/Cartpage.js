@@ -6,12 +6,10 @@ import Footer from '../Parts/Footer';
 function Cartpage(){
     return(
         <>
-            <div id="cart">
-                <UpperNavBar />
-                <MainNavBar />
-                <CartItems />
-                <Footer />
-            </div>
+            <UpperNavBar />
+            <MainNavBar />
+            <CartItems />
+            <Footer />
         </>
     );
 }

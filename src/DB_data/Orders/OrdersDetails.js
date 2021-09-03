@@ -25,7 +25,7 @@ function OrdersDetails(){
     const deleteCustomer=(customer_id)=>{
         axios.get('http://localhost/database_project/delete_Orders.php?id=' + customer_id)
         .then(res =>{
-            alert('Orders Record is Deleted!!');
+            // alert('Orders Record is Deleted!!');
         })
     }
    
@@ -51,12 +51,12 @@ function OrdersDetails(){
                     <Table className="table-c order-table" striped bordered>
                         <thead>
                             <tr>
-                                <th>Order ID</th>
-                                <th>Quantity</th>
-                                <th>Total Cost</th>
+                                <th>ID</th>
+                                <th>Quantity (Kg)</th>
+                                <th>Total Cost (Rs)</th>
                                 <th>Customer ID</th>
                                 <th>Manager ID</th>
-                                <th>Delivery Person ID</th>
+                                <th>D Person ID</th>
                                 <th>Posting Date</th>
                                 <th>Edit / Delete</th>
                             </tr>
@@ -65,14 +65,14 @@ function OrdersDetails(){
                                 {orderArr.map((product) =>{
                                     return (
                                         <tr  key={product.id}>
-                                            <td className="t-data-1"><div>{product.id}</div></td>
-                                            <td className="t-data-2">{product.Quantity} Kg</td>
-                                            <td className="t-data-3">Rs {product.Total_Cost}</td>
-                                            <td className="t-data-5">{product.Customer_Id}</td>
-                                            <td className="t-data-5">{product.Manager_Id}</td>
-                                            <td className="t-data-5">{product.Delivery_Person_Id}</td>
-                                            <td className="t-data-5">{product.Posting_Date}</td>
-                                            <td className="t-data-6">
+                                            <td className="text-r"><div>{product.id}</div></td>
+                                            <td className="text-r">{product.Quantity}</td>
+                                            <td className="text-r">{product.Total_Cost}</td>
+                                            <td className="text-r">{product.Customer_Id}</td>
+                                            <td className="text-r">{product.Manager_Id}</td>
+                                            <td className="text-r">{product.Delivery_Person_Id}</td>
+                                            <td className="text-center">{product.Posting_Date}</td>
+                                            <td className="text-center">
                                                 <ButtonGroup aria-label="Basic example">
                                                     {/* <Button href={"/db/order/edit/"+product.id} className="btn-edit"variant="warning"><Edit className="edit-p" height="15px"/></Button> */}
                                                     <Button href="/db/order" className="btn-delete" onClick={() => deleteCustomer(product.id)} variant="danger"><Delete className="delete-p" height="15px"/></Button>

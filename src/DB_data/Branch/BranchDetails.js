@@ -51,7 +51,7 @@ function BranchDetails(){
                     <Table className="table-p" striped bordered>
                         <thead>
                             <tr>
-                                <th>Branch ID</th>
+                                <th>ID</th>
                                 <th>Branch Name</th>
                                 <th>Address</th>
                                 <th>Posting Date</th>
@@ -62,11 +62,11 @@ function BranchDetails(){
                                 {products.map((product) =>{
                                     return (
                                         <tr  key={product.id}>
-                                            <td className="t-data-1"><div>{product.id}</div></td>
-                                            <td className="t-data-2">{product.Name}</td>
-                                            <td className="address-col">{product.Address}</td>
-                                            <td className="t-data-5">{product.Posting_Date}</td>
-                                            <td className="t-data-6">
+                                            <td className="b-data-1 text-r"><div>{product.id}</div></td>
+                                            <td className="b-data-2">{product.Name}</td>
+                                            <td className="b-data-3">{product.Address}</td>
+                                            <td className="b-data-4 text-center">{product.Posting_Date}</td>
+                                            <td className="b-data-5 text-center">
                                                 <ButtonGroup aria-label="Basic example">
                                                     <Button href={"/db/branch/edit/"+product.id} className="btn-edit"variant="warning"><Edit className="edit-p" height="15px"/></Button>
                                                     <Button href="/db/branch" className="btn-delete" onClick={() => deleteCustomer(product.id)} variant="danger"><Delete className="delete-p" height="15px"/></Button>

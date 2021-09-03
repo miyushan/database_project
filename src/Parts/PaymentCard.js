@@ -8,7 +8,7 @@ import {Form, Container, Button, Row, Col} from "react-bootstrap";
 import { Route, Redirect } from "react-router-dom";
 
 function PaymentCard(){
-    const { totalWeight, totalPrice, setCartProducts } = useContext(CartContext);
+    const { totalWeight, setCartProducts, priceWithDiscount } = useContext(CartContext);
     const { deliveryPersons, managers } = useContext(EmployeeContext);
 
     const [name, setName] = useState('');
@@ -23,10 +23,12 @@ function PaymentCard(){
     let dPersonId;
     let managerId;
 
-    let cartData = localStorage.getItem('cartDetails');
-    cartData = JSON.parse(cartData);
+    
 
     useEffect(() =>{
+        let cartData = localStorage.getItem('cartDetails');
+        cartData = JSON.parse(cartData);
+
         if (!cartData || cartData.length === 0) {
             setBtnDisable(true);
         }else{
@@ -38,7 +40,7 @@ function PaymentCard(){
         userData = JSON.parse(userData);
         setBranch(userData.branchName);
 
-    },[cartData])
+    },[])
     
 
     const onChangeName = (e) => {
@@ -93,7 +95,7 @@ function PaymentCard(){
         console.log(deliveryPersons)
         axios.post('http://localhost/database_project/create_New_Order.php',{
             quantity: totalWeight,
-            cost: totalPrice,
+            cost: priceWithDiscount,
             customerId: 1,
             managerId: managerId,
             deliveryPersonId: dPersonId,

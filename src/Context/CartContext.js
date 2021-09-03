@@ -42,6 +42,7 @@ function CartContextProvider(props) {
                 tempP = tempP + parseFloat(item.CartPrice);
                 tempW = tempW + parseFloat(item.CartWeight);
                 tempPWD = ((tempP * (100-discount))/100).toFixed( 2 );
+                console.log(tempPWD);
                 setTotalPrice(tempP);
                 setTotalWeight(tempW);
                 setPriceWithDiscount(tempPWD);
