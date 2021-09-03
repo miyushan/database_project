@@ -8,7 +8,7 @@ import {Form, Container, Button, Row, Col} from "react-bootstrap";
 import { Route, Redirect } from "react-router-dom";
 
 function PaymentCard(){
-    const { totalWeight, totalPrice } = useContext(CartContext);
+    const { totalWeight, totalPrice, setCartProducts } = useContext(CartContext);
     const { deliveryPersons, managers } = useContext(EmployeeContext);
 
     const [name, setName] = useState('');
@@ -88,6 +88,7 @@ function PaymentCard(){
     }
 
     const addtoOrderList = () => {
+        setCartProducts([]);
         findRelatedEmployees();
         console.log(deliveryPersons)
         axios.post('http://localhost/database_project/create_New_Order.php',{
@@ -115,7 +116,7 @@ function PaymentCard(){
             addtoOrderList();
             findRelatedEmployees();
         }else{
-            alert('Fill required fields')
+            alert('Please fill the required fields')
         }
     }
 
