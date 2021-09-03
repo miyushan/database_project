@@ -3,6 +3,7 @@ import './styles/CreateAccount.css';
 import {Col, Container, Row, Button} from "react-bootstrap";
 import cover from '../files/marisol-benitez-QvkAQTNj4zk-unsplash.jpg';
 import CreateAccountForm from '../Parts/CreateAccountForm';
+import { ReactComponent as Admin } from '../files/icons/users-cog-solid.svg';
 
 function CreateAccount(){
     return(
@@ -15,6 +16,9 @@ function CreateAccount(){
                             <img className="login-Image" src={cover} alt="cover" />
                             <div className="align">
                                 <h1 className="login-header text-left add-curser">Online Vegetable<br />Ordering System</h1>
+                            </div>
+                            <div className="admin-login">
+                                <a href="db/login" className="admin-login-btn"><Admin className="admin-login-icon" height="20px"/></a>
                             </div>
                         </Col>
                         <Col className="login-right d-flex justify-content-center">

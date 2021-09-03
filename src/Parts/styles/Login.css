@@ -6,7 +6,7 @@
 .login-right{
     position: relative;
     padding: 0;
-    background-color: #464141e7!important;
+    background-color: #554C4C!important;
     width: 50%;
     height: 100vh;
     flex-direction: column;
@@ -20,6 +20,11 @@
     overflow-x:hidden;
     overflow-y:hidden;
 }
+.admin-login-btn{
+    position: absolute;
+    left: 4%;
+    bottom: 3%;
+}
 
 .login-Image{
     width: 100%;
@@ -28,7 +33,6 @@
 
 .login-header{
     text-align: left;
-    /* position: relative; */
     font-family: Roboto;
     font-style: normal;
     font-weight: 900;
@@ -98,9 +102,11 @@
     background-color: rgb(5, 199, 5);
     border-color: rgb(5, 199, 5);
 }
-
-
 .create-account-btn:hover{
     background-color: rgb(8, 155, 8);
     border-color: rgb(8, 155, 8);
+}
+
+.admin-login-icon path{
+    color: #fff !important;
 }

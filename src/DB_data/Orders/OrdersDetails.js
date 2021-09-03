@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import './OrdersDetails.css';
-import {Table, Container, ButtonGroup, Button, Breadcrumb } from "react-bootstrap";
+import {Table, ButtonGroup, Button, Breadcrumb } from "react-bootstrap";
 import axios from 'axios';
 // import { ReactComponent as Edit } from '../../files/icons/edit-regular.svg';
 import { ReactComponent as Delete } from '../../files/icons/trash-alt-regular.svg';

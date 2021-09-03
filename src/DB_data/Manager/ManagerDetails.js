@@ -45,7 +45,7 @@ function ManagerDetails(){
                     <div className="text-center"><h1 className="title">Manager Records</h1></div>
                     <div>
                         <Breadcrumb className="bred-c">
-                            <Breadcrumb.Item href=""><span className="bred-items">Branch Records</span></Breadcrumb.Item>
+                            <Breadcrumb.Item href="/db/branch"><span className="bred-items">Branch Records</span></Breadcrumb.Item>
                             <Breadcrumb.Item href="/db/products"><span className="bred-items">Product Records</span></Breadcrumb.Item>
                             <Breadcrumb.Item active><span className="bred-items">Manager Records</span></Breadcrumb.Item>
                             <Breadcrumb.Item href="/db/customer"><span className="bred-items">Customer Records</span></Breadcrumb.Item>

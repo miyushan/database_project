@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Homepage from './Pages/Homepage';
 import Loginpage from './Pages/Loginpage';
+import DataBaseLoginpage from './Pages/DataBaseLoginpage';
 import CreateAccountpage from './Pages/CreateAccountpage';
 import Cartpage from './Pages/Cartpage';
 import AboutUspage from './Pages/AboutUspage';
@@ -38,6 +39,7 @@ function Routes(){
 
           <Route path="/" exact><Loginpage /></Route>
           <Route path="/login" exact><Loginpage /></Route>
+          <Route path="/db/login" exact><DataBaseLoginpage /></Route>
           <Route path="/contact-us" exact><ContactUspage /></Route>
           <Route path="/home" exact><Homepage /></Route>
           <Route path="/register" exact><CreateAccountpage /></Route>
