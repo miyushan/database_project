@@ -103,13 +103,19 @@ function PaymentCard(){
         })
         .then(()=>{
             localStorage.removeItem('cartDetails');
-            alert('Order is successfully done!')
+            alert('Order is successfully done!');
             setName('');
             setAddress('');
             setCardNumber('');
             setDate('');
             setcvc('');
             setIsPaymentSuccess(true);
+
+            //add address to customer table
+            axios.post('http://localhost/database_project/update_CustomerAddress.php',{
+                id: customerId,
+                Address: address,
+            });
         });
     }
 
