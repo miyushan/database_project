@@ -29,91 +29,43 @@ import OrdersDetails from './DB_data/Orders/OrdersDetails';
 // import { UserContext } from './Context/UserContext';
 
 function Routes(){
-  // const { isLogedIn } = useContext(UserContext);
-  const [isLogedIn] = useState(true);
-
-  const logedin = () => {
-    return(
-      <BrowserRouter>
-        <Switch>
-
-          <Route path="/" exact><Loginpage /></Route>
-          <Route path="/login" exact><Loginpage /></Route>
-          <Route path="/db/login" exact><DataBaseLoginpage /></Route>
-          <Route path="/contact-us" exact><ContactUspage /></Route>
-          <Route path="/home" exact><Homepage /></Route>
-          <Route path="/register" exact><CreateAccountpage /></Route>
-          <Route path="/cart" exact><Cartpage /></Route>
-          <Route path="/about-us" exact><AboutUspage /></Route>
-
-          <Route path="/products" exact><Productspage /></Route>
-
-          <Route path="/branches" exact><Branchespage /></Route>
-          <Route path="/db/products" exact><ProductDetails/></Route>
-          <Route path="/db/products/edit/:id" exact><EditProduct /></Route>
-          <Route path="/db/products/add" exact><NewProduct /></Route>
-          <Route path="/db/customer" exact><CustomerDetails /></Route>
-          <Route path="/db/customer/edit" exact><EditCustomer /></Route>
-          <Route path="/db/delivery-person" exact><DeliveryPersonDetails /></Route>
-          <Route path="/db/delivery-person/edit/:id" exact><EditDeliveryPerson /></Route>
-          <Route path="/db/delivery-person/add" exact><NewDeliveryPerson /></Route>
-          <Route path="/db/manager" exact><ManagerDetails /></Route>
-          <Route path="/db/manager/edit/:id" exact><EditManager /></Route>
-          <Route path="/db/manager/add" exact><NewManager /></Route>
-          <Route path="/db/branch" exact><BranchDetails /></Route>
-          <Route path="/db/branch/edit/:id" exact><EditBranch /></Route>
-          <Route path="/db/branch/add" exact><NewBranch /></Route>
-          <Route path="/db/order" exact><OrdersDetails /></Route>
-
-        </Switch>
-      </BrowserRouter>
-    )
-  }
-
-  const notLogedin = () => {
-    return(
-      <BrowserRouter>
-        <Switch>
-
-          <Route path="/" exact><Loginpage /></Route>
-          <Route path="/login" exact><Loginpage /></Route>
-          <Route path="/register" exact><CreateAccountpage /></Route>
-          <Route path="/cart" exact><Cartpage /></Route>
-          <Route path="*" ><Loginpage /></Route>
-          {/* <Route path="/" exact><Loginpage /></Route>
-          <Route path="/login" exact><Loginpage /></Route>
-          <Route path="/contact-us" exact><ContactUspage /></Route>
-          <Route path="/home" exact><Homepage /></Route>
-          <Route path="/register" exact><CreateAccountpage /></Route>
-          <Route path="/cart" exact><Cartpage /></Route>
-          <Route path="/about-us" exact><AboutUspage /></Route>
-          <Route path="/products" exact><Productspage /></Route>
-          <Route path="/branches" exact><Branchespage /></Route>
-          <Route path="/db/products" exact><ProductDetails/></Route>
-          <Route path="/db/products/edit" exact><EditProduct /></Route>
-          <Route path="/db/products/add" exact><NewProduct /></Route>
-          <Route path="/db/customer" exact><CustomerDetails /></Route>
-          <Route path="/db/customer/edit" exact><EditCustomer /></Route>
-          <Route path="/db/delivery-person" exact><DeliveryPersonDetails /></Route>
-          <Route path="/db/delivery-person/edit" exact><EditDeliveryPerson /></Route>
-          <Route path="/db/delivery-person/add" exact><NewDeliveryPerson /></Route>
-          <Route path="/db/manager" exact><ManagerDetails /></Route>
-          <Route path="/db/manager/edit" exact><EditManager /></Route>
-          <Route path="/db/manager/add" exact><NewManager /></Route>
-          <Route path="/db/branch" exact><BranchDetails /></Route>
-          <Route path="/db/branch/edit" exact><EditBranch /></Route>
-          <Route path="/db/branch/add" exact><NewBranch /></Route> */}
-
-        </Switch>
-      </BrowserRouter>
-    )
-  }
-
 
   return(
     <>
     
-      {isLogedIn? logedin() : notLogedin()}
+      <BrowserRouter>
+        <Switch>
+
+          <Route path="/" exact component={Loginpage} /> 
+          <Route path="/login" exact component={Loginpage} /> 
+          <Route path="/db/login" exact component={DataBaseLoginpage} /> 
+          <Route path="/contact-us" exact component={ContactUspage} /> 
+          <Route path="/home" exact component={Homepage} /> 
+          <Route path="/register" exact component={CreateAccountpage} /> 
+          <Route path="/cart" exact component={Cartpage} /> 
+          <Route path="/about-us" exact component={AboutUspage} /> 
+
+          <Route path="/products" exact component={Productspage} /> 
+
+          <Route path="/branches" exact component={Branchespage} /> 
+          <Route path="/db/products" exact component={ProductDetails}/> 
+          <Route path="/db/products/edit/:id" exact component={EditProduct} /> 
+          <Route path="/db/products/add" exact component={NewProduct} /> 
+          <Route path="/db/customer" exact component={CustomerDetails} /> 
+          <Route path="/db/customer/edit" exact component={EditCustomer} /> 
+          <Route path="/db/delivery-person" exact component={DeliveryPersonDetails} /> 
+          <Route path="/db/delivery-person/edit/:id" exact component={EditDeliveryPerson} /> 
+          <Route path="/db/delivery-person/add" exact component={NewDeliveryPerson} /> 
+          <Route path="/db/manager" exact component={ManagerDetails} /> 
+          <Route path="/db/manager/edit/:id" exact component={EditManager} /> 
+          <Route path="/db/manager/add" exact component={NewManager} /> 
+          <Route path="/db/branch" exact component={BranchDetails} /> 
+          <Route path="/db/branch/edit/:id" exact component={EditBranch} /> 
+          <Route path="/db/branch/add" exact component={NewBranch} /> 
+          <Route path="/db/order" exact component={OrdersDetails} /> 
+
+        </Switch>
+      </BrowserRouter>
       
     </>
   );

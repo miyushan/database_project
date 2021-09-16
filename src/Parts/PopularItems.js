@@ -1,12 +1,11 @@
-// import React, { useContext } from 'react';
+import React, { useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/PopularItems.css';
 import {Row, Col, Container} from "react-bootstrap";
-// import CardItem from './CardItem';
-// import { ProductContext } from '../Context/ProductContext';
-// // import { CartContext } from '../Context/CartContext';
+import CardItem from './CardItem';
+import { ProductContext } from '../Context/ProductContext';
 
-// import item0 from '../files/product-images/1_carrot.png';
+import item0 from '../files/product-images/1_carrot.png';
 // import item1 from '../files/product-images/1_Big_Onions.png';
 // import item2 from '../files/product-images/1_tomatoes.png';
 // import item3 from '../files/product-images/1_pumpkin.png';
@@ -20,15 +19,7 @@ import {Row, Col, Container} from "react-bootstrap";
 
 function PopularItems () {
 
-    // const { popularProducts } = useContext(ProductContext);
-    // const { isSelected } = useContext(CartContext);
-
-    // const addToCartBtnStyle = (val) => {
-    //     console.log(val);
-    //     if(val){
-    //         return '#f00';
-    //     }
-    // }
+    const { popularProducts } = useContext(ProductContext);
 
     
     return(
@@ -38,7 +29,7 @@ function PopularItems () {
                     <Col className="add-curser">Popular Items</Col>
                 </Row>
                 <Row className="row-2">
-                    {/* {popularProducts.map((product) =>{
+                    {popularProducts.map((product) =>{
                         return (
                             <Col key={product.id} className="product-column">
                                 <CardItem
@@ -51,7 +42,7 @@ function PopularItems () {
                                 />
                             </Col>
                         );
-                    })} */}
+                    })}
                 </Row>
             </Container>
         </div>
