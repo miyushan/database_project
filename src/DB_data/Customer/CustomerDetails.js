@@ -86,7 +86,7 @@ function CustomerDetails(){
                                             <td className="r-margin text-center"><div>{customer.Posting_Date}</div></td>
                                             <td className="r-margin text-center">
                                                 <ButtonGroup aria-label="Basic example">
-                                                    <Button href="/db/customer/edit" className="btn-edit"variant="warning"><Edit className="edit-p" height="15px"/></Button>
+                                                    <Button href={"customer/edit/"+customer.id} className="btn-edit"variant="warning"><Edit className="edit-p" height="15px"/></Button>
                                                     <Button href="/db/customer" className="btn-delete" onClick={() => deleteCustomer(customer.id)} variant="danger"><Delete className="delete-p" height="15px"/></Button>
                                                 </ButtonGroup>
                                             </td>

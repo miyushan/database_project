@@ -35,9 +35,24 @@ function EditProduct(){
     }, [products, productId]);
 
     const checkAnyChanges = () => {
-        if((productName!==initialProductName || totalStockWeight!==initialTotalStockWeight || pricePerKilogram!==initialPricePerKilogram) && (productName.length!==0 && totalStockWeight.length!==0 && pricePerKilogram.length!==0)){
-            return true;
+        if(( productName.length!==0 && totalStockWeight.length!==0 && pricePerKilogram.length!==0)){
+            let isProductExist = false;
+
+            if(productName===initialProductName && totalStockWeight===initialTotalStockWeight && pricePerKilogram===initialPricePerKilogram){
+                alert('Product Already Exists !');
+                isProductExist = true;
+            }
+            else{
+                isProductExist = false;
+            }
+
+            if(!isProductExist){
+                return true;
+            }else{
+                return false;
+            }
         }else{
+            alert('Please fill the fields!');
             return false;
         }
     }
@@ -52,16 +67,11 @@ function EditProduct(){
                 pricePerKilogram: pricePerKilogram,
             })
             .then(() => {
-                alert('Product Updated Successfully!');
+                alert('Product is Updated Successfully!');
                 setInitialProductName(productName);
                 setInitialTotalStockWeight(totalStockWeight);
                 setInitialPricePerKilogram(pricePerKilogram);
             });
-        }else{
-            alert('Please Do Valid Changes!');
-            // setProductName(initialProductName);
-            // setTotalStockWeight(initialTotalStockWeight);
-            // setPricePerKilogram(initialPricePerKilogram);
         }
     }
 

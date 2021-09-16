@@ -9,6 +9,7 @@ function EmployeeContextProvider (props){
     const [managers, setManagers] = useState([]);
     const [branches, setBranches] = useState([]);
     const [orders, setOrders] = useState([]);
+    const [customers, setCustomers] = useState([]);
     // const [selectedItems, setSelectedItems] = useState([]);
 
     useEffect(() =>{
@@ -24,6 +25,10 @@ function EmployeeContextProvider (props){
                     axios.get('http://localhost/database_project/get_Orders_details.php')
                     .then (res =>{
                         setOrders(res.data);
+                        axios.get('http://localhost/database_project/get_Customer_details.php')
+                        .then (res =>{
+                            setCustomers(res.data);
+                        })
                     })
                 })
             })
@@ -31,7 +36,7 @@ function EmployeeContextProvider (props){
     },[])
 
     return (
-        <EmployeeContext.Provider value={{ deliveryPersons, managers, branches, orders }}>
+        <EmployeeContext.Provider value={{ deliveryPersons, managers, branches, orders, customers }}>
             {props.children}
         </EmployeeContext.Provider>
     );

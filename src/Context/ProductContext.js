@@ -28,14 +28,14 @@ function ProductContextProvider (props){
             setProducts(res.data)
         })
 
-        const tempPopularPro = [];
-        tempPopularPro[0] = products[3];
-        tempPopularPro[1] = products[5];
-        tempPopularPro[2] = products[8];
-        tempPopularPro[3] = products[7];
+        // const tempPopularPro = [];
+        // tempPopularPro[0] = products[3];
+        // tempPopularPro[1] = products[5];
+        // tempPopularPro[2] = products[8];
+        // tempPopularPro[3] = products[7];
 
-        setPopularProducts(tempPopularPro);
-    },[products])
+        // setPopularProducts(tempPopularPro);
+    },[])
 
     const handleAddProduct = (id) => {
         setProductSelected(!productSelected);

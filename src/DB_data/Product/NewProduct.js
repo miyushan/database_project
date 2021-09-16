@@ -83,15 +83,16 @@ function NewProduct(){
                                     <Form.Control className="db-input" variant="success" type="text" placeholder="New Product" value={productName} onChange={onChangeProductName}/>
                                 </Form.Group>
                             </Col>
-                            <Col>
+                            {/* <Col>
                                 <Form.Group className="mb-4"  controlId="formFile">
                                     <Form.Label className="db-form-label">Product Image</Form.Label>
                                     <Form.Control className="insert-image" type="file" />
                                 </Form.Group>
                             </Col>
                         </Row>
-                        <Row>
-                            
+                        <Row> */}
+                        </Row>
+                        <Row>   
                             <Col>
                                 <Form.Group className="mb-4" controlId="formGroupStockWeight">
                                     <Form.Label className="db-form-label">Total Stock Weight</Form.Label>

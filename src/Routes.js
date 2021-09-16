@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Homepage from './Pages/Homepage';
@@ -52,7 +52,7 @@ function Routes(){
           <Route path="/db/products/edit/:id" exact component={EditProduct} /> 
           <Route path="/db/products/add" exact component={NewProduct} /> 
           <Route path="/db/customer" exact component={CustomerDetails} /> 
-          <Route path="/db/customer/edit" exact component={EditCustomer} /> 
+          <Route path="/db/customer/edit/:id" exact component={EditCustomer} /> 
           <Route path="/db/delivery-person" exact component={DeliveryPersonDetails} /> 
           <Route path="/db/delivery-person/edit/:id" exact component={EditDeliveryPerson} /> 
           <Route path="/db/delivery-person/add" exact component={NewDeliveryPerson} /> 

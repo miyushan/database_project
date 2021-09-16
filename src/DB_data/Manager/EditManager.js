@@ -56,12 +56,28 @@ export default function EditManager(){
     }, [managers, managerId]);
 
     const checkAnyChanges = () => {
-        if((firstName!==initialFirstName || lastName!==initialLastName || gender!==initialGender || salary!==initialSalary || contactNumber!==initialContactNumber || branchName!==initialBranchName || password!==initialPassword || address!==initialAddress ) && (firstName.length!==0 && lastName.length!==0 && gender.length!==0 && salary.length!==0 && contactNumber.length!==0 && branchName.length!==0 && password.length!==0 && address.length!==0)){
-            return true;
+        if((firstName.length!==0 && lastName.length!==0 && gender.length!==0 && salary.length!==0 && contactNumber.length!==0 && branchName.length!==0 && password.length!==0 && address.length!==0)){
+            let isManagerExist = false;
+
+            if(firstName===initialFirstName && lastName===initialLastName && gender===initialGender && salary===initialSalary && contactNumber===initialContactNumber && branchName===initialBranchName && password===initialPassword && address===initialAddress ){
+                alert('Manager Already Exists !');
+                isManagerExist = true;
+            }
+            else{
+                isManagerExist = false;
+            }
+
+            if(!isManagerExist){
+                return true;
+            }else{
+                return false;
+            }
         }else{
+            alert('Please fill the fields!');
             return false;
         }
     }
+  
 
     const changeManagerDetails = () => {
         //change manager data
@@ -88,16 +104,6 @@ export default function EditManager(){
                 setInitialPassword(password);
                 setInitialAddress(address);
             });
-        }else{
-            alert('Please Do Valid Changes!');
-            // setFirstName(initialFirstName);
-            // setLastName(initialLastName);
-            // setGender(initialGender);
-            // setSalary(initialSalary);
-            // setContactNumber(initialContactNumber);
-            // setBranchName(initialBranchName);
-            // setPassword(initialPassword);
-            // setAddress(initialAddress);
         }
     }
 
@@ -218,7 +224,6 @@ export default function EditManager(){
                     <Col className="text-center">
                         <Row className=""><a className="d-flex justify-content-center align-items-center new-p" variant="success" href="/db/manager"><Back className="btn-add-new btn-p-back" height="36px"/></a></Row>
                     </Col>
-                    
                 </div>
             
             </div>

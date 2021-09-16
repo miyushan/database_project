@@ -56,13 +56,27 @@ export default function EditDiliveryPerson(){
     }, [deliveryPersons, dPersonId]);
 
     const checkAnyChanges = () => {
-        if((firstName!==initialFirstName || lastName!==initialLastName || gender!==initialGender || salary!==initialSalary || contactNumber!==initialContactNumber || branchName!==initialBranchName || password!==initialPassword || address!==initialAddress ) && (firstName.length!==0 && lastName.length!==0 && gender.length!==0 && salary.length!==0 && contactNumber.length!==0 && branchName.length!==0 && password.length!==0 && address.length!==0)){
-            return true;
+        if((firstName.length!==0 && lastName.length!==0 && gender.length!==0 && salary.length!==0 && contactNumber.length!==0 && branchName.length!==0 && password.length!==0 && address.length!==0)){
+            let isDPersonsExist = false;
+
+            if(firstName===initialFirstName && lastName===initialLastName && gender===initialGender && salary===initialSalary && contactNumber===initialContactNumber && branchName===initialBranchName && password===initialPassword && address===initialAddress ){
+                alert('Delivery Person Already Exists !');
+                isDPersonsExist = true;
+            }
+            else{
+                isDPersonsExist = false;
+            }
+
+            if(!isDPersonsExist){
+                return true;
+            }else{
+                return false;
+            }
         }else{
+            alert('Please fill the fields!');
             return false;
         }
     }
-
     const changeDeliveryPersonDetails = () => {
         //change Delivery Person data
         if (checkAnyChanges()){
@@ -88,16 +102,6 @@ export default function EditDiliveryPerson(){
                 setInitialPassword(password);
                 setInitialAddress(address);
             });
-        }else{
-            alert('Please Do Valid Changes!');
-            // setFirstName(initialFirstName);
-            // setLastName(initialLastName);
-            // setGender(initialGender);
-            // setSalary(initialSalary);
-            // setContactNumber(initialContactNumber);
-            // setBranchName(initialBranchName);
-            // setPassword(initialPassword);
-            // setAddress(initialAddress);
         }
     }
 

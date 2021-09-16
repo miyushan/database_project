@@ -37,21 +37,24 @@ function EditBranch(){
 
 
     const checkAnyChanges = () => {
-        if(( contactNumber!==initialContactNumber || branchName!==initialBranchName || address!==initialAddress ) && ( contactNumber.length!==0 && branchName.length!==0 && address.length!==0)){
+        if(( contactNumber.length!==0 && branchName.length!==0 && address.length!==0)){
             let isBranchExist = false;
-            branches.forEach((branch)=>{
-                if(branch.Name === branchName){
-                    alert('Branch Already Exists !');
-                    isBranchExist = true;
-                }
-            })
+
+            if(contactNumber===initialContactNumber && branchName===initialBranchName && address===initialAddress){
+                alert('Branch Already Exists !');
+                isBranchExist = true;
+            }
+            else{
+                isBranchExist = false;
+            }
+
             if(!isBranchExist){
                 return true;
             }else{
                 return false;
             }
         }else{
-            alert('Please Do Valid Changes!');
+            alert('Please fill the fields!');
             return false;
         }
     }
