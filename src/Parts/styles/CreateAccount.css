@@ -33,7 +33,6 @@
     font-style: normal;
     font-weight: 900;
     font-size: 48px;
-    color: #0f0;
 }
 
 .align {
@@ -41,8 +40,9 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.582);
+    background-color: rgba(4, 163, 4, 0.767);
     min-width: 420px;
+    box-shadow: rgba(14, 30, 37, 0.2) 0px 2px 4px 0px, rgba(14, 30, 37, 0.6) 0px 2px 16px 0px;
     width: auto;
     padding: 3%;
 
@@ -89,10 +89,9 @@
 .create-account-btn{
     border-radius: 40px !important;
     font-family: Roboto;
-    font-style: normal;
     font-weight: normal;
     font-size: 14px !important;
-    color: #ffffff !important;
+    color: #dddbdb !important;
     padding: 6px 12px !important;
     height: 35px;
 }

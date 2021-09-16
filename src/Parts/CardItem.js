@@ -3,9 +3,22 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/CardItem.css';
 import {Card, Container, Row, Col, Button} from "react-bootstrap";
 import { CartContext } from '../Context/CartContext';
+// import CardItemButton from './CardItemButton';
 
 export default function CardItem (props){
-    const { addToCart } = useContext(CartContext);
+    const { addToCart, isAddedToCart } = useContext(CartContext);
+
+    let buttonStyle;
+
+    // isAddedToCart ? buttonStyle = {
+    //     backgroundColor: "rgb(8, 155, 8)",
+    //     color: "rgb(255, 255, 255)"
+    // } : buttonStyle = {
+    //     // backgroundColor: "rgb(8, 155, 8)",
+    //     // color: "rgb(255, 255, 255)"
+    // }
+
+    
     
     return(
         <>
@@ -19,7 +32,8 @@ export default function CardItem (props){
                             <Col className="price">Rs. {props.Price}</Col>
                         </Row>
                     </Container>
-                    <Button onClick={()=>{addToCart(props.id, parseFloat(props.Price))}} className="btn-cart" >Add To Cart</Button>
+                    <Button onClick={()=>{addToCart(props.id, parseFloat(props.Price))}} style={buttonStyle} variant="success" className="btn-cart" >Add To Cart</Button>
+                    {/* <CardItemButton id={props.id} Price={props.Price}/> */}
                 </Card.Body>
             </Card>
         </>   

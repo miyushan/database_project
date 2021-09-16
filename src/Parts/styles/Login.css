@@ -37,7 +37,7 @@
     font-style: normal;
     font-weight: 900;
     font-size: 48px;
-    color: rgb(5, 199, 5);
+    color: rgb(223, 223, 223);
 }
 
 .align {
@@ -45,7 +45,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.582);
+    /* background-color: rgb(5, 199, 5); */
     min-width: 420px;
     width: auto;
     padding: 3%;
@@ -57,6 +57,8 @@
 }
 
 .login-row-0{
+    position: relative;
+    top: -2%;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
@@ -99,12 +101,12 @@
     color: #948989 !important;
     padding: 6px 12px !important;
     height: 35px;
-    background-color: rgb(5, 199, 5);
-    border-color: rgb(5, 199, 5);
+    background-color: rgb(4, 133, 4);
+    border-color: rgb(4, 133, 4);
 }
 .create-account-btn:hover{
-    background-color: rgb(8, 155, 8);
-    border-color: rgb(8, 155, 8);
+    background-color: rgb(4, 117, 4);
+    border-color: rgb(4, 117, 4);
 }
 
 .admin-login-icon path{

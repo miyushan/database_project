@@ -13,6 +13,7 @@ function CartContextProvider(props) {
     const [totalPrice, setTotalPrice] = useState(0);
     const [totalWeight, setTotalWeight] = useState(0);
     const [priceWithDiscount, setPriceWithDiscount] = useState(0);
+    const [isAddedToCart, setIsAddedToCart] = useState();
     const discount = 5;
 
     useEffect(() => {
@@ -97,8 +98,10 @@ function CartContextProvider(props) {
             })
             if (isExist === false) {
                 addItem(Id, cost);
+                setIsAddedToCart(true);
             } else {
                 removeFromCart(Id, cost);
+                setIsAddedToCart(false);
             }
         }
     }
@@ -164,7 +167,7 @@ function CartContextProvider(props) {
     }
 
     return (
-        <CartContext.Provider value={{ addToCart, cartProducts, setCartProducts, removeFromCart, changeCartQuantity, totalPrice, totalWeight, priceWithDiscount }}>
+        <CartContext.Provider value={{ addToCart, cartProducts, setCartProducts, removeFromCart, changeCartQuantity, totalPrice, totalWeight, priceWithDiscount, isAddedToCart }}>
             {props.children}
         </CartContext.Provider>
     );
