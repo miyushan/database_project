@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
 import './OrdersDetails.css';
-import {Table, ButtonGroup, Button, Breadcrumb } from "react-bootstrap";
+import {Table, ButtonGroup, Button, Breadcrumb, Col } from "react-bootstrap";
 import axios from 'axios';
 // import { ReactComponent as Edit } from '../../files/icons/edit-regular.svg';
 import { ReactComponent as Delete } from '../../files/icons/trash-alt-regular.svg';
 // import { ReactComponent as New } from '../../files/icons/plus-solid.svg';
 
 import { EmployeeContext } from '../../Context/EmployeeContext';
+import { ReactComponent as Admin } from '../../files/icons/users-cog-solid.svg';
 
 function OrdersDetails(){
     const { orders } = useContext(EmployeeContext);
@@ -92,6 +93,12 @@ function OrdersDetails(){
                         <Row className="justify-content-center align-items-center"><a className="d-flex justify-content-center align-items-center new-p"variant="success" href="branch/add"><New className="btn-add-new" height="20px"/></a></Row>
                     </Col>     
                 </div> */}
+
+                <div className="add-new-2 ">
+                    <Col className="text-center">
+                        <a href="/db/login" className="admin-login-btn"><Admin className="admin-login-icon" height="25px"/></a>
+                    </Col>     
+                </div>
             </div>
                 
         </>

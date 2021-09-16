@@ -1,9 +1,10 @@
 import React, { useState, useEffect} from 'react';
 import './CustomerDetails.css';
-import {Table, ButtonGroup, Button, Breadcrumb} from "react-bootstrap";
+import {Table, ButtonGroup, Button, Breadcrumb, Col} from "react-bootstrap";
 import axios from 'axios';
 import { ReactComponent as Edit } from '../../files/icons/edit-regular.svg';
 import { ReactComponent as Delete } from '../../files/icons/trash-alt-regular.svg';
+import { ReactComponent as Admin } from '../../files/icons/users-cog-solid.svg';
 
 
 
@@ -95,6 +96,12 @@ function CustomerDetails(){
                                 })}
                         </tbody>
                     </Table>
+
+                    <div className="add-new-2 ">
+                        <Col className="text-center">
+                            <a href="/db/login" className="admin-login-btn"><Admin className="admin-login-icon" height="25px"/></a>
+                        </Col>     
+                    </div>
 
                 {/* </Container> */}
             

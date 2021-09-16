@@ -5,9 +5,7 @@ import axios from 'axios';
 import { ReactComponent as Edit } from '../../files/icons/edit-regular.svg';
 import { ReactComponent as Delete } from '../../files/icons/trash-alt-regular.svg';
 import { ReactComponent as New } from '../../files/icons/plus-solid.svg';
-
-
-
+import { ReactComponent as Admin } from '../../files/icons/users-cog-solid.svg';
 
 function DeliveryPersonDetails(){
 
@@ -103,7 +101,12 @@ function DeliveryPersonDetails(){
                         <Row className="justify-content-center align-items-center"><a className="d-flex justify-content-center align-items-center new-p" variant="success" href="delivery-person/add"><New className="btn-add-new" height="20px"/></a></Row>
                     </Col>     
                 </div>
-            
+
+                <div className="add-new-2 ">
+                    <Col className="text-center">
+                        <a href="/db/login" className="admin-login-btn"><Admin className="admin-login-icon" height="25px"/></a>
+                    </Col>     
+                </div>
             </div>
                 
         </>
