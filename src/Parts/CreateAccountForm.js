@@ -14,11 +14,10 @@ export default function CreateAccountForm () {
     const { branches } = useContext(EmployeeContext);
 
     const [hintData, setHintData] = useState([])
-    const [text, setText] = useState('')
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [gender, setGender] = useState('');
+    const [gender, setGender] = useState('Male');
     const [contactNumber, setContactNumber] = useState('');
     const [branchName, setBranchName] = useState('');
     const [password, setPassword] = useState('');
@@ -32,8 +31,8 @@ export default function CreateAccountForm () {
         setLastName(e.target.value);
     }
 
-    const onChangeGender = (e) => {
-        setGender(e.target.value);
+    const onChangeGender = (gender) => {
+        setGender(gender);
     }
 
     const onChangeContactNumber = (e) => {
@@ -102,9 +101,9 @@ export default function CreateAccountForm () {
     }
 
     const onSubmit = (e) => {
-        console.log(gender)
+        // console.log(gender)
         e.preventDefault();
-        // checkNewUser();
+        checkNewUser();
     }
     
     useEffect(()=> {
@@ -117,13 +116,16 @@ export default function CreateAccountForm () {
         setHintData(tempBranchArr);
     },[branches])
 
-        
+    // box-shadow: 0 0 0 0.25rem rgb(60 153 110 / 50%);
+
+
+
 
     return (
         <>
         <Form className="login-form" onSubmit={onSubmit} method="post">
 
-            <Form.Group className="mb-3" controlId="formBasicFirstName">
+            <Form.Group className="mb-3 " controlId="formBasicFirstName">
                 <Form.Control className="login-input" type="text" placeholder="First name" name="firstName" value={firstName} onChange={onChangeFirstName}/>
                 <Form.Text className="text-muted">
                 </Form.Text>
@@ -136,9 +138,9 @@ export default function CreateAccountForm () {
             </Form.Group>
 
 
-            <DropdownButton value={gender} className="mb-3 dropdown-btn" title="Gender" variant="success">
-                <Dropdown.Item className="login-input dropdown-btn-item">Male</Dropdown.Item>
-                <Dropdown.Item className="login-input dropdown-btn-item">Female</Dropdown.Item>
+            <DropdownButton className="mb-3 dropdown-btn" title={gender} variant="success">
+                <Dropdown.Item  onClick={()=>onChangeGender('Male')} className="login-input-drop dropdown-btn-item">Male</Dropdown.Item>
+                <Dropdown.Item  onClick={()=>onChangeGender('Female')} className="login-input-drop dropdown-btn-item">Female</Dropdown.Item>
             </DropdownButton>
             {/* <Form.Group className="mb-3" controlId="formBasicGender">
                 <Form.Control className="login-input" type="text" placeholder="Gender" name="gender"  value={gender} onChange={onChangeGender}/>
@@ -153,7 +155,7 @@ export default function CreateAccountForm () {
             </Form.Group>
 
             <Hint options={hintData} allowTabFill>
-                <input className='input-with-hint mb-3' value={branchName} onChange={onChangeBranchName} placeholder="Branch Name" variant="success"/>
+                <input className='input-with-hint mb-3 login-input' value={branchName} onChange={onChangeBranchName} placeholder="Branch Name" variant="success"/>
             </Hint>
             {/* <Form.Group className="mb-3" controlId="formBasicBranchName">
                 <Form.Control className="login-input" type="text" placeholder="Branch Name" name="branchName"  value={branchName} onChange={onChangeBranchName}/>
@@ -165,7 +167,7 @@ export default function CreateAccountForm () {
                 <Form.Control className="login-input" type="password" placeholder="Password" name="password"  value={password} onChange={onChangePassword}/>
             </Form.Group>
 
-            <Button href="" className="login-submit-btn login-input" type="submit" name="createNewAccount">CREATE ACCOUNT</Button>
+            <Button href="" className="login-submit-btn login-input" type="submit" name="createNewAccount" variant="success">CREATE ACCOUNT</Button>
 
             <Route>
                 {isRegistered? <Redirect to="/login" /> : null} 
