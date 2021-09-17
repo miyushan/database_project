@@ -1,8 +1,32 @@
-INSERT INTO `branch` (`id`, `name`, `Address`, `Posting_Date`) VALUES
-(1, 'Kochchikade', '23 Main Road Kochchikade', '2020-11-01 08:05:29'),
-(2, 'Negombo', '7/C Main Road Negombo', '2020-11-08 08:15:13'),
-(3, 'Nuwara Eliya', '15 Main Street Nuwara Eliya', '2020-11-15 08:03:47');
-
+INSERT INTO `branch` (`id`, `Name`, `Contact_Number`, `Address`, `Posting_Date`) VALUES
+(1, 'Kochchikade', '0317413429', '48, Pallansena road Kochchikade', '2020-02-01 10:25:39'),
+(2, 'Negombo', '0314673226', '251,Sea street Negombo', '2020-02-11 12:32:59'),
+(3, 'Nuwara Eliya', '0521472183', '74/14, Beddagana road Nuwara Eliya', '2020-03-10 10:24:41'),
+(4, 'Anuradhapura', '0250634208', 'Isuru Products, Jaffna junction Anuradhapura', '2020-03-13 17:16:23'),
+(5, 'Chilaw', '0320533329', '123/35, Seda Uyana, Kurunegala road Chilaw', '2020-04-02 13:23:02'),
+(6, 'Polonnaruwa', '0270941380', '92/6 New Moor street Polonnaruwa', '2020-04-09 13:39:53'),
+(7, 'Ratnapura', '0451824124', '95/1 B Jampettah Ln Ratnapura', '2020-04-20 15:50:01'),
+(8, 'Gampaha', '0333399599', '123, Galle Face Court 23 Gampaha', '2020-05-02 09:22:56'),
+(9, 'Trincomalee', '0268523719', '15 Main street Trincomalee', '2020-05-22 12:13:16'),
+(10, 'Vavuniya', '0240194737', '449 Main street Vavuniya', '2020-05-26 10:33:40'),
+(11, 'Jaffna', '0212701621', '70 De Saram road, Jaffna', '2020-06-01 10:48:11'),
+(12, 'Mannar', '0239774329', '163 Lower street Mannar', '2020-06-16 16:45:06'),
+(13, 'Kalutara', '0340627810', '56, Sumudu Place, Asiri Uyana Kalutara', '2020-06-20 11:08:26'),
+(14, 'Puttalam', '0323012247', '232 Baseline road Puttalam', '2020-08-01 14:07:16'),
+(15, 'Kegalle', '0351374260', '	452A  Main street Kegalle', '2020-08-03 12:02:56'),
+(16, 'Avissawella', '0360348417', '39, Rathnapura road Avissawella', '2020-08-17 13:38:40'),
+(17, 'Kurunegala', '0371612671', '41nd Floor, Sarasavi Building, Kurunegala', '2020-08-20 08:29:54'),
+(18, 'Matara', '0410912451', 'South Lake Resorts Kathaluwa Ahangama Matara', '2020-08-22 20:18:27'),
+(19, 'Hambantota', '0476784284', '72-74 Vauxhall Lane Hambantota', '2020-10-09 14:27:45'),
+(20, 'Hatton', '0514638345', 'Tirukovil Kalmunai Hatton', '2020-10-13 16:13:40'),
+(21, 'Nawalapitiya', '0540240123', 'Export Processing Zone, Biyagama Nawalapitiya', '2020-10-27 16:46:34'),
+(22, 'Badulla', '0559122942', '312 Main street Badulla', '2020-11-16 15:42:32'),
+(23, 'Bandarawela', '0571002402', 'Ariyanandaramya Katuwasgoda VG Bandarawela', '2020-11-30 08:44:49'),
+(24, 'Ampara', '0631443316', '77 Sir James Pieris Mw Ampara', '2020-12-01 08:51:05'),
+(25, 'Batticaloa', '0650023526', '178,Trinco road Batticaloa', '2020-12-18 09:31:09'),
+(26, 'Matale', '0667130710', '61 1st Cross street, 11 Matale', '2021-01-16 12:52:46'),
+(27, 'Kalmunai', '0671043191', '188 Main street, HR Kalmunai', '2021-02-04 08:53:50'),
+(28, 'Kandy', '0814054101', 'No 99 Thalatuoya road, Gurudeniya Kandy', '2021-03-18 15:35:28');
 
 INSERT INTO `customer` (`id`, `First_Name`, `Last_Name`, `Gender`, `Contact_Number`, `Branch_Name`, `Password`, `Address`, `Posting_Date`) VALUES
 (1, 'Gihan', 'Priyadarshan', 'Male', '0773154525', 'Nuwara Eliya', 'gihan123', '23 Main road Nuwara Eliya', '2020-12-14 09:05:29'),
@@ -54,7 +78,9 @@ INSERT INTO `product` (`id`, `Name`, `Weight`, `Price`, `Posting_Date`) VALUES
 (29, 'Ginger', '12', '425.50' , '2020-12-14 08:58:31'),
 (30, 'Dambala', '15', '350.00' , '2020-12-14 08:59:06');
 
-INSERT INTO `order` (`id`, `Name`, `Weight`, `Price`, `Posting_Date`) VALUES
-(1, 'Carrot', '3', '220.00', '2020-12-14 08:25:29'),
-(2, 'Carro', '3', '220.00', '2020-12-14 08:25:29');
-
+INSERT INTO `orders` (`id`, `Quantity`, `Total_Cost`, `Customer_Id`, `Manager_Id`, `Delivery_Person_Id`, `Posting_Date`) VALUES
+(1, 25.2, 464.50, 4, 1, 3, '2020-12-14 08:25:29'),
+(2, 12.6, 324.50, 2, 6, 2, '2020-12-14 08:25:29'),
+(3, 9.26, 534.50, 3, 5, 2, '2020-12-14 10:32:15'),
+(4, 12.6, 324.50, 2, 6, 2, '2020-12-14 08:25:29'),
+(5, 9.26, 534.50, 3, 5, 2, '2020-12-14 10:32:15');

@@ -14,9 +14,10 @@
 
         // $id = $request->id;
         $name = $request->name;
+        $contactNumber = $request->contactNumber;
         $address = $request->address;
 
-        $sql = "INSERT INTO branch (Name, Address) VALUES ('$name', '$address')";
+        $sql = "INSERT INTO branch (Name, Contact_Number, Address) VALUES ('$name', '$contactNumber', '$address')";
 
         if(mysqli_query($connect, $sql)){
             http_response_code(201);

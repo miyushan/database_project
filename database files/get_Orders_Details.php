@@ -6,7 +6,7 @@
     // header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS"); 
 
 
-    $sql = "SELECT id, Name, Address, Contact_Number, Posting_Date FROM branch";
+    $sql = "SELECT * FROM orders";
     $data = mysqli_query($connect, $sql);
 
     while($row = $data->fetch_assoc()){

@@ -2,6 +2,7 @@ DROP TABLE IF EXISTS `branch`;
 CREATE TABLE `branch` (
     `id` int(6) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `Name` varchar(120) NOT NULL,
+    `Contact_Number` varchar(10) NOT NULL,
     `Address` varchar(255) NOT NULL,
     `Posting_Date` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -61,8 +62,8 @@ CREATE TABLE `product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
-DROP TABLE IF EXISTS `order`;
-CREATE TABLE `order` (
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE `orders` (
     `id` int(6) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	`Quantity` double NOT NULL,
     `Total_Cost` varchar(120) NOT NULL,
