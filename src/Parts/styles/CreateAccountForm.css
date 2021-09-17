@@ -19,3 +19,23 @@
     color: #fff !important;
 }
 
+.dropdown-btn > button{
+    text-align: left;
+    width: 100%;
+    border-radius: 40px;
+    font-family: Roboto;
+    font-weight: normal;
+    font-size: 14px;
+    color: #6c757d !important;
+    padding: 6px 12px;
+    background-color: #fff !important;
+    border-width: 0;
+}
+.dropdown-btn-item:active{
+    color: #1e2125 !important;
+    background-color: #e9ecef !important;
+}
+.dropdown-btn > div{
+    width: 100%;
+    border-radius: 12px;
+}

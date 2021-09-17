@@ -13,8 +13,8 @@ export default function LoginForm (){
     const [customers, setCustomers] = useState([]);
     const [contactNumber, setContactNumber] = useState('');
     const [password, setPassword] = useState('');
-    const [isValidUser, setIsValidUser] = useState();
-    
+    const [isValidUser, setIsValidUser] = useState(false);
+    const [refresh, setRefresh] = useState(false);
 
     const onChangeContactNumber = (e) => {
         setContactNumber(e.target.value);
@@ -29,37 +29,61 @@ export default function LoginForm (){
         localStorage.removeItem('cartDetails');
         axios.get('http://localhost/database_project/get_Customer_details.php')
         .then (res =>{
-            setCustomers(res.data)
+            setCustomers(res.data);
         })
     }, []);
+
+    useEffect(() => {
+
+    },[refresh]);
 
     const onSubmit =(e)=>{
         e.preventDefault();
 
-        customers.forEach(customer => {
-
-            if(contactNumber === customer.Contact_Number && password === customer.Password){
-                setIsValidUser(true);
-                console.log("Login success!");
-
-                //Session object
-                let userDetails = {
-                    id: customer.id,
-                    firstName: customer.First_Name,
-                    contactNumber: customer.Contact_Number, 
-                    gender: customer.Gender,
-                    branchName: customer.Branch_Name,
-                    logedInUser: true,
-                }
-
-                setIsLogedIn(true);
-
-                //Add the session
-                localStorage.setItem('userDetails', JSON.stringify(userDetails));
-
+        if(contactNumber.length === 0 || password.length === 0){
+            alert("All Fields should be filled!");
+        }else{
+            let isUserExist = false;
+            try{
+                customers.forEach(customer => {
+    
+                    if(contactNumber === customer.Contact_Number && password === customer.Password){
+                        setIsLogedIn(true);
+                        setIsValidUser(true);
+                        isUserExist = true;
+    
+                        //Session object
+                        let userDetails = {
+                            id: customer.id,
+                            firstName: customer.First_Name,
+                            contactNumber: customer.Contact_Number, 
+                            gender: customer.Gender,
+                            branchName: customer.Branch_Name,
+                            logedInUser: true,
+                        }
+    
+                        //Add the session
+                        localStorage.setItem('userDetails', JSON.stringify(userDetails));
+                        
+                    }else if(contactNumber === customer.Contact_Number && password !== customer.Password){
+                        isUserExist = true;
+                        alert("Incorrect Password!");
+                    }
+                    // else{
+                    //     alert('Invalid User!');
+                    // }
+                        
+                })
+            }catch(e){
+                alert('No Account Exists!');
             }
 
-        })
+            if(!isUserExist){
+                alert('Invalid User!');
+            }
+        }
+        setRefresh(!refresh);
+        
     }
 
 
