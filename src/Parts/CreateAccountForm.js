@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/CreateAccountForm.css';
 import {Form, Button, DropdownButton, Dropdown} from "react-bootstrap";
 import axios from 'axios';
+import { Hint } from 'react-autocomplete-hint';
+import { EmployeeContext } from '../Context/EmployeeContext';
 // import { faObjectGroup } from '@fortawesome/free-solid-svg-icons';
 // import CustomerDetails from '../DB_data/CustomerDetails';
 
 import { Route, Redirect } from "react-router-dom";
 
-
 export default function CreateAccountForm () {
+    const { branches } = useContext(EmployeeContext);
+
+    const [hintData, setHintData] = useState([])
+    const [text, setText] = useState('')
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -97,9 +102,20 @@ export default function CreateAccountForm () {
     }
 
     const onSubmit = (e) => {
+        console.log(gender)
         e.preventDefault();
-        checkNewUser();
+        // checkNewUser();
     }
+    
+    useEffect(()=> {
+        let tempBranchArr = [];
+
+        branches.forEach(branch=>{
+            let obj = branch.Name;
+            tempBranchArr.push(obj);
+        })
+        setHintData(tempBranchArr);
+    },[branches])
 
         
 
@@ -120,7 +136,7 @@ export default function CreateAccountForm () {
             </Form.Group>
 
 
-            <DropdownButton className="mb-3 dropdown-btn" title="Gender" variant="success">
+            <DropdownButton value={gender} className="mb-3 dropdown-btn" title="Gender" variant="success">
                 <Dropdown.Item className="login-input dropdown-btn-item">Male</Dropdown.Item>
                 <Dropdown.Item className="login-input dropdown-btn-item">Female</Dropdown.Item>
             </DropdownButton>
@@ -136,11 +152,14 @@ export default function CreateAccountForm () {
                 </Form.Text>
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicBranchName">
+            <Hint options={hintData} allowTabFill>
+                <input className='input-with-hint mb-3' value={branchName} onChange={onChangeBranchName} placeholder="Branch Name" variant="success"/>
+            </Hint>
+            {/* <Form.Group className="mb-3" controlId="formBasicBranchName">
                 <Form.Control className="login-input" type="text" placeholder="Branch Name" name="branchName"  value={branchName} onChange={onChangeBranchName}/>
                 <Form.Text className="text-muted">
                 </Form.Text>
-            </Form.Group>
+            </Form.Group> */}
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Control className="login-input" type="password" placeholder="Password" name="password"  value={password} onChange={onChangePassword}/>

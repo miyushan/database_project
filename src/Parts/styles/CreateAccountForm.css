@@ -36,6 +36,17 @@
     background-color: #e9ecef !important;
 }
 .dropdown-btn > div{
-    width: 100%;
+    text-align: center;
+    margin: auto;
     border-radius: 12px;
+}
+
+.input-with-hint{
+    width: 100%;
+    font-size: 14px;
+    padding: 6px 12px;
+    margin: 0;
+    border: 0 !important;
+    border-radius: 40px;
+    outline: 0;
 }
