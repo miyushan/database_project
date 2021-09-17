@@ -72,3 +72,7 @@
 .cartDetail-column-3{
     padding-right: 25px;
 }
+
+.cartDetail-column>a{
+    min-width: 70% !important;
+}

@@ -27,20 +27,25 @@ function PaymentCard(){
     
 
     useEffect(() =>{
-        let cartData = localStorage.getItem('cartDetails');
-        cartData = JSON.parse(cartData);
+        try{
+            let cartData = localStorage.getItem('cartDetails');
+            cartData = JSON.parse(cartData);
 
-        if (!cartData || cartData.length === 0) {
-            setBtnDisable(true);
-        }else{
-            setBtnDisable(false);
+            if (!cartData || cartData.length === 0) {
+                setBtnDisable(true);
+            }else{
+                setBtnDisable(false);
+            }
+
+            //get user details
+            let userData = localStorage.getItem('userDetails');
+            userData = JSON.parse(userData);
+            setBranch(userData.branchName);
+            setCustomerId(userData.id);
+        }catch(e){
+
         }
-
-        //get user details
-        let userData = localStorage.getItem('userDetails');
-        userData = JSON.parse(userData);
-        setBranch(userData.branchName);
-        setCustomerId(userData.id);
+        
     },[])
     
 
