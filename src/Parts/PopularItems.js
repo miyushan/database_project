@@ -20,7 +20,6 @@ import item0 from '../files/product-images/1_carrot.png';
 function PopularItems () {
 
     const { popularProducts } = useContext(ProductContext);
-
     
     return(
         <div className="outside">

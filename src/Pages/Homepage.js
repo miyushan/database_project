@@ -53,7 +53,7 @@ class Homepage extends Component {
                             <SearchBar />
                             <MainCover />
                             <Benificts />
-                                {/* <PopularItems /> */}
+                                <PopularItems />
                                 <OurProducts />
                             <AboutUs />
                             <Container className="d-flex justify-content-center">

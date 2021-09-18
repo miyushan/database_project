@@ -59,7 +59,7 @@ function OrdersDetails(){
                                 <th>Manager ID</th>
                                 <th>D Person ID</th>
                                 <th>Posting Date</th>
-                                <th>Edit / Delete</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
