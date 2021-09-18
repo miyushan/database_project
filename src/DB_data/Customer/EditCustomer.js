@@ -55,7 +55,7 @@ function EditCustomer(){
     }, [customers, customerId]);
 
     const checkAnyChanges = () => {
-        if((firstName.length!==0 && lastName.length!==0 && gender.length!==0 && contactNumber.length!==0 && branchName.length!==0 && password.length!==0 && address.length!==0)){
+        if((firstName.length!==0 && lastName.length!==0 && gender.length!==0 && contactNumber.length!==0 && branchName.length!==0 && password.length!==0 )){
             let iscustomerExist = false;
 
             if(firstName===initialFirstName && lastName===initialLastName && gender===initialGender && contactNumber===initialContactNumber && branchName===initialBranchName && password===initialPassword && address===initialAddress ){
@@ -72,7 +72,7 @@ function EditCustomer(){
                 return false;
             }
         }else{
-            alert('Please fill the fields!');
+            alert('Please fill the required fields!');
             return false;
         }
     }
