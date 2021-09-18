@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { Route, Redirect } from "react-router-dom";
 import { useParams } from 'react-router-dom';
 import {Form, Row, Col, Button, Container} from "react-bootstrap";
 import { ReactComponent as Back } from '../../files/icons/caret-left-solid.svg';
@@ -19,6 +20,7 @@ function EditProduct(){
     const [initialTotalStockWeight, setInitialTotalStockWeight] = useState('');
     const [initialPricePerKilogram, setInitialPricePerKilogram] = useState('');
 
+    const [goBack, setGoBack] = useState(false);
     const productId = id;
 
     useEffect(() => {
@@ -67,10 +69,9 @@ function EditProduct(){
                 pricePerKilogram: pricePerKilogram,
             })
             .then(() => {
-                alert('Product is Updated Successfully!');
-                setInitialProductName(productName);
-                setInitialTotalStockWeight(totalStockWeight);
-                setInitialPricePerKilogram(pricePerKilogram);
+                alert('Product is Updated Successfully!');                
+                setGoBack(true);
+
             });
         }
     }
@@ -126,8 +127,10 @@ function EditProduct(){
                         <Button className="login-submit-btn login-input mt-2 btn-db" variant="success" type="submit">
                             Submit
                         </Button>
-
                         
+                        <Route>
+                            {goBack ? <Redirect to="/db/products" /> : null} 
+                        </Route>
                         
                     </Form>
                 </Container>

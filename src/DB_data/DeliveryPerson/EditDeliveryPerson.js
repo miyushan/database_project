@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { Route, Redirect } from "react-router-dom";
 import { useParams } from 'react-router-dom';
 import {Form, Row, Col, Button, Container} from "react-bootstrap";
 import { ReactComponent as Back } from '../../files/icons/caret-left-solid.svg';
@@ -30,6 +31,7 @@ export default function EditDiliveryPerson(){
     const [initialPassword, setInitialPassword] = useState('');
     const [initialAddress, setInitialAddress] = useState('');
 
+    const [goBack, setGoBack] = useState(false);
     const dPersonId = id;
 
     useEffect(() => {
@@ -92,15 +94,9 @@ export default function EditDiliveryPerson(){
                 Address: address,
             })
             .then(() => {
-                alert('Delivery Person is Updated Successfully!');
-                setInitialFirstName(firstName);
-                setInitialLastName(lastName);
-                setInitialGender(gender);
-                setInitialSalary(salary);
-                setInitialContactNumber(contactNumber);
-                setInitialBranchName(branchName);
-                setInitialPassword(password);
-                setInitialAddress(address);
+                alert('Delivery Person is Updated Successfully!');                
+                setGoBack(true);
+
             });
         }
     }
@@ -213,8 +209,10 @@ export default function EditDiliveryPerson(){
                             Submit
                         </Button>
 
-                        
-                        
+                        <Route>
+                            {goBack ? <Redirect to="/db/delivery-person" /> : null} 
+                        </Route>
+
                     </Form>
                 </Container>
 

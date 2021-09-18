@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { Route, Redirect } from "react-router-dom";
 import { useParams } from 'react-router-dom';
 import {Form, Row, Col, Button, Container} from "react-bootstrap";
 import { ReactComponent as Back } from '../../files/icons/caret-left-solid.svg';
@@ -30,6 +31,7 @@ export default function EditManager(){
     const [initialPassword, setInitialPassword] = useState('');
     const [initialAddress, setInitialAddress] = useState('');
 
+    const [goBack, setGoBack] = useState(false);
     const managerId = id;
 
     useEffect(() => {
@@ -95,14 +97,7 @@ export default function EditManager(){
             })
             .then(() => {
                 alert('Manager Updated Successfully!');
-                setInitialFirstName(firstName);
-                setInitialLastName(lastName);
-                setInitialGender(gender);
-                setInitialSalary(salary);
-                setInitialContactNumber(contactNumber);
-                setInitialBranchName(branchName);
-                setInitialPassword(password);
-                setInitialAddress(address);
+                setGoBack(true);
             });
         }
     }
@@ -215,6 +210,9 @@ export default function EditManager(){
                             Submit
                         </Button>
 
+                        <Route>
+                            {goBack ? <Redirect to="/db/manager" /> : null} 
+                        </Route>
                         
                         
                     </Form>
