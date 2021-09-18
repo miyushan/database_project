@@ -21,7 +21,7 @@ class DataBaseLoginpage extends Component{
                 show: true
             })
         }, 2700)
-        localStorage.removeItem('managerDetails');
+        localStorage.removeItem('adminDetails');
     }
 
     render() {

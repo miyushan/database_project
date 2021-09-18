@@ -15,6 +15,8 @@ export default function DataBaseLoginForm (){
     const [password, setPassword] = useState('');
     const [isValidUser, setIsValidUser] = useState();
     
+    const loginNumber = '0773298953';
+    const loginPW = '123';
 
     const onChangeContactNumber = (e) => {
         setContactNumber(e.target.value);
@@ -24,40 +26,46 @@ export default function DataBaseLoginForm (){
         setPassword(e.target.value);
     }
 
-    useEffect(() => {
-        axios.get('http://localhost/database_project/get_Manager_details.php')
-        .then (res =>{
-            setCustomers(res.data)
-        })
-    }, []);
+    // useEffect(() => {
+    //     axios.get('http://localhost/database_project/get_Manager_details.php')
+    //     .then (res =>{
+    //         setCustomers(res.data)
+    //     })
+    // }, []);
 
     const onSubmit =(e)=>{
         e.preventDefault();
 
-        customers.forEach(customer => {
+        // customers.forEach(customer => {
 
-            if(contactNumber === customer.Contact_Number && password === customer.Password){
+            if(contactNumber === loginNumber && password === loginPW ){
                 setIsValidUser(true);
-                console.log("Login success!");
+                console.log("DB Login success!");
 
                 //Session object
                 let userDetails = {
-                    id: customer.id,
-                    firstName: customer.First_Name,
-                    contactNumber: customer.Contact_Number, 
-                    gender: customer.Gender,
-                    branchName: customer.Branch_Name,
-                    logedInUser: true,
+                    admin_contactNumber: contactNumber
                 }
 
                 setIsLogedIn(true);
 
                 //Add the session
                 localStorage.setItem('managerDetails', JSON.stringify(userDetails));
-
+            }else if(contactNumber === '' && password !== '' ){
+                alert('Phone number is required!');
+            }else if(contactNumber === '' && password === '' ){
+                alert('Login fields are empty!');
+            }else if(contactNumber === loginNumber && password !== loginPW ){
+                if(password === ''){
+                    alert('Password is Empty!');
+                }else{
+                    alert('Password is wrong!');
+                }
+            }else{
+                alert('Invalid Login!')
             }
 
-        })
+        // })
     }
 
 
