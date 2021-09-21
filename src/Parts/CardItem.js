@@ -45,7 +45,6 @@ export default function CardItem (props){
                         </Row>
                     </Container>
                     <Button onClick={()=>{addToCart(props.id, parseFloat(props.Price))}} style={buttonStyle} variant="success" className="btn-cart" >Add To Cart</Button>
-                    {/* <CardItemButton id={props.id} Price={props.Price}/> */}
                 </Card.Body>
             </Card>
         </>   
