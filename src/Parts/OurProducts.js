@@ -6,21 +6,12 @@ import CardItem from './CardItem';
 import { ProductContext } from '../Context/ProductContext';
 // import { CartContext } from '../Context/CartContext';
 
-import item0 from '../files/product-images/1_carrot.png';
-// import item1 from '../files/product-images/1_Big_Onions.png';
-// import item2 from '../files/product-images/1_tomatoes.png';
-// import item3 from '../files/product-images/1_pumpkin.png';
-// import item4 from '../files/product-images/1_potatoes.png';
-// import item5 from '../files/product-images/1_Leeks.png';
-// import item6 from '../files/product-images/1_Red Onions.png';
-// import item7 from '../files/product-images/1_Cabbage.png';
-// import item8 from '../files/product-images/1_Brinjals.png';
-// import item9 from '../files/product-images/1_Green Chilies.png';
-
+// import item0 from '../files/product-images/1_carrot.png';
 
 function OurProducts () {
 
     const { products } = useContext(ProductContext);
+
     // const { isSelected } = useContext(CartContext);
 
     // const addToCartBtnStyle = (val) => {
@@ -48,7 +39,8 @@ function OurProducts () {
                                         Name={product.Name}
                                         Weight={product.Weight}
                                         Price={product.Price}
-                                        image={item0}
+                                        // image={item0}
+                                        // productImages={productImages}
                                         // color={addToCartBtnStyle(isSelected)}
                                     />
                                 </Col>
