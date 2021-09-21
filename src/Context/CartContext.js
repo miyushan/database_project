@@ -19,7 +19,7 @@ function CartContextProvider(props) {
     useEffect(() => {
         axios.get('http://localhost/database_project/get_Product_details.php')
             .then(res => {
-                setProducts(res.data)
+                setProducts(res.data);
             })
     }, [])
 
@@ -136,7 +136,7 @@ function CartContextProvider(props) {
             setPriceWithDiscount(tempPWD);
         })
 
-        setCartProducts(newItems);
+        setCartProducts(newItems);        
         console.log("Added product\t" + Id);
         localStorage.setItem('cartDetails', JSON.stringify(newItems));
     }
