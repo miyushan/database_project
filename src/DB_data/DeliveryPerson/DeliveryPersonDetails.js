@@ -1,7 +1,8 @@
 import React, { useState, useEffect} from 'react';
 import './DeliveryPersonDetails.css';
-import {Table, ButtonGroup, Button, Breadcrumb, Col, Row} from "react-bootstrap";
+import {Table, ButtonGroup, Button, Breadcrumb, Col, Row } from "react-bootstrap";
 import axios from 'axios';
+import Modal from '../../Parts/Model'
 import { ReactComponent as Edit } from '../../files/icons/edit-regular.svg';
 import { ReactComponent as Delete } from '../../files/icons/trash-alt-regular.svg';
 import { ReactComponent as New } from '../../files/icons/plus-solid.svg';
@@ -9,27 +10,28 @@ import { ReactComponent as Admin } from '../../files/icons/users-cog-solid.svg';
 
 function DeliveryPersonDetails(){
 
+    const [show, setShow] = useState();
+
     let [customers, setCustomers] = useState([]);
     // const [reload, setReload] = useState(false);
 
     useEffect(() => {
         axios.get('http://localhost/database_project/get_DeliveryPerson_details.php')
         .then (res =>{
-            // console.log(res.data);
-            setCustomers(res.data)
+            setCustomers(res.data);
         })
     }, []);
 
 
     const deleteCustomer=(customer_id)=>{
-
+        setShow(true);
         console.log("Customer Record is Deleted");
 
-        axios.get('http://localhost/database_project/delete_DeliveryPerson.php?id=' + customer_id)
-        .then(res =>{
-            console.log(res);
-            // setReload(true);
-        })
+        // axios.get('http://localhost/database_project/delete_DeliveryPerson.php?id=' + customer_id)
+        // .then(res =>{
+        //     console.log(res);
+        //     // setReload(true);
+        // })
         
     }
     
@@ -86,6 +88,9 @@ function DeliveryPersonDetails(){
                                             <ButtonGroup aria-label="Basic example">
                                                 <Button href={"delivery-person/edit/"+customer.id} className="btn-edit"variant="warning"><Edit className="edit-p" height="15px"/></Button>
                                                 <Button href="/db/delivery-person" className="btn-delete" onClick={() => deleteCustomer(customer.id)} variant="danger"><Delete className="delete-p" height="15px"/></Button>
+                                                {/* <Button href="/db/delivery-person" className="btn-delete" onClick={()=>handleShow()} variant="danger"><Delete className="delete-p" height="15px"/></Button> */}
+
+                                                <Modal show={show}/>
                                             </ButtonGroup>
                                         </td>
                                     </tr>
@@ -108,11 +113,12 @@ function DeliveryPersonDetails(){
                     </Col>     
                 </div>
             </div>
-                
+
+            
+
         </>
     );
    
-    
 }
 
 export default DeliveryPersonDetails;
