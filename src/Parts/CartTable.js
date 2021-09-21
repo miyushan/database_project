@@ -5,10 +5,22 @@ import CartTableRow from './CartTableRow';
 import {Table, Container} from "react-bootstrap";
 import item1 from '../files/product-images/1_Beet.png';
 import { CartContext } from '../Context/CartContext';
+import { ProductContext } from '../Context/ProductContext';
 
 function CartTable () {
 
     const { cartProducts } = useContext(CartContext);
+    const { productArr } = useContext(ProductContext);
+
+    const getItem = (id) => {
+        const numOfImages = productArr.length;
+
+        if(numOfImages>id){
+            return productArr[id];
+        }else{
+            return productArr[0];
+        }
+    }
 
     return(
         <>
@@ -33,7 +45,7 @@ function CartTable () {
                             {cartProducts.map((product) =>{
                                 return (
                                     <tr key={product.id}>
-                                        <CartTableRow image={item1} name={product.Name} price={product.CartPrice} pricePKg={product.Price} maxWeight={product.Weight} weight={product.CartWeight} id={product.id}/>
+                                        <CartTableRow image={getItem(product.id)} name={product.Name} price={product.CartPrice} pricePKg={product.Price} maxWeight={product.Weight} weight={product.CartWeight} id={product.id}/>
                                     </tr>
                                 )  
 
