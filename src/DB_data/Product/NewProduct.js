@@ -124,7 +124,6 @@ function NewProduct(){
                     <Col className="text-center">
                         <Row className=""><a className="d-flex justify-content-center align-items-center new-p" variant="success" href="/db/products"><Back className="btn-add-new btn-p-back" height="36px"/></a></Row>
                     </Col>
-                    
                 </div>
             
             </div>

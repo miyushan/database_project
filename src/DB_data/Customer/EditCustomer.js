@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Route, Redirect } from "react-router-dom";
+// import { Route, Redirect } from "react-router-dom";
 import { useParams } from 'react-router-dom';
 import {Form, Row, Col, Button, Container} from "react-bootstrap";
 import axios from 'axios';
@@ -30,7 +30,7 @@ function EditCustomer(){
     const [initialPassword, setInitialPassword] = useState('');
     const [initialAddress, setInitialAddress] = useState('');
 
-    const [goBack, setGoBack] = useState(false);
+    // const [goBack, setGoBack] = useState(false);
     const customerId = id;
 
     useEffect(() => {
@@ -93,7 +93,14 @@ function EditCustomer(){
             })
             .then(() => {
                 alert('Customer Updated Successfully!');
-                setGoBack(true);
+                // setGoBack(true);
+                setInitialFirstName(firstName);
+                setInitialLastName(lastName);
+                setInitialGender(gender);
+                setInitialContactNumber(contactNumber);
+                setInitialBranchName(branchName);
+                setInitialPassword(password);
+                setInitialAddress(address);
             });
         }
     }
@@ -195,9 +202,9 @@ function EditCustomer(){
                             Submit
                         </Button>
 
-                        <Route>
+                        {/* <Route>
                             {goBack ? <Redirect to="/db/customer" /> : null} 
-                        </Route>
+                        </Route> */}
                         
                     </Form>
                 </Container>

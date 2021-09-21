@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Route, Redirect } from "react-router-dom";
+// import { Route, Redirect } from "react-router-dom";
 import { useParams } from 'react-router-dom';
 import {Form, Row, Col, Button, Container} from "react-bootstrap";
 import { ReactComponent as Back } from '../../files/icons/caret-left-solid.svg';
@@ -20,7 +20,7 @@ function EditProduct(){
     const [initialTotalStockWeight, setInitialTotalStockWeight] = useState('');
     const [initialPricePerKilogram, setInitialPricePerKilogram] = useState('');
 
-    const [goBack, setGoBack] = useState(false);
+    // const [goBack, setGoBack] = useState(false);
     const productId = id;
 
     useEffect(() => {
@@ -69,8 +69,11 @@ function EditProduct(){
                 pricePerKilogram: pricePerKilogram,
             })
             .then(() => {
-                alert('Product is Updated Successfully!');                
-                setGoBack(true);
+                alert('Product is Updated Successfully!');
+                // setGoBack(true);
+                setInitialProductName(productName);
+                setInitialTotalStockWeight(totalStockWeight);
+                setInitialPricePerKilogram(pricePerKilogram);
 
             });
         }
@@ -128,9 +131,9 @@ function EditProduct(){
                             Submit
                         </Button>
                         
-                        <Route>
+                        {/* <Route>
                             {goBack ? <Redirect to="/db/products" /> : null} 
-                        </Route>
+                        </Route> */}
                         
                     </Form>
                 </Container>
@@ -139,7 +142,6 @@ function EditProduct(){
                     <Col className="text-center">
                         <Row className=""><a className="d-flex justify-content-center align-items-center new-p" variant="success" href="/db/products"><Back className="btn-add-new btn-p-back" height="36px"/></a></Row>
                     </Col>
-                    
                 </div>
             
             </div>
