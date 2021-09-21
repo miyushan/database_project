@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useContext} from 'react';
+import React, { useState, useContext} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/DataBaseLoginForm.css';
-import axios from 'axios';
 import { Route, Redirect } from "react-router-dom";
 import { UserContext } from '../Context/UserContext';
 
@@ -10,7 +9,6 @@ import {Form, Button} from "react-bootstrap";
 export default function DataBaseLoginForm (){
     const { setIsLogedIn } = useContext(UserContext);
 
-    const [customers, setCustomers] = useState([]);
     const [contactNumber, setContactNumber] = useState('');
     const [password, setPassword] = useState('');
     const [isValidUser, setIsValidUser] = useState();
@@ -25,13 +23,6 @@ export default function DataBaseLoginForm (){
     const onChangePassword = (e) => {
         setPassword(e.target.value);
     }
-
-    // useEffect(() => {
-    //     axios.get('http://localhost/database_project/get_Manager_details.php')
-    //     .then (res =>{
-    //         setCustomers(res.data)
-    //     })
-    // }, []);
 
     const onSubmit =(e)=>{
         e.preventDefault();

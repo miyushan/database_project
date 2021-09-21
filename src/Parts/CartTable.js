@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/CartTable.css';
 import CartTableRow from './CartTableRow';
 import {Table, Container} from "react-bootstrap";
-import item1 from '../files/product-images/1_Beet.png';
 import { CartContext } from '../Context/CartContext';
 import { ProductContext } from '../Context/ProductContext';
 

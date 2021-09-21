@@ -11,45 +11,50 @@ function NewProduct(){
     const [productName, setProductName] = useState('');
     const [totalStockWeight, setTotalStockWeight] = useState('');
     const [pricePerKilogram, setPricePerKilogram] = useState('');
-    let [isOldProduct, setIsOldProduct] = useState(false);
     let [isProductAdded, setIsProductAdded] = useState(false);
 
 
     useEffect(() => {
-        console.log('useEffect')
         axios.get('http://localhost/database_project/get_Product_Details.php')
         .then(res => res.data)
         .then((res) => {
             setProducts(res);
-            setIsOldProduct(false);
         })
     },[isProductAdded]);
 
     const checkNewProduct = () => {
-        products.forEach(product => {
+        let isOldProduct = false;
 
-            if(productName === product.Name){
-                isOldProduct = true;
-                console.log("isOldProduct\t" + isOldProduct); 
-                console.log("old product");  
+        if(productName==='' || totalStockWeight==='' || pricePerKilogram==='') {
+            alert('All Fields must be fill !');
+        }else{
+
+            products.forEach(product => {
+                if(productName === product.Name){
+                    isOldProduct = true;
+                }
+            })
+    
+            if(isOldProduct===false){
+                axios.post('http://localhost/database_project/create_New_Product.php',{
+                    productName: productName,
+                    totalStockWeight: totalStockWeight,
+                    pricePerKilogram: pricePerKilogram,
+                })
+                .then(() => {
+                    alert('New Product is created Successfully!');
+                    setProductName('');
+                    setPricePerKilogram('');
+                    setTotalStockWeight('');
+                    setIsProductAdded(true);
+                });
+            }else if(isOldProduct===true){
+                alert('Product already exists!');
             }
 
-        })
-
-        if(isOldProduct===false){
-            axios.post('http://localhost/database_project/create_New_Product.php',{
-                productName: productName,
-                totalStockWeight: totalStockWeight,
-                pricePerKilogram: pricePerKilogram,
-            })
-            .then(() => {
-                console.log("New Product created");
-                setProductName('');
-                setPricePerKilogram('');
-                setTotalStockWeight('');
-                setIsProductAdded(true);
-            });
         }
+
+       
     }
 
     const onChangeProductName = (e) => {
@@ -65,7 +70,6 @@ function NewProduct(){
     }
 
     const onSubmit = (e) => {
-        console.log(products)
         e.preventDefault();
         checkNewProduct();
     }
