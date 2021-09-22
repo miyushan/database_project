@@ -76,7 +76,7 @@ function CustomerDetails(){
                                 {customers.map((customer) =>{
                                     return (
                                         <tr key={customer.id}>
-                                            <td className="r-margin">{customer.id}</td>
+                                            <td className="r-margin text-r">{customer.id}</td>
                                             <td className="r-margin">{customer.First_Name}</td>
                                             <td className="r-margin">{customer.Last_Name}</td>
                                             <td className="r-margin">{customer.Gender}</td>
