@@ -27,11 +27,11 @@ function DeliveryPersonDetails(){
         setShow(true);
         console.log("Customer Record is Deleted");
 
-        // axios.get('http://localhost/database_project/delete_DeliveryPerson.php?id=' + customer_id)
-        // .then(res =>{
-        //     console.log(res);
-        //     // setReload(true);
-        // })
+        axios.get('http://localhost/database_project/delete_DeliveryPerson.php?id=' + customer_id)
+        .then(res =>{
+            console.log(res);
+            // setReload(true);
+        })
         
     }
     
