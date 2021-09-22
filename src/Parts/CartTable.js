@@ -36,7 +36,7 @@ function CartTable () {
                                 <th className="table-column table-column-3">Set Quantity</th>
                                 <th className="table-column table-column-4">Quantity</th>
                                 <th className="table-column table-column-5">Remove</th>
-                                <th className="table-column table-column-6">Price</th>
+                                <th className="table-column table-column-6">Price (Rs)</th>
                             </tr>
                         </thead>
                         

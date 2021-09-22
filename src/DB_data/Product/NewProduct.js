@@ -25,8 +25,10 @@ function NewProduct(){
     const checkNewProduct = () => {
         let isOldProduct = false;
 
-        if(productName==='' || totalStockWeight==='' || pricePerKilogram==='') {
-            alert('All Fields must be fill !');
+        if(productName===''){
+            alert('Product name is Empty !');
+        }else if(totalStockWeight==='' || pricePerKilogram==='') {
+            alert('All fields are Required !');
         }else{
 
             products.forEach(product => {

@@ -50,7 +50,7 @@ function CartTableRow (props) {
             <td className="red-cart">
                 <Remove className="success remove-from-cart" onClick={(e)=>{ removeFromCart(props.id); e.preventDefault();}} height="22px"/>
             </td>
-            <td className="price-col">Rs {props.price.toFixed(2)}</td>
+            <td className="price-col">{props.price.toFixed(2)}</td>
             
         </>
     );

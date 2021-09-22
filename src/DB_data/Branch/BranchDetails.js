@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import './BranchDetails.css';
-import {Table, Container, ButtonGroup, Button, Breadcrumb, Col, Row } from "react-bootstrap";
+import {Table, ButtonGroup, Button, Breadcrumb, Col, Row } from "react-bootstrap";
 import axios from 'axios';
 import { ReactComponent as Edit } from '../../files/icons/edit-regular.svg';
 import { ReactComponent as Delete } from '../../files/icons/trash-alt-regular.svg';
@@ -47,14 +47,15 @@ function BranchDetails(){
                     </Breadcrumb>
                 </div>
                     
-                <Container className="db-p-container">
+                {/* <Container className="db-p-container"> */}
 
-                    <Table className="table-p" striped bordered>
+                    <Table className="table-p table-b" striped bordered>
                         <thead>
                             <tr>
                                 <th>ID</th>
                                 <th>Branch Name</th>
                                 <th>Address</th>
+                                <th>Contact No.</th>
                                 <th>Posting Date</th>
                                 <th>Edit / Delete</th>
                             </tr>
@@ -66,6 +67,7 @@ function BranchDetails(){
                                             <td className="b-data-1 text-r"><div>{product.id}</div></td>
                                             <td className="b-data-2">{product.Name}</td>
                                             <td className="b-data-3">{product.Address}</td>
+                                            <td className="b-data-3">{product.Contact_Number}</td>
                                             <td className="b-data-4 text-center">{product.Posting_Date}</td>
                                             <td className="b-data-5 text-center">
                                                 <ButtonGroup aria-label="Basic example">
@@ -79,7 +81,7 @@ function BranchDetails(){
                         </tbody>
                     </Table>
 
-                </Container>
+                {/* </Container> */}
             
                 <div className="add-new ">
                     <Col className="text-center">

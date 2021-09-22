@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import {Form, Row, Col, Button, Container} from "react-bootstrap";
 import { ReactComponent as Back } from '../../files/icons/caret-left-solid.svg';
 import axios from 'axios';
@@ -12,22 +12,27 @@ function NewBranch(){
     const [contactNumber, setContactNumber] = useState('');
     const [address, setAddress] = useState('');
 
-
-    useEffect(() => {
-    }, []);
-
     const checkAnyChanges = () => {
         let isBranchExist = false;
-        branches.forEach((branch)=>{
-            if(branch.Name === branchName){
-                alert('Branch Already Exists !');
-                isBranchExist = true;
-            }
-        })
-        if(!isBranchExist){
-            return true;
-        }else{
+
+        if(branchName===''){
+            alert('Branch name is Empty !');
             return false;
+        }else if(contactNumber==='' || address===''){
+            alert('All fields are Required !');
+            return false;
+        }else{
+            branches.forEach((branch)=>{
+                if(branch.Name === branchName){
+                    alert('Branch Already Exists !');
+                    isBranchExist = true;
+                }
+            })
+            if(!isBranchExist){
+                return true;
+            }else{
+                return false;
+            }
         }
     }
 
