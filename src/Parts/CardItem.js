@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/CardItem.css';
 import {Card, Container, Row, Col, Button} from "react-bootstrap";
@@ -6,10 +6,50 @@ import { CartContext } from '../Context/CartContext';
 import { ProductContext } from '../Context/ProductContext';
 
 export default function CardItem (props){
+    const [buttonStyle, setButtonStyle] = useState({});
+    const [isButtonSelected, setisButtonSelected] = useState(false);
+    const [cartBtnText, setCartBtnText] = useState('Add To Cart');
+
     const { addToCart } = useContext(CartContext);
     const { productArr } = useContext(ProductContext);
 
-    let buttonStyle;
+    useEffect(()=>{
+        try{
+            let cartData = localStorage.getItem('cartDetails');
+            cartData = JSON.parse(cartData);
+
+            cartData.forEach(item=>{
+                if(item.Name === props.Name){
+                    setButtonStyle({
+                        backgroundColor: '#3B3737',
+                        color: '#fff'
+                    });
+                    setCartBtnText('Remove');
+                    setisButtonSelected(true);
+                }
+            })
+        }catch(err){
+            console.log(err);
+        }
+    },[props.Name])
+
+    
+    
+
+    const changeBtn = () =>{
+        if(isButtonSelected===false){
+            setButtonStyle({
+                backgroundColor: '#3B3737',
+                color: '#fff'
+            });
+            setCartBtnText('Remove');
+            setisButtonSelected(true);
+        }else{
+            setButtonStyle({});
+            setisButtonSelected(false);
+            setCartBtnText('Add To Cart');
+        }
+    }
 
     const getItem = (id) => {
         const numOfImages = productArr.length;
@@ -34,7 +74,7 @@ export default function CardItem (props){
                             <Col className="price">Rs. {props.Price}</Col>
                         </Row>
                     </Container>
-                    <Button onClick={()=>{addToCart(props.id, parseFloat(props.Price))}} style={buttonStyle} variant="success" className="btn-cart" >Add To Cart</Button>
+                    <Button style={buttonStyle} onClick={()=>{addToCart(props.id, parseFloat(props.Price)); changeBtn();}} style={buttonStyle} variant="success" className="btn-cart" >{cartBtnText}</Button>
                 </Card.Body>
             </Card>
         </>   
