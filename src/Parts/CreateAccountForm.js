@@ -48,7 +48,7 @@ export default function CreateAccountForm () {
     }
 
     const checkNewUser = () => {
-        axios.get('http://localhost/database_project/get_Customer_Details.php')
+        axios.get('http://localhost:4000/customers')
         .then(res => res.data)
         .then((res) => {
 
@@ -73,14 +73,14 @@ export default function CreateAccountForm () {
                 password : password,
                 isRegistered : false
             }
-            const obj_json = JSON.stringify(obj);
+            // const obj_json = JSON.stringify(obj);
 
             if(firstName.length===0 || lastName.length===0 || gender.length===0 || contactNumber.length===0 || branchName.length===0 || password.length===0){
                 alert("All Fields should be filled!");
             }else{
                 if(isNewNumber===true){
                     // pass new account details to db
-                    axios.post('http://localhost/database_project/create_New_Customer.php', obj_json)
+                    axios.post('http://localhost:4000/customers', obj)
                     .then(res => {
                         console.log("New Account created");
                         setFirstName('');

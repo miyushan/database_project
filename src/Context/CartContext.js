@@ -17,9 +17,10 @@ function CartContextProvider(props) {
     const discount = 5;
 
     useEffect(() => {
-        axios.get('http://localhost/database_project/get_Product_details.php')
+        axios.get('http://localhost:4000/products')
             .then(res => {
-                setProducts(res.data);
+                setProducts(res);
+                console.log(res);
             })
     }, [])
 

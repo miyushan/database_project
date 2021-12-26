@@ -46,7 +46,7 @@ function ProductContextProvider (props){
     
 
     useEffect(() =>{
-        axios.get('http://localhost/database_project/get_Product_details.php')
+        axios.get('http://localhost:4000/products')
         .then (res =>{
             setProducts(res.data);
             setPopularProducts(res.data);

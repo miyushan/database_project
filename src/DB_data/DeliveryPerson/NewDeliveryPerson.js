@@ -22,7 +22,7 @@ function NewDeliveryPerson(){
 
     useEffect(() => {
         console.log('useEffect')
-        axios.get('http://localhost/database_project/get_DeliveryPerson_Details.php')
+        axios.get('http://localhost:4000/delivery-persons')
         .then(res => res.data)
         .then((res) => {
             setDeliveryPerson(res);

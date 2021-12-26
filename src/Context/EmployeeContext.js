@@ -13,19 +13,19 @@ function EmployeeContextProvider (props){
     // const [selectedItems, setSelectedItems] = useState([]);
 
     useEffect(() =>{
-        axios.get('http://localhost/database_project/get_DeliveryPerson_details.php')
+        axios.get('http://localhost:4000/delivery-persons')
         .then (res =>{
             setDeliveryPersons(res.data);
-            axios.get('http://localhost/database_project/get_Manager_details.php')
+            axios.get('http://localhost:4000/managers')
             .then (res =>{
                 setManagers(res.data);
-                axios.get('http://localhost/database_project/get_Branch_details.php')
+                axios.get('http://localhost:4000/branches')
                 .then (res =>{
                     setBranches(res.data);
-                    axios.get('http://localhost/database_project/get_Orders_details.php')
+                    axios.get('http://localhost:4000/orders')
                     .then (res =>{
                         setOrders(res.data);
-                        axios.get('http://localhost/database_project/get_Customer_details.php')
+                        axios.get('http://localhost:4000/customers')
                         .then (res =>{
                             setCustomers(res.data);
                         })

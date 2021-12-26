@@ -16,7 +16,7 @@ function ManagerDetails(){
     // const [reload, setReload] = useState(false);
 
     useEffect(() => {
-        axios.get('http://localhost/database_project/get_Manager_details.php')
+        axios.get('http://localhost:4000/managers')
         .then (res =>{
             // console.log(res.data);
             setCustomers(res.data)

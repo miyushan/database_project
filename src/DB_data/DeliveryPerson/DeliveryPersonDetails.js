@@ -16,7 +16,7 @@ function DeliveryPersonDetails(){
     // const [reload, setReload] = useState(false);
 
     useEffect(() => {
-        axios.get('http://localhost/database_project/get_DeliveryPerson_details.php')
+        axios.get('http://localhost:4000/delivery-persons')
         .then (res =>{
             setCustomers(res.data);
         })

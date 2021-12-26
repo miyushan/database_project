@@ -22,7 +22,7 @@ function NewManager(){
 
     useEffect(() => {
         console.log('useEffect')
-        axios.get('http://localhost/database_project/get_Manager_Details.php')
+        axios.get('http://localhost:4000/managers')
         .then(res => res.data)
         .then((res) => {
             setDeliveryPerson(res);

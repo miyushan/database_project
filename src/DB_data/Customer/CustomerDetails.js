@@ -15,7 +15,7 @@ function CustomerDetails(){
     // const [reload, setReload] = useState(false);
 
     useEffect(() => {
-        axios.get('http://localhost/database_project/get_Customer_details.php')
+        axios.get('http://localhost:4000/customers')
         .then (res =>{
             setCustomers(res.data);
         })

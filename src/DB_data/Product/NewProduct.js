@@ -15,7 +15,7 @@ function NewProduct(){
 
 
     useEffect(() => {
-        axios.get('http://localhost/database_project/get_Product_Details.php')
+        axios.get('http://localhost:4000/products')
         .then(res => res.data)
         .then((res) => {
             setProducts(res);
