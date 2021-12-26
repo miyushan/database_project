@@ -38,7 +38,7 @@ function NewProduct(){
             })
     
             if(isOldProduct===false){
-                axios.post('http://localhost/database_project/create_New_Product.php',{
+                axios.post('http://localhost:4000/products',{
                     productName: productName,
                     totalStockWeight: totalStockWeight,
                     pricePerKilogram: pricePerKilogram,

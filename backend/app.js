@@ -1,5 +1,4 @@
 const express = require('express');
-// const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const cors = require('cors');
@@ -9,10 +8,7 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 4000;
 
-// Parsing middleware
-// Parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
-// Parse application/json
 app.use(bodyParser.json());
 // cors
 app.use(cors({
@@ -36,6 +32,8 @@ db.connect((err)=>{
         console.log('MySql db connected')
     }
 });
+
+
 
 
 //get products
@@ -117,6 +115,9 @@ app.get('/customers', (req, res) => {
 })
 
 
+
+
+
 //post- add new customer
 app.post('/customers', (req, res) => {
     
@@ -139,93 +140,165 @@ app.post('/customers', (req, res) => {
     })
 })
 
-// //get data by ID
-// app.get('/:id', (req, res) => {
-//     db.getConnection((err, connection)=>{
-//         if(err){
-//             throw err;
-//         }
-//         console.log(`Connected as id ${connection.threadId}`);
+//post- add new branch
+app.post('/branches', (req, res) => {
 
-//         connection.query('SELECT * FROM `product` WHERE id = ?', [req.params.id], (err,rows)=>{
-//             connection.release();   //return all connections to the pool
+    const Name = req.body.name;
+    const Contact_Number = req.body.contactNumber;
+    const Address = req.body.address;
 
-//             if(!err){
-//                 res.send(rows);
-//             }else{
-//                 console.log(err);
-//             }
-//         })
-//     })
-// })
+    let query = 'INSERT INTO branch (Name, Contact_Number, Address) VALUES (?, ?, ?)'
+    
+    db.query(query,[Name, Contact_Number, Address], (err,rows)=>{
+        if(!err){
+            res.send(rows);
+            // console.log(rows);
+        }else{
+            console.log(err);
+        }
+    })
+})
+
+//post- add new delivery person
+app.post('/delivery-persons', (req, res) => {
+    
+    const First_Name = req.body.firstName;
+    const Last_Name = req.body.lastName;
+    const Gender = req.body.gender;
+    const Salary = req.body.salary;
+    const Contact_Number = req.body.contactNumber;
+    const Branch_Name = req.body.branchName;
+    const Password = req.body.password;
+    const Address = req.body.address;
+
+    let query = 'INSERT INTO delivery_person (First_Name, Last_Name, Gender, Salary, Contact_Number, Branch_Name, Password, Address) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'
+    
+    db.query(query,[First_Name, Last_Name, Gender, Salary, Contact_Number, Branch_Name, Password, Address], (err,rows)=>{
+        if(!err){
+            res.send(rows);
+            // console.log(rows);
+        }else{
+            console.log(err);
+        }
+    })
+})
+
+//post- add new manager
+app.post('/managers', (req, res) => {
+    
+    const First_Name = req.body.firstName;
+    const Last_Name = req.body.lastName;
+    const Gender = req.body.gender;
+    const Salary = req.body.salary;
+    const Contact_Number = req.body.contactNumber;
+    const Branch_Name = req.body.branchName;
+    const Password = req.body.password;
+    const Address = req.body.address;
+
+    let query = 'INSERT INTO manager (First_Name, Last_Name, Gender, Salary, Contact_Number, Branch_Name, Password, Address) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'
+    
+    db.query(query,[First_Name, Last_Name, Gender, Salary, Contact_Number, Branch_Name, Password, Address], (err,rows)=>{
+        if(!err){
+            res.send(rows);
+            // console.log(rows);
+        }else{
+            console.log(err);
+        }
+    })
+})
+
+//post- add new product
+app.post('/products', (req, res) => {
+    
+    const Name = req.body.productName;
+    const Weight = req.body.totalStockWeight;
+    const Price = req.body.pricePerKilogram;
+
+    let query = 'INSERT INTO product (Name, Weight, Price) VALUES (?, ?, ?)'
+    
+    db.query(query,[Name, Weight, Price], (err,rows)=>{
+        if(!err){
+            res.send(rows);
+            // console.log(rows);
+        }else{
+            console.log(err);
+        }
+    })
+})
+
+//post- add new order
+app.post('/orders', (req, res) => {
+    
+    const Quantity = req.body.quantity;
+    const Total_Cost = req.body.cost;
+    const Customer_Id = req.body.customerId;
+    const Manager_Id = req.body.managerId;
+    const Delivery_Person_Id = req.body.deliveryPersonId;
+
+    let query = 'INSERT INTO orders (Quantity, Total_Cost, Customer_Id, Manager_Id, Delivery_Person_Id) VALUES (?, ?, ?, ?, ?)'
+    
+    db.query(query,[Quantity, Total_Cost, Customer_Id, Manager_Id, Delivery_Person_Id], (err,rows)=>{
+        if(!err){
+            res.send(rows);
+            // console.log(rows);
+        }else{
+            console.log(err);
+        }
+    })
+})
 
 
-// //Delete data
-// app.delete('/:id', (req, res) => {
-//     db.getConnection((err, connection)=>{
-//         if(err){
-//             throw err;
-//         }
-//         console.log(`Connected as id ${connection.threadId}`);
-
-//         connection.query('DELETE FROM `product` WHERE id = ?', [req.params.id], (err,rows)=>{
-//             connection.release();   //return all connections to the pool
-
-//             if(!err){
-//                 res.send(`Data with id: ${req.params.id} has deleted!`);
-//             }else{
-//                 console.log(err);
-//             }
-//         })
-//     })
-// })
-
-
-// //insert a data
-// app.post('/', (req, res) => {
-//     db.getConnection((err, connection)=>{
-//         if(err){
-//             throw err;
-//         }
-//         console.log(`Connected as id ${connection.threadId}`);
-
-//         const params = req.body;
-
-//         connection.query('INSERT INTO `product` SET ?', params, (err,rows)=>{
-//             connection.release();   //return all connections to the pool
-
-//             if(!err){
-//                 res.send(`Data with name: ${params.Name} has inserted.`);
-//             }else{
-//                 console.log(err);
-//             }
-//         })
-//     })
-// })
 
 
 
-// //update a data
-// app.put('/', (req, res) => {
-//     db.getConnection((err, connection)=>{
-//         if(err){
-//             throw err;
-//         }
-//         console.log(`Connected as id ${connection.threadId}`);
+// update branch
+app.put('/branches/:id', (req, res) => {
+    // from header
+    const id = req.params.id;
 
-//         const {id, Name, Weight} = req.body;
+    // from body
+    const Name = req.body.Name;
+    const Contact_Number = req.body.Contact_Number;
+    const Address = req.body.Address;
 
-//         connection.query('UPDATE `product` SET Name=?, Weight=? WHERE id=?', [Name, Weight, id], (err,rows)=>{
-//             connection.release();   //return all connections to the pool
+    console.log(`id: ${id}`)
 
-//             if(!err){
-//                 res.send(`Data with Id: ${id} has changed.`);
-//             }else{
-//                 console.log(err);
-//             }
-//         })
-//     })
-// })
+    let query = 'UPDATE branch SET Name=?, Contact_Number=?, Address=? WHERE id=?'
+    
+    db.query(query,[Name, Contact_Number, Address, id], (err,rows)=>{
+        if(!err){
+            res.send(rows);
+            console.log('Branch Updated!')
+        }else{
+            console.log(err);
+        }
+    })
+})
+
+
+
+
+// delete branch
+app.delete('/branches/:id', (req, res) => {
+
+    const id = req.params.id;
+    console.log(`id: ${id}`)
+
+    let query = 'DELETE FROM branch WHERE id = ?'
+    
+    db.query(query,[id], (err,rows)=>{
+        if(!err){
+            res.send(rows);
+            console.log('Branch Deleted!')
+        }else{
+            console.log(err);
+        }
+    })
+})
+
+
+
+
 
 
 

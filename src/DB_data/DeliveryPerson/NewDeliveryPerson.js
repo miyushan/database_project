@@ -42,7 +42,7 @@ function NewDeliveryPerson(){
         })
 
         if(isOldDPerson===false){
-            axios.post('http://localhost/database_project/create_New_DeliveryPerson.php',{
+            axios.post('http://localhost:4000/delivery-persons',{
                 firstName: firstName,
                 lastName: lastName,
                 gender: gender,

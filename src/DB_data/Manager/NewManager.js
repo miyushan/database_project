@@ -42,7 +42,7 @@ function NewManager(){
         })
 
         if(isOldDPerson===false){
-            axios.post('http://localhost/database_project/create_New_Manager.php',{
+            axios.post('http://localhost:4000/managers',{
                 firstName: firstName,
                 lastName: lastName,
                 gender: gender,

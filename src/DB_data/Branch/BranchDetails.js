@@ -24,7 +24,7 @@ function BranchDetails(){
     }, [branches]);
 
     const deleteCustomer=(customer_id)=>{
-        axios.get('http://localhost/database_project/delete_Branch.php?id=' + customer_id)
+        axios.delete(`http://localhost:4000/branches/${customer_id}`)
         .then(res =>{
             alert('Branch is Deleted!!');
         })

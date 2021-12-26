@@ -74,7 +74,7 @@ export default function CardItem (props){
                             <Col className="price">Rs. {props.Price}</Col>
                         </Row>
                     </Container>
-                    <Button style={buttonStyle} onClick={()=>{addToCart(props.id, parseFloat(props.Price)); changeBtn();}} style={buttonStyle} variant="success" className="btn-cart" >{cartBtnText}</Button>
+                    <Button onClick={()=>{addToCart(props.id, parseFloat(props.Price)); changeBtn();}} style={buttonStyle} variant="success" className="btn-cart" >{cartBtnText}</Button>
                 </Card.Body>
             </Card>
         </>   

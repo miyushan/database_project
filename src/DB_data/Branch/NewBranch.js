@@ -39,7 +39,7 @@ function NewBranch(){
     const addNewBranch = () => {
         //change branch data
         if (checkAnyChanges()){
-            axios.post('http://localhost/database_project/create_New_Branch.php',{
+            axios.post('http://localhost:4000/branches',{
                 contactNumber: contactNumber,
                 name: branchName,
                 address: address,

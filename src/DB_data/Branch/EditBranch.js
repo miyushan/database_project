@@ -1,5 +1,5 @@
 import {Form, Row, Col, Button, Container} from "react-bootstrap";
-// import { Route, Redirect } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import './EditBranch.css';
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
@@ -21,12 +21,12 @@ function EditBranch(){
     const [initialContactNumber, setInitialContactNumber] = useState('');
     const [initialAddress, setInitialAddress] = useState('');
 
-    // const [goBack, setGoBack] = useState(false);
+    const [goBack, setGoBack] = useState(false);
     const branchId = id;
 
     useEffect(() => {
         branches.forEach((branch)=>{
-            if(branch.id === branchId){
+            if(branch.id.toString() === branchId){
                 setInitialContactNumber(branch.Contact_Number);
                 setInitialBranchName(branch.Name);
                 setInitialAddress(branch.Address);
@@ -37,8 +37,8 @@ function EditBranch(){
         })
     }, [branches, branchId]);
 
-
     const checkAnyChanges = () => {
+
         if(( contactNumber.length!==0 && branchName.length!==0 && address.length!==0)){
             let isBranchExist = false;
 
@@ -64,15 +64,14 @@ function EditBranch(){
     const changeBranchDetails = () => {
         //change branch data
         if (checkAnyChanges()){
-            axios.post('http://localhost/database_project/update_Branch.php',{
-                id: branchId,
+            axios.put(`http://localhost:4000/branches/${branchId}`,{
                 Contact_Number: contactNumber,
                 Name: branchName,
                 Address: address,
             })
             .then(() => {
                 alert('Branch is Updated Successfully!');
-                // setGoBack(true);
+                setGoBack(true);
                 setInitialContactNumber(contactNumber);
                 setInitialBranchName(branchName);
                 setInitialAddress(address);
@@ -130,9 +129,9 @@ function EditBranch(){
                             Submit
                         </Button>
 
-                        {/* <Route>
+                        <Route>
                             {goBack ? <Redirect to="/db/branch" /> : null} 
-                        </Route> */}
+                        </Route>
                         
                     </Form>
                 </Container>
