@@ -99,7 +99,7 @@ function PaymentCard(){
         setCartProducts([]);
         findRelatedEmployees();
         console.log(deliveryPersons)
-        axios.post('http://localhost/database_project/create_New_Order.php',{
+        axios.post('http://localhost:4000/orders',{
             quantity: totalWeight,
             cost: priceWithDiscount,
             customerId: customerId,
@@ -117,7 +117,7 @@ function PaymentCard(){
             setIsPaymentSuccess(true);
 
             //add address to customer table
-            axios.post('http://localhost/database_project/update_CustomerAddress.php',{
+            axios.put(`http://localhost:4000/customer-address/${customerId}`,{
                 id: customerId,
                 Address: address,
             });

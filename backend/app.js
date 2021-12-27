@@ -275,6 +275,28 @@ app.put('/branches/:id', (req, res) => {
     })
 })
 
+// update customer address
+app.put('/customer-address/:id', (req, res) => {
+    // from header
+    const id = req.params.id;
+
+    // from body
+    const Address = req.body.Address;
+
+    console.log(`id: ${id}`)
+
+    let query = 'UPDATE customer SET Address=? WHERE id=?'
+    
+    db.query(query,[Address, id], (err,rows)=>{
+        if(!err){
+            res.send(rows);
+            console.log('Customer Address Updated!')
+        }else{
+            console.log(err);
+        }
+    })
+})
+
 
 
 

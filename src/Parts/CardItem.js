@@ -29,7 +29,8 @@ export default function CardItem (props){
                 }
             })
         }catch(err){
-            console.log(err);
+            // console.log(err);
+            console.log('Item is not in the cart');
         }
     },[props.Name])
 

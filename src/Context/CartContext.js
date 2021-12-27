@@ -113,7 +113,9 @@ function CartContextProvider(props) {
         let tempW = 0;
         let tempPWD = 0;
 
-        const data = products.filter(product => {
+        Id = parseInt(Id)
+        // console.log(products.data[0].id)
+        const data = products.data.filter(product => {
             return product.id === Id
         })
         let newItems = [...cartProducts, data[0]]
