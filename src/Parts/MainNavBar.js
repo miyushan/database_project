@@ -29,7 +29,9 @@ function MainNavBar(){
     return(    
         <Navbar style={scroll ? style : null} className="outer-nav">
             <Container className="main-nav d-flex justify-content-center align-items-center">
-                    <Col></Col>
+                    <Col className="text-left down-col d-flex align-items-start">
+                        <div><a className="header-brand-name" href="/home">VegiDeals</a></div>
+                    </Col>
                     <Col className="main-nav-items d-flex justify-content-center align-items-center m-0 p-0">
                         <Navbar.Brand className="nav-title-2" href="about-us">ABOUT US</Navbar.Brand>
                         <Navbar.Brand className="nav-title-2" href="products">PRODUCTS</Navbar.Brand>

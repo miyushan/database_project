@@ -12,7 +12,7 @@ function Footer(){
             <Container className="footer-outer align-content-center" fluid>
                 <Row className="down-row">
                     <Col className="text-left down-col d-flex align-items-start">
-                        <div><a className="brand-name" href="#home">VegiDeals</a></div>
+                        <div><a className="brand-name" href="/home">VegiDeals</a></div>
                     </Col>
                     <Col className="down-col d-flex align-items-center justify-content-end">
                         <div>

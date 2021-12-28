@@ -24,6 +24,12 @@
     color: #0f0 !important;
     text-decoration: none;
 }
+.header-brand-name{
+    font-size: 25px;
+    font-weight: bold;
+    color: #0f0 !important;
+    text-decoration: none;
+}
 
 .quick-link-item{
     font-size: 12px;
