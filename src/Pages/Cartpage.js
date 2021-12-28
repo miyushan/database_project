@@ -1,4 +1,4 @@
-import UpperNavBar from '../Parts/UpperNavBar';
+// import UpperNavBar from '../Parts/UpperNavBar';
 import MainNavBar from '../Parts/MainNavBar';
 import CartItems from '../Parts/CartItems';
 import Footer from '../Parts/Footer';
@@ -6,7 +6,7 @@ import Footer from '../Parts/Footer';
 function Cartpage(){
     return(
         <>
-            <UpperNavBar />
+            {/* <UpperNavBar /> */}
             <MainNavBar />
             <CartItems />
             <Footer />

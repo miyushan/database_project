@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import UpperNavBar from '../Parts/UpperNavBar';
+// import UpperNavBar from '../Parts/UpperNavBar';
 import MainNavBar from '../Parts/MainNavBar';
 import OurProducts from '../Parts/OurProducts';
 import HashLoader from 'react-spinners/HashLoader';
@@ -28,7 +28,7 @@ function Productspage(){
             : null}
             <div style={{ display: show ? "block" : "none" }}>
                 <div id="products">
-                    <UpperNavBar />
+                    {/* <UpperNavBar /> */}
                     <MainNavBar />
                         <OurProducts/>
                     <Footer />

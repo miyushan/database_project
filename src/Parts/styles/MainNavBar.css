@@ -20,8 +20,8 @@
 
 .outer-nav{
     position: sticky;
-    background-color: #464141;
-    height: 40px !important;
+    background-color: #202020;
+    height: 60px !important;
     top: -1px;
     z-index: 1;
     /* transition-timing-function: ease-in-out; */
@@ -43,6 +43,7 @@
 
 .cart-icon{
     filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
+    border: none !important;
 }
 .ignore-btn{
     position: relative;
