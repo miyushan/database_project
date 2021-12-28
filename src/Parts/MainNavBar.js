@@ -41,7 +41,7 @@ function MainNavBar(){
                     </Col>
                     <Col className="d-flex justify-content-end align-items-center">
                         <div className="cart to-cart-btn">
-                            <Button href="cart" className="ignore-btn"  variant="success"><Cart className="cart-icon" height="25px"/></Button>
+                            <Button href="cart" className="ignore-btn" variant="success"><Cart className="cart-icon" height="35px"/></Button>
                             {cartProducts.length !== 0 ? <div>
                                 <div className="cartProductExist"><div className="cartProductCountRel"></div></div>
                                 <div className="cartProductCount">{cartProducts.length}</div>

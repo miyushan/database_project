@@ -171,7 +171,7 @@ function PaymentCard(){
                     </Row>
 
                     <div className=" mb-1 ">
-                        <Button disabled={btnDisable} className="login-submit-btn login-input pay-now-btn" type="submit">PAY NOW</Button>
+                        <Button disabled={btnDisable} className="login-submit-btn login-input pay-now-btn" type="submit" variant="success">PAY NOW</Button>
                     </div>
 
                 </Form>
