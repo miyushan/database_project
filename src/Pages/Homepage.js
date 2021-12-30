@@ -10,6 +10,7 @@ import PopularItems from '../Parts/PopularItems';
 import OurProducts from '../Parts/OurProducts';
 import AboutUs from '../Parts/AboutUs';
 import Footer from '../Parts/Footer';
+import GoToCart from '../Parts/GoToCart';
 import '../Pages/Homepage.css';
 
 import Organic from '../files/organicFoods.png';
@@ -61,6 +62,7 @@ class Homepage extends Component {
                             </Container>
                             {/* <GoUp /> */}
                             <Footer /> 
+                            <GoToCart />
                         </div>
                     </div>
                 

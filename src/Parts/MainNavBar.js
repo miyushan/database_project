@@ -1,13 +1,9 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/MainNavBar.css';
-import {Navbar, Container, Button, Col} from "react-bootstrap";
-
-import { CartContext } from '../Context/CartContext';
-import { ReactComponent as Cart } from '../files/shopping-cart-solid.svg';
+import {Navbar, Container, Col} from "react-bootstrap";
 
 function MainNavBar(){
-    const { cartProducts } = useContext(CartContext);
     const[scroll, setScroll] = useState(true);
 
     const style = {
@@ -34,19 +30,20 @@ function MainNavBar(){
                     </Col>
                     <Col className="main-nav-items d-flex justify-content-end align-items-center m-0 p-0">
                         <Navbar.Brand className="nav-title-2" href="home">HOME</Navbar.Brand>
-                        <Navbar.Brand className="nav-title-2" href="about-us">ABOUT US</Navbar.Brand>
                         <Navbar.Brand className="nav-title-2" href="products">PRODUCTS</Navbar.Brand>
-                        <Navbar.Brand className="nav-title-2" href="branches">BRANCHES</Navbar.Brand>
+                        <Navbar.Brand className="nav-title-2" href="cart">CART</Navbar.Brand>
+                        <Navbar.Brand className="nav-title-2" href="about-us">ABOUT US</Navbar.Brand>
                         <Navbar.Brand className="nav-title-2" href="contact-us">CONTACT US</Navbar.Brand>
+                        <Navbar.Brand className="nav-title-2" href="branches">BRANCHES</Navbar.Brand>
                     </Col>
                     {/* <Col className="d-flex justify-content-end align-items-center"> */}
-                        <div className="cart to-cart-btn">
+                        {/* <div className="cart to-cart-btn">
                             <Button href="cart" className="ignore-btn" variant="success"><Cart className="cart-icon" height="35px"/></Button>
                             {cartProducts.length !== 0 ? <div>
                                 <div className="cartProductExist"><div className="cartProductCountRel"></div></div>
                                 <div className="cartProductCount">{cartProducts.length}</div>
                             </div> : null }
-                        </div>
+                        </div> */}
                     {/* </Col> */}
             </Container>    
         </Navbar>

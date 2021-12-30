@@ -4,6 +4,7 @@ import MainNavBar from '../Parts/MainNavBar';
 import OurProducts from '../Parts/OurProducts';
 import HashLoader from 'react-spinners/HashLoader';
 import Footer from '../Parts/Footer';
+import GoToCart from '../Parts/GoToCart';
 
 import '../Pages/Productspage.css';
 
@@ -32,6 +33,7 @@ function Productspage(){
                     <MainNavBar />
                         <OurProducts/>
                     <Footer />
+                    <GoToCart />
                 </div>
             </div>
         </>
