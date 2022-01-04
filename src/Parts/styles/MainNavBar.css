@@ -12,7 +12,10 @@
     margin-right: 0;
     text-align: center;
     padding: 0;
-    color: #ebebeb !important;
+    color: #ebebeb;
+}
+.navbar-light .navbar-brand {
+    color: #ebebeb;
 }
 .nav-title-2:hover{
     color: rgba(0, 255, 0, 0.733) !important;

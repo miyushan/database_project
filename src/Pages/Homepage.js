@@ -30,6 +30,7 @@ class Homepage extends Component {
     }
 
     componentDidMount(){
+        document.getElementsByClassName('nav-home')[0].style.color = '#0f0';
         setTimeout(() => {
             this.setState({
                 spinner: false,
