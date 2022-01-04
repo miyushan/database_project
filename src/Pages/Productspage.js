@@ -14,6 +14,7 @@ function Productspage(){
     const [show, setShow] = useState(false);
 
     useEffect(() => {
+        document.getElementsByClassName('nav-products')[0].style.color = '#0f0';
         setTimeout(() => {
             setSpinner(false);
             setShow(true);
