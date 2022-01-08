@@ -52,7 +52,7 @@ app.get('/products', (req, res) => {
 //get delivery-persons
 app.get('/delivery-persons', (req, res) => {
     
-    db.query('SELECT * FROM delivery_person', (err,rows)=>{
+    db.query('SELECT * FROM employee', (err,rows)=>{
         if(!err){
             res.send(rows);
             // console.log(rows);
@@ -65,7 +65,7 @@ app.get('/delivery-persons', (req, res) => {
 //get manager
 app.get('/managers', (req, res) => {
     
-    db.query('SELECT * FROM manager', (err,rows)=>{
+    db.query('SELECT * FROM employee', (err,rows)=>{
         if(!err){
             res.send(rows);
             // console.log(rows);
@@ -128,7 +128,7 @@ app.post('/customers', (req, res) => {
     const Branch_Name = req.body.branchName;
     const Password = req.body.password;
 
-    let query = 'INSERT INTO customer (First_Name, Last_Name, Gender, Contact_Number, Branch_Name, Password) VALUES (?, ?, ?, ?, ?, ?)'
+    let query = 'INSERT INTO customer (first_name, last_name, gender, contact_number, Branch_id, password) VALUES (?, ?, ?, ?, ?, ?)'
     
     db.query(query,[First_Name, Last_Name, Gender, Contact_Number, Branch_Name, Password], (err,rows)=>{
         if(!err){
@@ -147,7 +147,7 @@ app.post('/branches', (req, res) => {
     const Contact_Number = req.body.contactNumber;
     const Address = req.body.address;
 
-    let query = 'INSERT INTO branch (Name, Contact_Number, Address) VALUES (?, ?, ?)'
+    let query = 'INSERT INTO branch (name, contact_number, address) VALUES (?, ?, ?)'
     
     db.query(query,[Name, Contact_Number, Address], (err,rows)=>{
         if(!err){
@@ -168,12 +168,12 @@ app.post('/delivery-persons', (req, res) => {
     const Salary = req.body.salary;
     const Contact_Number = req.body.contactNumber;
     const Branch_Name = req.body.branchName;
-    const Password = req.body.password;
+    // const Password = req.body.password;
     const Address = req.body.address;
 
-    let query = 'INSERT INTO delivery_person (First_Name, Last_Name, Gender, Salary, Contact_Number, Branch_Name, Password, Address) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'
+    let query = 'INSERT INTO delivery_person (first_name, last_name, gender, salary, contact_number, Branch_id, address) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'
     
-    db.query(query,[First_Name, Last_Name, Gender, Salary, Contact_Number, Branch_Name, Password, Address], (err,rows)=>{
+    db.query(query,[First_Name, Last_Name, Gender, Salary, Contact_Number, Branch_Name, Address], (err,rows)=>{
         if(!err){
             res.send(rows);
             // console.log(rows);
@@ -183,29 +183,29 @@ app.post('/delivery-persons', (req, res) => {
     })
 })
 
-//post- add new manager
-app.post('/managers', (req, res) => {
+// //post- add new manager
+// app.post('/managers', (req, res) => {
     
-    const First_Name = req.body.firstName;
-    const Last_Name = req.body.lastName;
-    const Gender = req.body.gender;
-    const Salary = req.body.salary;
-    const Contact_Number = req.body.contactNumber;
-    const Branch_Name = req.body.branchName;
-    const Password = req.body.password;
-    const Address = req.body.address;
+//     const First_Name = req.body.firstName;
+//     const Last_Name = req.body.lastName;
+//     const Gender = req.body.gender;
+//     const Salary = req.body.salary;
+//     const Contact_Number = req.body.contactNumber;
+//     const Branch_Name = req.body.branchName;
+//     const Password = req.body.password;
+//     const Address = req.body.address;
 
-    let query = 'INSERT INTO manager (First_Name, Last_Name, Gender, Salary, Contact_Number, Branch_Name, Password, Address) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'
+//     let query = 'INSERT INTO manager (First_Name, Last_Name, Gender, Salary, Contact_Number, Branch_Name, Password, Address) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'
     
-    db.query(query,[First_Name, Last_Name, Gender, Salary, Contact_Number, Branch_Name, Password, Address], (err,rows)=>{
-        if(!err){
-            res.send(rows);
-            // console.log(rows);
-        }else{
-            console.log(err);
-        }
-    })
-})
+//     db.query(query,[First_Name, Last_Name, Gender, Salary, Contact_Number, Branch_Name, Password, Address], (err,rows)=>{
+//         if(!err){
+//             res.send(rows);
+//             // console.log(rows);
+//         }else{
+//             console.log(err);
+//         }
+//     })
+// })
 
 //post- add new product
 app.post('/products', (req, res) => {
@@ -214,7 +214,7 @@ app.post('/products', (req, res) => {
     const Weight = req.body.totalStockWeight;
     const Price = req.body.pricePerKilogram;
 
-    let query = 'INSERT INTO product (Name, Weight, Price) VALUES (?, ?, ?)'
+    let query = 'INSERT INTO product (name, total_weight, price_per_kg) VALUES (?, ?, ?)'
     
     db.query(query,[Name, Weight, Price], (err,rows)=>{
         if(!err){
@@ -235,9 +235,9 @@ app.post('/orders', (req, res) => {
     const Manager_Id = req.body.managerId;
     const Delivery_Person_Id = req.body.deliveryPersonId;
 
-    let query = 'INSERT INTO orders (Quantity, Total_Cost, Customer_Id, Manager_Id, Delivery_Person_Id) VALUES (?, ?, ?, ?, ?)'
+    let query = 'INSERT INTO orders (total_weight, total_cost, customer_id, Employee_id) VALUES (?, ?, ?, ?, ?)'
     
-    db.query(query,[Quantity, Total_Cost, Customer_Id, Manager_Id, Delivery_Person_Id], (err,rows)=>{
+    db.query(query,[Quantity, Total_Cost, Customer_Id, Manager_Id], (err,rows)=>{
         if(!err){
             res.send(rows);
             // console.log(rows);
