@@ -63,22 +63,29 @@ export default function CreateAccountForm () {
             }catch(e){
 
             }
-            
-            const obj = {
-                firstName : firstName,
-                lastName : lastName,
-                gender : gender,
-                contactNumber: contactNumber,
-                branchName : branchName,
-                password : password,
-                isRegistered : false
-            }
-            // const obj_json = JSON.stringify(obj);
 
             if(firstName.length===0 || lastName.length===0 || gender.length===0 || contactNumber.length===0 || branchName.length===0 || password.length===0){
                 alert("All Fields should be filled!");
             }else{
                 if(isNewNumber===true){
+                    let obj = {
+                        firstName : firstName,
+                        lastName : lastName,
+                        gender : gender,
+                        contactNumber: contactNumber,
+                        password : password,
+                        isRegistered : false
+                    }
+                    // const obj_json = JSON.stringify(obj);
+
+                    // get id of the branch
+                    branches.forEach(branch=>{
+                        if(branch.Name === branchName){
+                            obj.Branch_id = branch.id;
+                        }
+                    })
+                    
+
                     // pass new account details to db
                     axios.post('http://localhost:4000/customers', obj)
                     .then(res => {

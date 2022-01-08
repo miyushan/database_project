@@ -152,12 +152,12 @@ app.post('/customers', (req, res) => {
     const Last_Name = req.body.lastName;
     const Gender = req.body.gender;
     const Contact_Number = req.body.contactNumber;
-    const Branch_Name = req.body.branchName;
+    const Branch_id = req.body.Branch_id;
     const Password = req.body.password;
 
-    let query = 'INSERT INTO customer (First_Name, Last_Name, Gender, Contact_Number, Branch_Name, Password) VALUES (?, ?, ?, ?, ?, ?)'
+    let query = 'INSERT INTO customer (First_Name, Last_Name, Gender, Contact_Number, Branch_id, Password) VALUES (?, ?, ?, ?, ?, ?)'
     
-    db.query(query,[First_Name, Last_Name, Gender, Contact_Number, Branch_Name, Password], (err,rows)=>{
+    db.query(query,[First_Name, Last_Name, Gender, Contact_Number, Branch_id, Password], (err,rows)=>{
         if(!err){
             res.send(rows);
             // console.log(rows);
