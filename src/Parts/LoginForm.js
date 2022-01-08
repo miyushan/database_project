@@ -3,11 +3,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/LoginForm.css';
 import axios from 'axios';
 import { Route, Redirect } from "react-router-dom";
+import { EmployeeContext } from '../Context/EmployeeContext';
 import { UserContext } from '../Context/UserContext';
 
 import {Form, Button} from "react-bootstrap";
 
 export default function LoginForm (){
+    const { branches } = useContext(EmployeeContext);
     const { setIsLogedIn } = useContext(UserContext);
 
     const [customers, setCustomers] = useState([]);
@@ -60,9 +62,17 @@ export default function LoginForm (){
                             firstName: customer.First_Name,
                             contactNumber: customer.Contact_Number, 
                             gender: customer.Gender,
-                            branchName: customer.Branch_Name,
                             logedInUser: true,
                         }
+
+                        let branchId = customer.Branch_id;
+                        
+                        // get branch name
+                        branches.forEach(branch => {
+                            if (branchId === branch.id){
+                                userDetails.branchName = branch.Name;
+                            }
+                        })
     
                         //Add the session
                         localStorage.setItem('userDetails', JSON.stringify(userDetails));
