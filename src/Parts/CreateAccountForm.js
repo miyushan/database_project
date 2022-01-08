@@ -110,7 +110,7 @@ export default function CreateAccountForm () {
         let tempBranchArr = [];
 
         branches.forEach(branch=>{
-            let obj = branch.Name;
+            let obj = branch.name;
             tempBranchArr.push(obj);
         })
         setHintData(tempBranchArr);
