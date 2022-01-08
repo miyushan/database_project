@@ -22,6 +22,7 @@ import EditManager from './DB_data/Manager/EditManager';
 import NewManager from './DB_data/Manager/NewManager';
 import BranchDetails from './DB_data/Branch/BranchDetails';
 import EditBranch from './DB_data/Branch/EditBranch';
+import OrderItems from './DB_data/OrderItems';
 import NewBranch from './DB_data/Branch/NewBranch';
 
 function ProtectedRoutes(){
@@ -54,6 +55,7 @@ function ProtectedRoutes(){
           <Route path="/db/branch" exact><BranchDetails /></Route>
           <Route path="/db/branch/edit" exact><EditBranch /></Route>
           <Route path="/db/branch/add" exact><NewBranch /></Route>
+          <Route path="/db/order-items" exact><OrderItems /></Route>
 
         </Switch>
       </BrowserRouter>

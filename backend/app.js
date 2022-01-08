@@ -114,6 +114,18 @@ app.get('/customers', (req, res) => {
     })
 })
 
+//get order-items
+app.get('/order-items', (req, res) => {
+    
+    db.query('SELECT * FROM order_item', (err,rows)=>{
+        if(!err){
+            res.send(rows);
+            // console.log(rows);
+        }else{
+            console.log(err);
+        }
+    })
+})
 
 
 
