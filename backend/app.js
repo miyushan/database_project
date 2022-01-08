@@ -49,23 +49,23 @@ app.get('/products', (req, res) => {
     })
 })
 
-//get delivery-persons
-app.get('/delivery-persons', (req, res) => {
+// //get delivery-persons
+// app.get('/delivery-persons', (req, res) => {
     
-    db.query('SELECT * FROM delivery_person', (err,rows)=>{
-        if(!err){
-            res.send(rows);
-            // console.log(rows);
-        }else{
-            console.log(err);
-        }
-    })
-})
+//     db.query('SELECT * FROM delivery_person', (err,rows)=>{
+//         if(!err){
+//             res.send(rows);
+//             // console.log(rows);
+//         }else{
+//             console.log(err);
+//         }
+//     })
+// })
 
 //get manager
 app.get('/managers', (req, res) => {
     
-    db.query('SELECT * FROM manager', (err,rows)=>{
+    db.query('SELECT * FROM employee', (err,rows)=>{
         if(!err){
             res.send(rows);
             // console.log(rows);
@@ -92,6 +92,19 @@ app.get('/branches', (req, res) => {
 app.get('/orders', (req, res) => {
     
     db.query('SELECT * FROM orders', (err,rows)=>{
+        if(!err){
+            res.send(rows);
+            // console.log(rows);
+        }else{
+            console.log(err);
+        }
+    })
+})
+
+//get order items
+app.get('/order-items', (req, res) => {
+    
+    db.query('SELECT * FROM order_items', (err,rows)=>{
         if(!err){
             res.send(rows);
             // console.log(rows);
@@ -159,29 +172,29 @@ app.post('/branches', (req, res) => {
     })
 })
 
-// //post- add new delivery person
-// app.post('/delivery-persons', (req, res) => {
+//post- add new delivery person
+app.post('/delivery-persons', (req, res) => {
     
-//     const First_Name = req.body.firstName;
-//     const Last_Name = req.body.lastName;
-//     const Gender = req.body.gender;
-//     const Salary = req.body.salary;
-//     const Contact_Number = req.body.contactNumber;
-//     const Branch_Name = req.body.branchName;
-//     const Password = req.body.password;
-//     const Address = req.body.address;
+    const First_Name = req.body.firstName;
+    const Last_Name = req.body.lastName;
+    const Gender = req.body.gender;
+    const Salary = req.body.salary;
+    const Contact_Number = req.body.contactNumber;
+    const Branch_Name = req.body.branchName;
+    const Password = req.body.password;
+    const Address = req.body.address;
 
-//     let query = 'INSERT INTO delivery_person (First_Name, Last_Name, Gender, Salary, Contact_Number, Branch_Name, Password, Address) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'
+    let query = 'INSERT INTO delivery_person (First_Name, Last_Name, Gender, Salary, Contact_Number, Branch_Name, Password, Address) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'
     
-//     db.query(query,[First_Name, Last_Name, Gender, Salary, Contact_Number, Branch_Name, Password, Address], (err,rows)=>{
-//         if(!err){
-//             res.send(rows);
-//             // console.log(rows);
-//         }else{
-//             console.log(err);
-//         }
-//     })
-// })
+    db.query(query,[First_Name, Last_Name, Gender, Salary, Contact_Number, Branch_Name, Password, Address], (err,rows)=>{
+        if(!err){
+            res.send(rows);
+            // console.log(rows);
+        }else{
+            console.log(err);
+        }
+    })
+})
 
 //post- add new manager
 app.post('/managers', (req, res) => {
