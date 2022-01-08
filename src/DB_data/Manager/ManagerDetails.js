@@ -65,8 +65,8 @@ function ManagerDetails(){
                                 <th>Gender</th>
                                 <th>Salary (Rs)</th>
                                 <th>C. Number</th>
-                                <th>Branch Name</th>
-                                <th>Password</th>
+                                <th>Branch Id</th>
+                                {/* <th>Password</th> */}
                                 <th>Address</th>
                                 <th>Posting_Date</th>
                                 <th>Edit / Delete</th>
@@ -77,14 +77,14 @@ function ManagerDetails(){
                                     return (
                                         <tr key={customer.id}>
                                             <td className="r-margin text-r">{customer.id}</td>
-                                            <td className="r-margin">{customer.First_Name}</td>
-                                            <td className="r-margin">{customer.Last_Name}</td>
-                                            <td className="r-margin">{customer.Gender}</td>
-                                            <td className="r-margin">{customer.Salary}</td>
-                                            <td className="r-margin text-center">{customer.Contact_Number}</td>
-                                            <td className="r-margin">{customer.Branch_Name}</td>
-                                            <td className="r-margin">{customer.Password}</td>
-                                            <td className="r-margin"><div>{customer.Address}</div></td>
+                                            <td className="r-margin">{customer.first_name}</td>
+                                            <td className="r-margin">{customer.last_name}</td>
+                                            <td className="r-margin">{customer.gender}</td>
+                                            <td className="r-margin">{customer.salary}</td>
+                                            <td className="r-margin text-center">{customer.contact_number}</td>
+                                            <td className="r-margin">{customer.Branch_id}</td>
+                                            {/* <td className="r-margin">{customer.password}</td> */}
+                                            <td className="r-margin"><div>{customer.address}</div></td>
                                             <td className="r-margin text-center"><div>{customer.Posting_Date}</div></td>
                                             <td className="r-margin text-center">
                                                 <ButtonGroup aria-label="Basic example">

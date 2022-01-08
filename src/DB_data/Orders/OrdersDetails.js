@@ -57,7 +57,7 @@ function OrdersDetails(){
                                 <th>Total Cost (Rs)</th>
                                 <th>Customer ID</th>
                                 <th>Manager ID</th>
-                                <th>D Person ID</th>
+                                {/* <th>D Person ID</th> */}
                                 <th>Posting Date</th>
                                 <th>Delete</th>
                             </tr>
@@ -67,11 +67,11 @@ function OrdersDetails(){
                                     return (
                                         <tr  key={product.id}>
                                             <td className="text-r"><div>{product.id}</div></td>
-                                            <td className="text-r">{product.Quantity}</td>
-                                            <td className="text-r">{product.Total_Cost}</td>
-                                            <td className="text-r">{product.Customer_Id}</td>
-                                            <td className="text-r">{product.Manager_Id}</td>
-                                            <td className="text-r">{product.Delivery_Person_Id}</td>
+                                            <td className="text-r">{product.total_weight}</td>
+                                            <td className="text-r">{product.total_cost}</td>
+                                            <td className="text-r">{product.customer_id}</td>
+                                            <td className="text-r">{product.Employee_id}</td>
+                                            {/* <td className="text-r">{product.Delivery_Person_Id}</td> */}
                                             <td className="text-center">{product.Posting_Date}</td>
                                             <td className="text-center">
                                                 <ButtonGroup aria-label="Basic example">

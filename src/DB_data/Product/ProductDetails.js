@@ -63,9 +63,9 @@ function ProductDetails(){
                                     return (
                                         <tr  key={product.id}>
                                             <td className="p-data-1 text-r"><div>{product.id}</div></td>
-                                            <td className="p-data-2">{product.Name}</td>
-                                            <td className="p-data-3 text-r">{product.Weight}</td>
-                                            <td className="p-data-4 text-r">{product.Price}</td>
+                                            <td className="p-data-2">{product.name}</td>
+                                            <td className="p-data-3 text-r">{product.total_weight}</td>
+                                            <td className="p-data-4 text-r">{product.price_per_kg}</td>
                                             <td className="p-data-5 text-center">{product.Posting_Date}</td>
                                             <td className="p-data-6 text-center">
                                                 <ButtonGroup aria-label="Basic example">
