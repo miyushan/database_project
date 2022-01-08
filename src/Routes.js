@@ -25,6 +25,7 @@ import BranchDetails from './DB_data/Branch/BranchDetails';
 import EditBranch from './DB_data/Branch/EditBranch';
 import NewBranch from './DB_data/Branch/NewBranch';
 import OrdersDetails from './DB_data/Orders/OrdersDetails';
+import OrderItemDetails from './DB_data/OrderItems/OrderItemDetails';
 
 // import { UserContext } from './Context/UserContext';
 
@@ -63,6 +64,7 @@ function Routes(){
           <Route path="/db/branch/edit/:id" exact component={EditBranch} /> 
           <Route path="/db/branch/add" exact component={NewBranch} /> 
           <Route path="/db/order" exact component={OrdersDetails} /> 
+          <Route path="/db/order-items" exact component={OrderItemDetails} /> 
 
         </Switch>
       </BrowserRouter>

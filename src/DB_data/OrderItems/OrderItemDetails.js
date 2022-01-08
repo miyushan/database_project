@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import './orderItemsDetails.css';
+import './OrderItemDetails.css';
 import {Table, ButtonGroup, Button, Breadcrumb, Col } from "react-bootstrap";
 import axios from 'axios';
 // import { ReactComponent as Edit } from '../../files/icons/edit-regular.svg';
@@ -9,8 +9,8 @@ import { ReactComponent as Delete } from '../../files/icons/trash-alt-regular.sv
 import { EmployeeContext } from '../../Context/EmployeeContext';
 import { ReactComponent as Admin } from '../../files/icons/users-cog-solid.svg';
 
-function OrderItems(){
-    const { orders } = useContext(EmployeeContext);
+function OrderItemDetails(){
+    const { orderItems } = useContext(EmployeeContext);
 
     const [orderArr, setOrderArr] = useState([]);
     // const [reload, setReload] = useState(false);
@@ -42,8 +42,8 @@ function OrderItems(){
                         <Breadcrumb.Item href="/db/manager"><span className="bred-items">Manager Records</span></Breadcrumb.Item>
                         <Breadcrumb.Item href="/db/customer"><span className="bred-items">Customer Records</span></Breadcrumb.Item>
                         {/* <Breadcrumb.Item href="/db/delivery-person"><span className="bred-items">Delivery Person Records</span></Breadcrumb.Item> */}
-                        <Breadcrumb.Item active><span className="bred-items">Order Records</span></Breadcrumb.Item>
-                        <Breadcrumb.Item href="/db/order-items"><span className="bred-items">Order Item Records</span></Breadcrumb.Item>
+                        <Breadcrumb.Item href="/db/order"><span className="bred-items">Order Records</span></Breadcrumb.Item>
+                        <Breadcrumb.Item active><span className="bred-items">Order Item Records</span></Breadcrumb.Item>
                     </Breadcrumb>
                 </div>
                     
@@ -52,11 +52,11 @@ function OrderItems(){
                     <Table className="table-c order-table" striped bordered>
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                {/* <th>ID</th> */}
                                 <th>Quantity (Kg)</th>
-                                <th>Total Cost (Rs)</th>
-                                <th>Customer ID</th>
-                                <th>Manager ID</th>
+                                <th>Cost (Rs)</th>
+                                <th>Product ID</th>
+                                <th>Order ID</th>
                                 {/* <th>D Person ID</th> */}
                                 <th>Posting Date</th>
                                 <th>Delete</th>
@@ -66,11 +66,11 @@ function OrderItems(){
                                 {orderArr.map((product) =>{
                                     return (
                                         <tr  key={product.id}>
-                                            <td className="text-r"><div>{product.id}</div></td>
-                                            <td className="text-r">{product.total_weight}</td>
-                                            <td className="text-r">{product.total_cost}</td>
-                                            <td className="text-r">{product.customer_id}</td>
-                                            <td className="text-r">{product.Employee_id}</td>
+                                            {/* <td className="text-r"><div>{product.id}</div></td> */}
+                                            <td className="text-r">{product.weight}</td>
+                                            <td className="text-r">{product.cost}</td>
+                                            <td className="text-r">{product.Product_id}</td>
+                                            <td className="text-r">{product.Order_id}</td>
                                             {/* <td className="text-r">{product.Delivery_Person_Id}</td> */}
                                             <td className="text-center">{product.Posting_Date}</td>
                                             <td className="text-center">
@@ -107,4 +107,4 @@ function OrderItems(){
     
 }
 
-export default OrderItems;
+export default OrderItemDetails;
