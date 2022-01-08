@@ -62,8 +62,22 @@ app.get('/products', (req, res) => {
 //     })
 // })
 
+// //get manager
+// app.get('/managers', (req, res) => {
+    
+//     db.query('SELECT * FROM manager', (err,rows)=>{
+//         if(!err){
+//             res.send(rows);
+//             // console.log(rows);
+//         }else{
+//             console.log(err);
+//         }
+//     })
+// })
+
+
 //get manager
-app.get('/managers', (req, res) => {
+app.get('/employee', (req, res) => {
     
     db.query('SELECT * FROM employee', (err,rows)=>{
         if(!err){

@@ -17,7 +17,7 @@ function EmployeeContextProvider (props){
         // axios.get('http://localhost:4000/delivery-persons')
         // .then (res =>{
         //     setDeliveryPersons(res.data);
-            axios.get('http://localhost:4000/managers')
+            axios.get('http://localhost:4000/employee')
             .then (res =>{
                 setManagers(res.data);
                 axios.get('http://localhost:4000/branches')

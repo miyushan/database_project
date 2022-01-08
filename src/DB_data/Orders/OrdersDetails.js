@@ -39,11 +39,12 @@ function OrdersDetails(){
                     <Breadcrumb className="bred-c">
                         <Breadcrumb.Item href="/db/branch"><span className="bred-items">Branch Records</span></Breadcrumb.Item>
                         <Breadcrumb.Item href="/db/products"><span className="bred-items">Product Records</span></Breadcrumb.Item>
-                        <Breadcrumb.Item href="/db/manager"><span className="bred-items">Manager Records</span></Breadcrumb.Item>
+                        {/* <Breadcrumb.Item href="/db/manager"><span className="bred-items">Manager Records</span></Breadcrumb.Item> */}
+                        <Breadcrumb.Item href="/db/employee"><span className="bred-items">Employee Records</span></Breadcrumb.Item>
                         <Breadcrumb.Item href="/db/customer"><span className="bred-items">Customer Records</span></Breadcrumb.Item>
-                        <Breadcrumb.Item href="/db/delivery-person"><span className="bred-items">Delivery Person Records</span></Breadcrumb.Item>
+                        {/* <Breadcrumb.Item href="/db/delivery-person"><span className="bred-items">Delivery Person Records</span></Breadcrumb.Item> */}
                         <Breadcrumb.Item active><span className="bred-items">Order Records</span></Breadcrumb.Item>
-                        {/* <Breadcrumb.Item href=""><span className="bred-items">Order Item Records</span></Breadcrumb.Item> */}
+                        <Breadcrumb.Item href="/db/order-items"><span className="bred-items">Order Item Records</span></Breadcrumb.Item>
                     </Breadcrumb>
                 </div>
                     
@@ -56,8 +57,9 @@ function OrdersDetails(){
                                 <th>Quantity (Kg)</th>
                                 <th>Total Cost (Rs)</th>
                                 <th>Customer ID</th>
-                                <th>Manager ID</th>
-                                <th>D Person ID</th>
+                                {/* <th>Manager ID</th> */}
+                                {/* <th>D Person ID</th> */}
+                                <th>Employee ID</th>
                                 <th>Posting Date</th>
                                 <th>Delete</th>
                             </tr>
@@ -70,8 +72,9 @@ function OrdersDetails(){
                                             <td className="text-r">{product.Quantity}</td>
                                             <td className="text-r">{product.Total_Cost}</td>
                                             <td className="text-r">{product.Customer_Id}</td>
-                                            <td className="text-r">{product.Manager_Id}</td>
-                                            <td className="text-r">{product.Delivery_Person_Id}</td>
+                                            {/* <td className="text-r">{product.Manager_Id}</td> */}
+                                            {/* <td className="text-r">{product.Delivery_Person_Id}</td> */}
+                                            <td className="text-center">{product.Employee_id}</td>
                                             <td className="text-center">{product.Posting_Date}</td>
                                             <td className="text-center">
                                                 <ButtonGroup aria-label="Basic example">
