@@ -23,6 +23,7 @@ function ProductDetails(){
         axios.delete(`http://localhost:4000/products/${customer_id}`)
         .then(res =>{
             alert('Product is Deleted!!');
+            window.location.reload(false);
         })
         
     }

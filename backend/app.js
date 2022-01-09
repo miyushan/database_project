@@ -258,12 +258,12 @@ app.post('/orders', (req, res) => {
     const Quantity = req.body.quantity;
     const Total_Cost = req.body.cost;
     const Customer_Id = req.body.customerId;
-    const Manager_Id = req.body.managerId;
-    const Delivery_Person_Id = req.body.deliveryPersonId;
+    const Employee_id = req.body.managerId;
+    // const Delivery_Person_Id = req.body.deliveryPersonId;
 
-    let query = 'INSERT INTO orders (Quantity, Total_Cost, Customer_Id, Manager_Id, Delivery_Person_Id) VALUES (?, ?, ?, ?, ?)'
+    let query = 'INSERT INTO orders (Quantity, Total_Cost, Customer_Id, Employee_id) VALUES (?, ?, ?, ?)'
     
-    db.query(query,[Quantity, Total_Cost, Customer_Id, Manager_Id, Delivery_Person_Id], (err,rows)=>{
+    db.query(query,[Quantity, Total_Cost, Customer_Id, Employee_id], (err,rows)=>{
         if(!err){
             res.send(rows);
             // console.log(rows);
@@ -472,6 +472,42 @@ app.delete('/customer/:id', (req, res) => {
         if(!err){
             res.send(rows);
             console.log('Customer Deleted!')
+        }else{
+            console.log(err);
+        }
+    })
+})
+
+// delete order
+app.delete('/order/:id', (req, res) => {
+
+    const id = req.params.id;
+    console.log(`id: ${id}`)
+
+    let query = 'DELETE FROM orders WHERE id = ?'
+    
+    db.query(query,[id], (err,rows)=>{
+        if(!err){
+            res.send(rows);
+            console.log('Order Deleted!')
+        }else{
+            console.log(err);
+        }
+    })
+})
+
+// delete order item
+app.delete('/order-item/:id', (req, res) => {
+
+    const id = req.params.id;
+    console.log(`id: ${id}`)
+
+    let query = 'DELETE FROM orders_items WHERE id = ?'
+    
+    db.query(query,[id], (err,rows)=>{
+        if(!err){
+            res.send(rows);
+            console.log('Order item Deleted!')
         }else{
             console.log(err);
         }

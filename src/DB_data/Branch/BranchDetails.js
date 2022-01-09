@@ -13,7 +13,6 @@ function BranchDetails(){
     const { branches } = useContext(EmployeeContext);
 
     const [products, setProducts] = useState([]);
-    // const [reload, setReload] = useState(false);
 
     useEffect(() => {
         try{
@@ -27,6 +26,7 @@ function BranchDetails(){
         axios.delete(`http://localhost:4000/branches/${customer_id}`)
         .then(res =>{
             alert('Branch is Deleted!!');
+            window.location.reload(false);
         })
     }
    
@@ -73,7 +73,7 @@ function BranchDetails(){
                                             <td className="b-data-5 text-center">
                                                 <ButtonGroup aria-label="Basic example">
                                                     <Button href={"/db/branch/edit/"+product.id} className="btn-edit"variant="warning"><Edit className="edit-p" height="15px"/></Button>
-                                                    <Button href="/db/branch" className="btn-delete" onClick={() => deleteCustomer(product.id)} variant="danger"><Delete className="delete-p" height="15px"/></Button>
+                                                    <Button href="" className="btn-delete" onClick={() => deleteCustomer(product.id)} variant="danger"><Delete className="delete-p" height="15px"/></Button>
                                                 </ButtonGroup>
                                             </td>
                                         </tr>
@@ -96,6 +96,7 @@ function BranchDetails(){
                         <a href="/db/login" className="admin-login-btn"><Admin className="admin-login-icon" height="25px"/></a>
                     </Col>     
                 </div>
+
             </div>
                 
         </>

@@ -25,6 +25,7 @@ function EmployeeDetails(){
         axios.delete(`http://localhost:4000/employee/${customer_id}`)
         .then(res =>{
             alert('Employee is Deleted!!');
+            window.location.reload(false);
         })
         
     }

@@ -23,6 +23,7 @@ function CustomerDetails(){
         axios.delete(`http://localhost:4000/customer/${customer_id}`)
         .then(res =>{
             alert('Customer is Deleted!!');
+            window.location.reload(false);
         })
     }
 

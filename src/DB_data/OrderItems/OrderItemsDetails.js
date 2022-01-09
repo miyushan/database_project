@@ -24,9 +24,10 @@ function OrderItemsDetails(){
     }, [orderItems]);
 
     const deleteCustomer=(customer_id)=>{
-        axios.get('http://localhost/database_project/delete_Orders.php?id=' + customer_id)
+        axios.delete(`http://localhost:4000/order-item/${customer_id}`)
         .then(res =>{
-            // alert('Orders Record is Deleted!!');
+            alert('Order Item Record is Deleted!!');
+            window.location.reload(false);
         })
     }
    
@@ -75,7 +76,7 @@ function OrderItemsDetails(){
                                             <td className="text-center">
                                                 <ButtonGroup aria-label="Basic example">
                                                     {/* <Button href={"/db/order/edit/"+product.id} className="btn-edit"variant="warning"><Edit className="edit-p" height="15px"/></Button> */}
-                                                    <Button href="/db/order" className="btn-delete" onClick={() => deleteCustomer(product.id)} variant="danger"><Delete className="delete-p" height="15px"/></Button>
+                                                    <Button href="/db/order-items" className="btn-delete" onClick={() => deleteCustomer(product.id)} variant="danger"><Delete className="delete-p" height="15px"/></Button>
                                                 </ButtonGroup>
                                             </td>
                                         </tr>

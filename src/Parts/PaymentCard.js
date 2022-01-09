@@ -9,7 +9,7 @@ import { Route, Redirect } from "react-router-dom";
 
 function PaymentCard(){
     const { totalWeight, setCartProducts, priceWithDiscount } = useContext(CartContext);
-    const { deliveryPersons, managers } = useContext(EmployeeContext);
+    const { managers } = useContext(EmployeeContext);
 
     const [name, setName] = useState('');
     const [address, setAddress] = useState('');
@@ -21,7 +21,7 @@ function PaymentCard(){
     const [branch, setBranch] = useState('');
     const [customerId, setCustomerId] = useState('');
 
-    let dPersonId;
+    // let dPersonId;
     let managerId;
 
     
@@ -71,18 +71,18 @@ function PaymentCard(){
 
     //find related Manager and Delivery Person relater to buyers Branch 
     const findRelatedEmployees = () => {
-        let tempDPsersons = [];
+        // let tempDPsersons = [];
         let tempManagers = [];
 
-        //to get D Persons in same branch
-        deliveryPersons.forEach(person => {
-            if(person.Branch_Name === branch){
-                tempDPsersons.push(parseFloat(person.id));
-            }
-        })
-        console.log(tempDPsersons);
-        dPersonId = tempDPsersons[ Math.floor(Math.random()*tempDPsersons.length) ];
-        console.log(dPersonId);
+        // //to get D Persons in same branch
+        // deliveryPersons.forEach(person => {
+        //     if(person.Branch_Name === branch){
+        //         tempDPsersons.push(parseFloat(person.id));
+        //     }
+        // })
+        // console.log(tempDPsersons);
+        // dPersonId = tempDPsersons[ Math.floor(Math.random()*tempDPsersons.length) ];
+        // console.log(dPersonId);
 
         //to get Managers in same branch
         managers.forEach(person => {
@@ -98,13 +98,12 @@ function PaymentCard(){
     const addtoOrderList = () => {
         setCartProducts([]);
         findRelatedEmployees();
-        console.log(deliveryPersons)
         axios.post('http://localhost:4000/orders',{
             quantity: totalWeight,
             cost: priceWithDiscount,
             customerId: customerId,
             managerId: managerId,
-            deliveryPersonId: dPersonId,
+            // deliveryPersonId: dPersonId,
         })
         .then(()=>{
             localStorage.removeItem('cartDetails');

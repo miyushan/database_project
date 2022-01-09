@@ -24,9 +24,10 @@ function OrdersDetails(){
     }, [orders]);
 
     const deleteCustomer=(customer_id)=>{
-        axios.get('http://localhost/database_project/delete_Orders.php?id=' + customer_id)
+        axios.delete(`http://localhost:4000/order/${customer_id}`)
         .then(res =>{
-            // alert('Orders Record is Deleted!!');
+            alert('Order record is Deleted!!');
+            window.location.reload(false);
         })
     }
    
