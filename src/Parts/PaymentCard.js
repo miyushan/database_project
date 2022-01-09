@@ -86,8 +86,8 @@ function PaymentCard(){
 
         //to get Managers in same branch
         managers.forEach(person => {
-            if(person.Branch_id === branch){
-                tempManagers.push(parseFloat(person.id));
+            if(person.Branch_id === branch && person.manager_id !== null){
+                tempManagers.push(parseFloat(person.manager_id));
             }
         })
         console.log(tempManagers);

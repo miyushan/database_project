@@ -266,7 +266,7 @@ app.post('/orders', (req, res) => {
     db.query(query,[Quantity, Total_Cost, Customer_Id, Employee_id], (err,rows)=>{
         if(!err){
             res.send(rows);
-            // console.log(rows);
+            console.log('Order created!!');
         }else{
             console.log(err);
         }
