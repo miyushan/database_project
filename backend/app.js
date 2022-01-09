@@ -495,7 +495,6 @@ app.delete('/order/:id', (req, res) => {
     let query1 = 'DELETE FROM order_items WHERE Order_id = ?'
     db.query(query1,[id], (err,rows)=>{
         if(!err){
-            // res.send(rows);
             console.log('Order Detail item Deleted!')
 
             let query2 = 'DELETE FROM orders WHERE id = ?'
@@ -507,15 +506,39 @@ app.delete('/order/:id', (req, res) => {
                     console.log(err);
                 }
             })  
-
         }else{
             console.log(err);
         }
-    })
-
-
-    
+    }) 
 })
+
+
+// delete customer
+app.delete('/customer/:id', (req, res) => {
+
+    const id = req.params.id;
+    console.log(`id: ${id}`)
+
+    let query1 = 'DELETE FROM orders WHERE Customer_Id = ?'
+    db.query(query1,[id], (err,rows)=>{
+        if(!err){
+            console.log('Order item Deleted!')
+
+            let query2 = 'DELETE FROM customer WHERE id = ?'
+            db.query(query2,[id], (err,rows)=>{
+                if(!err){
+                    res.send(rows);
+                    console.log('Customer Deleted!')
+                }else{
+                    console.log(err);
+                }
+            })  
+        }else{
+            console.log(err);
+        }
+    }) 
+})
+
 
 // delete order item
 app.delete('/delete-order-item', (req, res) => {

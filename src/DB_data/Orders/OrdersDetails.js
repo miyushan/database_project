@@ -80,7 +80,7 @@ function OrdersDetails(){
                                             <td className="text-center">
                                                 <ButtonGroup aria-label="Basic example">
                                                     {/* <Button href={"/db/order/edit/"+product.id} className="btn-edit"variant="warning"><Edit className="edit-p" height="15px"/></Button> */}
-                                                    <Button href="/db/order" className="btn-delete" onClick={() => deleteCustomer(product.id)} variant="danger"><Delete className="delete-p" height="15px"/></Button>
+                                                    <Button href="" className="btn-delete" onClick={() => deleteCustomer(product.id)} variant="danger"><Delete className="delete-p" height="15px"/></Button>
                                                 </ButtonGroup>
                                             </td>
                                         </tr>
