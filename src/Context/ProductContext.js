@@ -49,16 +49,11 @@ function ProductContextProvider (props){
         axios.get('http://localhost:4000/products')
         .then (res =>{
             setProducts(res.data);
-            setPopularProducts(res.data);
+            axios.get('http://localhost:4000/products')
+            .then (res =>{
+                setPopularProducts(res.data);
+            })
         })
-
-        // const tempPopularPro = [];
-        // tempPopularPro[0] = products[3];
-        // tempPopularPro[1] = products[5];
-        // tempPopularPro[2] = products[8];
-        // tempPopularPro[3] = products[7];
-
-        // setPopularProducts(tempPopularPro);
     },[])
 
     const handleAddProduct = (id) => {
