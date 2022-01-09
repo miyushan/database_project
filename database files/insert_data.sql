@@ -1,10 +1,10 @@
 -- delete previous records
-DROP TABLE IF EXISTS branch; 
+DROP TABLE IF EXISTS order_items; 
+DROP TABLE IF EXISTS orders; 
 DROP TABLE IF EXISTS customer; 
 DROP TABLE IF EXISTS employee; 
-DROP TABLE IF EXISTS orders; 
 DROP TABLE IF EXISTS product; 
-DROP TABLE IF EXISTS order_items; 
+DROP TABLE IF EXISTS branch; 
 
 
 -- create tables
