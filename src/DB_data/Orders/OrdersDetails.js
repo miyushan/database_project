@@ -75,7 +75,7 @@ function OrdersDetails(){
                                             <td className="text-r">{product.Customer_Id}</td>
                                             {/* <td className="text-r">{product.Manager_Id}</td> */}
                                             {/* <td className="text-r">{product.Delivery_Person_Id}</td> */}
-                                            <td className="text-center">{product.Employee_id}</td>
+                                            <td className="text-r">{product.Employee_id}</td>
                                             <td className="text-center">{product.Posting_Date}</td>
                                             <td className="text-center">
                                                 <ButtonGroup aria-label="Basic example">

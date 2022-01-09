@@ -73,9 +73,9 @@ function EmployeeDetails(){
                                             <td className="r-margin">{customer.First_Name}</td>
                                             <td className="r-margin">{customer.Last_Name}</td>
                                             <td className="r-margin">{customer.Gender}</td>
-                                            <td className="r-margin">{customer.Salary}</td>
+                                            <td className="r-margin text-r">{customer.Salary}</td>
                                             <td className="r-margin text-center">{customer.Contact_Number}</td>
-                                            <td className="r-margin">{customer.Branch_id}</td>
+                                            <td className="r-margin text-r">{customer.Branch_id}</td>
                                             {/* <td className="r-margin">{customer.Password}</td> */}
                                             <td className="r-margin"><div>{customer.Address}</div></td>
                                             <td className="r-margin text-center"><div>{customer.Posting_Date}</div></td>
