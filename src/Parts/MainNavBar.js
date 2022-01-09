@@ -7,7 +7,7 @@ function MainNavBar(){
     const[scroll, setScroll] = useState(true);
 
     const style = {
-        backgroundColor : "#202020ee",
+        backgroundColor : "#202020",
         // animation: "ease-out"
     }
 
