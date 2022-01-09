@@ -302,6 +302,29 @@ app.put('/branches/:id', (req, res) => {
     })
 })
 
+app.put('/products/:id', (req, res) => {
+    // from header
+    const id = req.params.id;
+
+    // from body
+    const Name = req.body.productName;
+    const totalStockWeight = req.body.totalStockWeight;
+    const pricePerKilogram = req.body.pricePerKilogram;
+
+    console.log(`id: ${id}`)
+
+    let query = 'UPDATE product SET Name=?, Price=?, Weight=? WHERE id=?'
+    
+    db.query(query,[Name, totalStockWeight, pricePerKilogram, id], (err,rows)=>{
+        if(!err){
+            res.send(rows);
+            console.log('Product Updated!')
+        }else{
+            console.log(err);
+        }
+    })
+})
+
 // update customer address
 app.put('/customer-address/:id', (req, res) => {
     // from header
@@ -339,6 +362,24 @@ app.delete('/branches/:id', (req, res) => {
         if(!err){
             res.send(rows);
             console.log('Branch Deleted!')
+        }else{
+            console.log(err);
+        }
+    })
+})
+
+// delete product
+app.delete('/products/:id', (req, res) => {
+
+    const id = req.params.id;
+    console.log(`id: ${id}`)
+
+    let query = 'DELETE FROM product WHERE id = ?'
+    
+    db.query(query,[id], (err,rows)=>{
+        if(!err){
+            res.send(rows);
+            console.log('Product Deleted!')
         }else{
             console.log(err);
         }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-// import { Route, Redirect } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom"; 
 import { useParams } from 'react-router-dom';
 import {Form, Row, Col, Button, Container} from "react-bootstrap";
 import { ReactComponent as Back } from '../../files/icons/caret-left-solid.svg';
@@ -20,12 +20,12 @@ function EditProduct(){
     const [initialTotalStockWeight, setInitialTotalStockWeight] = useState('');
     const [initialPricePerKilogram, setInitialPricePerKilogram] = useState('');
 
-    // const [goBack, setGoBack] = useState(false);
+    const [goBack, setGoBack] = useState(false);
     const productId = id;
 
     useEffect(() => {
         products.forEach((product)=>{
-            if(product.id === productId){
+            if(product.id.toString() === productId){
                 setInitialProductName(product.Name);
                 setInitialTotalStockWeight(product.Weight);
                 setInitialPricePerKilogram(product.Price);
@@ -62,7 +62,7 @@ function EditProduct(){
     const changeProductDetails = () => {
         //change product data
         if (checkAnyChanges()){
-            axios.post('http://localhost/database_project/update_Product.php',{
+            axios.put(`http://localhost:4000/products/${productId}`,{
                 id: productId,
                 productName: productName,
                 totalStockWeight: totalStockWeight,
@@ -70,7 +70,7 @@ function EditProduct(){
             })
             .then(() => {
                 alert('Product is Updated Successfully!');
-                // setGoBack(true);
+                setGoBack(true);
                 setInitialProductName(productName);
                 setInitialTotalStockWeight(totalStockWeight);
                 setInitialPricePerKilogram(pricePerKilogram);
@@ -131,9 +131,9 @@ function EditProduct(){
                             Submit
                         </Button>
                         
-                        {/* <Route>
+                        <Route>
                             {goBack ? <Redirect to="/db/products" /> : null} 
-                        </Route> */}
+                        </Route>
                         
                     </Form>
                 </Container>

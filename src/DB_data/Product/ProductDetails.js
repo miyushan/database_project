@@ -20,7 +20,7 @@ function ProductDetails(){
 
     const deleteCustomer=(customer_id)=>{
 
-        axios.get('http://localhost/database_project/delete_Product.php?id=' + customer_id)
+        axios.delete(`http://localhost:4000/products/${customer_id}`)
         .then(res =>{
             alert('Product is Deleted!!');
         })
