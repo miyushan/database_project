@@ -23,8 +23,13 @@ function OrderItemsDetails(){
         }
     }, [orderItems]);
 
-    const deleteCustomer=(customer_id)=>{
-        axios.delete(`http://localhost:4000/order-item/${customer_id}`)
+    const deleteCustomer=(Product_id, Order_id)=>{
+        axios.delete(`http://localhost:4000/delete-order-item`, {
+            data:{
+                Product_id: Product_id,
+                Order_id: Order_id
+            }
+        })
         .then(res =>{
             alert('Order Item Record is Deleted!!');
             window.location.reload(false);
@@ -54,7 +59,7 @@ function OrderItemsDetails(){
                     <Table className="table-c order-table" striped bordered>
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                {/* <th>ID</th> */}
                                 <th>Quantity (Kg)</th>
                                 <th>Cost (Rs)</th>
                                 <th>Product ID</th>
@@ -67,7 +72,7 @@ function OrderItemsDetails(){
                                 {orderArr.map((product) =>{
                                     return (
                                         <tr  key={product.id}>
-                                            <td className="text-r"><div>{product.id}</div></td>
+                                            {/* <td className="text-r"><div>{product.id}</div></td> */}
                                             <td className="text-r">{product.weight}</td>
                                             <td className="text-r">{product.cost}</td>
                                             <td className="text-r">{product.Product_id}</td>
@@ -76,7 +81,7 @@ function OrderItemsDetails(){
                                             <td className="text-center">
                                                 <ButtonGroup aria-label="Basic example">
                                                     {/* <Button href={"/db/order/edit/"+product.id} className="btn-edit"variant="warning"><Edit className="edit-p" height="15px"/></Button> */}
-                                                    <Button href="/db/order-items" className="btn-delete" onClick={() => deleteCustomer(product.id)} variant="danger"><Delete className="delete-p" height="15px"/></Button>
+                                                    <Button href="" className="btn-delete" onClick={() => deleteCustomer(product.Product_id, product.Order_id)} variant="danger"><Delete className="delete-p" height="15px"/></Button>
                                                 </ButtonGroup>
                                             </td>
                                         </tr>
