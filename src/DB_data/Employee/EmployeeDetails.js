@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, useContext} from 'react';
 import './EmployeeDetails.css';
 import {Table, ButtonGroup, Button, Breadcrumb, Row, Col} from "react-bootstrap";
 import axios from 'axios';
@@ -7,37 +7,28 @@ import { ReactComponent as Delete } from '../../files/icons/trash-alt-regular.sv
 import { ReactComponent as New } from '../../files/icons/plus-solid.svg';
 import { ReactComponent as Admin } from '../../files/icons/users-cog-solid.svg';
 
-
-
+import { EmployeeContext } from '../../Context/EmployeeContext';
 
 function EmployeeDetails(){
+    const { managers } = useContext(EmployeeContext);
 
-    let [customers, setCustomers] = useState([]);
+    let [customerArr, setCustomerArr] = useState([]);
     // const [reload, setReload] = useState(false);
 
     useEffect(() => {
-        axios.get('http://localhost:4000/employee')
-        .then (res =>{
-            // console.log(res.data);
-            setCustomers(res.data)
-        })
-    }, []);
+        setCustomerArr(managers)
+    }, [managers]);
 
 
     const deleteCustomer=(customer_id)=>{
 
-        console.log("Customer Record is Deleted");
-
-        axios.get('http://localhost/database_project/delete_Manager.php?id=' + customer_id)
+        axios.delete(`http://localhost:4000/employee/${customer_id}`)
         .then(res =>{
-            console.log(res);
-            // setReload(true);
+            alert('Employee is Deleted!!');
         })
         
     }
 
-    
-   
     return (
         <>
             <div className="db-c-bg">
@@ -74,7 +65,7 @@ function EmployeeDetails(){
                             </tr>
                         </thead>
                         <tbody>
-                                {customers.map((customer) =>{
+                                {customerArr.map((customer) =>{
                                     return (
                                         <tr key={customer.id}>
                                             <td className="r-margin text-r">{customer.id}</td>
@@ -89,8 +80,8 @@ function EmployeeDetails(){
                                             <td className="r-margin text-center"><div>{customer.Posting_Date}</div></td>
                                             <td className="r-margin text-center">
                                                 <ButtonGroup aria-label="Basic example">
-                                                    <Button href={"manager/edit/"+customer.id} className="btn-edit"variant="warning"><Edit className="edit-p" height="15px"/></Button>
-                                                    <Button href="/db/manager" className="btn-delete" onClick={() => deleteCustomer(customer.id)} variant="danger"><Delete className="delete-p" height="15px"/></Button>
+                                                    <Button href={"employee/edit/"+customer.id} className="btn-edit"variant="warning"><Edit className="edit-p" height="15px"/></Button>
+                                                    <Button href="/db/employee" className="btn-delete" onClick={() => deleteCustomer(customer.id)} variant="danger"><Delete className="delete-p" height="15px"/></Button>
                                                 </ButtonGroup>
                                             </td>
                                         </tr>

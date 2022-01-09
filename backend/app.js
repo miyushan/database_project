@@ -76,7 +76,7 @@ app.get('/products', (req, res) => {
 // })
 
 
-//get manager
+//get employee
 app.get('/employee', (req, res) => {
     
     db.query('SELECT * FROM employee', (err,rows)=>{
@@ -140,7 +140,6 @@ app.get('/customers', (req, res) => {
         }
     })
 })
-
 
 
 
@@ -380,6 +379,24 @@ app.delete('/products/:id', (req, res) => {
         if(!err){
             res.send(rows);
             console.log('Product Deleted!')
+        }else{
+            console.log(err);
+        }
+    })
+})
+
+// delete employee
+app.delete('/employee/:id', (req, res) => {
+
+    const id = req.params.id;
+    console.log(`id: ${id}`)
+
+    let query = 'DELETE FROM employee WHERE id = ?'
+    
+    db.query(query,[id], (err,rows)=>{
+        if(!err){
+            res.send(rows);
+            console.log('Employee Deleted!')
         }else{
             console.log(err);
         }
