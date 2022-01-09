@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-// import { Route, Redirect } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import { useParams } from 'react-router-dom';
 import {Form, Row, Col, Button, Container} from "react-bootstrap";
 import { ReactComponent as Back } from '../../files/icons/caret-left-solid.svg';
@@ -8,7 +8,7 @@ import { EmployeeContext } from '../../Context/EmployeeContext';
 
 
 export default function EditEmployee(){
-    const { managers } = useContext(EmployeeContext);
+    const { managers, branches } = useContext(EmployeeContext);
     const { id } = useParams();
 
     const [firstName, setFirstName] = useState('');
@@ -17,7 +17,6 @@ export default function EditEmployee(){
     const [salary, setSalary] = useState('');
     const [contactNumber, setContactNumber] = useState('');
     const [branchName, setBranchName] = useState('');
-    const [password, setPassword] = useState('');
     const [address, setAddress] = useState('');
 
 
@@ -28,41 +27,45 @@ export default function EditEmployee(){
     const [initialSalary, setInitialSalary] = useState('');
     const [initialContactNumber, setInitialContactNumber] = useState('');
     const [initialBranchName, setInitialBranchName] = useState('');
-    const [initialPassword, setInitialPassword] = useState('');
     const [initialAddress, setInitialAddress] = useState('');
 
-    // const [goBack, setGoBack] = useState(false);
+    const [goBack, setGoBack] = useState(false);
     const managerId = id;
 
     useEffect(() => {
         managers.forEach((manager)=>{
-            if(manager.id === managerId){
+            if(manager.id.toString() === managerId){
                 setInitialFirstName(manager.First_Name);
                 setInitialLastName(manager.Last_Name);
                 setInitialGender(manager.Gender);
                 setInitialSalary(manager.Salary);
                 setInitialContactNumber(manager.Contact_Number);
-                setInitialBranchName(manager.Branch_Name);
-                setInitialPassword(manager.Password);
                 setInitialAddress(manager.Address);
                 setFirstName(manager.First_Name);
                 setLastName(manager.Last_Name);
                 setGender(manager.Gender);
                 setSalary(manager.Salary);
                 setContactNumber(manager.Contact_Number);
-                setBranchName(manager.Branch_Name);
-                setPassword(manager.Password);
                 setAddress(manager.Address);
+
+                branches.forEach((branch)=>{
+                    // console.log(customer.Branch_id, branch.id)
+                    if(manager.Branch_id===branch.id){
+                        // console.log(branch.Name )
+                        setInitialBranchName(branch.Name);
+                        setBranchName(branch.Name);
+                    }
+                })
             }  
         })
-    }, [managers, managerId]);
+    }, [managers, managerId, branches]);
 
     const checkAnyChanges = () => {
-        if((firstName.length!==0 && lastName.length!==0 && gender.length!==0 && salary.length!==0 && contactNumber.length!==0 && branchName.length!==0 && password.length!==0 && address.length!==0)){
+        if((firstName.length!==0 && lastName.length!==0 && gender.length!==0 && salary.length!==0 && contactNumber.length!==0 && branchName.length!==0 && address.length!==0)){
             let isManagerExist = false;
 
-            if(firstName===initialFirstName && lastName===initialLastName && gender===initialGender && salary===initialSalary && contactNumber===initialContactNumber && branchName===initialBranchName && password===initialPassword && address===initialAddress ){
-                alert('Manager Already Exists !');
+            if(firstName===initialFirstName && lastName===initialLastName && gender===initialGender && salary===initialSalary && contactNumber===initialContactNumber && branchName===initialBranchName && address===initialAddress ){
+                alert('Employee Already Exists !');
                 isManagerExist = true;
             }
             else{
@@ -84,27 +87,34 @@ export default function EditEmployee(){
     const changeManagerDetails = () => {
         //change manager data
         if (checkAnyChanges()){
-            axios.post('http://localhost/database_project/update_Manager.php',{
+
+            let branchid;
+            
+            branches.forEach((branch)=>{
+                if(branchName===branch.Name){
+                    branchid = branch.id;
+                }
+            })
+
+            axios.put(`http://localhost:4000/employee/${managerId}`,{
                 id: managerId,
                 First_Name: firstName,
                 Last_Name: lastName,
                 Gender: gender,
                 Salary: salary,
                 Contact_Number: contactNumber,
-                Branch_Name: branchName,
-                Password: password,
+                Branch_id: branchid,
                 Address: address,
             })
             .then(() => {
-                alert('Manager Updated Successfully!');
-                // setGoBack(true);
+                alert('Employee Updated Successfully!');
+                setGoBack(true);
                 setInitialFirstName(firstName);
                 setInitialLastName(lastName);
                 setInitialGender(gender);
                 setInitialSalary(salary);
                 setInitialContactNumber(contactNumber);
                 setInitialBranchName(branchName);
-                setInitialPassword(password);
                 setInitialAddress(address);
             });
         }
@@ -134,9 +144,9 @@ export default function EditEmployee(){
         setBranchName(e.target.value);
     }
 
-    const onChangePassword = (e) => {
-        setPassword(e.target.value);
-    }
+    // const onChangePassword = (e) => {
+    //     setPassword(e.target.value);
+    // }
 
     const onChangeAddress = (e) => {
         setAddress(e.target.value);
@@ -199,12 +209,12 @@ export default function EditEmployee(){
                             
                         </Row>
                         <Row>
-                            <Col>
+                            {/* <Col>
                                 <Form.Group className="mb-4" controlId="formGroupPassword">
                                     <Form.Label className="db-form-label">Password</Form.Label>
                                     <Form.Control className="db-input" variant="success" type="text" value={password} onChange={onChangePassword}/>
                                 </Form.Group>
-                            </Col>
+                            </Col> */}
                             <Col>
                                 <Form.Group className="mb-4" controlId="formGroupAddress">
                                     <Form.Label className="db-form-label">Address</Form.Label>
@@ -218,9 +228,9 @@ export default function EditEmployee(){
                             Submit
                         </Button>
 
-                        {/* <Route>
-                            {goBack ? <Redirect to="/db/manager" /> : null} 
-                        </Route> */}
+                        <Route>
+                            {goBack ? <Redirect to="/db/employee" /> : null} 
+                        </Route>
                         
                         
                     </Form>

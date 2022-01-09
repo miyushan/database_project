@@ -375,6 +375,34 @@ app.put('/customer/:id', (req, res) => {
     })
 })
 
+// update customer
+app.put('/employee/:id', (req, res) => {
+    // from header
+    const id = req.params.id;
+
+    // from body
+    const First_Name = req.body.First_Name;
+    const Last_Name = req.body.Last_Name;
+    const Gender = req.body.Gender;
+    const Salary = req.body.Salary;
+    const Contact_Number = req.body.Contact_Number;
+    const Branch_id = req.body.Branch_id;
+    const Address = req.body.Address;
+    
+    console.log(`id: ${id}`)
+
+    let query = 'UPDATE employee SET First_Name=?, Last_Name=?, Gender=?, Contact_Number=?, Branch_id=?, Address=?, Salary=? WHERE id=?'
+    
+    db.query(query,[First_Name, Last_Name, Gender, Contact_Number, Branch_id, Address, Salary, id], (err,rows)=>{
+        if(!err){
+            res.send(rows);
+            console.log('Employee Updated!')
+        }else{
+            console.log(err);
+        }
+    })
+})
+
 
 
 

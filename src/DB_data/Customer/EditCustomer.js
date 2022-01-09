@@ -97,7 +97,7 @@ function EditCustomer(){
                     branchid = branch.id;
                 }
             })
-            console.log(branchid)
+            // console.log(branchid)
             axios.put(`http://localhost:4000/customer/${customerId}`,{
                 id: customerId,
                 First_Name: firstName,
