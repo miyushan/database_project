@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-// import { Route, Redirect } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import { useParams } from 'react-router-dom';
 import {Form, Row, Col, Button, Container} from "react-bootstrap";
 import axios from 'axios';
@@ -9,7 +9,7 @@ import { ReactComponent as Back } from '../../files/icons/caret-left-solid.svg';
 
 
 function EditCustomer(){
-    const { customers } = useContext(EmployeeContext);
+    const { customers, branches } = useContext(EmployeeContext);
     const { id } = useParams();
 
     const [firstName, setFirstName] = useState('');
@@ -30,29 +30,37 @@ function EditCustomer(){
     const [initialPassword, setInitialPassword] = useState('');
     const [initialAddress, setInitialAddress] = useState('');
 
-    // const [goBack, setGoBack] = useState(false);
+    const [goBack, setGoBack] = useState(false);
     const customerId = id;
 
     useEffect(() => {
         customers.forEach((customer)=>{
-            if(customer.id === customerId){
+            if(customer.id.toString() === customerId){
                 setInitialFirstName(customer.First_Name);
                 setInitialLastName(customer.Last_Name);
                 setInitialGender(customer.Gender);
                 setInitialContactNumber(customer.Contact_Number);
-                setInitialBranchName(customer.Branch_Name);
                 setInitialPassword(customer.Password);
                 setInitialAddress(customer.Address);
                 setFirstName(customer.First_Name);
                 setLastName(customer.Last_Name);
                 setGender(customer.Gender);
                 setContactNumber(customer.Contact_Number);
-                setBranchName(customer.Branch_Name);
                 setPassword(customer.Password);
                 setAddress(customer.Address);
-        }  
-    })
-    }, [customers, customerId]);
+
+                branches.forEach((branch)=>{
+                    // console.log(customer.Branch_id, branch.id)
+                    if(customer.Branch_id===branch.id){
+                        console.log(branch.Name )
+                        setInitialBranchName(branch.Name);
+                        setBranchName(branch.Name);
+                    }
+                })
+
+            }
+        })
+    }, [customers, customerId, branches]);
 
     const checkAnyChanges = () => {
         if((firstName.length!==0 && lastName.length!==0 && gender.length!==0 && contactNumber.length!==0 && branchName.length!==0 && password.length!==0 )){
@@ -81,19 +89,28 @@ function EditCustomer(){
     const changeCustomerDetails = () => {
         //change customer data
         if (checkAnyChanges()){
-            axios.post('http://localhost/database_project/update_Customer.php',{
+
+            let branchid;
+            
+            branches.forEach((branch)=>{
+                if(branchName===branch.Name){
+                    branchid = branch.id;
+                }
+            })
+            console.log(branchid)
+            axios.put(`http://localhost:4000/customer/${customerId}`,{
                 id: customerId,
                 First_Name: firstName,
                 Last_Name: lastName,
                 Gender: gender,
                 Contact_Number: contactNumber,
-                Branch_Name: branchName,
+                Branch_id: branchid,
                 Password: password,
                 Address: address,
             })
             .then(() => {
                 alert('Customer Updated Successfully!');
-                // setGoBack(true);
+                setGoBack(true);
                 setInitialFirstName(firstName);
                 setInitialLastName(lastName);
                 setInitialGender(gender);
@@ -202,9 +219,9 @@ function EditCustomer(){
                             Submit
                         </Button>
 
-                        {/* <Route>
+                        <Route>
                             {goBack ? <Redirect to="/db/customer" /> : null} 
-                        </Route> */}
+                        </Route>
                         
                     </Form>
                 </Container>

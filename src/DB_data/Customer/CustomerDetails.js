@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState, useEffect, useContext} from 'react';
 import './CustomerDetails.css';
 import {Table, ButtonGroup, Button, Breadcrumb, Col} from "react-bootstrap";
 import axios from 'axios';
@@ -6,35 +6,24 @@ import { ReactComponent as Edit } from '../../files/icons/edit-regular.svg';
 import { ReactComponent as Delete } from '../../files/icons/trash-alt-regular.svg';
 import { ReactComponent as Admin } from '../../files/icons/users-cog-solid.svg';
 
-
-
+import { EmployeeContext } from '../../Context/EmployeeContext';
 
 function CustomerDetails(){
 
-    let [customers, setCustomers] = useState([]);
+    const { customers } = useContext(EmployeeContext);
+
+    let [customerArr, setCustomerArr] = useState([]);
     // const [reload, setReload] = useState(false);
 
     useEffect(() => {
-        axios.get('http://localhost:4000/customers')
-        .then (res =>{
-            setCustomers(res.data);
-        })
-        .then(err =>{
-            console.log("No customers to display");
-        })
-    }, []);
-
+        setCustomerArr(customers)
+    }, [customers]);
 
     const deleteCustomer=(customer_id)=>{
-
-        console.log("Customer Record is Deleted");
-
-        axios.get('http://localhost/database_project/delete_Customer.php?id=' + customer_id)
+        axios.delete(`http://localhost:4000/customer/${customer_id}`)
         .then(res =>{
-            console.log(res);
-            // setReload(true);
+            alert('Customer is Deleted!!');
         })
-        
     }
 
    
@@ -74,7 +63,7 @@ function CustomerDetails(){
                             </tr>
                         </thead>
                         <tbody>
-                                {customers.map((customer) =>{
+                                {customerArr.map((customer) =>{
                                     return (
                                         <tr key={customer.id}>
                                             <td className="r-margin text-r">{customer.id}</td>

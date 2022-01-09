@@ -301,6 +301,7 @@ app.put('/branches/:id', (req, res) => {
     })
 })
 
+// update product
 app.put('/products/:id', (req, res) => {
     // from header
     const id = req.params.id;
@@ -340,6 +341,34 @@ app.put('/customer-address/:id', (req, res) => {
         if(!err){
             res.send(rows);
             console.log('Customer Address Updated!')
+        }else{
+            console.log(err);
+        }
+    })
+})
+
+// update customer
+app.put('/customer/:id', (req, res) => {
+    // from header
+    const id = req.params.id;
+
+    // from body
+    const First_Name = req.body.First_Name;
+    const Last_Name = req.body.Last_Name;
+    const Gender = req.body.Gender;
+    const Contact_Number = req.body.Contact_Number;
+    const Branch_id = req.body.Branch_id;
+    const Password = req.body.Password;
+    const Address = req.body.Address;
+
+    console.log(`id: ${id}`)
+
+    let query = 'UPDATE customer SET First_Name=?, Last_Name=?, Gender=?, Contact_Number=?, Branch_id=?, Password=?, Address=? WHERE id=?'
+    
+    db.query(query,[First_Name, Last_Name, Gender, Contact_Number, Branch_id, Password, Address, id], (err,rows)=>{
+        if(!err){
+            res.send(rows);
+            console.log('Customer Updated!')
         }else{
             console.log(err);
         }
@@ -403,6 +432,23 @@ app.delete('/employee/:id', (req, res) => {
     })
 })
 
+// delete customer
+app.delete('/customer/:id', (req, res) => {
+
+    const id = req.params.id;
+    console.log(`id: ${id}`)
+
+    let query = 'DELETE FROM customer WHERE id = ?'
+    
+    db.query(query,[id], (err,rows)=>{
+        if(!err){
+            res.send(rows);
+            console.log('Customer Deleted!')
+        }else{
+            console.log(err);
+        }
+    })
+})
 
 
 
