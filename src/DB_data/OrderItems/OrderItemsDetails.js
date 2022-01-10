@@ -59,7 +59,7 @@ function OrderItemsDetails(){
                     <Table className="table-c order-table" striped bordered>
                         <thead>
                             <tr>
-                                {/* <th>ID</th> */}
+                                <th>ID</th>
                                 <th>Quantity (Kg)</th>
                                 <th>Cost (Rs)</th>
                                 <th>Product ID</th>
@@ -72,7 +72,7 @@ function OrderItemsDetails(){
                                 {orderArr.map((product) =>{
                                     return (
                                         <tr  key={product.id}>
-                                            {/* <td className="text-r"><div>{product.id}</div></td> */}
+                                            <td className="text-r"><div>{product.id}</div></td>
                                             <td className="text-r">{product.weight}</td>
                                             <td className="text-r">{product.cost}</td>
                                             <td className="text-r">{product.Product_id}</td>

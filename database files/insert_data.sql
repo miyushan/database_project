@@ -78,12 +78,13 @@ PRIMARY KEY(id)
 
 
 CREATE TABLE order_items(
+id INT NOT NULL AUTO_INCREMENT,
 weight DOUBLE NOT NULL,
 cost DOUBLE NOT NULL,
 Product_id INT NOT NULL,
 Order_id INT NOT NULL,
 Posting_Date timestamp NOT NULL DEFAULT current_timestamp(),
-PRIMARY KEY(Product_id, Order_id),
+PRIMARY KEY(id, Product_id, Order_id),
 FOREIGN KEY(Product_id) REFERENCES product(id),
 FOREIGN KEY(Order_id) REFERENCES orders(id)
 )ENGINE=InnoDB DEFAULT CHARSET=latin1; 
@@ -170,7 +171,7 @@ INSERT INTO `product` (`id`, `Name`, `Weight`, `Price`, `Posting_Date`) VALUES
 (29, 'Ginger', 12, 425.50, '2020-12-14 08:58:31'),
 (30, 'Dambala', 15, 350.00, '2020-12-14 08:59:06');
 
-INSERT INTO `order_items` ( `weight`, `cost`, `Product_id`, `Order_id`, `Posting_Date`) VALUES
-(7, 111.50, 11, 1, '2021-09-01 08:25:29'),
-(6, 237.75, 21, 1, '2021-09-01 08:25:29'),
-(9, 123.50, 7, 2, '2021-09-01 10:32:15');
+INSERT INTO `order_items` ( `id`, `weight`, `cost`, `Product_id`, `Order_id`, `Posting_Date`) VALUES
+(1, 7, 111.50, 11, 1, '2021-09-01 08:25:29'),
+(2, 6, 237.75, 21, 1, '2021-09-01 08:25:29'),
+(3, 9, 123.50, 7, 2, '2021-09-01 10:32:15');
