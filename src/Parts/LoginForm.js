@@ -71,6 +71,7 @@ export default function LoginForm (){
                         branches.forEach(branch => {
                             if (branchId === branch.id){
                                 userDetails.branchName = branch.Name;
+                                userDetails.branchId = branch.id;
                             }
                         })
     

@@ -40,7 +40,7 @@ function PaymentCard(){
             //get user details
             let userData = localStorage.getItem('userDetails');
             userData = JSON.parse(userData);
-            setBranch(userData.id);
+            setBranch(userData.branchId);
             setCustomerId(userData.id);
         }catch(e){
 
@@ -86,6 +86,7 @@ function PaymentCard(){
 
         //to get Managers in same branch
         managers.forEach(person => {
+            console.log(person.Branch_id, branch);
             if(person.Branch_id === branch && person.manager_id !== null){
                 tempManagers.push(parseFloat(person.manager_id));
             }

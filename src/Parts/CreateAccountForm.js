@@ -80,12 +80,11 @@ export default function CreateAccountForm () {
 
                     // get id of the branch
                     branches.forEach(branch=>{
-                        if(branch.Name === branchName){
+                        if(branch.Name.toUpperCase() === branchName.toUpperCase()){
                             obj.Branch_id = branch.id;
                         }
                     })
                     
-
                     // pass new account details to db
                     axios.post('http://localhost:4000/customers', obj)
                     .then(res => {
