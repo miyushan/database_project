@@ -254,16 +254,19 @@ app.post('/products', (req, res) => {
 
 //post- add new order
 app.post('/orders', (req, res) => {
+
+    console.log(req.body.id);
     
+    const Id = req.body.id;
     const Quantity = req.body.quantity;
     const Total_Cost = req.body.cost;
     const Customer_Id = req.body.customerId;
     const Employee_id = req.body.managerId;
     // const Delivery_Person_Id = req.body.deliveryPersonId;
 
-    let query = 'INSERT INTO orders (Quantity, Total_Cost, Customer_Id, Employee_id) VALUES (?, ?, ?, ?)'
+    let query = 'INSERT INTO orders (Id, Quantity, Total_Cost, Customer_Id, Employee_id) VALUES (?, ?, ?, ?, ?)'
     
-    db.query(query,[Quantity, Total_Cost, Customer_Id, Employee_id], (err,rows)=>{
+    db.query(query,[Id, Quantity, Total_Cost, Customer_Id, Employee_id], (err,rows)=>{
         if(!err){
             res.send(rows);
             console.log('Order created!!');
@@ -271,6 +274,49 @@ app.post('/orders', (req, res) => {
             console.log(err);
         }
     })
+})
+
+
+
+//post- add new order items
+app.post('/order-items', (req, res) => {
+
+    const orderId = req.body.orderId;
+    let orderItems = req.body.orderItems;
+    orderItems = JSON.parse(orderItems);
+
+    for (var i = 0; i<orderItems.length; i++) {
+        let id = orderItems[i].id;
+        let CartPrice = ((orderItems[i].CartPrice)*0.95).toFixed( 2 );
+        let CartWeight = orderItems[i].CartWeight;
+
+        let query = 'INSERT INTO order_items (weight, cost, Product_id, Order_id) VALUES (?, ?, ?, ?)'
+
+        db.query(query,[CartWeight, CartPrice, id, orderId], (err,rows)=>{
+            if(!err){
+                console.log('Order Item created!!');
+            }else{
+                console.log(err);
+            }
+        })
+    }
+
+    
+    // const weight = req.body.weight;
+    // const cost = req.body.cost;
+    // const Product_id = req.body.Product_id;
+    // const Order_id = req.body.Order_id;
+
+    // let query = 'INSERT INTO order_items (weight, cost, Product_id, Order_id) VALUES (?, ?, ?, ?)'
+    
+    // db.query(query,[weight, cost, Product_id, Order_id], (err,rows)=>{
+    //     if(!err){
+    //         res.send(rows);
+    //         console.log('Order created!!');
+    //     }else{
+    //         console.log(err);
+    //     }
+    // })
 })
 
 
@@ -442,23 +488,23 @@ app.delete('/products/:id', (req, res) => {
     })
 })
 
-// delete employee
-app.delete('/employee/:id', (req, res) => {
+// // delete employee
+// app.delete('/employee/:id', (req, res) => {
 
-    const id = req.params.id;
-    console.log(`id: ${id}`)
+//     const id = req.params.id;
+//     console.log(`id: ${id}`)
 
-    let query = 'DELETE FROM employee WHERE id = ?'
+//     let query = 'DELETE FROM employee WHERE id = ?'
     
-    db.query(query,[id], (err,rows)=>{
-        if(!err){
-            res.send(rows);
-            console.log('Employee Deleted!')
-        }else{
-            console.log(err);
-        }
-    })
-})
+//     db.query(query,[id], (err,rows)=>{
+//         if(!err){
+//             res.send(rows);
+//             console.log('Employee Deleted!')
+//         }else{
+//             console.log(err);
+//         }
+//     })
+// })
 
 // delete customer
 app.delete('/customer/:id', (req, res) => {

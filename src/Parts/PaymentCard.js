@@ -9,7 +9,7 @@ import { Route, Redirect } from "react-router-dom";
 
 function PaymentCard(){
     const { totalWeight, setCartProducts, priceWithDiscount } = useContext(CartContext);
-    const { managers } = useContext(EmployeeContext);
+    const { managers, orders } = useContext(EmployeeContext);
 
     const [name, setName] = useState('');
     const [address, setAddress] = useState('');
@@ -98,7 +98,9 @@ function PaymentCard(){
     const addtoOrderList = () => {
         setCartProducts([]);
         findRelatedEmployees();
+        const orderId = orders[orders.length-1].id + 1;
         axios.post('http://localhost:4000/orders',{
+            id: orderId,
             quantity: totalWeight,
             cost: priceWithDiscount,
             customerId: customerId,
@@ -106,7 +108,14 @@ function PaymentCard(){
             // deliveryPersonId: dPersonId,
         })
         .then(()=>{
+            let orderItems = localStorage.getItem('cartDetails');
+
+            axios.post('http://localhost:4000/order-items',{
+                orderItems,
+                orderId
+            })
             localStorage.removeItem('cartDetails');
+
             alert('Order is successfully done!');
             setName('');
             setAddress('');
