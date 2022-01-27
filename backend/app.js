@@ -564,6 +564,7 @@ app.delete('/customer/:id', (req, res) => {
 
     const id = req.params.id;
     console.log(`id: ${id}`)
+    console.log(`type: ${typeOf(id)}`)
 
     let query1 = 'DELETE FROM orders WHERE Customer_Id = ?'
     db.query(query1,[id], (err,rows)=>{

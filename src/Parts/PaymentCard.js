@@ -150,13 +150,13 @@ function PaymentCard(){
                     <Row className="mt-1 mb-4">
                         <Form.Group as={Col} controlId="formGridName">
                         <Form.Label className="payment-field-title">Name On The Card</Form.Label>
-                        <Form.Control className="login-input btn-square" type="text" placeholder="Shane Watson" name="contactNumber" value={name} onChange={onChangeName}/>
+                        <Form.Control className="login-input btn-square" type="text" placeholder="Your Name" name="contactNumber" value={name} onChange={onChangeName}/>
                         </Form.Group>
                     </Row>
 
                     <Form.Group className="mb-4" controlId="formGridAddress">
                         <Form.Label className="payment-field-title">Address</Form.Label>
-                        <Form.Control className="login-input btn-square" placeholder="12 Main Street Colombo" value={address} onChange={onChangeAddress} />
+                        <Form.Control className="login-input btn-square" placeholder="Your Address" value={address} onChange={onChangeAddress} />
                     </Form.Group>
 
                     <Form.Group className="mb-4" controlId="formGridCardNumber">
