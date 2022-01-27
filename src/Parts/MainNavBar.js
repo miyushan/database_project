@@ -32,9 +32,9 @@ function MainNavBar(){
                         <Navbar.Brand className="nav-title-2 nav-home" href="home">HOME</Navbar.Brand>
                         <Navbar.Brand className="nav-title-2 nav-products" href="products">PRODUCTS</Navbar.Brand>
                         <Navbar.Brand className="nav-title-2 nav-cart" href="cart">CART</Navbar.Brand>
-                        <Navbar.Brand className="nav-title-2 nav-about" href="about-us">ABOUT US</Navbar.Brand>
+                        {/* <Navbar.Brand className="nav-title-2 nav-about" href="about-us">ABOUT US</Navbar.Brand>
                         <Navbar.Brand className="nav-title-2 nav-contact" href="contact-us">CONTACT US</Navbar.Brand>
-                        <Navbar.Brand className="nav-title-2 nav-branch" href="branches">BRANCHES</Navbar.Brand>
+                        <Navbar.Brand className="nav-title-2 nav-branch" href="branches">BRANCHES</Navbar.Brand> */}
                     </Col>
                     {/* <Col className="d-flex justify-content-end align-items-center"> */}
                         {/* <div className="cart to-cart-btn">
