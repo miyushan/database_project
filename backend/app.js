@@ -437,9 +437,9 @@ app.put('/employee/:id', (req, res) => {
     
     console.log(`id: ${id}`)
 
-    let query = 'UPDATE employee SET First_Name=?, Last_Name=?, Gender=?, Contact_Number=?, Branch_id=?, Address=?, Salary=? WHERE id=?'
+    let query = 'UPDATE employee SET First_Name=?, Last_Name=?, Gender=?, Contact_Number=?, Address=?, Salary=? WHERE id=?'
     
-    db.query(query,[First_Name, Last_Name, Gender, Contact_Number, Branch_id, Address, Salary, id], (err,rows)=>{
+    db.query(query,[First_Name, Last_Name, Gender, Contact_Number, Address, Salary, id], (err,rows)=>{
         if(!err){
             res.send(rows);
             console.log('Employee Updated!')

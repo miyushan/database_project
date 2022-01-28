@@ -52,8 +52,8 @@ export default function EditEmployee(){
                     // console.log(customer.Branch_id, branch.id)
                     if(manager.Branch_id===branch.id){
                         // console.log(branch.Name )
-                        setInitialBranchName(branch.Name);
-                        setBranchName(branch.Name);
+                        setInitialBranchName(branch.id);
+                        setBranchName(branch.id);
                     }
                 })
             }  
@@ -202,7 +202,7 @@ export default function EditEmployee(){
                             </Col>
                             <Col>
                                 <Form.Group className="mb-4" controlId="formGroupBranchName">
-                                    <Form.Label className="db-form-label">Branch Name</Form.Label>
+                                    <Form.Label className="db-form-label">Branch Id</Form.Label>
                                     <Form.Control className="db-input" variant="success" type="text" value={branchName} onChange={onChangeBranchName}/>
                                 </Form.Group>
                             </Col>
@@ -238,7 +238,7 @@ export default function EditEmployee(){
 
                 <div className="add-new back-to-p">
                     <Col className="text-center">
-                        <Row className=""><a className="d-flex justify-content-center align-items-center new-p" variant="success" href="/db/manager"><Back className="btn-add-new btn-p-back" height="36px"/></a></Row>
+                        <Row className=""><a className="d-flex justify-content-center align-items-center new-p" variant="success" href="/db/employee"><Back className="btn-add-new btn-p-back" height="36px"/></a></Row>
                     </Col>
                 </div>
             
