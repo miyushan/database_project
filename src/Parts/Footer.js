@@ -19,9 +19,10 @@ function Footer(){
                             <div className="quick-links mb-2">QUICK LINKS</div>
                             <div><a className="quick-link-item" href="home">HOME</a></div>
                             <div><a className="quick-link-item" href="products">PRODUCTS</a></div>
-                            <div><a className="quick-link-item" href="about-us">ABOUT US</a></div>
+                            <div><a className="quick-link-item" href="cart">CART</a></div>
+                            {/* <div><a className="quick-link-item" href="about-us">ABOUT US</a></div>
                             <div><a className="quick-link-item" href="contact-us">CONTACT US</a></div>
-                            <div><a className="quick-link-item" href="branches">BRANCHES</a></div>
+                            <div><a className="quick-link-item" href="branches">BRANCHES</a></div> */}
                         </div>
                     </Col>
                 </Row>
