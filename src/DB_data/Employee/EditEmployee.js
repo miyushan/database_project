@@ -2,22 +2,21 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Route, Redirect } from "react-router-dom";
 import { useParams } from 'react-router-dom';
 import {Form, Row, Col, Button, Container} from "react-bootstrap";
-import axios from 'axios';
-import './EditCustomer.css';
-import { EmployeeContext } from '../../Context/EmployeeContext';
 import { ReactComponent as Back } from '../../files/icons/caret-left-solid.svg';
+import axios from 'axios';
+import { EmployeeContext } from '../../Context/EmployeeContext';
 
 
-function EditCustomer(){
-    const { customers, branches } = useContext(EmployeeContext);
+export default function EditEmployee(){
+    const { managers, branches } = useContext(EmployeeContext);
     const { id } = useParams();
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [gender, setGender] = useState('');
+    const [salary, setSalary] = useState('');
     const [contactNumber, setContactNumber] = useState('');
     const [branchName, setBranchName] = useState('');
-    const [password, setPassword] = useState('');
     const [address, setAddress] = useState('');
 
 
@@ -25,69 +24,68 @@ function EditCustomer(){
     const [initialFirstName, setInitialFirstName] = useState('');
     const [initialLastName, setInitialLastName] = useState('');
     const [initialGender, setInitialGender] = useState('');
+    const [initialSalary, setInitialSalary] = useState('');
     const [initialContactNumber, setInitialContactNumber] = useState('');
     const [initialBranchName, setInitialBranchName] = useState('');
-    const [initialPassword, setInitialPassword] = useState('');
     const [initialAddress, setInitialAddress] = useState('');
 
     const [goBack, setGoBack] = useState(false);
-    const customerId = id;
+    const managerId = id;
 
     useEffect(() => {
-        customers.forEach((customer)=>{
-            if(customer.id.toString() === customerId){
-                setInitialFirstName(customer.First_Name);
-                setInitialLastName(customer.Last_Name);
-                setInitialGender(customer.Gender);
-                setInitialContactNumber(customer.Contact_Number);
-                setInitialPassword(customer.Password);
-                setInitialAddress(customer.Address);
-                setFirstName(customer.First_Name);
-                setLastName(customer.Last_Name);
-                setGender(customer.Gender);
-                setContactNumber(customer.Contact_Number);
-                setPassword(customer.Password);
-                setAddress(customer.Address);
+        managers.forEach((manager)=>{
+            if(manager.id.toString() === managerId){
+                setInitialFirstName(manager.First_Name);
+                setInitialLastName(manager.Last_Name);
+                setInitialGender(manager.Gender);
+                setInitialSalary(manager.Salary);
+                setInitialContactNumber(manager.Contact_Number);
+                setInitialAddress(manager.Address);
+                setFirstName(manager.First_Name);
+                setLastName(manager.Last_Name);
+                setGender(manager.Gender);
+                setSalary(manager.Salary);
+                setContactNumber(manager.Contact_Number);
+                setAddress(manager.Address);
 
                 branches.forEach((branch)=>{
                     // console.log(customer.Branch_id, branch.id)
-                    if(customer.Branch_id===branch.id){
-                        console.log(branch.Name )
-                        setInitialBranchName(branch.Name);
-                        setBranchName(branch.Name);
+                    if(manager.Branch_id===branch.id){
+                        // console.log(branch.Name )
+                        setInitialBranchName(branch.id);
+                        setBranchName(branch.id);
                     }
                 })
-
-            }
+            }  
         })
-    }, [customers, customerId, branches]);
+    }, [managers, managerId, branches]);
 
     const checkAnyChanges = () => {
-        if((firstName.length!==0 && lastName.length!==0 && gender.length!==0 && contactNumber.length!==0 && branchName.length!==0 && password.length!==0 )){
-            let iscustomerExist = false;
+        if((firstName.length!==0 && lastName.length!==0 && gender.length!==0 && salary.length!==0 && contactNumber.length!==0 && branchName.length!==0 && address.length!==0)){
+            let isManagerExist = false;
 
-            if(firstName===initialFirstName && lastName===initialLastName && gender===initialGender && contactNumber===initialContactNumber && branchName===initialBranchName && password===initialPassword && address===initialAddress ){
-                alert('Customer Already Exists !');
-                iscustomerExist = true;
+            if(firstName===initialFirstName && lastName===initialLastName && gender===initialGender && salary===initialSalary && contactNumber===initialContactNumber && branchName===initialBranchName && address===initialAddress ){
+                alert('Employee Already Exists !');
+                isManagerExist = true;
             }
             else{
-                iscustomerExist = false;
+                isManagerExist = false;
             }
 
-            if(!iscustomerExist){
+            if(!isManagerExist){
                 return true;
             }else{
                 return false;
             }
         }else{
-            alert('Please fill the required fields!');
+            alert('Please fill the fields!');
             return false;
         }
     }
   
 
-    const changeCustomerDetails = () => {
-        //change customer data
+    const changeManagerDetails = () => {
+        //change manager data
         if (checkAnyChanges()){
 
             let branchid;
@@ -97,26 +95,26 @@ function EditCustomer(){
                     branchid = branch.id;
                 }
             })
-            // console.log(branchid)
-            axios.put(`http://localhost:4000/customer/${customerId}`,{
-                id: customerId,
+
+            axios.put(`http://localhost:4000/employee/${managerId}`,{
+                id: managerId,
                 First_Name: firstName,
                 Last_Name: lastName,
                 Gender: gender,
+                Salary: salary,
                 Contact_Number: contactNumber,
                 Branch_id: branchid,
-                Password: password,
                 Address: address,
             })
             .then(() => {
-                alert('Customer Updated Successfully!');
+                alert('Employee Updated Successfully!');
                 setGoBack(true);
                 setInitialFirstName(firstName);
                 setInitialLastName(lastName);
                 setInitialGender(gender);
+                setInitialSalary(salary);
                 setInitialContactNumber(contactNumber);
                 setInitialBranchName(branchName);
-                setInitialPassword(password);
                 setInitialAddress(address);
             });
         }
@@ -133,6 +131,10 @@ function EditCustomer(){
     const onChangeGender = (e) => {
         setGender(e.target.value);
     }
+
+    const onChangeSalary = (e) => {
+        setSalary(e.target.value);
+    }
     
     const onChangeContactNumber = (e) => {
         setContactNumber(e.target.value);
@@ -142,9 +144,9 @@ function EditCustomer(){
         setBranchName(e.target.value);
     }
 
-    const onChangePassword = (e) => {
-        setPassword(e.target.value);
-    }
+    // const onChangePassword = (e) => {
+    //     setPassword(e.target.value);
+    // }
 
     const onChangeAddress = (e) => {
         setAddress(e.target.value);
@@ -152,67 +154,74 @@ function EditCustomer(){
 
     const onSubmit = (e) => {
         e.preventDefault();
-        changeCustomerDetails();
+        changeManagerDetails();
     }
+
     return ( 
         <>
             <div>
                 <Container className="db-container d-flex justify-content-center align-items-center">
                     
                     <Form className="db-form" onSubmit={onSubmit} method="post">
-
                         <Row>
                             <Col>
                                 <Form.Group className="mb-4" controlId="formGroupFirstName">
                                     <Form.Label className="db-form-label">First Name</Form.Label>
-                                    <Form.Control className="db-input" variant="success" type="text" value={firstName} onChange={onChangeFirstName} />
+                                    <Form.Control className="db-input" variant="success" type="text" value={firstName} onChange={onChangeFirstName}/>
                                 </Form.Group>
                             </Col>
                             <Col>
                                 <Form.Group className="mb-4" controlId="formGroupLastName">
                                     <Form.Label className="db-form-label">Last Name</Form.Label>
-                                    <Form.Control className="db-input" variant="success" type="text" value={lastName} onChange={onChangeLastName}  />
+                                    <Form.Control className="db-input" variant="success" type="text" value={lastName} onChange={onChangeLastName}/>
                                 </Form.Group>
                             </Col>
+                            
                         </Row>
-
                         <Row>
                             <Col>
-                                <Form.Group className="mb-4" controlId="formGroupStockWeight">
+                                <Form.Group className="mb-4" controlId="formGroupGender">
                                     <Form.Label className="db-form-label">Gender</Form.Label>
-                                    <Form.Control className="db-input" variant="success" type="text" value={gender} onChange={onChangeGender}  />
+                                    <Form.Control className="db-input" variant="success" type="text" value={gender} onChange={onChangeGender}/>
                                 </Form.Group>
                             </Col>
                             <Col>
-                                <Form.Group className="mb-4" controlId="formGroupPricePerKilogram">
-                                    <Form.Label className="db-form-label">Contact Number</Form.Label>
-                                    <Form.Control className="db-input" variant="success" type="text" value={contactNumber} onChange={onChangeContactNumber}  />
+                                <Form.Group className="mb-4" controlId="formGroupSalary">
+                                    <Form.Label className="db-form-label">Salary</Form.Label>
+                                    <Form.Control className="db-input" variant="success" type="text" value={salary} onChange={onChangeSalary}/>
                                 </Form.Group>
                             </Col>
+                            
                         </Row>
-
                         <Row>
+                            <Col>
+                                <Form.Group className="mb-4" controlId="formGroupContactNumber">
+                                    <Form.Label className="db-form-label">Contact Number</Form.Label>
+                                    <Form.Control className="db-input" variant="success" type="text" value={contactNumber} onChange={onChangeContactNumber}/>
+                                </Form.Group>
+                            </Col>
                             <Col>
                                 <Form.Group className="mb-4" controlId="formGroupBranchName">
-                                    <Form.Label className="db-form-label">Branch Name</Form.Label>
-                                    <Form.Control className="db-input" variant="success" type="text" value={branchName} onChange={onChangeBranchName}  />
+                                    <Form.Label className="db-form-label">Branch Id</Form.Label>
+                                    <Form.Control className="db-input" variant="success" type="text" value={branchName} onChange={onChangeBranchName}/>
                                 </Form.Group>
                             </Col>
-                            <Col>
+                            
+                        </Row>
+                        <Row>
+                            {/* <Col>
                                 <Form.Group className="mb-4" controlId="formGroupPassword">
                                     <Form.Label className="db-form-label">Password</Form.Label>
-                                    <Form.Control className="db-input" variant="success" type="password" value={password} onChange={onChangePassword}  />
+                                    <Form.Control className="db-input" variant="success" type="text" value={password} onChange={onChangePassword}/>
                                 </Form.Group>
-                            </Col>
-                        </Row>
-
-                        <Row>
+                            </Col> */}
                             <Col>
                                 <Form.Group className="mb-4" controlId="formGroupAddress">
                                     <Form.Label className="db-form-label">Address</Form.Label>
-                                    <Form.Control className="db-input" variant="success" type="text" value={address} onChange={onChangeAddress} />
+                                    <Form.Control className="db-input" variant="success" type="text" value={address} onChange={onChangeAddress}/>
                                 </Form.Group>
                             </Col>
+                            
                         </Row>
 
                         <Button className="login-submit-btn login-input mt-2 btn-db" variant="success" type="submit">
@@ -220,22 +229,21 @@ function EditCustomer(){
                         </Button>
 
                         <Route>
-                            {goBack ? <Redirect to="/db/customer" /> : null} 
+                            {goBack ? <Redirect to="/db/employee" /> : null} 
                         </Route>
+                        
                         
                     </Form>
                 </Container>
-            
+
                 <div className="add-new back-to-p">
                     <Col className="text-center">
-                        <Row className=""><a className="d-flex justify-content-center align-items-center new-p" variant="success" href="/db/customer"><Back className="btn-add-new btn-p-back" height="36px"/></a></Row>
+                        <Row className=""><a className="d-flex justify-content-center align-items-center new-p" variant="success" href="/db/employee"><Back className="btn-add-new btn-p-back" height="36px"/></a></Row>
                     </Col>
                 </div>
-
+            
             </div>
             
         </>
     );
 }
- 
-export default EditCustomer;

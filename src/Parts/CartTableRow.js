@@ -42,8 +42,8 @@ function CartTableRow (props) {
             <td className="left-image"><img src={props.image} alt="product" className="img-product"/>{props.name}</td>
             <td className="add-reduce">
                 <Row>
-                    <Col className="cart-icons"><Increase onClick={()=>{increase()}} className="success change-weight" height="22px"/></Col>
                     <Col className="cart-icons "><Reduce onClick={()=>{reduce()}} className="success change-weight" height="22px"/></Col>
+                    <Col className="cart-icons"><Increase onClick={()=>{increase()}} className="success change-weight" height="22px"/></Col>
                 </Row>
             </td>
             <td>{props.weight} Kg</td>

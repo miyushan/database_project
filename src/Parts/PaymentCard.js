@@ -9,7 +9,7 @@ import { Route, Redirect } from "react-router-dom";
 
 function PaymentCard(){
     const { totalWeight, setCartProducts, priceWithDiscount } = useContext(CartContext);
-    const { deliveryPersons, managers } = useContext(EmployeeContext);
+    const { managers, orders } = useContext(EmployeeContext);
 
     const [name, setName] = useState('');
     const [address, setAddress] = useState('');
@@ -21,7 +21,7 @@ function PaymentCard(){
     const [branch, setBranch] = useState('');
     const [customerId, setCustomerId] = useState('');
 
-    let dPersonId;
+    // let dPersonId;
     let managerId;
 
     
@@ -40,7 +40,7 @@ function PaymentCard(){
             //get user details
             let userData = localStorage.getItem('userDetails');
             userData = JSON.parse(userData);
-            setBranch(userData.branchName);
+            setBranch(userData.branchId);
             setCustomerId(userData.id);
         }catch(e){
 
@@ -71,23 +71,24 @@ function PaymentCard(){
 
     //find related Manager and Delivery Person relater to buyers Branch 
     const findRelatedEmployees = () => {
-        let tempDPsersons = [];
+        // let tempDPsersons = [];
         let tempManagers = [];
 
-        //to get D Persons in same branch
-        deliveryPersons.forEach(person => {
-            if(person.Branch_Name === branch){
-                tempDPsersons.push(parseFloat(person.id));
-            }
-        })
-        console.log(tempDPsersons);
-        dPersonId = tempDPsersons[ Math.floor(Math.random()*tempDPsersons.length) ];
-        console.log(dPersonId);
+        // //to get D Persons in same branch
+        // deliveryPersons.forEach(person => {
+        //     if(person.Branch_Name === branch){
+        //         tempDPsersons.push(parseFloat(person.id));
+        //     }
+        // })
+        // console.log(tempDPsersons);
+        // dPersonId = tempDPsersons[ Math.floor(Math.random()*tempDPsersons.length) ];
+        // console.log(dPersonId);
 
         //to get Managers in same branch
         managers.forEach(person => {
-            if(person.Branch_Name === branch){
-                tempManagers.push(parseFloat(person.id));
+            console.log(person.Branch_id, branch);
+            if(person.Branch_id === branch && person.manager_id !== null){
+                tempManagers.push(parseFloat(person.manager_id));
             }
         })
         console.log(tempManagers);
@@ -98,16 +99,24 @@ function PaymentCard(){
     const addtoOrderList = () => {
         setCartProducts([]);
         findRelatedEmployees();
-        console.log(deliveryPersons)
+        const orderId = orders[orders.length-1].id + 1;
         axios.post('http://localhost:4000/orders',{
+            id: orderId,
             quantity: totalWeight,
             cost: priceWithDiscount,
             customerId: customerId,
             managerId: managerId,
-            deliveryPersonId: dPersonId,
+            // deliveryPersonId: dPersonId,
         })
         .then(()=>{
+            let orderItems = localStorage.getItem('cartDetails');
+
+            axios.post('http://localhost:4000/order-items',{
+                orderItems,
+                orderId
+            })
             localStorage.removeItem('cartDetails');
+
             alert('Order is successfully done!');
             setName('');
             setAddress('');
@@ -141,13 +150,13 @@ function PaymentCard(){
                     <Row className="mt-1 mb-4">
                         <Form.Group as={Col} controlId="formGridName">
                         <Form.Label className="payment-field-title">Name On The Card</Form.Label>
-                        <Form.Control className="login-input btn-square" type="text" placeholder="Shane Watson" name="contactNumber" value={name} onChange={onChangeName}/>
+                        <Form.Control className="login-input btn-square" type="text" placeholder="Your Name" name="contactNumber" value={name} onChange={onChangeName}/>
                         </Form.Group>
                     </Row>
 
                     <Form.Group className="mb-4" controlId="formGridAddress">
                         <Form.Label className="payment-field-title">Address</Form.Label>
-                        <Form.Control className="login-input btn-square" placeholder="12 Main Street Colombo" value={address} onChange={onChangeAddress} />
+                        <Form.Control className="login-input btn-square" placeholder="Your Address" value={address} onChange={onChangeAddress} />
                     </Form.Group>
 
                     <Form.Group className="mb-4" controlId="formGridCardNumber">

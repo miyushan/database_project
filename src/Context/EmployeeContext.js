@@ -5,7 +5,7 @@ export const EmployeeContext = createContext();
 
 function EmployeeContextProvider (props){
     
-    const [deliveryPersons, setDeliveryPersons] = useState([]);
+    // const [deliveryPersons, setDeliveryPersons] = useState([]);
     const [managers, setManagers] = useState([]);
     const [branches, setBranches] = useState([]);
     const [orders, setOrders] = useState([]);
@@ -14,10 +14,10 @@ function EmployeeContextProvider (props){
     // const [selectedItems, setSelectedItems] = useState([]);
 
     useEffect(() =>{
-        axios.get('http://localhost:4000/delivery-persons')
-        .then (res =>{
-            setDeliveryPersons(res.data);
-            axios.get('http://localhost:4000/managers')
+        // axios.get('http://localhost:4000/delivery-persons')
+        // .then (res =>{
+        //     setDeliveryPersons(res.data);
+            axios.get('http://localhost:4000/employee')
             .then (res =>{
                 setManagers(res.data);
                 axios.get('http://localhost:4000/branches')
@@ -37,11 +37,11 @@ function EmployeeContextProvider (props){
                     })
                 })
             })
-        })
+        // })
     },[])
 
     return (
-        <EmployeeContext.Provider value={{ deliveryPersons, managers, branches, orders, customers, orderItems }}>
+        <EmployeeContext.Provider value={{ managers, branches, orders, customers, orderItems }}>
             {props.children}
         </EmployeeContext.Provider>
     );

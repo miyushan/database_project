@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import './OrdersDetails.css';
+import './OrderItemsDetails.css';
 import {Table, ButtonGroup, Button, Breadcrumb, Col } from "react-bootstrap";
 import axios from 'axios';
 // import { ReactComponent as Edit } from '../../files/icons/edit-regular.svg';
@@ -9,24 +9,29 @@ import { ReactComponent as Delete } from '../../files/icons/trash-alt-regular.sv
 import { EmployeeContext } from '../../Context/EmployeeContext';
 import { ReactComponent as Admin } from '../../files/icons/users-cog-solid.svg';
 
-function OrdersDetails(){
-    const { orders } = useContext(EmployeeContext);
+function OrderItemsDetails(){
+    const { orderItems } = useContext(EmployeeContext);
 
     const [orderArr, setOrderArr] = useState([]);
     // const [reload, setReload] = useState(false);
 
     useEffect(() => {
         try{
-            setOrderArr(orders);
+            setOrderArr(orderItems);
         }catch{
 
         }
-    }, [orders]);
+    }, [orderItems]);
 
-    const deleteCustomer=(customer_id)=>{
-        axios.delete(`http://localhost:4000/order/${customer_id}`)
+    const deleteCustomer=(Product_id, Order_id)=>{
+        axios.delete(`http://localhost:4000/delete-order-item`, {
+            data:{
+                Product_id: Product_id,
+                Order_id: Order_id
+            }
+        })
         .then(res =>{
-            alert('Order record is Deleted!!');
+            alert('Order Item Record is Deleted!!');
             window.location.reload(false);
         })
     }
@@ -44,8 +49,8 @@ function OrdersDetails(){
                         <Breadcrumb.Item href="/db/employee"><span className="bred-items">Employee Records</span></Breadcrumb.Item>
                         <Breadcrumb.Item href="/db/customer"><span className="bred-items">Customer Records</span></Breadcrumb.Item>
                         {/* <Breadcrumb.Item href="/db/delivery-person"><span className="bred-items">Delivery Person Records</span></Breadcrumb.Item> */}
-                        <Breadcrumb.Item active><span className="bred-items">Order Records</span></Breadcrumb.Item>
-                        <Breadcrumb.Item href="/db/order-items"><span className="bred-items">Order Item Records</span></Breadcrumb.Item>
+                        <Breadcrumb.Item href="/db/order"><span className="bred-items">Order Records</span></Breadcrumb.Item>
+                        <Breadcrumb.Item active><span className="bred-items">Order Item Records</span></Breadcrumb.Item>
                     </Breadcrumb>
                 </div>
                     
@@ -56,11 +61,9 @@ function OrdersDetails(){
                             <tr>
                                 <th>ID</th>
                                 <th>Quantity (Kg)</th>
-                                <th>Total Cost (Rs)</th>
-                                <th>Customer ID</th>
-                                {/* <th>Manager ID</th> */}
-                                {/* <th>D Person ID</th> */}
-                                <th>Employee ID</th>
+                                <th>Cost (Rs)</th>
+                                <th>Product ID</th>
+                                <th>Order ID</th>
                                 <th>Posting Date</th>
                                 <th>Delete</th>
                             </tr>
@@ -70,17 +73,15 @@ function OrdersDetails(){
                                     return (
                                         <tr  key={product.id}>
                                             <td className="text-r"><div>{product.id}</div></td>
-                                            <td className="text-r">{product.Quantity}</td>
-                                            <td className="text-r">{product.Total_Cost}</td>
-                                            <td className="text-r">{product.Customer_Id}</td>
-                                            {/* <td className="text-r">{product.Manager_Id}</td> */}
-                                            {/* <td className="text-r">{product.Delivery_Person_Id}</td> */}
-                                            <td className="text-r">{product.Employee_id}</td>
+                                            <td className="text-r">{product.weight}</td>
+                                            <td className="text-r">{product.cost}</td>
+                                            <td className="text-r">{product.Product_id}</td>
+                                            <td className="text-r">{product.Order_id}</td>
                                             <td className="text-center">{product.Posting_Date}</td>
                                             <td className="text-center">
                                                 <ButtonGroup aria-label="Basic example">
                                                     {/* <Button href={"/db/order/edit/"+product.id} className="btn-edit"variant="warning"><Edit className="edit-p" height="15px"/></Button> */}
-                                                    <Button href="" className="btn-delete" onClick={() => deleteCustomer(product.id)} variant="danger"><Delete className="delete-p" height="15px"/></Button>
+                                                    <Button href="" className="btn-delete" onClick={() => deleteCustomer(product.Product_id, product.Order_id)} variant="danger"><Delete className="delete-p" height="15px"/></Button>
                                                 </ButtonGroup>
                                             </td>
                                         </tr>
@@ -111,4 +112,4 @@ function OrdersDetails(){
     
 }
 
-export default OrdersDetails;
+export default OrderItemsDetails;

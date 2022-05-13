@@ -20,9 +20,10 @@ function ProductDetails(){
 
     const deleteCustomer=(customer_id)=>{
 
-        axios.get('http://localhost/database_project/delete_Product.php?id=' + customer_id)
+        axios.delete(`http://localhost:4000/products/${customer_id}`)
         .then(res =>{
             alert('Product is Deleted!!');
+            window.location.reload(false);
         })
         
     }
@@ -37,7 +38,8 @@ function ProductDetails(){
                     <Breadcrumb className="bred">
                         <Breadcrumb.Item href="/db/branch"><span className="bred-items">Branch Records</span></Breadcrumb.Item>
                         <Breadcrumb.Item active><span className="bred-items">Product Records</span></Breadcrumb.Item>
-                        <Breadcrumb.Item href="/db/manager"><span className="bred-items">Manager Records</span></Breadcrumb.Item>
+                        {/* <Breadcrumb.Item href="/db/manager"><span className="bred-items">Manager Records</span></Breadcrumb.Item> */}
+                        <Breadcrumb.Item href="/db/employee"><span className="bred-items">Employee Records</span></Breadcrumb.Item>
                         <Breadcrumb.Item href="/db/customer"><span className="bred-items">Customer Records</span></Breadcrumb.Item>
                         {/* <Breadcrumb.Item href="/db/delivery-person"><span className="bred-items">Delivery Person Records</span></Breadcrumb.Item> */}
                         <Breadcrumb.Item href="/db/order"><span className="bred-items">Order Records</span></Breadcrumb.Item>
