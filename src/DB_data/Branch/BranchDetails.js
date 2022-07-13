@@ -66,9 +66,9 @@ function BranchDetails(){
                                     return (
                                         <tr  key={product.id}>
                                             <td className="b-data-1 text-r"><div>{product.id}</div></td>
-                                            <td className="b-data-2">{product.name}</td>
-                                            <td className="b-data-3">{product.address}</td>
-                                            <td className="b-data-3 text-center">{product.contact_number}</td>
+                                            <td className="b-data-2">{product.Name}</td>
+                                            <td className="b-data-3">{product.Address}</td>
+                                            <td className="b-data-3 text-center">{product.Contact_Number}</td>
                                             <td className="b-data-4 text-center">{product.Posting_Date}</td>
                                             <td className="b-data-5 text-center">
                                                 <ButtonGroup aria-label="Basic example">
