@@ -43,13 +43,13 @@ function Routes() {
           <Route path="/" exact component={Loginpage} />
           <Route path="/login" component={Loginpage} />
           <Route path="/db/login" component={DataBaseLoginpage} />
-          <Route path="/contact-us" component={ContactUspage} />
           <Route path="/home" component={Homepage} />
           <Route path="/register" component={CreateAccountpage} />
           <Route path="/cart" component={Cartpage} />
           <Route path="/about-us" component={AboutUspage} />
           <Route path="/products" component={Productspage} />
-          <Route path="/branches" component={Branchespage} />
+          {/* <Route path="/contact-us" component={ContactUspage} /> */}
+          {/* <Route path="/branches" component={Branchespage} /> */}
 
           <Route path="/db/products" exact component={ProductDetails} />
           <Route path="/db/products/edit/:id" component={EditProduct} />
