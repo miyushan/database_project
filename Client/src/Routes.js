@@ -32,49 +32,49 @@ import OrderItemsDetails from './DB_data/OrderItems/OrderItemsDetails';
 
 // import { UserContext } from './Context/UserContext';
 
-function Routes(){
+function Routes() {
 
-  return(
+  return (
     <>
-    
+
       <BrowserRouter>
         <Switch>
 
-          <Route path="/" exact component={Loginpage} /> 
-          <Route path="/login" exact component={Loginpage} /> 
-          <Route path="/db/login" exact component={DataBaseLoginpage} /> 
-          <Route path="/contact-us" exact component={ContactUspage} /> 
-          <Route path="/home" exact component={Homepage} /> 
-          <Route path="/register" exact component={CreateAccountpage} /> 
-          <Route path="/cart" exact component={Cartpage} /> 
-          <Route path="/about-us" exact component={AboutUspage} /> 
+          <Route path="/" exact component={Loginpage} />
+          <Route path="/login" component={Loginpage} />
+          <Route path="/db/login" component={DataBaseLoginpage} />
+          <Route path="/contact-us" component={ContactUspage} />
+          <Route path="/home" component={Homepage} />
+          <Route path="/register" component={CreateAccountpage} />
+          <Route path="/cart" component={Cartpage} />
+          <Route path="/about-us" component={AboutUspage} />
 
-          <Route path="/products" exact component={Productspage} /> 
+          <Route path="/products" component={Productspage} />
 
-          <Route path="/branches" exact component={Branchespage} /> 
-          <Route path="/db/products" exact component={ProductDetails}/> 
-          <Route path="/db/products/edit/:id" exact component={EditProduct} /> 
-          <Route path="/db/products/add" exact component={NewProduct} /> 
-          <Route path="/db/customer" exact component={CustomerDetails} /> 
-          <Route path="/db/customer/edit/:id" exact component={EditCustomer} /> 
-          {/* <Route path="/db/delivery-person" exact component={DeliveryPersonDetails} /> 
-          <Route path="/db/delivery-person/edit/:id" exact component={EditDeliveryPerson} /> 
-          <Route path="/db/delivery-person/add" exact component={NewDeliveryPerson} />  */}
-          {/* <Route path="/db/manager" exact component={ManagerDetails} /> 
-          <Route path="/db/manager/edit/:id" exact component={EditManager} /> 
-          <Route path="/db/manager/add" exact component={NewManager} />  */}
-          <Route path="/db/employee" exact component={EmployeeDetails} /> 
-          <Route path="/db/employee/edit/:id" exact component={EditEmployee} /> 
-          <Route path="/db/employee/add" exact component={NewEmployee} /> 
-          <Route path="/db/branch" exact component={BranchDetails} /> 
-          <Route path="/db/branch/edit/:id" exact component={EditBranch} /> 
-          <Route path="/db/branch/add" exact component={NewBranch} /> 
-          <Route path="/db/order" exact component={OrdersDetails} /> 
-          <Route path="/db/order-items" exact component={OrderItemsDetails} /> 
+          <Route path="/branches" component={Branchespage} />
+          <Route path="/db/products" exact component={ProductDetails} />
+          <Route path="/db/products/edit/:id" component={EditProduct} />
+          <Route path="/db/products/add" component={NewProduct} />
+          <Route path="/db/customer" exact component={CustomerDetails} />
+          <Route path="/db/customer/edit/:id" component={EditCustomer} />
+          {/* <Route path="/db/delivery-person" component={DeliveryPersonDetails} /> 
+          <Route path="/db/delivery-person/edit/:id" component={EditDeliveryPerson} /> 
+          <Route path="/db/delivery-person/add" component={NewDeliveryPerson} />  */}
+          {/* <Route path="/db/manager" component={ManagerDetails} /> 
+          <Route path="/db/manager/edit/:id" component={EditManager} /> 
+          <Route path="/db/manager/add" component={NewManager} />  */}
+          <Route path="/db/employee" exact component={EmployeeDetails} />
+          <Route path="/db/employee/edit/:id" component={EditEmployee} />
+          <Route path="/db/employee/add" component={NewEmployee} />
+          <Route path="/db/branch" exact component={BranchDetails} />
+          <Route path="/db/branch/edit/:id" component={EditBranch} />
+          <Route path="/db/branch/add" component={NewBranch} />
+          <Route path="/db/order" component={OrdersDetails} />
+          <Route path="/db/order-items" component={OrderItemsDetails} />
 
         </Switch>
       </BrowserRouter>
-      
+
     </>
   );
 }
