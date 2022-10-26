@@ -48,21 +48,14 @@ function Routes() {
           <Route path="/register" component={CreateAccountpage} />
           <Route path="/cart" component={Cartpage} />
           <Route path="/about-us" component={AboutUspage} />
-
           <Route path="/products" component={Productspage} />
-
           <Route path="/branches" component={Branchespage} />
+
           <Route path="/db/products" exact component={ProductDetails} />
           <Route path="/db/products/edit/:id" component={EditProduct} />
           <Route path="/db/products/add" component={NewProduct} />
           <Route path="/db/customer" exact component={CustomerDetails} />
           <Route path="/db/customer/edit/:id" component={EditCustomer} />
-          {/* <Route path="/db/delivery-person" component={DeliveryPersonDetails} /> 
-          <Route path="/db/delivery-person/edit/:id" component={EditDeliveryPerson} /> 
-          <Route path="/db/delivery-person/add" component={NewDeliveryPerson} />  */}
-          {/* <Route path="/db/manager" component={ManagerDetails} /> 
-          <Route path="/db/manager/edit/:id" component={EditManager} /> 
-          <Route path="/db/manager/add" component={NewManager} />  */}
           <Route path="/db/employee" exact component={EmployeeDetails} />
           <Route path="/db/employee/edit/:id" component={EditEmployee} />
           <Route path="/db/employee/add" component={NewEmployee} />
@@ -71,6 +64,12 @@ function Routes() {
           <Route path="/db/branch/add" component={NewBranch} />
           <Route path="/db/order" component={OrdersDetails} />
           <Route path="/db/order-items" component={OrderItemsDetails} />
+          {/* <Route path="/db/delivery-person" exact component={DeliveryPersonDetails} /> 
+          <Route path="/db/delivery-person/edit/:id" component={EditDeliveryPerson} /> 
+          <Route path="/db/delivery-person/add" component={NewDeliveryPerson} />  */}
+          {/* <Route path="/db/manager" exact component={ManagerDetails} /> 
+          <Route path="/db/manager/edit/:id" component={EditManager} /> 
+          <Route path="/db/manager/add" component={NewManager} />  */}
 
         </Switch>
       </BrowserRouter>
