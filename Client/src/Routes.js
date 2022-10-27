@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Homepage from './Pages/Homepage';
 import Loginpage from './Pages/Loginpage';
@@ -32,13 +32,13 @@ import OrderItemsDetails from './DB_data/OrderItems/OrderItemsDetails';
 
 // import { UserContext } from './Context/UserContext';
 
-function Routes() {
+function RouteFunction() {
 
   return (
     <>
 
       <BrowserRouter>
-        <Switch>
+        <Routes>
 
           <Route path="/" exact component={Loginpage} />
           <Route path="/login" component={Loginpage} />
@@ -72,11 +72,11 @@ function Routes() {
         <Route path="/db/manager/add" component={NewManager} />  */}
 
           <Route path="*" component={Loginpage} />
-        </Switch>
+        </Routes>
       </BrowserRouter>
 
     </>
   );
 }
 
-export default Routes;
+export default RouteFunction;
