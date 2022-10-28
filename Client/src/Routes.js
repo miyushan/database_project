@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Routes } from "react-router-dom";
+import ProtectedRoutes from './ProtectedRoutes'
 
 import Homepage from './Pages/Homepage';
 import Loginpage from './Pages/Loginpage';
@@ -39,29 +40,29 @@ function RouteFunction() {
 
         <Route path="/" element={<Loginpage />} />
         <Route path="/login" element={<Loginpage />} />
-        <Route path="/home" element={<Homepage />} />
+        <Route path="/home" element={<ProtectedRoutes.ProtectedUser><Homepage /></ProtectedRoutes.ProtectedUser>} />
         <Route path="/register" element={<CreateAccountpage />} />
-        <Route path="/cart" element={<Cartpage />} />
-        <Route path="/about-us" element={<AboutUspage />} />
-        <Route path="/products" element={<Productspage />} />
+        <Route path="/cart" element={<ProtectedRoutes.ProtectedUser><Cartpage /></ProtectedRoutes.ProtectedUser>} />
+        <Route path="/about-us" element={<ProtectedRoutes.ProtectedUser><AboutUspage /></ProtectedRoutes.ProtectedUser>} />
+        <Route path="/products" element={<ProtectedRoutes.ProtectedUser><Productspage /></ProtectedRoutes.ProtectedUser>} />
         {/* <Route path="/contact-us" element={ContactUspage} /> */}
         {/* <Route path="/branches" element={Branchespage} /> */}
 
         <Route path="/db" element={<DataBaseLoginpage />} />
         <Route path="/db/login" element={<DataBaseLoginpage />} />
-        <Route path="/db/products" element={<ProductDetails />} />
-        <Route path="/db/products/edit/:id" element={<EditProduct />} />
-        <Route path="/db/products/add" element={<NewProduct />} />
-        <Route path="/db/customer" element={<CustomerDetails />} />
-        <Route path="/db/customer/edit/:id" element={<EditCustomer />} />
-        <Route path="/db/employee" element={<EmployeeDetails />} />
-        <Route path="/db/employee/edit/:id" element={<EditEmployee />} />
-        <Route path="/db/employee/add" element={<NewEmployee />} />
-        <Route path="/db/branch" element={<BranchDetails />} />
-        <Route path="/db/branch/edit/:id" element={<EditBranch />} />
-        <Route path="/db/branch/add" element={<NewBranch />} />
-        <Route path="/db/order" element={<OrdersDetails />} />
-        <Route path="/db/order-items" element={<OrderItemsDetails />} />
+        <Route path="/db/products" element={<ProtectedRoutes.ProtectedAdmin><ProductDetails /></ProtectedRoutes.ProtectedAdmin>} />
+        <Route path="/db/products/edit/:id" element={<ProtectedRoutes.ProtectedAdmin><EditProduct /></ProtectedRoutes.ProtectedAdmin>} />
+        <Route path="/db/products/add" element={<ProtectedRoutes.ProtectedAdmin><NewProduct /></ProtectedRoutes.ProtectedAdmin>} />
+        <Route path="/db/customer" element={<ProtectedRoutes.ProtectedAdmin><CustomerDetails /></ProtectedRoutes.ProtectedAdmin>} />
+        <Route path="/db/customer/edit/:id" element={<ProtectedRoutes.ProtectedAdmin><EditCustomer /></ProtectedRoutes.ProtectedAdmin>} />
+        <Route path="/db/employee" element={<ProtectedRoutes.ProtectedAdmin><EmployeeDetails /></ProtectedRoutes.ProtectedAdmin>} />
+        <Route path="/db/employee/edit/:id" element={<ProtectedRoutes.ProtectedAdmin><EditEmployee /></ProtectedRoutes.ProtectedAdmin>} />
+        <Route path="/db/employee/add" element={<ProtectedRoutes.ProtectedAdmin><NewEmployee /></ProtectedRoutes.ProtectedAdmin>} />
+        <Route path="/db/branch" element={<ProtectedRoutes.ProtectedAdmin><BranchDetails /></ProtectedRoutes.ProtectedAdmin>} />
+        <Route path="/db/branch/edit/:id" element={<ProtectedRoutes.ProtectedAdmin><EditBranch /></ProtectedRoutes.ProtectedAdmin>} />
+        <Route path="/db/branch/add" element={<ProtectedRoutes.ProtectedAdmin><NewBranch /></ProtectedRoutes.ProtectedAdmin>} />
+        <Route path="/db/order" element={<ProtectedRoutes.ProtectedAdmin><OrdersDetails /></ProtectedRoutes.ProtectedAdmin>} />
+        <Route path="/db/order-items" element={<ProtectedRoutes.ProtectedAdmin><OrderItemsDetails /></ProtectedRoutes.ProtectedAdmin>} />
         {/* <Route path="/db/delivery-person"  element={DeliveryPersonDetails} /> 
           <Route path="/db/delivery-person/edit/:id" element={EditDeliveryPerson} /> 
         <Route path="/db/delivery-person/add" element={NewDeliveryPerson} />  */}

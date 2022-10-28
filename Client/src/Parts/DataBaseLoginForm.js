@@ -35,14 +35,14 @@ export default function DataBaseLoginForm() {
             console.log("DB Login success!");
 
             //Session object
-            let userDetails = {
+            let admin = {
                 admin_contactNumber: contactNumber
             }
 
             setIsLogedIn(true);
 
             //Add the session
-            localStorage.setItem('managerDetails', JSON.stringify(userDetails));
+            localStorage.setItem('adminUserDetails', JSON.stringify(admin));
         } else if (contactNumber === '' && password !== '') {
             alert('Phone number is required!');
         } else if (contactNumber === '' && password === '') {

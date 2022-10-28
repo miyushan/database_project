@@ -1,12 +1,12 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/Login.css';
-import {Col, Container, Row, Button} from "react-bootstrap";
+import { Col, Container, Row, Button } from "react-bootstrap";
 import './styles/DataBaseLogin.css'
 import DataBaseLoginForm from '../Parts/DataBaseLoginForm';
 // import { ReactComponent as Admin } from '../files/icons/users-cog-solid.svg';
 
-function DataBaseLogin(){
-    return(
+function DataBaseLogin() {
+    return (
         <>
             <div id="login">
                 <Container className="outer-login admin-login">
