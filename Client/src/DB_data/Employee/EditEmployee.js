@@ -1,13 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Route, Redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useParams } from 'react-router-dom';
-import {Form, Row, Col, Button, Container} from "react-bootstrap";
+import { Form, Row, Col, Button, Container } from "react-bootstrap";
 import { ReactComponent as Back } from '../../files/icons/caret-left-solid.svg';
 import axios from 'axios';
 import { EmployeeContext } from '../../Context/EmployeeContext';
 
 
-export default function EditEmployee(){
+export default function EditEmployee() {
+    const navigate = useNavigate();
+
     const { managers, branches } = useContext(EmployeeContext);
     const { id } = useParams();
 
@@ -29,12 +31,11 @@ export default function EditEmployee(){
     const [initialBranchName, setInitialBranchName] = useState('');
     const [initialAddress, setInitialAddress] = useState('');
 
-    const [goBack, setGoBack] = useState(false);
     const managerId = id;
 
     useEffect(() => {
-        managers.forEach((manager)=>{
-            if(manager.id.toString() === managerId){
+        managers.forEach((manager) => {
+            if (manager.id.toString() === managerId) {
                 setInitialFirstName(manager.First_Name);
                 setInitialLastName(manager.Last_Name);
                 setInitialGender(manager.Gender);
@@ -48,55 +49,55 @@ export default function EditEmployee(){
                 setContactNumber(manager.Contact_Number);
                 setAddress(manager.Address);
 
-                branches.forEach((branch)=>{
+                branches.forEach((branch) => {
                     // console.log(customer.Branch_id, branch.id)
-                    if(manager.Branch_id===branch.id){
+                    if (manager.Branch_id === branch.id) {
                         // console.log(branch.Name )
                         setInitialBranchName(branch.id);
                         setBranchName(branch.id);
                     }
                 })
-            }  
+            }
         })
     }, [managers, managerId, branches]);
 
     const checkAnyChanges = () => {
-        if((firstName.length!==0 && lastName.length!==0 && gender.length!==0 && salary.length!==0 && contactNumber.length!==0 && branchName.length!==0 && address.length!==0)){
+        if ((firstName.length !== 0 && lastName.length !== 0 && gender.length !== 0 && salary.length !== 0 && contactNumber.length !== 0 && branchName.length !== 0 && address.length !== 0)) {
             let isManagerExist = false;
 
-            if(firstName===initialFirstName && lastName===initialLastName && gender===initialGender && salary===initialSalary && contactNumber===initialContactNumber && branchName===initialBranchName && address===initialAddress ){
+            if (firstName === initialFirstName && lastName === initialLastName && gender === initialGender && salary === initialSalary && contactNumber === initialContactNumber && branchName === initialBranchName && address === initialAddress) {
                 alert('Employee Already Exists !');
                 isManagerExist = true;
             }
-            else{
+            else {
                 isManagerExist = false;
             }
 
-            if(!isManagerExist){
+            if (!isManagerExist) {
                 return true;
-            }else{
+            } else {
                 return false;
             }
-        }else{
+        } else {
             alert('Please fill the fields!');
             return false;
         }
     }
-  
+
 
     const changeManagerDetails = () => {
         //change manager data
-        if (checkAnyChanges()){
+        if (checkAnyChanges()) {
 
             let branchid;
-            
-            branches.forEach((branch)=>{
-                if(branchName===branch.Name){
+
+            branches.forEach((branch) => {
+                if (branchName === branch.Name) {
                     branchid = branch.id;
                 }
             })
 
-            axios.put(`http://localhost:4000/employee/${managerId}`,{
+            axios.put(`http://localhost:4000/employee/${managerId}`, {
                 id: managerId,
                 First_Name: firstName,
                 Last_Name: lastName,
@@ -106,24 +107,24 @@ export default function EditEmployee(){
                 Branch_id: branchid,
                 Address: address,
             })
-            .then(() => {
-                alert('Employee Updated Successfully!');
-                setGoBack(true);
-                setInitialFirstName(firstName);
-                setInitialLastName(lastName);
-                setInitialGender(gender);
-                setInitialSalary(salary);
-                setInitialContactNumber(contactNumber);
-                setInitialBranchName(branchName);
-                setInitialAddress(address);
-            });
+                .then(() => {
+                    alert('Employee Updated Successfully!');
+                    navigate('/db/employee');
+                    setInitialFirstName(firstName);
+                    setInitialLastName(lastName);
+                    setInitialGender(gender);
+                    setInitialSalary(salary);
+                    setInitialContactNumber(contactNumber);
+                    setInitialBranchName(branchName);
+                    setInitialAddress(address);
+                });
         }
     }
 
     const onChangeFirstName = (e) => {
         setFirstName(e.target.value);
     }
-    
+
     const onChangeLastName = (e) => {
         setLastName(e.target.value);
     }
@@ -135,7 +136,7 @@ export default function EditEmployee(){
     const onChangeSalary = (e) => {
         setSalary(e.target.value);
     }
-    
+
     const onChangeContactNumber = (e) => {
         setContactNumber(e.target.value);
     }
@@ -157,56 +158,56 @@ export default function EditEmployee(){
         changeManagerDetails();
     }
 
-    return ( 
+    return (
         <>
             <div>
                 <Container className="db-container d-flex justify-content-center align-items-center">
-                    
+
                     <Form className="db-form" onSubmit={onSubmit} method="post">
                         <Row>
                             <Col>
                                 <Form.Group className="mb-4" controlId="formGroupFirstName">
                                     <Form.Label className="db-form-label">First Name</Form.Label>
-                                    <Form.Control className="db-input" variant="success" type="text" value={firstName} onChange={onChangeFirstName}/>
+                                    <Form.Control className="db-input" variant="success" type="text" value={firstName} onChange={onChangeFirstName} />
                                 </Form.Group>
                             </Col>
                             <Col>
                                 <Form.Group className="mb-4" controlId="formGroupLastName">
                                     <Form.Label className="db-form-label">Last Name</Form.Label>
-                                    <Form.Control className="db-input" variant="success" type="text" value={lastName} onChange={onChangeLastName}/>
+                                    <Form.Control className="db-input" variant="success" type="text" value={lastName} onChange={onChangeLastName} />
                                 </Form.Group>
                             </Col>
-                            
+
                         </Row>
                         <Row>
                             <Col>
                                 <Form.Group className="mb-4" controlId="formGroupGender">
                                     <Form.Label className="db-form-label">Gender</Form.Label>
-                                    <Form.Control className="db-input" variant="success" type="text" value={gender} onChange={onChangeGender}/>
+                                    <Form.Control className="db-input" variant="success" type="text" value={gender} onChange={onChangeGender} />
                                 </Form.Group>
                             </Col>
                             <Col>
                                 <Form.Group className="mb-4" controlId="formGroupSalary">
                                     <Form.Label className="db-form-label">Salary</Form.Label>
-                                    <Form.Control className="db-input" variant="success" type="text" value={salary} onChange={onChangeSalary}/>
+                                    <Form.Control className="db-input" variant="success" type="text" value={salary} onChange={onChangeSalary} />
                                 </Form.Group>
                             </Col>
-                            
+
                         </Row>
                         <Row>
                             <Col>
                                 <Form.Group className="mb-4" controlId="formGroupContactNumber">
                                     <Form.Label className="db-form-label">Contact Number</Form.Label>
-                                    <Form.Control className="db-input" variant="success" type="text" value={contactNumber} onChange={onChangeContactNumber}/>
+                                    <Form.Control className="db-input" variant="success" type="text" value={contactNumber} onChange={onChangeContactNumber} />
                                 </Form.Group>
                             </Col>
                             <Col>
                                 <Form.Group className="mb-4" controlId="formGroupBranchName">
                                     <Form.Label className="db-form-label">Branch Id</Form.Label>
-                                    <Form.Control className="db-input" variant="success" type="text" value={branchName} onChange={onChangeBranchName}/>
+                                    <Form.Control className="db-input" variant="success" type="text" value={branchName} onChange={onChangeBranchName} />
                                 </Form.Group>
                             </Col>
-                            
+
                         </Row>
                         <Row>
                             {/* <Col>
@@ -218,32 +219,28 @@ export default function EditEmployee(){
                             <Col>
                                 <Form.Group className="mb-4" controlId="formGroupAddress">
                                     <Form.Label className="db-form-label">Address</Form.Label>
-                                    <Form.Control className="db-input" variant="success" type="text" value={address} onChange={onChangeAddress}/>
+                                    <Form.Control className="db-input" variant="success" type="text" value={address} onChange={onChangeAddress} />
                                 </Form.Group>
                             </Col>
-                            
+
                         </Row>
 
                         <Button className="login-submit-btn login-input mt-2 btn-db" variant="success" type="submit">
                             Submit
                         </Button>
 
-                        <Route>
-                            {goBack ? <Redirect to="/db/employee" /> : null} 
-                        </Route>
-                        
-                        
+
                     </Form>
                 </Container>
 
                 <div className="add-new back-to-p">
                     <Col className="text-center">
-                        <Row className=""><a className="d-flex justify-content-center align-items-center new-p" variant="success" href="/db/employee"><Back className="btn-add-new btn-p-back" height="36px"/></a></Row>
+                        <Row className=""><a className="d-flex justify-content-center align-items-center new-p" variant="success" href="/db/employee"><Back className="btn-add-new btn-p-back" height="36px" /></a></Row>
                     </Col>
                 </div>
-            
+
             </div>
-            
+
         </>
     );
 }

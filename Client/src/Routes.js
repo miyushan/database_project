@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 import Homepage from './Pages/Homepage';
 import Loginpage from './Pages/Loginpage';
@@ -30,50 +30,47 @@ import NewBranch from './DB_data/Branch/NewBranch';
 import OrdersDetails from './DB_data/Orders/OrdersDetails';
 import OrderItemsDetails from './DB_data/OrderItems/OrderItemsDetails';
 
-// import { UserContext } from './Context/UserContext';
-
 function RouteFunction() {
 
   return (
     <>
 
-      <BrowserRouter>
-        <Routes>
+      <Routes>
 
-          <Route path="/" exact component={Loginpage} />
-          <Route path="/login" component={Loginpage} />
-          <Route path="/db/login" component={DataBaseLoginpage} />
-          <Route path="/home" component={Homepage} />
-          <Route path="/register" component={CreateAccountpage} />
-          <Route path="/cart" component={Cartpage} />
-          <Route path="/about-us" component={AboutUspage} />
-          <Route path="/products" component={Productspage} />
-          {/* <Route path="/contact-us" component={ContactUspage} /> */}
-          {/* <Route path="/branches" component={Branchespage} /> */}
+        <Route path="/" element={<Loginpage />} />
+        <Route path="/login" element={<Loginpage />} />
+        <Route path="/home" element={<Homepage />} />
+        <Route path="/register" element={<CreateAccountpage />} />
+        <Route path="/cart" element={<Cartpage />} />
+        <Route path="/about-us" element={<AboutUspage />} />
+        <Route path="/products" element={<Productspage />} />
+        {/* <Route path="/contact-us" element={ContactUspage} /> */}
+        {/* <Route path="/branches" element={Branchespage} /> */}
 
-          <Route path="/db/products" exact component={ProductDetails} />
-          <Route path="/db/products/edit/:id" component={EditProduct} />
-          <Route path="/db/products/add" component={NewProduct} />
-          <Route path="/db/customer" exact component={CustomerDetails} />
-          <Route path="/db/customer/edit/:id" component={EditCustomer} />
-          <Route path="/db/employee" exact component={EmployeeDetails} />
-          <Route path="/db/employee/edit/:id" component={EditEmployee} />
-          <Route path="/db/employee/add" component={NewEmployee} />
-          <Route path="/db/branch" exact component={BranchDetails} />
-          <Route path="/db/branch/edit/:id" component={EditBranch} />
-          <Route path="/db/branch/add" component={NewBranch} />
-          <Route path="/db/order" component={OrdersDetails} />
-          <Route path="/db/order-items" component={OrderItemsDetails} />
-          {/* <Route path="/db/delivery-person" exact component={DeliveryPersonDetails} /> 
-          <Route path="/db/delivery-person/edit/:id" component={EditDeliveryPerson} /> 
-        <Route path="/db/delivery-person/add" component={NewDeliveryPerson} />  */}
-          {/* <Route path="/db/manager" exact component={ManagerDetails} /> 
-          <Route path="/db/manager/edit/:id" component={EditManager} /> 
-        <Route path="/db/manager/add" component={NewManager} />  */}
+        <Route path="/db" element={<DataBaseLoginpage />} />
+        <Route path="/db/login" element={<DataBaseLoginpage />} />
+        <Route path="/db/products" element={<ProductDetails />} />
+        <Route path="/db/products/edit/:id" element={<EditProduct />} />
+        <Route path="/db/products/add" element={<NewProduct />} />
+        <Route path="/db/customer" element={<CustomerDetails />} />
+        <Route path="/db/customer/edit/:id" element={<EditCustomer />} />
+        <Route path="/db/employee" element={<EmployeeDetails />} />
+        <Route path="/db/employee/edit/:id" element={<EditEmployee />} />
+        <Route path="/db/employee/add" element={<NewEmployee />} />
+        <Route path="/db/branch" element={<BranchDetails />} />
+        <Route path="/db/branch/edit/:id" element={<EditBranch />} />
+        <Route path="/db/branch/add" element={<NewBranch />} />
+        <Route path="/db/order" element={<OrdersDetails />} />
+        <Route path="/db/order-items" element={<OrderItemsDetails />} />
+        {/* <Route path="/db/delivery-person"  element={DeliveryPersonDetails} /> 
+          <Route path="/db/delivery-person/edit/:id" element={EditDeliveryPerson} /> 
+        <Route path="/db/delivery-person/add" element={NewDeliveryPerson} />  */}
+        {/* <Route path="/db/manager"  element={ManagerDetails} /> 
+          <Route path="/db/manager/edit/:id" element={EditManager} /> 
+        <Route path="/db/manager/add" element={NewManager} />  */}
 
-          <Route path="*" component={Loginpage} />
-        </Routes>
-      </BrowserRouter>
+        <Route path="*" element={<Loginpage />} />
+      </Routes>
 
     </>
   );

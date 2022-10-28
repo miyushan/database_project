@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Route, Redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useParams } from 'react-router-dom';
 import {Form, Row, Col, Button, Container} from "react-bootstrap";
 import axios from 'axios';
@@ -9,6 +9,8 @@ import { ReactComponent as Back } from '../../files/icons/caret-left-solid.svg';
 
 
 function EditCustomer(){
+    const navigate = useNavigate();
+
     const { customers, branches } = useContext(EmployeeContext);
     const { id } = useParams();
 
@@ -30,7 +32,6 @@ function EditCustomer(){
     const [initialPassword, setInitialPassword] = useState('');
     const [initialAddress, setInitialAddress] = useState('');
 
-    const [goBack, setGoBack] = useState(false);
     const customerId = id;
 
     useEffect(() => {
@@ -110,7 +111,7 @@ function EditCustomer(){
             })
             .then(() => {
                 alert('Customer Updated Successfully!');
-                setGoBack(true);
+                navigate('/db/customer');
                 setInitialFirstName(firstName);
                 setInitialLastName(lastName);
                 setInitialGender(gender);
@@ -218,10 +219,6 @@ function EditCustomer(){
                         <Button className="login-submit-btn login-input mt-2 btn-db" variant="success" type="submit">
                             Submit
                         </Button>
-
-                        <Route>
-                            {goBack ? <Redirect to="/db/customer" /> : null} 
-                        </Route>
                         
                     </Form>
                 </Container>
