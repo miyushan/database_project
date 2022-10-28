@@ -14,8 +14,8 @@ export default function DataBaseLoginForm() {
     const [contactNumber, setContactNumber] = useState('');
     const [password, setPassword] = useState('');
 
-    const loginNumber = '0773298953';
-    const loginPW = '123';
+    const loginNumber = process.env.REACT_APP_LOGIN_NUMBER;
+    const loginPW = process.env.REACT_APP_LOGIN_PW;
 
     const onChangeContactNumber = (e) => {
         setContactNumber(e.target.value);
@@ -29,6 +29,7 @@ export default function DataBaseLoginForm() {
         e.preventDefault();
 
         // customers.forEach(customer => {
+        console.log(loginNumber, loginPW);
 
         if (contactNumber === loginNumber && password === loginPW) {
             navigate('/db/branch');
