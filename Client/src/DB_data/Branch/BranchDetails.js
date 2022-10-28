@@ -1,15 +1,19 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { useNavigate } from "react-router-dom";
+import '../commonStyles.css'
 import './BranchDetails.css';
 import {Table, ButtonGroup, Button, Breadcrumb, Col, Row } from "react-bootstrap";
 import axios from 'axios';
 import { ReactComponent as Edit } from '../../files/icons/edit-regular.svg';
 import { ReactComponent as Delete } from '../../files/icons/trash-alt-regular.svg';
 import { ReactComponent as New } from '../../files/icons/plus-solid.svg';
-
-import { EmployeeContext } from '../../Context/EmployeeContext';
+import { ReactComponent as LOGOUT } from '../../files/icons/right-from-bracket-solid.svg';
 import { ReactComponent as Admin } from '../../files/icons/users-cog-solid.svg';
 
+import { EmployeeContext } from '../../Context/EmployeeContext';
+
 function BranchDetails(){
+    const navigate = useNavigate();
     const { branches } = useContext(EmployeeContext);
 
     const [products, setProducts] = useState([]);
@@ -28,6 +32,11 @@ function BranchDetails(){
             alert('Branch is Deleted!!');
             window.location.reload(false);
         })
+    }
+
+    const adminLogOut = () => {
+        localStorage.removeItem('adminUserDetails');
+        navigate('/db');
     }
    
     return (
@@ -83,6 +92,10 @@ function BranchDetails(){
                     </Table>
 
                 {/* </Container> */}
+
+                <div className="add-log-out ">
+                    <button onClick={adminLogOut} type="button" className="btn btn-warning"><LOGOUT className="btn-log-out" height="15px" style={{ marginRight: "10px" }} /><span className="fw-bold text-danger">Log Out</span></button>
+                </div>
             
                 <div className="add-new ">
                     <Col className="text-center">
@@ -91,11 +104,11 @@ function BranchDetails(){
                     </Col>     
                 </div>
 
-                <div className="add-new-2 ">
+                {/* <div className="add-new-2 ">
                     <Col className="text-center">
                         <a href="/db/login" className="admin-login-btn"><Admin className="admin-login-icon" height="25px"/></a>
                     </Col>     
-                </div>
+                </div> */}
 
             </div>
                 

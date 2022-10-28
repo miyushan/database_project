@@ -2,15 +2,17 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useParams } from 'react-router-dom';
 import { Form, Row, Col, Button, Container } from "react-bootstrap";
+import { ReactComponent as LOGOUT } from '../../files/icons/right-from-bracket-solid.svg';
 import { ReactComponent as Back } from '../../files/icons/caret-left-solid.svg';
 import axios from 'axios';
 import { EmployeeContext } from '../../Context/EmployeeContext';
+import '../commonStyles.css'
 
 
 export default function EditEmployee() {
     const navigate = useNavigate();
 
-    const { managers, branches } = useContext(EmployeeContext);
+    const { employees, branches } = useContext(EmployeeContext);
     const { id } = useParams();
 
     const [firstName, setFirstName] = useState('');
@@ -34,7 +36,7 @@ export default function EditEmployee() {
     const managerId = id;
 
     useEffect(() => {
-        managers.forEach((manager) => {
+        employees.forEach((manager) => {
             if (manager.id.toString() === managerId) {
                 setInitialFirstName(manager.First_Name);
                 setInitialLastName(manager.Last_Name);
@@ -59,7 +61,7 @@ export default function EditEmployee() {
                 })
             }
         })
-    }, [managers, managerId, branches]);
+    }, [employees, managerId, branches]);
 
     const checkAnyChanges = () => {
         if ((firstName.length !== 0 && lastName.length !== 0 && gender.length !== 0 && salary.length !== 0 && contactNumber.length !== 0 && branchName.length !== 0 && address.length !== 0)) {
@@ -86,7 +88,7 @@ export default function EditEmployee() {
 
 
     const changeManagerDetails = () => {
-        //change manager data
+        //change employee data
         if (checkAnyChanges()) {
 
             let branchid;
@@ -119,6 +121,11 @@ export default function EditEmployee() {
                     setInitialAddress(address);
                 });
         }
+    }
+
+    const adminLogOut = () => {
+        localStorage.removeItem('adminUserDetails');
+        navigate('/db');
     }
 
     const onChangeFirstName = (e) => {
@@ -232,6 +239,10 @@ export default function EditEmployee() {
 
                     </Form>
                 </Container>
+
+                <div className="add-log-out ">
+                    <button onClick={adminLogOut} type="button" className="btn btn-warning"><LOGOUT className="btn-log-out" height="15px" style={{ marginRight: "10px" }} /><span className="fw-bold text-danger">Log Out</span></button>
+                </div>
 
                 <div className="add-new back-to-p">
                     <Col className="text-center">

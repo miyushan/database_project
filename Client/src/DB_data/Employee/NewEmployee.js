@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import {Form, Row, Col, Button, Container} from "react-bootstrap";
 import { ReactComponent as Back } from '../../files/icons/caret-left-solid.svg';
+import { ReactComponent as LOGOUT } from '../../files/icons/right-from-bracket-solid.svg';
 import axios from 'axios';
+import '../commonStyles.css'
 import './NewEmployee.css';
 
 
 function NewEmployee(){
+    const navigate = useNavigate();
 
     const [deliveryPerson, setDeliveryPerson] = useState([]);
     const [firstName, setFirstName] = useState('');
@@ -22,7 +26,7 @@ function NewEmployee(){
 
     useEffect(() => {
         console.log('useEffect')
-        axios.get('http://localhost:4000/managers')
+        axios.get('http://localhost:4000/employees')
         .then(res => res.data)
         .then((res) => {
             setDeliveryPerson(res);
@@ -42,7 +46,7 @@ function NewEmployee(){
         })
 
         if(isOldDPerson===false){
-            axios.post('http://localhost:4000/managers',{
+            axios.post('http://localhost:4000/employees',{
                 firstName: firstName,
                 lastName: lastName,
                 gender: gender,
@@ -54,7 +58,7 @@ function NewEmployee(){
             })
 
             .then(() => {
-                console.log("New Manager created");
+                console.log("New Employee created");
                 setFirstName('');
                 setLastName('');
                 setGender('');
@@ -93,7 +97,10 @@ function NewEmployee(){
         setAddress(e.target.value);
     }
     
-
+    const adminLogOut = () => {
+        localStorage.removeItem('adminUserDetails');
+        navigate('/db');
+    }
 
     const onSubmit = (e) => {
         console.log(deliveryPerson)
@@ -177,9 +184,13 @@ function NewEmployee(){
                     </Form>
                 </Container>
 
+                <div className="add-log-out ">
+                    <button onClick={adminLogOut} type="button" className="btn btn-warning"><LOGOUT className="btn-log-out" height="15px" style={{ marginRight: "10px" }} /><span className="fw-bold text-danger">Log Out</span></button>
+                </div>
+
                 <div className="add-new back-to-p">
                     <Col className="text-center">
-                        <Row className=""><a className="d-flex justify-content-center align-items-center new-p" variant="success" href="/db/manager"><Back className="btn-add-new btn-p-back" height="36px"/></a></Row>
+                        <Row className=""><a className="d-flex justify-content-center align-items-center new-p" variant="success" href="/db/employee"><Back className="btn-add-new btn-p-back" height="36px"/></a></Row>
                     </Col>
                     
                 </div>

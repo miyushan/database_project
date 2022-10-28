@@ -77,7 +77,7 @@ app.get('/products', (req, res) => {
 
 
 //get employee
-app.get('/employee', (req, res) => {
+app.get('/employees', (req, res) => {
 
     db.query('SELECT * FROM employee', (err, rows) => {
         if (!err) {

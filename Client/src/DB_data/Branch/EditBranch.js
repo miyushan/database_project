@@ -1,7 +1,9 @@
 import {Form, Row, Col, Button, Container} from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
+import '../commonStyles.css'
 import './EditBranch.css';
 import React, { useState, useEffect, useContext } from 'react';
+import { ReactComponent as LOGOUT } from '../../files/icons/right-from-bracket-solid.svg';
 import { ReactComponent as Back } from '../../files/icons/caret-left-solid.svg';
 import axios from 'axios';
 import { EmployeeContext } from '../../Context/EmployeeContext';
@@ -79,6 +81,11 @@ function EditBranch(){
         }
     }
 
+    const adminLogOut = () => {
+        localStorage.removeItem('adminUserDetails');
+        navigate('/db');
+    }
+
     const onChangeBranchName = (e) => {
         setBranchName(e.target.value);
     }
@@ -131,6 +138,10 @@ function EditBranch(){
                         
                     </Form>
                 </Container>
+
+                <div className="add-log-out ">
+                    <button onClick={adminLogOut} type="button" className="btn btn-warning"><LOGOUT className="btn-log-out" height="15px" style={{ marginRight: "10px" }} /><span className="fw-bold text-danger">Log Out</span></button>
+                </div>
 
                 <div className="add-new back-to-p">
                     <Col className="text-center">

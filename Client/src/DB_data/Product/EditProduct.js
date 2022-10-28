@@ -4,7 +4,8 @@ import { Form, Row, Col, Button, Container } from "react-bootstrap";
 import { ReactComponent as Back } from '../../files/icons/caret-left-solid.svg';
 import axios from 'axios';
 import { ProductContext } from '../../Context/ProductContext';
-
+import { ReactComponent as LOGOUT } from '../../files/icons/right-from-bracket-solid.svg';
+import '../commonStyles.css'
 
 function EditProduct() {
     const navigate = useNavigate();
@@ -79,6 +80,11 @@ function EditProduct() {
         }
     }
 
+    const adminLogOut = () => {
+        localStorage.removeItem('adminUserDetails');
+        navigate('/db');
+    }
+
     const onChangeProductName = (e) => {
         setProductName(e.target.value);
     }
@@ -133,6 +139,10 @@ function EditProduct() {
 
                     </Form>
                 </Container>
+
+                <div className="add-log-out ">
+                    <button onClick={adminLogOut} type="button" className="btn btn-warning"><LOGOUT className="btn-log-out" height="15px" style={{ marginRight: "10px" }} /><span className="fw-bold text-danger">Log Out</span></button>
+                </div>
 
                 <div className="add-new back-to-p">
                     <Col className="text-center">

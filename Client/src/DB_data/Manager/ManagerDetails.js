@@ -107,11 +107,11 @@ function ManagerDetails(){
                     </Col>     
                 </div>
 
-                <div className="add-new-2 ">
+                {/* <div className="add-new-2 ">
                     <Col className="text-center">
                         <a href="/db/login" className="admin-login-btn"><Admin className="admin-login-icon" height="25px"/></a>
                     </Col>     
-                </div>
+                </div> */}
             
             </div>
                 

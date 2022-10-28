@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { useNavigate } from "react-router-dom";
+import '../commonStyles.css'
 import './OrdersDetails.css';
-import {Table, ButtonGroup, Button, Breadcrumb, Col } from "react-bootstrap";
+import { Table, ButtonGroup, Button, Breadcrumb, Col } from "react-bootstrap";
 import axios from 'axios';
 // import { ReactComponent as Edit } from '../../files/icons/edit-regular.svg';
 import { ReactComponent as Delete } from '../../files/icons/trash-alt-regular.svg';
@@ -8,29 +10,36 @@ import { ReactComponent as Delete } from '../../files/icons/trash-alt-regular.sv
 
 import { EmployeeContext } from '../../Context/EmployeeContext';
 import { ReactComponent as Admin } from '../../files/icons/users-cog-solid.svg';
+import { ReactComponent as LOGOUT } from '../../files/icons/right-from-bracket-solid.svg';
 
-function OrdersDetails(){
+function OrdersDetails() {
+    const navigate = useNavigate();
     const { orders } = useContext(EmployeeContext);
 
     const [orderArr, setOrderArr] = useState([]);
     // const [reload, setReload] = useState(false);
 
     useEffect(() => {
-        try{
+        try {
             setOrderArr(orders);
-        }catch{
+        } catch {
 
         }
     }, [orders]);
 
-    const deleteCustomer=(customer_id)=>{
+    const deleteCustomer = (customer_id) => {
         axios.delete(`http://localhost:4000/order/${customer_id}`)
-        .then(res =>{
-            alert('Order record is Deleted!!');
-            window.location.reload(false);
-        })
+            .then(res => {
+                alert('Order record is Deleted!!');
+                window.location.reload(false);
+            })
     }
-   
+
+    const adminLogOut = () => {
+        localStorage.removeItem('adminUserDetails');
+        navigate('/db');
+    }
+
     return (
         <>
             <div className="db-c-bg">
@@ -48,49 +57,49 @@ function OrdersDetails(){
                         <Breadcrumb.Item href="/db/order-items"><span className="bred-items">Order Item Records</span></Breadcrumb.Item>
                     </Breadcrumb>
                 </div>
-                    
+
                 {/* <Container className="db-p-container"> */}
 
-                    <Table className="table-c order-table" striped bordered>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Quantity (Kg)</th>
-                                <th>Total Cost (Rs)</th>
-                                <th>Customer ID</th>
-                                {/* <th>Manager ID</th> */}
-                                {/* <th>D Person ID</th> */}
-                                <th>Employee ID</th>
-                                <th>Posting Date</th>
-                                <th>Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                                {orderArr.map((product) =>{
-                                    return (
-                                        <tr  key={product.id}>
-                                            <td className="text-r"><div>{product.id}</div></td>
-                                            <td className="text-r">{product.Quantity}</td>
-                                            <td className="text-r">{product.Total_Cost}</td>
-                                            <td className="text-r">{product.Customer_Id}</td>
-                                            {/* <td className="text-r">{product.Manager_Id}</td> */}
-                                            {/* <td className="text-r">{product.Delivery_Person_Id}</td> */}
-                                            <td className="text-r">{product.Employee_id}</td>
-                                            <td className="text-center">{product.Posting_Date}</td>
-                                            <td className="text-center">
-                                                <ButtonGroup aria-label="Basic example">
-                                                    {/* <Button href={"/db/order/edit/"+product.id} className="btn-edit"variant="warning"><Edit className="edit-p" height="15px"/></Button> */}
-                                                    <Button href="" className="btn-delete" onClick={() => deleteCustomer(product.id)} variant="danger"><Delete className="delete-p" height="15px"/></Button>
-                                                </ButtonGroup>
-                                            </td>
-                                        </tr>
-                                    );
-                                })}
-                        </tbody>
-                    </Table>
+                <Table className="table-c order-table" striped bordered>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Quantity (Kg)</th>
+                            <th>Total Cost (Rs)</th>
+                            <th>Customer ID</th>
+                            {/* <th>Manager ID</th> */}
+                            {/* <th>D Person ID</th> */}
+                            <th>Employee ID</th>
+                            <th>Posting Date</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {orderArr.map((product) => {
+                            return (
+                                <tr key={product.id}>
+                                    <td className="text-r"><div>{product.id}</div></td>
+                                    <td className="text-r">{product.Quantity}</td>
+                                    <td className="text-r">{product.Total_Cost}</td>
+                                    <td className="text-r">{product.Customer_Id}</td>
+                                    {/* <td className="text-r">{product.Manager_Id}</td> */}
+                                    {/* <td className="text-r">{product.Delivery_Person_Id}</td> */}
+                                    <td className="text-r">{product.Employee_id}</td>
+                                    <td className="text-center">{product.Posting_Date}</td>
+                                    <td className="text-center">
+                                        <ButtonGroup aria-label="Basic example">
+                                            {/* <Button href={"/db/order/edit/"+product.id} className="btn-edit"variant="warning"><Edit className="edit-p" height="15px"/></Button> */}
+                                            <Button href="" className="btn-delete" onClick={() => deleteCustomer(product.id)} variant="danger"><Delete className="delete-p" height="15px" /></Button>
+                                        </ButtonGroup>
+                                    </td>
+                                </tr>
+                            );
+                        })}
+                    </tbody>
+                </Table>
 
                 {/* </Container> */}
-            
+
                 {/* <div className="add-new ">
                     <Col className="text-center">
                         <Row><p className="mb-1" style={{color: 'white'}}>New Order</p></Row>
@@ -98,17 +107,21 @@ function OrdersDetails(){
                     </Col>     
                 </div> */}
 
-                <div className="add-new-2 ">
-                    <Col className="text-center">
-                        <a href="/db/login" className="admin-login-btn"><Admin className="admin-login-icon" height="25px"/></a>
-                    </Col>     
+                <div className="add-log-out ">
+                    <button onClick={adminLogOut} type="button" className="btn btn-warning"><LOGOUT className="btn-log-out" height="15px" style={{ marginRight: "10px" }} /><span className="fw-bold text-danger">Log Out</span></button>
                 </div>
+
+                {/* <div className="add-new-2 ">
+                    <Col className="text-center">
+                        <a href="/db/login" className="admin-login-btn"><Admin className="admin-login-icon" height="25px" /></a>
+                    </Col>
+                </div> */}
             </div>
-                
+
         </>
     );
-   
-    
+
+
 }
 
 export default OrdersDetails;

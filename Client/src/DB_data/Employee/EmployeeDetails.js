@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { useNavigate } from "react-router-dom";
+import '../commonStyles.css'
 import './EmployeeDetails.css';
 import { Table, ButtonGroup, Button, Breadcrumb, Row, Col } from "react-bootstrap";
 // import axios from 'axios';
@@ -6,18 +8,26 @@ import { ReactComponent as Edit } from '../../files/icons/edit-regular.svg';
 // import { ReactComponent as Delete } from '../../files/icons/trash-alt-regular.svg';
 import { ReactComponent as New } from '../../files/icons/plus-solid.svg';
 import { ReactComponent as Admin } from '../../files/icons/users-cog-solid.svg';
+import { ReactComponent as LOGOUT } from '../../files/icons/right-from-bracket-solid.svg';
 
 import { EmployeeContext } from '../../Context/EmployeeContext';
 
 function EmployeeDetails() {
-    const { managers } = useContext(EmployeeContext);
+    const navigate = useNavigate();
+
+    const { employees } = useContext(EmployeeContext);
 
     let [customerArr, setCustomerArr] = useState([]);
     // const [reload, setReload] = useState(false);
 
     useEffect(() => {
-        setCustomerArr(managers)
-    }, [managers]);
+        setCustomerArr(employees)
+    }, [employees]);
+
+    const adminLogOut = () => {
+        localStorage.removeItem('adminUserDetails');
+        navigate('/db');
+    }
 
 
     // const deleteCustomer=(customer_id)=>{
@@ -93,18 +103,22 @@ function EmployeeDetails() {
 
                 {/* </Container> */}
 
+                <div className="add-log-out ">
+                    <button onClick={adminLogOut} type="button" className="btn btn-warning"><LOGOUT className="btn-log-out" height="15px" style={{ marginRight: "10px" }} /><span className="fw-bold text-danger">Log Out</span></button>
+                </div>
+
                 <div className="add-new ">
                     <Col className="text-center">
-                        <Row><p className="mb-1" style={{ color: 'white' }}>New Manager</p></Row>
-                        <Row className="justify-content-center align-items-center"><a className="d-flex justify-content-center align-items-center new-p" variant="success" href="manager/add"><New className="btn-add-new" height="20px" /></a></Row>
+                        <Row><p className="mb-1" style={{ color: 'white' }}>New Employee</p></Row>
+                        <Row className="justify-content-center align-items-center"><a className="d-flex justify-content-center align-items-center new-p" variant="success" href="employee/add"><New className="btn-add-new" height="20px" /></a></Row>
                     </Col>
                 </div>
 
-                <div className="add-new-2 ">
+                {/* <div className="add-new-2 ">
                     <Col className="text-center">
                         <a href="/db/login" className="admin-login-btn"><Admin className="admin-login-icon" height="25px" /></a>
                     </Col>
-                </div>
+                </div> */}
 
             </div>
 
