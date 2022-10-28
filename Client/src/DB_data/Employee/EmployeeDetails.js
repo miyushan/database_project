@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext} from 'react';
 import './EmployeeDetails.css';
 import {Table, ButtonGroup, Button, Breadcrumb, Row, Col} from "react-bootstrap";
-import axios from 'axios';
+// import axios from 'axios';
 import { ReactComponent as Edit } from '../../files/icons/edit-regular.svg';
-import { ReactComponent as Delete } from '../../files/icons/trash-alt-regular.svg';
+// import { ReactComponent as Delete } from '../../files/icons/trash-alt-regular.svg';
 import { ReactComponent as New } from '../../files/icons/plus-solid.svg';
 import { ReactComponent as Admin } from '../../files/icons/users-cog-solid.svg';
 
@@ -20,15 +20,15 @@ function EmployeeDetails(){
     }, [managers]);
 
 
-    const deleteCustomer=(customer_id)=>{
+    // const deleteCustomer=(customer_id)=>{
 
-        axios.delete(`http://localhost:4000/employee/${customer_id}`)
-        .then(res =>{
-            alert('Employee is Deleted!!');
-            window.location.reload(false);
-        })
+    //     axios.delete(`http://localhost:4000/employee/${customer_id}`)
+    //     .then(res =>{
+    //         alert('Employee is Deleted!!');
+    //         window.location.reload(false);
+    //     })
         
-    }
+    // }
 
     return (
         <>

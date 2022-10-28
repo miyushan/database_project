@@ -4,10 +4,12 @@ import './styles/PaymentCard.css';
 import axios from 'axios';
 import { CartContext } from '../Context/CartContext';
 import { EmployeeContext } from '../Context/EmployeeContext';
-import {Form, Container, Button, Row, Col} from "react-bootstrap";
-import { Route, Redirect } from "react-router-dom";
+import { Form, Container, Button, Row, Col } from "react-bootstrap";
+import {  useNavigate } from "react-router-dom";
 
-function PaymentCard(){
+function PaymentCard() {
+    const navigate = useNavigate();
+
     const { totalWeight, setCartProducts, priceWithDiscount } = useContext(CartContext);
     const { managers, orders } = useContext(EmployeeContext);
 
@@ -17,23 +19,22 @@ function PaymentCard(){
     const [date, setDate] = useState('');
     const [cvv, setcvc] = useState('');
     const [btnDisable, setBtnDisable] = useState(true);
-    const [isPaymentSuccess, setIsPaymentSuccess] = useState(false);
     const [branch, setBranch] = useState('');
     const [customerId, setCustomerId] = useState('');
 
     // let dPersonId;
     let managerId;
 
-    
 
-    useEffect(() =>{
-        try{
+
+    useEffect(() => {
+        try {
             let cartData = localStorage.getItem('cartDetails');
             cartData = JSON.parse(cartData);
 
             if (!cartData || cartData.length === 0) {
                 setBtnDisable(true);
-            }else{
+            } else {
                 setBtnDisable(false);
             }
 
@@ -42,12 +43,12 @@ function PaymentCard(){
             userData = JSON.parse(userData);
             setBranch(userData.branchId);
             setCustomerId(userData.id);
-        }catch(e){
+        } catch (e) {
 
         }
-        
-    },[])
-    
+
+    }, [])
+
 
     const onChangeName = (e) => {
         setName(e.target.value);
@@ -87,20 +88,20 @@ function PaymentCard(){
         //to get Managers in same branch
         managers.forEach(person => {
             console.log(person.Branch_id, branch);
-            if(person.Branch_id === branch && person.manager_id !== null){
+            if (person.Branch_id === branch && person.manager_id !== null) {
                 tempManagers.push(parseFloat(person.manager_id));
             }
         })
         console.log(tempManagers);
-        managerId = tempManagers[ Math.floor(Math.random()*tempManagers.length) ];
+        managerId = tempManagers[Math.floor(Math.random() * tempManagers.length)];
         console.log(managerId);
     }
 
     const addtoOrderList = () => {
         setCartProducts([]);
         findRelatedEmployees();
-        const orderId = orders[orders.length-1].id + 1;
-        axios.post('http://localhost:4000/orders',{
+        const orderId = orders[orders.length - 1].id + 1;
+        axios.post('http://localhost:4000/orders', {
             id: orderId,
             quantity: totalWeight,
             cost: priceWithDiscount,
@@ -108,49 +109,49 @@ function PaymentCard(){
             managerId: managerId,
             // deliveryPersonId: dPersonId,
         })
-        .then(()=>{
-            let orderItems = localStorage.getItem('cartDetails');
+            .then(() => {
+                let orderItems = localStorage.getItem('cartDetails');
 
-            axios.post('http://localhost:4000/order-items',{
-                orderItems,
-                orderId
-            })
-            localStorage.removeItem('cartDetails');
+                axios.post('http://localhost:4000/order-items', {
+                    orderItems,
+                    orderId
+                })
+                localStorage.removeItem('cartDetails');
 
-            alert('Order is successfully done!');
-            setName('');
-            setAddress('');
-            setCardNumber('');
-            setDate('');
-            setcvc('');
-            setIsPaymentSuccess(true);
+                alert('Order is successfully done!');
+                setName('');
+                setAddress('');
+                setCardNumber('');
+                setDate('');
+                setcvc('');
+                navigate('/home');
 
-            //add address to customer table
-            axios.put(`http://localhost:4000/customer-address/${customerId}`,{
-                id: customerId,
-                Address: address,
+                //add address to customer table
+                axios.put(`http://localhost:4000/customer-address/${customerId}`, {
+                    id: customerId,
+                    Address: address,
+                });
             });
-        });
     }
 
-    const onPayNow =(e)=>{
+    const onPayNow = (e) => {
         e.preventDefault();
-        if(name && address && cardNumber && date && cvv){
+        if (name && address && cardNumber && date && cvv) {
             addtoOrderList();
             findRelatedEmployees();
-        }else{
+        } else {
             alert('Please fill the required fields')
         }
     }
 
-    return(
+    return (
         <>
             <Container className="form-container">
                 <Form className="payment-form" onSubmit={onPayNow} method="post">
                     <Row className="mt-1 mb-4">
                         <Form.Group as={Col} controlId="formGridName">
-                        <Form.Label className="payment-field-title">Name On The Card</Form.Label>
-                        <Form.Control className="login-input btn-square" type="text" placeholder="Your Name" name="contactNumber" value={name} onChange={onChangeName}/>
+                            <Form.Label className="payment-field-title">Name On The Card</Form.Label>
+                            <Form.Control className="login-input btn-square" type="text" placeholder="Your Name" name="contactNumber" value={name} onChange={onChangeName} />
                         </Form.Group>
                     </Row>
 
@@ -161,20 +162,20 @@ function PaymentCard(){
 
                     <Form.Group className="mb-4" controlId="formGridCardNumber">
                         <Form.Label className="payment-field-title">Card Number</Form.Label>
-                        <Form.Control className="login-input btn-square" placeholder="0000-0000-0000-0000" value={cardNumber} onChange={onChangeCardNumber}/>
+                        <Form.Control className="login-input btn-square" placeholder="0000-0000-0000-0000" value={cardNumber} onChange={onChangeCardNumber} />
                     </Form.Group>
 
                     <Row className="mb-4">
                         <Col xs={5}>
-                            <Form.Group  controlId="formGridExpireDate">
-                            <Form.Label className="payment-field-title">Expiration Date</Form.Label>
-                            <Form.Control className="login-input btn-square" placeholder="00/00" value={date} onChange={onChangeDate}/>
+                            <Form.Group controlId="formGridExpireDate">
+                                <Form.Label className="payment-field-title">Expiration Date</Form.Label>
+                                <Form.Control className="login-input btn-square" placeholder="00/00" value={date} onChange={onChangeDate} />
                             </Form.Group>
                         </Col>
                         <Col xs={{ span: 4, offset: 3 }}>
                             <Form.Group controlId="formGridCVV">
-                            <Form.Label className="payment-field-title">CVV</Form.Label>
-                            <Form.Control className="login-input btn-square" placeholder="123" value={cvv} onChange={onChangecvv}/>
+                                <Form.Label className="payment-field-title">CVV</Form.Label>
+                                <Form.Control className="login-input btn-square" placeholder="123" value={cvv} onChange={onChangecvv} />
                             </Form.Group>
                         </Col>
                     </Row>
@@ -185,13 +186,9 @@ function PaymentCard(){
 
                 </Form>
 
-                <Route>
-                    {isPaymentSuccess ? <Redirect to="/home" /> : null} 
-                </Route>
-                
 
             </Container>
-            
+
         </>
     );
 }

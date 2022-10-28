@@ -217,10 +217,6 @@ export default function EditDiliveryPerson(){
                             Submit
                         </Button>
 
-                        {/* <Route>
-                            {goBack ? <Redirect to="/db/delivery-person" /> : null} 
-                        </Route> */}
-
                     </Form>
                 </Container>
 

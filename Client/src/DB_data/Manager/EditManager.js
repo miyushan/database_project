@@ -217,10 +217,6 @@ export default function EditManager(){
                         <Button className="login-submit-btn login-input mt-2 btn-db" variant="success" type="submit">
                             Submit
                         </Button>
-
-                        {/* <Route>
-                            {goBack ? <Redirect to="/db/manager" /> : null} 
-                        </Route> */}
                         
                         
                     </Form>
