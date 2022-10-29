@@ -1,20 +1,20 @@
-import React, { Component} from 'react';
-import Login from '../Parts/Login';
+import React, { Component } from 'react';
+import Login from '../Components/Login';
 import HashLoader from 'react-spinners/HashLoader';
 import './Loginpage.css'
 
-class Loginpage extends Component{
+class Loginpage extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state={
+        this.state = {
             spinner: true,
             show: false
         }
         this.componentDidMount = this.componentDidMount.bind(this);
     }
 
-    componentDidMount(){
+    componentDidMount() {
         setTimeout(() => {
             this.setState({
                 spinner: false,
@@ -24,20 +24,20 @@ class Loginpage extends Component{
     }
 
     render() {
-        return(
-            <>  
-                {this.state.spinner ? 
+        return (
+            <>
+                {this.state.spinner ?
                     <div className="cliploader-div d-flex justify-content-center align-items-center">
-                        <HashLoader className="cliploader" size={80} color={"0f0"} />   
+                        <HashLoader className="cliploader" size={80} color={"0f0"} />
                     </div>
-                : null}
+                    : null}
                 <div style={{ display: this.state.show ? "block" : "none" }}>
                     <Login />
                 </div>
             </>
         );
     }
-    
+
 }
 
 export default Loginpage;

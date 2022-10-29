@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
-// import UpperNavBar from '../Parts/UpperNavBar';
-import MainNavBar from '../Parts/MainNavBar';
-import OurProducts from '../Parts/OurProducts';
+// import UpperNavBar from '../Components/UpperNavBar';
+import MainNavBar from '../Components/MainNavBar';
+import OurProducts from '../Components/OurProducts';
 import HashLoader from 'react-spinners/HashLoader';
-import Footer from '../Parts/Footer';
-import GoToCart from '../Parts/GoToCart';
+import Footer from '../Components/Footer';
+import GoToCart from '../Components/GoToCart';
 
 import '../Pages/Productspage.css';
 
-function Productspage(){
+function Productspage() {
 
     const [spinner, setSpinner] = useState(true);
     const [show, setShow] = useState(false);
@@ -19,27 +19,27 @@ function Productspage(){
             setSpinner(false);
             setShow(true);
         }, 2700)
-    },[])
+    }, [])
 
-    return(
-        <>  
-            {spinner ? 
+    return (
+        <>
+            {spinner ?
                 <div className="cliploader-div d-flex justify-content-center align-items-center">
-                    <HashLoader className="cliploader" size={80} color={"0f0"} />   
+                    <HashLoader className="cliploader" size={80} color={"0f0"} />
                 </div>
-            : null}
+                : null}
             <div style={{ display: show ? "block" : "none" }}>
                 <div id="products">
                     {/* <UpperNavBar /> */}
                     <MainNavBar />
-                        <OurProducts/>
+                    <OurProducts />
                     <Footer />
                     <GoToCart />
                 </div>
             </div>
         </>
     );
- 
+
 
 }
 

@@ -1,26 +1,26 @@
-import {Container} from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import HashLoader from 'react-spinners/HashLoader';
-import React, { Component} from 'react';
-import MainNavBar from '../Parts/MainNavBar';
-import UpperNavBar from '../Parts/UpperNavBar';
-import SearchBar from '../Parts/SearchBar';
-import MainCover from '../Parts/MainCover';
-import Benificts from '../Parts/Benificts';
-import PopularItems from '../Parts/PopularItems';
-import OurProducts from '../Parts/OurProducts';
-import AboutUs from '../Parts/AboutUs';
-import Footer from '../Parts/Footer';
-import GoToCart from '../Parts/GoToCart';
+import React, { Component } from 'react';
+import MainNavBar from '../Components/MainNavBar';
+import UpperNavBar from '../Components/UpperNavBar';
+import SearchBar from '../Components/SearchBar';
+import MainCover from '../Components/MainCover';
+import Benificts from '../Components/Benificts';
+import PopularItems from '../Components/PopularItems';
+import OurProducts from '../Components/OurProducts';
+import AboutUs from '../Components/AboutUs';
+import Footer from '../Components/Footer';
+import GoToCart from '../Components/GoToCart';
 import '../Pages/Homepage.css';
 
-import Organic from '../files/organicFoods.png';
+import Organic from '../Media/organicFoods.png';
 
 class Homepage extends Component {
 
     constructor(props) {
         super(props);
 
-        this.state={
+        this.state = {
             // user : this.props.firstName
             spinner: true,
             show: false
@@ -29,7 +29,7 @@ class Homepage extends Component {
 
     }
 
-    componentDidMount(){
+    componentDidMount() {
         document.getElementsByClassName('nav-home')[0].style.color = '#0f0';
         setTimeout(() => {
             this.setState({
@@ -40,37 +40,37 @@ class Homepage extends Component {
     }
 
     render(props) {
-        return(
+        return (
             <>
-                {this.state.spinner ? 
+                {this.state.spinner ?
                     <div className="cliploader-div d-flex justify-content-center align-items-center">
-                        <HashLoader className="cliploader" size={80} color={"0f0"} />   
+                        <HashLoader className="cliploader" size={80} color={"0f0"} />
                     </div>
-                : null}
+                    : null}
 
-                    <div style={{ display: this.state.show ? "block" : "none" }}>
-                        <div id="home">
-                            <UpperNavBar />
-                            <MainNavBar />
-                            <SearchBar />
-                            <MainCover />
-                            <Benificts />
-                                <PopularItems />
-                                <OurProducts />
-                            <AboutUs />
-                            <Container className="d-flex justify-content-center">
-                                <img className="organic" src={Organic} alt="shop"/>
-                            </Container>
-                            {/* <GoUp /> */}
-                            <Footer /> 
-                            <GoToCart />
-                        </div>
+                <div style={{ display: this.state.show ? "block" : "none" }}>
+                    <div id="home">
+                        <UpperNavBar />
+                        <MainNavBar />
+                        <SearchBar />
+                        <MainCover />
+                        <Benificts />
+                        <PopularItems />
+                        <OurProducts />
+                        <AboutUs />
+                        <Container className="d-flex justify-content-center">
+                            <img className="organic" src={Organic} alt="shop" />
+                        </Container>
+                        {/* <GoUp /> */}
+                        <Footer />
+                        <GoToCart />
                     </div>
-                
+                </div>
+
             </>
         );
     }
-    
+
 }
 
 export default Homepage;

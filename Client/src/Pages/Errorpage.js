@@ -1,9 +1,9 @@
-// import UpperNavBar from '../Parts/UpperNavBar';
-import MainNavBar from '../Parts/MainNavBar';
-import Footer from '../Parts/Footer';
+// import UpperNavBar from '../Components/UpperNavBar';
+import MainNavBar from '../Components/MainNavBar';
+import Footer from '../Components/Footer';
 
-function Errorpage(){
-    return(
+function Errorpage() {
+    return (
         <>
             <div id="cart">
                 {/* <UpperNavBar /> */}

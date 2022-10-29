@@ -1,12 +1,12 @@
-import React, { Component} from 'react';
+import React, { Component } from 'react';
 import HashLoader from 'react-spinners/HashLoader';
-import CreateAccount from '../Parts/CreateAccount';
+import CreateAccount from '../Components/CreateAccount';
 
 class CreateAccountpage extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state={
+        this.state = {
             spinner: true,
             show: false
         }
@@ -14,7 +14,7 @@ class CreateAccountpage extends Component {
         this.onClick = this.onClick.bind(this);
     }
 
-    componentDidMount(){
+    componentDidMount() {
         setTimeout(() => {
             this.setState({
                 spinner: false,
@@ -23,19 +23,19 @@ class CreateAccountpage extends Component {
         }, 2700)
     }
 
-    onClick(){
+    onClick() {
 
     }
 
     render() {
         console.log(this.state.show)
-        return(
-            <>  
-                {this.state.spinner ? 
+        return (
+            <>
+                {this.state.spinner ?
                     <div className="cliploader-div d-flex justify-content-center align-items-center">
-                        <HashLoader className="cliploader" size={80} color={"0f0"} />   
+                        <HashLoader className="cliploader" size={80} color={"0f0"} />
                     </div>
-                : null}
+                    : null}
                 <div style={{ display: this.state.show ? "block" : "none" }}>
                     <CreateAccount />
                 </div>
