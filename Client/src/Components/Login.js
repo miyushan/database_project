@@ -1,5 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './styles/Login.css';
+import './styles/CommonStyles.css';
 import { Col, Container, Row, Button } from "react-bootstrap";
 import LoginForm from '../Components/LoginForm';
 import { ReactComponent as Admin } from '../Media/icons/users-cog-solid.svg';
@@ -12,7 +12,7 @@ function Login() {
                     <Col xs={12} md={6} className="b_login-left d-flex align-items-center justify-content-center">
                         <h1 className="b_login-header">Online Vegetable<br />Ordering System</h1>
                         <div className="b_admin_login">
-                            <a href="db/login" className=""><Admin className="b_admin-login-icon" height="20px" /></a>
+                            <a href="db/login"><Admin className="b_admin-login-icon" height="20px" /></a>
                         </div>
                     </Col>
                     <Col xs={12} md={6} className="b_login-right d-flex align-items-center justify-content-center">
@@ -25,8 +25,8 @@ function Login() {
                             </Col>
                         </Row>
 
-                        <div className="create-account">
-                            <Button href="register" className="create-account-btn" type="submit" variant="success">Create A New Account</Button>
+                        <div className="b_create-account">
+                            <Button href="register" className="b_create-account-btn" type="submit" variant="success">Create A New Account</Button>
                         </div>
                     </Col>
 
