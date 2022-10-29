@@ -10,7 +10,7 @@ import { ReactComponent as New } from '../../files/icons/plus-solid.svg';
 import { ReactComponent as LOGOUT } from '../../files/icons/right-from-bracket-solid.svg';
 
 import { ProductContext } from '../../Context/ProductContext';
-import { ReactComponent as Admin } from '../../files/icons/users-cog-solid.svg';
+// import { ReactComponent as Admin } from '../../files/icons/users-cog-solid.svg';
 
 function ProductDetails() {
     const navigate = useNavigate();

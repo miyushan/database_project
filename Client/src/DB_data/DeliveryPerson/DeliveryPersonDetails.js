@@ -6,7 +6,7 @@ import Modal from '../../Parts/Model'
 import { ReactComponent as Edit } from '../../files/icons/edit-regular.svg';
 import { ReactComponent as Delete } from '../../files/icons/trash-alt-regular.svg';
 import { ReactComponent as New } from '../../files/icons/plus-solid.svg';
-import { ReactComponent as Admin } from '../../files/icons/users-cog-solid.svg';
+// import { ReactComponent as Admin } from '../../files/icons/users-cog-solid.svg';
 
 function DeliveryPersonDetails(){
 

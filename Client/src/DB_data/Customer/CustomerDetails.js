@@ -2,11 +2,11 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import '../commonStyles.css'
 import './CustomerDetails.css';
-import { Table, ButtonGroup, Button, Breadcrumb, Col } from "react-bootstrap";
+import { Table, ButtonGroup, Button, Breadcrumb } from "react-bootstrap";
 import axios from 'axios';
 import { ReactComponent as Edit } from '../../files/icons/edit-regular.svg';
 import { ReactComponent as Delete } from '../../files/icons/trash-alt-regular.svg';
-import { ReactComponent as Admin } from '../../files/icons/users-cog-solid.svg';
+// import { ReactComponent as Admin } from '../../files/icons/users-cog-solid.svg';
 import { ReactComponent as LOGOUT } from '../../files/icons/right-from-bracket-solid.svg';
 
 import { EmployeeContext } from '../../Context/EmployeeContext';
