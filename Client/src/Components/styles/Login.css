@@ -3,42 +3,12 @@
     min-width: 100%;
 }
 
-.login-right{
-    position: relative;
-    padding: 0;
-    background-color: #554C4C!important;
-    width: 50%;
-    height: 100vh;
-    flex-direction: column;
-}
-
-.login-left{
-    position: relative;
-    padding: 0;
-    width: 50%;
-    height: 100vh;
-    overflow-x:hidden;
-    overflow-y:hidden;
-}
-.admin-login-btn{
-    position: absolute;
-    left: 4%;
-    bottom: 3%;
-}
-
 .login-Image{
     width: 100%;
     mix-blend-mode: darken;
 }
 
-.login-header{
-    text-align: left;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: 900;
-    font-size: 48px;
-    color: rgb(223, 223, 223);
-}
+
 
 .align {
     position: absolute;
@@ -65,26 +35,7 @@
 
 }
 
-.login-title{
-    font-family: Roboto;
-    font-style: normal;
-    font-size: 21px;
-    color: #fff;
-    width: 290px;
-    margin-left: auto;
-    margin-right: auto;
-}
 
-.login-title-1{
-    font-weight: 900;
-    font-size: 25px;
-    margin-bottom: -5px;
-}
-
-.login-title-2{
-    font-size: 21px;
-    margin-bottom: 10px;
-}
 
 .create-account{
     position: absolute;
@@ -109,6 +60,83 @@
     border-color: rgb(4, 117, 4);
 }
 
-.admin-login-icon path{
+
+
+
+
+
+
+
+.b_login-right{
+    background-color: #554C4C!important;
+    height: 50vh;
+}
+.b_login-left{
+    background-image: url('../../Media/marisol-benitez-QvkAQTNj4zk-unsplash.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    mix-blend-mode: darken;
+    height: 50vh;
+    overflow:hidden;
+}
+.b_admin_login{
+    position: absolute;
+    left: 4%;
+    bottom: 95%;
+}
+.b_admin-login-icon path{
     color: #fff !important;
+}
+.b_login-header{
+    text-align: left;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 36px;
+    color: rgb(223, 223, 223);
+    padding: 3%;
+    background-color: rgba(4, 163, 4, 0.767);
+    box-shadow: rgba(14, 30, 37, 0.2) 0px 2px 4px 0px, rgba(14, 30, 37, 0.6) 0px 2px 16px 0px;
+}
+.b_add-curser{
+    cursor: default;
+}
+.b_login-title{
+    font-family: Roboto;
+    font-style: normal;
+    font-size: 21px;
+    color: #fff;
+    width: 290px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.b_login-title-1{
+    font-weight: 900;
+    font-size: 25px;
+    margin-bottom: -5px;
+}
+.b_login-title-2{
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+.b_login-row{
+    transform: translate(0, -20px);
+}
+
+@media screen and (min-width: 768px) {
+    .b_login-right{
+        height: 100vh;
+    }
+    .b_login-left{
+        height: 100vh;
+    }
+    .b_admin_login{
+        bottom: 3%;
+    }
+}
+@media screen and (min-width: 992px) {
+    .b_login-header{
+        font-size: 48px;
+    }
 }
