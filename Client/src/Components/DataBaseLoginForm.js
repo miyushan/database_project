@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './styles/DataBaseLoginForm.css';
+import './styles/CommonStyles.css';
 import { useNavigate } from "react-router-dom";
 import { UserContext } from '../Context/UserContext';
 
@@ -65,7 +65,7 @@ export default function DataBaseLoginForm() {
 
     return (
         <>
-            <Form className="login-form" onSubmit={onSubmit} method="post">
+            <Form className="b_login-form" onSubmit={onSubmit} method="post">
 
                 <Form.Group className="mb-3" controlId="formBasicPhoneNumber">
                     <Form.Control className="login-input" type="text" placeholder="Phone Number" variant="success" name="contactNumber" value={contactNumber} onChange={onChangeContactNumber} />

@@ -6,6 +6,16 @@
     background-color: #554C4C!important;
     height: 70vh;
 }
+.b_db_admin_login{
+    background-image: url('../../Media/marisol-benitez-QvkAQTNj4zk-unsplash.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: multiply;
+    mix-blend-mode: darken;
+    height: 100vh;
+    overflow:hidden;
+}
 .b_login-left{
     background-image: url('../../Media/marisol-benitez-QvkAQTNj4zk-unsplash.jpg');
     background-position: center;
@@ -87,6 +97,13 @@
 .b_create-account-btn:hover{
     background-color: rgb(4, 117, 4);
     border-color: rgb(4, 117, 4);
+}
+.b_login-form{
+    width: 290px;
+    padding: 0 !important;
+}
+.b_db-login{
+    margin-top: -5%;
 }
 
 @media screen and (min-width: 768px) {

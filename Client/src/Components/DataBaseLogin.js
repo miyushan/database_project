@@ -1,44 +1,29 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './styles/Login.css';
+import './styles/CommonStyles.css';
 import { Col, Container, Row, Button } from "react-bootstrap";
-import './styles/DataBaseLogin.css'
 import DataBaseLoginForm from '../Components/DataBaseLoginForm';
 // import { ReactComponent as Admin } from '../Media/icons/users-cog-solid.svg';
 
 function DataBaseLogin() {
     return (
         <>
-            <div id="login">
-                <Container className="outer-login admin-login">
-                    <Row>
-                        <Col className="admin-login-right d-flex justify-content-center">
-                            <div className="customer-login">
-                                <Button href="/login" className="create-account-btn" type="submit" variant="success">Customer Login</Button>
-                            </div>
-                            <div className="db-loginform">
-                                <Row className="login-row-0 text-left">
-                                    <Col className="d-block justify-content-center login-row-4">
-                                        <div className="login-title login-title-1 add-curser">VegiDeals</div>
-                                        <div className="login-title login-title-2 add-curser">Administrator Login</div>
-                                    </Col>
-                                </Row>
-                                <Row className="login-row-0">
-                                    <Col className="d-flex justify-content-center login-row-5"><DataBaseLoginForm /></Col>
-                                </Row>
-                            </div>
-                        </Col>
-                        {/* <Col className="login-left">
-                            <img className="login-Image" src={cover} alt="cover" />
-                            <div className="align">
-                                <h1 className="login-header text-left add-curser">Online Vegetable<br />Ordering System</h1>
-                            </div>
-                            <div className="admin-login">
-                                <a href="db/" className="admin-login-btn"><Admin className="admin-login-icon" height="20px"/></a>
-                            </div>
-                        </Col> */}
-                    </Row>
-                </Container>
-            </div>
+            <Container id="dbLogin" fluid>
+                <Row className="b_db_admin_login align-items-center">
+                    <Col className="d-block b_db-login">
+                        <div className="b_login-title b_login-title-1 b_add-curser">VegiDeals</div>
+                        <div className="b_login-title b_login-title-2 b_add-curser">Administrator Login</div>
+                        <Row className="justify-content-center align-items-center">
+                            <Row className="justify-content-center align-items-center">
+                                <DataBaseLoginForm />
+                            </Row>
+                        </Row>
+                    </Col>
+                </Row>
+
+                <div className="b_create-account">
+                    <Button href="/login" className="b_create-account-btn" type="submit" variant="success">Customer Login</Button>
+                </div>
+            </Container>
         </>
     );
 }
