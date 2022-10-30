@@ -98,12 +98,66 @@
     background-color: rgb(4, 117, 4);
     border-color: rgb(4, 117, 4);
 }
-.b_login-form{
+
+/* admin login page */
+.b_admin_login-form{
     width: 290px;
     padding: 0 !important;
 }
-.b_db-login{
+.b_admin-login{
     margin-top: -5%;
+}
+
+/* main cover */
+.b_outer-cover{
+    max-height: 420px;
+}
+.b_coverImage{
+    max-height: 420px;
+}
+.b_cover-left{
+    background-color: rgb(1, 139, 1);
+}
+.b_cover-right{
+    overflow: hidden;
+    padding: 0;
+}
+.b_main-header{
+    cursor:default;
+    margin: auto;
+    margin-left: 15%;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 36px;
+    line-height: 36px;
+    color: #fff;
+}
+
+/* benificts */
+.b_outer-benificts{
+    background-color: #3b3737 !important;
+    padding: 20px 5%;
+    margin-bottom: 170px; 
+}
+.b_benifict-icon-row{
+    margin: auto;
+}
+.b_benifict-icon{
+    color: #0f0;
+    height: 25px;
+    margin-bottom: 10px;
+}
+.b_benifict-icon:hover{
+    color: rgba(0, 255, 0, 0.733);
+}
+.b_benifict-icon{
+    color: #0f0;
+    height: 25px;
+    margin-bottom: 10px;
+}
+.b_benifict-icon:hover{
+    color: rgba(0, 255, 0, 0.733);
 }
 
 @media screen and (min-width: 768px) {
@@ -116,9 +170,15 @@
     .b_admin_login{
         bottom: 3%;
     }
+    
 }
 @media screen and (min-width: 992px) {
     .b_login-header{
         font-size: 48px;
+    }
+    .b_outer-benificts{
+        background-color: #3b3737 !important;
+        padding: 20px 10%;
+        margin-bottom: 170px; 
     }
 }

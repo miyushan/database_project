@@ -9,7 +9,7 @@ function DataBaseLogin() {
         <>
             <Container id="dbLogin" fluid>
                 <Row className="b_db_admin_login align-items-center">
-                    <Col className="d-block b_db-login">
+                    <Col className="d-block b_admin-login">
                         <div className="b_login-title b_login-title-1 b_add-curser">VegiDeals</div>
                         <div className="b_login-title b_login-title-2 b_add-curser">Administrator Login</div>
                         <Row className="justify-content-center align-items-center">

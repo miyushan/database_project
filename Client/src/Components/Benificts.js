@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './styles/Benificts.css';
-import { Navbar, Container } from "react-bootstrap";
+import './styles/CommonStyles.css';
+import { Container, Row, Col } from "react-bootstrap";
 
 import { ReactComponent as Fast } from '../Media/shipping-fast-solid.svg';
 import { ReactComponent as Online } from '../Media/clock-solid.svg';
@@ -13,15 +13,30 @@ function Benificts() {
     return (
         <>
 
-            <Navbar className="outer-benificts">
-                <Container className="main-nav-2">
-                    <Navbar.Brand className="nav-title-2 benificts"><Fast className="benifict-icon" /><div className="add-curser benifict-text">Fast Delivery</div></Navbar.Brand>
-                    <Navbar.Brand className="nav-title-2 benificts"><Online className="benifict-icon" /><div className="add-curser benifict-text">24 * 7 Service</div></Navbar.Brand>
-                    <Navbar.Brand className="nav-title-2 benificts"><Caring className="benifict-icon" /><div className="add-curser benifict-text">Friendly Customer Care</div></Navbar.Brand>
-                    <Navbar.Brand className="nav-title-2 benificts"><Fresh className="benifict-icon" /><div className="add-curser benifict-text">Fresh Vegetables</div></Navbar.Brand>
-                    <Navbar.Brand className="nav-title-2 benificts"><Quick className="benifict-icon" /><div className="add-curser benifict-text">Quick Response</div></Navbar.Brand>
-                </Container>
-            </Navbar>
+            <Container className="b_outer-benificts" fluid>
+                <Row xs={1} sm={2} md={3} lg={5} className="g-5">
+                    <Col className='d-block align-content-center'>
+                        <Row><Fast className="b_benifict-icon" /></Row>
+                        <div className="add-curser text-center text-white">Fast Delivery</div>
+                    </Col>
+                    <Col className='d-block align-content-center'>
+                        <Row><Online className="b_benifict-icon" /></Row>
+                        <div className="add-curser text-center text-white">24 * 7 Service</div>
+                    </Col>
+                    <Col className='d-block align-content-center'>
+                        <Row><Caring className="b_benifict-icon" /></Row>
+                        <div className="add-curser text-center text-white">Friendly Customer Care</div>
+                    </Col>
+                    <Col className='d-block align-content-center'>
+                        <Row><Fresh className="b_benifict-icon" /></Row>
+                        <div className="add-curser text-center text-white">Fresh Vegetables</div>
+                    </Col>
+                    <Col className='d-block align-content-center'>
+                        <Row><Quick className="b_benifict-icon" /></Row>
+                        <div className="add-curser text-center text-white">Quick Response</div>
+                    </Col>
+                </Row>
+            </Container>
 
         </>
     );

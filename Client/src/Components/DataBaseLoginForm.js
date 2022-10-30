@@ -65,7 +65,7 @@ export default function DataBaseLoginForm() {
 
     return (
         <>
-            <Form className="b_login-form" onSubmit={onSubmit} method="post">
+            <Form className="b_admin_login-form" onSubmit={onSubmit} method="post">
 
                 <Form.Group className="mb-3" controlId="formBasicPhoneNumber">
                     <Form.Control className="login-input" type="text" placeholder="Phone Number" variant="success" name="contactNumber" value={contactNumber} onChange={onChangeContactNumber} />
