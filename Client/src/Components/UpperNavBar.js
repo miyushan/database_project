@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/CommonStyles.css';
-import { Navbar, Container, Button, Row, Col } from "react-bootstrap";
+import { Container, Button, Col } from "react-bootstrap";
 import { ReactComponent as SignOut } from '../Media/sign-out-alt-solid.svg';
 // import { UserContext } from '../Context/UserContext';
 

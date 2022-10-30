@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/CommonStyles.css';
-import { Navbar, Nav, Container, Col, Row, FormControl, Button, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav, Container } from "react-bootstrap";
 
 function MainNavBar() {
     const [scroll, setScroll] = useState(true);
@@ -25,7 +25,6 @@ function MainNavBar() {
     return (
 
         <div>
-
             <Navbar collapseOnSelect style={scroll ? style : null} className="b_outer-nav " expand="sm"  variant="dark">
                 <Container>
                     <Navbar.Brand className="b_header-brand-name" href="home">VegiDeals</Navbar.Brand>

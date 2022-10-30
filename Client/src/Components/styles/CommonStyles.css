@@ -110,17 +110,20 @@
 
 /* main cover */
 .b_outer-cover{
-    max-height: 420px;
+    /* max-height: 720px; */
 }
 .b_coverImage{
-    max-height: 420px;
+    max-height: 600px;
 }
 .b_cover-left{
     background-color: rgb(1, 139, 1);
 }
 .b_cover-right{
-    overflow: hidden;
-    padding: 0;
+    min-height: 300px;
+    background-image: url('../../Media/cover-image-1.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .b_main-header{
     cursor:default;
@@ -162,10 +165,8 @@
 
 /* nav bar */
 .b_outer-nav{
-    /* padding: 0 8%; */
     position: sticky;
     background-color: #202020;
-    height: 60px !important;
     top: -1px;
     z-index: 1;
     border-bottom: 2px solid rgba(0, 255, 0, 0.377);
@@ -212,8 +213,62 @@
     background-color: rgb(8, 155, 8) !important;
     border-color: rgb(8, 155, 8) !important;
 }
+/* .ignore-btn::after{
+    border-color: transparent;
+}
+.ignore-btn:hover{
+    color: rgb(3, 212, 3);
+}
+.ignore-btn{
+    padding: 4px 6px 5px 6px !important;
+}
+.ignore-btn{
+    position: relative;
+    background-color: transparent !important;
+    border: none;
+    text-align:  center;
+    margin: 0;
+    padding: 0;
+    color: rgb(0, 255, 0);
+} */
+
+/* about us section */
+.b_aboutUs-col-1{
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+    line-height: 42px;
+    color: #fff;
+    margin-top: 20px;
+}
+.b_aboutUs-description{
+    padding: 5% 10% 5% 10%;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.822);
+}
+.b_aboutUs-container{
+    background-color: rgb(8, 155, 8);
+    margin-top: 220px;
+    margin-bottom: 150px;
+    padding-top: 20px;
+}
+.b_shopImage{
+    max-height: 220px;
+}
 
 
+/* small screens */
+@media screen and (min-width: 576px) {
+    .b_aboutUs-col-1{
+        text-align: left;
+    }
+    .b_aboutUs-description{
+        padding: 0% 0%;
+        font-size: 18px;
+    }
+}
+/* medium screens */
 @media screen and (min-width: 768px) {
     .b_login-right, .b_create-right{
         height: 100vh;
@@ -224,8 +279,11 @@
     .b_admin_login{
         bottom: 3%;
     }
-    
+    .b_shopImage{
+        max-height: 300px;
+    }
 }
+/* large screens */
 @media screen and (min-width: 992px) {
     .b_login-header{
         font-size: 48px;
@@ -234,5 +292,11 @@
         background-color: #3b3737 !important;
         padding: 20px 10%;
         margin-bottom: 170px; 
+    }
+    .b_shopImage{
+        max-height: 500px;
+    }
+    .b_cover-right{
+        min-height: 600px;
     }
 }
