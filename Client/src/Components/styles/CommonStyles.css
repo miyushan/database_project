@@ -160,6 +160,35 @@
     color: rgba(0, 255, 0, 0.733);
 }
 
+/* nav bar */
+.b_outer-nav{
+    /* padding: 0 8%; */
+    position: sticky;
+    background-color: #202020;
+    height: 60px !important;
+    top: -1px;
+    z-index: 1;
+    border-bottom: 2px solid rgba(0, 255, 0, 0.377);
+    -webkit-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+    -moz-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+    box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+}
+.b_header-brand-name{
+    font-size: 25px;
+    font-weight: bold;
+    color: #fff !important;
+    text-decoration: none;
+}
+.b_nav-title{
+    color: #ebebeb !important;
+}
+.b_nav-title:hover{
+    color: rgba(0, 255, 0, 0.733) !important;
+}
+.b_nav-title::after{
+    color: #ebebeb;
+}
+
 @media screen and (min-width: 768px) {
     .b_login-right, .b_create-right{
         height: 100vh;
