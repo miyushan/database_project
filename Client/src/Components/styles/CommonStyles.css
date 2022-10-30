@@ -189,6 +189,31 @@
     color: #ebebeb;
 }
 
+/* upper navbar */
+.b_navbar-u{
+    background-color: #000;
+    min-height: 35px;
+}
+.b_nav-title-1{
+    font-family: Roboto;
+    font-size: 14px;
+    color: rgb(16, 156, 16) !important;
+}
+.b_log-out-btn{
+    color: rgb(0, 255, 0) !important;
+    border-radius: 15px;
+    border-width: 2px !important;
+    background-color: transparent !important;
+    padding: 3px 6px !important;
+    font-size: 11px !important;
+}
+.b_log-out-btn:hover{
+    color: #fff !important;
+    background-color: rgb(8, 155, 8) !important;
+    border-color: rgb(8, 155, 8) !important;
+}
+
+
 @media screen and (min-width: 768px) {
     .b_login-right, .b_create-right{
         height: 100vh;
