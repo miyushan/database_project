@@ -24,7 +24,6 @@ function MainNavBar() {
 
     return (
 
-        <div>
             <Navbar collapseOnSelect style={scroll ? style : null} className="b_outer-nav " expand="sm"  variant="dark">
                 <Container>
                     <Navbar.Brand className="b_header-brand-name" href="home">VegiDeals</Navbar.Brand>
@@ -40,8 +39,6 @@ function MainNavBar() {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-
-        </div>
 
     );
 }

@@ -162,7 +162,7 @@
 .b_outer-nav{
     position: -webkit-sticky;
     position: sticky;
-    top: 0px;
+    top: -1px;
     background-color: #202020;
     z-index: 1;
     border-bottom: 2px solid rgba(0, 255, 0, 0.377);
