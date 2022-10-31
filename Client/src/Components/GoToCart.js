@@ -11,11 +11,11 @@ function GoToCart() {
 
     return (
 
-        <div className="cart to-cart-btn">
-            <Button href="cart" className="ignore-btn" variant="success"><Cart className="cart-icon" height="35px" /></Button>
+        <div className="b_cart b_to-cart-btn">
+            <Button href="cart" className="b_ignore-btn" variant="success"><Cart className="b_cart-icon" height="35px" /></Button>
             {cartProducts.length !== 0 ? <div>
-                <div className="cartProductExist"><div className="cartProductCountRel"></div></div>
-                <div className="cartProductCount">{cartProducts.length}</div>
+                <div className="b_cartProductExist"><div className="b_cartProductCountRel"></div></div>
+                <div className="b_cartProductCount">{cartProducts.length}</div>
             </div> : null}
         </div>
 
