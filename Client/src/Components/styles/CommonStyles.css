@@ -149,15 +149,10 @@
 .b_benifict-icon{
     color: #0f0;
     height: 25px;
-    margin-bottom: 10px;
+    margin-bottom: 3px;
 }
 .b_benifict-icon:hover{
     color: rgba(0, 255, 0, 0.733);
-}
-.b_benifict-icon{
-    color: #0f0;
-    height: 25px;
-    margin-bottom: 10px;
 }
 .b_benifict-icon:hover{
     color: rgba(0, 255, 0, 0.733);
@@ -257,6 +252,27 @@
     max-height: 220px;
 }
 
+/* popular items */
+.b_outer-popular{
+    margin-bottom: 170px;   
+    padding-top: 30px;
+    padding-bottom: 30px; 
+    background-color: rgb(180, 27, 40);
+    box-shadow: rgba(60, 64, 67, 0.6) 0px 1px 2px 0px, rgba(60, 64, 67, 0.3) 0px 1px 3px 1px !important;        
+}
+.b_row-1{
+    margin-top: 10px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    color: #ffffff;
+}
+.b_row-2{
+    width: 100%;
+}
+
+
 
 /* small screens */
 @media screen and (min-width: 576px) {
@@ -298,5 +314,8 @@
     }
     .b_cover-right{
         min-height: 600px;
+    }
+    .b_row-2{
+        width: 80%;
     }
 }

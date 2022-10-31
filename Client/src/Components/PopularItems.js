@@ -23,12 +23,10 @@ function PopularItems () {
     // ]
 
     return(
-        <div className="outside">
-            <Container className="outer-popular">
-                <Row className="row-1">
-                    <Col className="add-curser">Popular Items</Col>
-                </Row>
-                <Row className="row-2">
+        <div>
+            <Container className="b_outer-popular">
+                <div className="b_row-1 text-center">Popular Items</div>
+                <Row className="b_row-2 mx-auto">
                     {popularProductArr.map((product) =>{
                         return (
                             <Col key={product.id} className="product-column">

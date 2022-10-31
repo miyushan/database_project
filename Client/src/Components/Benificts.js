@@ -14,7 +14,7 @@ function Benificts() {
         <>
 
             <Container className="b_outer-benificts" fluid>
-                <Row xs={1} sm={2} md={3} lg={5} className="g-5">
+                <Row xs={1} sm={2} md={3} lg={5} className="g-3 g-lg-5">
                     <Col className='d-block align-content-center'>
                         <Row><Fast className="b_benifict-icon" /></Row>
                         <div className="add-curser text-center text-white">Fast Delivery</div>
