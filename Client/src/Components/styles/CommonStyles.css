@@ -160,9 +160,10 @@
 
 /* nav bar */
 .b_outer-nav{
+    position: -webkit-sticky;
     position: sticky;
+    top: 0px;
     background-color: #202020;
-    top: -1px;
     z-index: 1;
     border-bottom: 2px solid rgba(0, 255, 0, 0.377);
     -webkit-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
