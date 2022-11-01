@@ -1,5 +1,4 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './styles/Footer.css';
 import { Container, Row, Col } from "react-bootstrap";
 
 import { ReactComponent as Fb } from '../Media/facebook-f-brands.svg';

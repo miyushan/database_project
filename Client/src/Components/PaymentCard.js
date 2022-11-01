@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './styles/PaymentCard.css';
 import axios from 'axios';
 import { CartContext } from '../Context/CartContext';
 import { EmployeeContext } from '../Context/EmployeeContext';
@@ -146,42 +145,42 @@ function PaymentCard() {
 
     return (
         <>
-            <Container className="form-container">
-                <Form className="payment-form" onSubmit={onPayNow} method="post">
+            <Container className="b_form-container">
+                <Form className="b_payment-form" onSubmit={onPayNow} method="post">
                     <Row className="mt-1 mb-4">
                         <Form.Group as={Col} controlId="formGridName">
-                            <Form.Label className="payment-field-title">Name On The Card</Form.Label>
-                            <Form.Control className="login-input btn-square" type="text" placeholder="Your Name" name="contactNumber" value={name} onChange={onChangeName} />
+                            <Form.Label className="b_payment-field-title">Name On The Card</Form.Label>
+                            <Form.Control className="b_login-input b_btn-square" type="text" placeholder="Your Name" name="contactNumber" value={name} onChange={onChangeName} />
                         </Form.Group>
                     </Row>
 
                     <Form.Group className="mb-4" controlId="formGridAddress">
-                        <Form.Label className="payment-field-title">Address</Form.Label>
-                        <Form.Control className="login-input btn-square" placeholder="Your Address" value={address} onChange={onChangeAddress} />
+                        <Form.Label className="b_payment-field-title">Address</Form.Label>
+                        <Form.Control className="b_login-input b_btn-square" placeholder="Your Address" value={address} onChange={onChangeAddress} />
                     </Form.Group>
 
                     <Form.Group className="mb-4" controlId="formGridCardNumber">
-                        <Form.Label className="payment-field-title">Card Number</Form.Label>
-                        <Form.Control className="login-input btn-square" placeholder="0000-0000-0000-0000" value={cardNumber} onChange={onChangeCardNumber} />
+                        <Form.Label className="b_payment-field-title">Card Number</Form.Label>
+                        <Form.Control className="b_login-input b_btn-square" placeholder="0000-0000-0000-0000" value={cardNumber} onChange={onChangeCardNumber} />
                     </Form.Group>
 
                     <Row className="mb-4">
                         <Col xs={5}>
                             <Form.Group controlId="formGridExpireDate">
-                                <Form.Label className="payment-field-title">Expiration Date</Form.Label>
-                                <Form.Control className="login-input btn-square" placeholder="00/00" value={date} onChange={onChangeDate} />
+                                <Form.Label className="b_payment-field-title">Expiration Date</Form.Label>
+                                <Form.Control className="b_login-input b_btn-square" placeholder="00/00" value={date} onChange={onChangeDate} />
                             </Form.Group>
                         </Col>
                         <Col xs={{ span: 4, offset: 3 }}>
                             <Form.Group controlId="formGridCVV">
-                                <Form.Label className="payment-field-title">CVV</Form.Label>
-                                <Form.Control className="login-input btn-square" placeholder="123" value={cvv} onChange={onChangecvv} />
+                                <Form.Label className="b_payment-field-title">CVV</Form.Label>
+                                <Form.Control className="b_login-input b_btn-square" placeholder="123" value={cvv} onChange={onChangecvv} />
                             </Form.Group>
                         </Col>
                     </Row>
 
-                    <div className=" mb-1 ">
-                        <Button disabled={btnDisable} className="login-submit-btn login-input pay-now-btn" type="submit" variant="success">PAY NOW</Button>
+                    <div className="mb-1">
+                        <Button disabled={btnDisable} className="b_login-submit-btn b_login-input b_pay-now-btn" type="submit" variant="success">PAY NOW</Button>
                     </div>
 
                 </Form>

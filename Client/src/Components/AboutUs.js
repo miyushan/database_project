@@ -1,5 +1,4 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './styles/AboutUs.css';
 import { Row, Col, Container } from "react-bootstrap";
 
 import DBoy from '../Media/deliveryBoy.png';
