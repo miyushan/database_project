@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './styles/PopularItems.css';
 import {Row, Col, Container} from "react-bootstrap";
 import CardItem from './CardItem';
 import { ProductContext } from '../Context/ProductContext';

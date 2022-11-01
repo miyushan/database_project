@@ -132,8 +132,8 @@
     font-family: Roboto;
     font-style: normal;
     font-weight: 900;
-    font-size: 36px;
-    line-height: 36px;
+    font-size: 25px;
+    line-height: 30px;
     color: #fff;
 }
 
@@ -327,7 +327,70 @@
 .b_ignore-btn{
     padding: 4px 6px 5px 6px !important;
 }
-
+/* footer */
+.b_footer-outer{
+    background-color: #202020 !important;
+    /* padding: 3% 10% 4% 10%; */
+    padding-top: 3%;
+    padding-bottom: 4%;
+}
+.b_brand-name{
+    font-size: 30px;
+    font-weight: bold;
+    color: #0f0 !important;
+    text-decoration: none;
+}
+.b_quick-links{
+    font-size: 13px;
+    color: #fff !important;
+    font-weight: bold;
+    cursor: default;
+}
+.b_quick-link-item{
+    font-size: 12px;
+}
+.b_quick-link-item{
+    color: rgba(255, 255, 255, 0.637) !important;
+    text-decoration: none !important;
+}
+.b_quick-link-item:hover{
+    color: rgb(8, 155, 8) !important;
+}
+.b_copyright{
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.637);
+    cursor: default;
+}
+.b_button{
+    background-color: transparent;
+    border: none;
+    color: rgb(8, 155, 8);
+    /* cursor:  */
+}
+.b_button:hover{
+    color: #0f0;
+}
+.b_sign-out-btn{
+    margin-right: 10px;
+}
+hr {
+    border-top: 2px solid #0f0 !important;
+}
+.b_footer-1{
+    text-align: center;
+}
+.b_footer-2{
+    justify-content: center;
+}
+.b_footer-2-1{
+    text-align: center;
+}
+.b_footer-4{
+    text-align: center;
+}
+.b_footer-5{
+    justify-content: center;
+}
 
 /* small screens */
 @media screen and (min-width: 576px) {
@@ -337,6 +400,21 @@
     .b_aboutUs-description{
         padding: 0% 0%;
         font-size: 18px;
+    }
+    .b_footer-1{
+        text-align: left;
+    }
+    .b_footer-2-1{
+        text-align: left;
+    }
+    .b_footer-2{
+        justify-content: end;
+    }
+    .b_footer-4{
+        text-align: left;
+    }
+    .b_footer-5{
+        justify-content: end;
     }
 }
 /* medium screens */
@@ -352,6 +430,11 @@
     }
     .b_shopImage{
         max-height: 300px;
+    }
+    .b_main-header{
+        padding-left: 7%;
+        font-size: 36px;
+        line-height: 40px;
     }
 }
 /* large screens */
@@ -372,5 +455,9 @@
     }
     .b_row-2{
         width: 80%;
+    }
+    .b_main-header{
+        padding-left: 15%;
+        line-height: 50px;
     }
 }

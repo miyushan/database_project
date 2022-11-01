@@ -8,7 +8,7 @@ function MainCover() {
             <Container className="b_outer-cover" fluid>
                 <Row>
                     <Col className="b_cover-left d-flex justify-content-center">
-                        <h1 className="b_main-header">We are here to<br></br>ease your works</h1>
+                        <h1 className="b_main-header">We are here to<br></br>ease your "Shopping"</h1>
                     </Col>
                     <Col className="b_cover-right">
                         {/* <img className="b_coverImage" src={cover} alt="cover" /> */}
