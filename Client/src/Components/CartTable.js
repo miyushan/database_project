@@ -23,33 +23,31 @@ function CartTable () {
 
     return(
         <>
-            <Container className="table-container add-curser">
+            <Container className="b_table-container d_add-curser">
 
                 {cartProducts.length === 0 ?
-                    <div className="no-item text-center">No Items To Display</div>
+                    <div className="b_no-item">No Items To Display</div>
                 :
-                    <Table className="cart-table cart-shadow" striped bordered hover>
-                        <thead className="table-head text-center">
-                            <tr className="table-header">
-                                <th className="table-column table-column-1">Product ID</th>
-                                <th className="table-column table-column-2">Product</th>
-                                <th className="table-column table-column-3">Set Quantity</th>
-                                <th className="table-column table-column-4">Quantity</th>
-                                <th className="table-column table-column-5">Remove</th>
-                                <th className="table-column table-column-6">Price (Rs)</th>
+                    <Table className="b_cart-shadow" striped bordered hover>
+                        <thead className="b_table-head text-center">
+                            <tr className="">
+                                <th className=" b_table-column-1">Product ID</th>
+                                <th className=" b_table-column-2">Product</th>
+                                <th className=" b_table-column-3">Set Quantity</th>
+                                <th className=" b_table-column-4">Quantity</th>
+                                <th className=" b_table-column-5">Remove</th>
+                                <th className=" b_table-column-6">Price (Rs)</th>
                             </tr>
                         </thead>
                         
-                        <tbody className="table-body text-center">
+                        <tbody className="b_table-body text-center">
                             {cartProducts.map((product) =>{
                                 return (
                                     <tr key={product.id}>
                                         <CartTableRow image={getItem(product.id)} name={product.Name} price={product.CartPrice} pricePKg={product.Price} maxWeight={product.Weight} weight={product.CartWeight} id={product.id}/>
                                     </tr>
                                 )  
-
                             })}
-
                         </tbody>
                     </Table>
                 }

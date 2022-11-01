@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import './styles/CardItemButton.css';
 import { Button} from "react-bootstrap";
 import { CartContext } from '../Context/CartContext';
 
@@ -22,7 +21,7 @@ export default function CardItemButton (props){
     return(
         <>
             
-            <Button onClick={()=>{addToCart(props.id, parseFloat(props.Price))}} style={buttonStyle} variant="success" className="btn-cart" >Add To Cart</Button>
+            <Button onClick={()=>{addToCart(props.id, parseFloat(props.Price))}} style={buttonStyle} variant="success" className="b_btn-cart" >Add To Cart</Button>
              
         </>   
     )

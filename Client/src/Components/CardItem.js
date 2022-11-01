@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './styles/CardItem.css';
 import {Card, Container, Row, Col, Button} from "react-bootstrap";
 import { CartContext } from '../Context/CartContext';
 import { ProductContext } from '../Context/ProductContext';
