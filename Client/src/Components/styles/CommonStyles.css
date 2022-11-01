@@ -109,9 +109,9 @@
 }
 
 /* main cover */
-.b_outer-cover{
-    /* max-height: 720px; */
-}
+/* .b_outer-cover{
+    max-height: 720px;
+} */
 .b_coverImage{
     max-height: 600px;
 }
@@ -448,6 +448,48 @@ hr {
     box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px !important;
 }
 
+/* card item */
+.b_card-item{
+    margin: auto;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    background-color: rgba(255, 255, 255, 0.815);
+}
+.b_card-image {
+    padding: 12% 12% 0 12%;
+    -webkit-filter: drop-shadow(5px 5px 5px rgba(34, 34, 34, 0.281));
+    filter: drop-shadow(5px 5px 5px rgba(34, 34, 34, 0.281));
+}
+.b_card-title{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+}
+.b_item-con{
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    padding: 0;
+    margin-bottom: 10px;
+}
+.b_btn-cart{
+    width: 100%;
+    color: rgb(8, 155, 8);
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px!important;
+    background-color: transparent;
+    border: 2px solid rgba(8, 155, 8, 0.205);
+    box-shadow: rgba(0, 0, 0, 0.151) 0px 4px 12px;
+}
+
+.btn-cart:hover{
+    background-color: rgb(8, 155, 8);
+    border-color: rgb(8, 155, 8);
+
+}
 
 /* small screens */
 @media screen and (min-width: 576px) {

@@ -65,17 +65,17 @@ export default function CardItem (props){
     
     return(
         <>
-            <Card className="card-item add-curser" style={{ width: '210px' }}>
-                <Card.Img className="card-image" variant="top" src={getItem(props.id)} alt="Product Image"/>
-                <Card.Body className="body-cart">
-                    <Card.Title className="card-title">{props.Name}</Card.Title>
-                    <Container className="item-con">
+            <Card className="b_card-item b_add-curser" style={{ width: '210px' }}>
+                <Card.Img className="b_card-image" variant="top" src={getItem(props.id)} alt="Product Image"/>
+                <Card.Body className="">
+                    <Card.Title className="b_card-title">{props.Name}</Card.Title>
+                    <Container className="b_item-con">
                         <Row>
-                            <Col className="weight">1 Kg</Col>
-                            <Col className="price">Rs. {props.Price}</Col>
+                            <Col className="text-left">1 Kg</Col>
+                            <Col className="text-left">Rs. {props.Price}</Col>
                         </Row>
                     </Container>
-                    <Button onClick={()=>{addToCart(props.id, parseFloat(props.Price)); changeBtn();}} style={buttonStyle} variant="success" className="btn-cart" >{cartBtnText}</Button>
+                    <Button onClick={()=>{addToCart(props.id, parseFloat(props.Price)); changeBtn();}} style={buttonStyle} variant="success" className="b_btn-cart" >{cartBtnText}</Button>
                 </Card.Body>
             </Card>
         </>   
